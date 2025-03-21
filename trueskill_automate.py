@@ -135,7 +135,7 @@ def retrieve_id(username):
 
     display_index = str(huge_string).find("display_name")
     if id_index == -1:
-        log_stuff("\nID not found for displayname")
+        log_stuff(f"\nID not found for {username}")
         return
     user_id = str(huge_string)[id_index+10:display_index-3]
 
@@ -148,7 +148,7 @@ def check_new_match(match_id):
 
     if not is_new_game_from_match_id(match_id):  
         log_stuff(f"\n{match_id} Not a valid game")
-        return
+        return [f"{match_id} has already been logged. Perhaps try again later?"]
 
     match_details = requests.get(f"https://supervive.op.gg/api/matches/steam-{match_id}")
     time.sleep(0.5)
@@ -156,11 +156,14 @@ def check_new_match(match_id):
     json_match_details = match_details.json()
 
     for i in range(len(json_match_details)):
-        json_match_details[i]["player_id_encoded"] = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
+        retrieved_id = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
+        if not retrieved_id:
+            return ["A player was not found in op.gg database"]
+        json_match_details[i]["player_id_encoded"] = retrieved_id
     
 
     if not is_players_correct(json_match_details):
-        return
+        return ["A player was not found in ranked system"]
 
     score_match(json_match_details)
     
@@ -180,11 +183,11 @@ def check_match_w_name(unique_name):
     json_new_match = new_match.json()
     if(len(json_new_match["data"]) == 0):
         log_stuff("\nNo match data")
-        return
+        return [f"No match data for {unique_name}"]
     if not is_new_game(json_new_match["data"][0]):
         
         log_stuff(f"\n{json_new_match["data"][0]["match_id"]} Not a valid game")
-        return
+        return [f"\n{json_new_match["data"][0]["match_id"]} already exists or is not a custom game. Try again later maybe?"]
    
     log_stuff(f"\ntrueskill-automate checking match: {json_new_match["data"][0]["match_id"]}")
     

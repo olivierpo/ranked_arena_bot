@@ -431,11 +431,17 @@ async def log_recent_game(ctx, player_name: discord.Option(str)):
         return
     await ctx.respond("Loading...")
     match_details_return = trueskill_module.check_match_w_name(player_name)
-    match_id_return = match_details_return[1]
-    if not match_id_return:
+    if not match_details_return:
         trueskill_module.log_stuff(f"\n{match_id_return}")
-        await ctx.edit(content=f"Could not log match")
+        await ctx.edit(content=f"Could not log match for [error] reason")
         return
+    if len(match_details_return) == 1:
+        trueskill_module.log_stuff(f"\nlog returned 1 size")
+        await ctx.edit(content=match_details_return[0])
+        return
+    match_id_return = match_details_return[1]
+    
+    
     #trueskill_module.log_stuff(f"\n{match_id_return}")
     #trueskill_module.log_stuff(f"\n{match_details_return[0]}")
     printed_content = f"Logged most recent match with id {match_id_return}\n" + get_teams_to_print(match_details_return[0])
@@ -446,11 +452,15 @@ async def log_specific_game(ctx, match_id: discord.Option(str)):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     await ctx.respond("Loading...")
     match_details_return = trueskill_module.check_new_match(match_id)
-    match_id_return = match_details_return[1]
-    if not match_id_return:
+    if not match_details_return:
         trueskill_module.log_stuff(f"\n{match_id_return}")
         await ctx.edit(content=f"Could not log match")
         return
+    if len(match_details_return) == 1:
+        trueskill_module.log_stuff(f"\nlog returned 1 size")
+        await ctx.edit(content=match_details_return[0])
+        return
+    match_id_return = match_details_return[1]
     #43b8e0ae-119c-4631-b18e-346c4b367440
     #print(match_details_return[0])
     printed_content = f"Logged specific match with id {match_id}\n" + get_teams_to_print(match_details_return[0])
