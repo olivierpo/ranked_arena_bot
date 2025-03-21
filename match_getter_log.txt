@@ -1,0 +1,404 @@
+
+Running checkmatches at time: 2025-03-19 06:00:46
+Running checkmatches at time: 2025-03-19 06:02:20
+Running checkmatches at time: 2025-03-19 06:02:44
+Running checkmatches at time: 2025-03-19 06:04:27
+Running checkmatches at time: 2025-03-19 06:56:06
+Running checkmatches at time: 2025-03-19 06:57:26
+Running checkmatches at time: 2025-03-19 06:58:07
+Running checkmatches at time: 2025-03-19 06:58:40
+Running checkmatches at time: 2025-03-19 06:59:14
+Running checkmatches at time: 2025-03-19 07:01:37
+Running checkmatches at time: 2025-03-19 07:04:24
+Running checkmatches at time: 2025-03-19 07:06:28
+Running checkmatches at time: 2025-03-19 07:10:11
+Running checkmatches at time: 2025-03-19 07:12:32
+Running checkmatches at time: 2025-03-19 07:14:41
+Running checkmatches at time: 2025-03-19 07:16:17
+Running checkmatches at time: 2025-03-19 07:21:00
+Running checkmatches at time: 2025-03-19 07:21:18
+Running checkmatches at time: 2025-03-19 07:39:00
+Running checkmatches at time: 2025-03-19 07:40:17
+Running checkmatches at time: 2025-03-19 07:42:28
+Running checkmatches at time: 2025-03-19 07:43:16
+Running checkmatches at time: 2025-03-19 07:44:52
+Running checkmatches at time: 2025-03-19 07:46:00
+Running checkmatches at time: 2025-03-19 07:47:21
+Running checkmatches at time: 2025-03-19 07:47:47
+Running checkmatches at time: 2025-03-19 20:43:41
+Running checkmatches at time: 2025-03-19 20:44:06
+Running checkmatches at time: 2025-03-20 01:51:48
+Running checkmatches at time: 2025-03-20 01:53:13
+Running checkmatches at time: 2025-03-20 01:53:41
+Running checkmatches at time: 2025-03-20 02:00:01
+Running checkmatches at time: 2025-03-20 02:00:45
+Running checkmatches at time: 2025-03-20 02:01:48
+Running checkmatches at time: 2025-03-20 02:02:39
+Running checkmatches at time: 2025-03-20 02:03:23
+Running checkmatches at time: 2025-03-20 02:04:05
+Running checkmatches at time: 2025-03-20 02:04:47
+Running checkmatches at time: 2025-03-20 02:06:18
+Running checkmatches at time: 2025-03-20 02:07:26
+Running checkmatches at time: 2025-03-20 02:11:09
+Running checkmatches at time: 2025-03-20 02:13:25
+Running checkmatches at time: 2025-03-20 02:13:57
+Running checkmatches at time: 2025-03-20 02:14:47
+Running checkmatches at time: 2025-03-20 02:16:04
+Running checkmatches at time: 2025-03-20 02:16:26
+Running checkmatches at time: 2025-03-20 02:16:43
+Running checkmatches at time: 2025-03-20 02:17:19
+Running checkmatches at time: 2025-03-20 02:19:27
+Running checkmatches at time: 2025-03-20 02:20:09
+Running checkmatches at time: 2025-03-20 02:22:33
+Running checkmatches at time: 2025-03-20 02:22:59
+Running checkmatches at time: 2025-03-20 02:24:41
+Running checkmatches at time: 2025-03-20 02:25:46
+Running checkmatches at time: 2025-03-20 02:26:09
+Running checkmatches at time: 2025-03-20 02:26:46
+Running checkmatches at time: 2025-03-20 02:27:44
+Running checkmatches at time: 2025-03-20 02:29:43
+Running checkmatches at time: 2025-03-20 02:31:52
+Running checkmatches at time: 2025-03-20 02:34:11
+Running checkmatches at time: 2025-03-20 02:36:33
+Running checkmatches at time: 2025-03-20 02:39:00
+Running checkmatches at time: 2025-03-20 02:41:27
+Running checkmatches at time: 2025-03-20 02:41:54
+Running checkmatches at time: 2025-03-20 02:43:26
+Running checkmatches at time: 2025-03-20 02:45:41
+Running checkmatches at time: 2025-03-20 02:47:57
+Running checkmatches at time: 2025-03-20 02:49:34
+Running checkmatches at time: 2025-03-20 02:49:59
+Running checkmatches at time: 2025-03-20 02:50:55
+Running checkmatches at time: 2025-03-20 02:56:36
+Running checkmatches at time: 2025-03-20 02:57:35
+Running checkmatches at time: 2025-03-20 03:00:46
+Running checkmatches at time: 2025-03-20 03:01:19
+Running checkmatches at time: 2025-03-20 03:05:07
+Running checkmatches at time: 2025-03-20 03:05:23
+Running checkmatches at time: 2025-03-20 03:06:11
+Running checkmatches at time: 2025-03-20 03:08:42
+Running checkmatches at time: 2025-03-20 03:13:47
+Running checkmatches at time: 2025-03-20 03:14:24
+Running checkmatches at time: 2025-03-20 03:16:22
+Running checkmatches at time: 2025-03-20 03:17:49
+Running checkmatches at time: 2025-03-20 03:18:54
+Running checkmatches at time: 2025-03-20 03:20:03
+Running checkmatches at time: 2025-03-20 03:30:55
+Running checkmatches at time: 2025-03-20 03:31:50
+Running checkmatches at time: 2025-03-20 03:32:50
+Running checkmatches at time: 2025-03-20 03:33:43
+Running checkmatches at time: 2025-03-20 03:35:39
+Running checkmatches at time: 2025-03-20 03:36:37
+Running checkmatches at time: 2025-03-20 03:38:48
+Running checkmatches at time: 2025-03-20 03:39:18
+Running checkmatches at time: 2025-03-20 03:39:51
+Running checkmatches at time: 2025-03-20 04:43:53
+Running checkmatches at time: 2025-03-20 05:02:20
+Running checkmatches at time: 2025-03-20 05:05:01
+Running checkmatches at time: 2025-03-20 05:06:09
+Running checkmatches at time: 2025-03-20 05:06:21
+Running checkmatches at time: 2025-03-20 05:07:09
+Running checkmatches at time: 2025-03-20 05:07:51
+Running checkmatches at time: 2025-03-20 05:09:34
+Running checkmatches at time: 2025-03-20 05:09:51
+Running checkmatches at time: 2025-03-20 05:10:09
+Running checkmatches at time: 2025-03-20 05:11:04
+Running checkmatches at time: 2025-03-20 05:23:53
+Running checkmatches at time: 2025-03-20 05:29:00
+Running checkmatches at time: 2025-03-20 05:30:29
+Running checkmatches at time: 2025-03-20 05:33:40
+Running checkmatches at time: 2025-03-20 05:36:23
+Running checkmatches at time: 2025-03-20 05:56:05
+Running checkmatches at time: 2025-03-20 05:57:28
+Running checkmatches at time: 2025-03-20 06:01:48
+Running checkmatches at time: 2025-03-20 06:04:58
+Running checkmatches at time: 2025-03-20 06:06:16
+Running checkmatches at time: 2025-03-20 06:06:54
+Running checkmatches at time: 2025-03-20 06:21:55
+Running checkmatches at time: 2025-03-20 06:26:00
+Running checkmatches at time: 2025-03-20 06:26:30
+Running checkmatches at time: 2025-03-20 06:26:39
+Running checkmatches at time: 2025-03-20 06:27:01
+Running checkmatches at time: 2025-03-20 06:28:18
+Running checkmatches at time: 2025-03-20 17:23:26
+Running checkmatches at time: 2025-03-20 17:26:59
+test_stuff -- olivethebrave --2025-03-20 17:27:46
+Running checkmatches at time: 2025-03-20 17:28:53
+test_stuff -- olivethebrave --2025-03-20 17:28:58
+Running checkmatches at time: 2025-03-20 17:41:52
+replace_players -- olivethebrave --2025-03-20 17:43:09
+Running checkmatches at time: 2025-03-20 17:44:11
+replace_players -- olivethebrave --2025-03-20 17:44:30
+Running checkmatches at time: 2025-03-20 17:44:54
+replace_players -- olivethebrave --2025-03-20 17:45:05
+replace_players -- olivethebrave --2025-03-20 17:48:04
+replace_players -- olivethebrave --2025-03-20 17:49:23
+add_player -- olivethebrave --2025-03-20 18:15:31
+update_player -- olivethebrave --2025-03-20 18:16:00
+update_player -- olivethebrave --2025-03-20 18:16:23
+add_player -- olivethebrave --2025-03-20 18:16:43
+add_player -- olivethebrave --2025-03-20 18:16:58
+add_player -- olivethebrave --2025-03-20 18:17:24
+update_player -- olivethebrave --2025-03-20 18:17:42
+add_player -- olivethebrave --2025-03-20 18:17:57
+update_player -- olivethebrave --2025-03-20 18:18:53
+log_recent_game -- olivethebrave --2025-03-20 18:19:18
+reset_matches -- olivethebrave --2025-03-20 18:26:37
+reset_players -- olivethebrave --2025-03-20 18:26:41
+add_player -- olivethebrave --2025-03-20 18:28:33
+add_player -- olivethebrave --2025-03-20 18:28:40
+add_player -- olivethebrave --2025-03-20 18:28:46
+add_player -- olivethebrave --2025-03-20 18:28:53
+add_player -- olivethebrave --2025-03-20 18:29:00
+add_player -- olivethebrave --2025-03-20 18:29:07
+add_player -- olivethebrave --2025-03-20 18:29:14
+add_player -- olivethebrave --2025-03-20 18:29:20
+log_recent_game -- olivethebrave --2025-03-20 18:29:44
+test_stuff -- olivethebrave --2025-03-20 18:35:11
+test_stuff -- olivethebrave --2025-03-20 18:35:56
+test_stuff -- olivethebrave --2025-03-20 18:37:28
+log_recent_game -- olivethebrave --2025-03-20 18:39:40
+log_recent_game -- olivethebrave --2025-03-20 18:41:46
+log_recent_game -- olivethebrave --2025-03-20 18:42:41
+None
+log_recent_game -- olivethebrave --2025-03-20 18:44:23trueskill-automate checking match: 590a9aca-573a-48bd-9283-5acdd2408ec5
+get_all_players -- easy._._ --2025-03-20 18:44:30
+log_recent_game -- olivethebrave --2025-03-20 18:47:49
+None
+log_recent_game -- olivethebrave --2025-03-20 18:48:16
+None
+log_recent_game -- olivethebrave --2025-03-20 18:48:37trueskill-automate checking match: 590a9aca-573a-48bd-9283-5acdd2408ec5
+add_player -- olivethebrave --2025-03-20 19:53:10
+log_recent_game -- olivethebrave --2025-03-20 19:53:47trueskill-automate checking match: 94241f63-f38b-4894-af8c-f8576a320aa1
+trueskill-automate checking match: d52807f1-0fe7-4d98-89f1-1a1e05cdf60c
+add_player -- olivethebrave --2025-03-20 19:57:44
+log_recent_game -- olivethebrave --2025-03-20 19:57:59
+trueskill-automate checking match: 94241f63-f38b-4894-af8c-f8576a320aa1
+None
+trueskill-automate checking match: d52807f1-0fe7-4d98-89f1-1a1e05cdf60c
+add_player -- olivethebrave --2025-03-20 19:58:50
+add_player -- olivethebrave --2025-03-20 19:59:05
+log_recent_game -- olivethebrave --2025-03-20 19:59:45
+trueskill-automate checking match: 94241f63-f38b-4894-af8c-f8576a320aa1
+log_recent_game -- olivethebrave --2025-03-20 20:00:35
+trueskill-automate checking match: 94241f63-f38b-4894-af8c-f8576a320aa1
+!leaderboard -- olivethebrave --2025-03-20 20:00:55
+trueskill-automate checking match: d52807f1-0fe7-4d98-89f1-1a1e05cdf60c
+!leaderboard -- olivethebrave --2025-03-20 20:03:23
+get_player -- olivethebrave --2025-03-20 20:03:59
+add_player -- olivethebrave --2025-03-20 20:06:15
+log_recent_game -- olivethebrave --2025-03-20 20:06:34
+trueskill-automate checking match: 866365ef-e0b4-4028-8512-977dfed844bf
+!leaderboard -- olivethebrave --2025-03-20 20:06:46
+log_specific_game -- olivethebrave --2025-03-20 20:13:21
+!leaderboard -- olivethebrave --2025-03-20 20:13:34
+get_top_20 -- olivethebrave --2025-03-20 20:16:07
+log_recent_game -- olivethebrave --2025-03-20 20:17:45
+trueskill-automate checking match: 15a4e851-5a8b-4fed-8dbd-f05011c5985d
+get_top_20 -- olivethebrave --2025-03-20 20:17:54
+get_top_20 -- olivethebrave --2025-03-20 20:19:45
+get_top_20 -- olivethebrave --2025-03-20 20:21:47
+get_top_20 -- olivethebrave --2025-03-20 20:23:10
+!leaderboard -- pynapel --2025-03-20 20:24:16
+get_top_20 -- olivethebrave --2025-03-20 20:26:19
+get_top_20 -- olivethebrave --2025-03-20 20:29:40
+get_top_20 -- olivethebrave --2025-03-20 20:30:43
+get_top_20 -- olivethebrave --2025-03-20 20:33:52
+get_top_20 -- olivethebrave --2025-03-20 20:39:54
+get_top_20 -- olivethebrave --2025-03-20 20:40:35
+get_top_20 -- olivethebrave --2025-03-20 20:41:35
+get_top_20 -- olivethebrave --2025-03-20 20:43:09
+get_top_20 -- olivethebrave --2025-03-20 20:45:04
+get_top_20 -- olivethebrave --2025-03-20 20:47:30
+get_top_20 -- olivethebrave --2025-03-20 20:48:56
+get_top_20 -- olivethebrave --2025-03-20 20:51:43
+trueskill-automate checking match: 43b8e0ae-119c-4631-b18e-346c4b367440
+get_top_20 -- olivethebrave --2025-03-20 20:54:39
+trueskill-automate checking match: 43b8e0ae-119c-4631-b18e-346c4b367440
+get_top_20 -- olivethebrave --2025-03-20 20:59:47
+trueskill-automate checking match: 43b8e0ae-119c-4631-b18e-346c4b367440
+get_top_20 -- olivethebrave --2025-03-20 21:03:03
+add_player -- olivethebrave --2025-03-20 21:04:33
+log_recent_game -- olivethebrave --2025-03-20 21:04:46
+trueskill-automate checking match: 43b8e0ae-119c-4631-b18e-346c4b367440
+get_top_20 -- olivethebrave --2025-03-20 21:05:05
+get_players_list -- olivethebrave --2025-03-20 21:21:38
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+add_player -- olivethebrave --2025-03-20 21:32:54
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+add_player -- olivethebrave --2025-03-20 21:33:15
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+add_player -- olivethebrave --2025-03-20 21:33:38
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+add_player -- olivethebrave --2025-03-20 21:34:06
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+!leaderboard -- _jetskii --2025-03-20 22:04:13
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+log_specific_game -- olivethebrave --2025-03-21 00:12:13
+43b8e0ae-119c-4631-b18e-346c4b367440 Not a valid game
+43b8e0ae-119c-4631-b18e-346c4b367440 Not a valid game
+log_specific_game -- olivethebrave --2025-03-21 00:22:50
+log_specific_game -- olivethebrave --2025-03-21 00:25:22
+log_specific_game -- olivethebrave --2025-03-21 00:29:14
+log_recent_game -- olivethebrave --2025-03-21 00:35:35
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+log_recent_game -- olivethebrave --2025-03-21 00:39:00
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+[{'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '1', 'hero_asset_id': 'hero:void', 'is_ranked': False, 'placement': 2, 'survival_duration': 513.9022, 'character_level': 15, 'stats': {'Kills': 2, 'Deaths': 7, 'Assists': 6, 'HeroEffectiveDamageDone': 23798.615, 'HeroEffectiveDamageTaken': 24071.904, 'HealingGiven': 2265.7158, 'HealingGivenSelf': 5984.523}, 'player_id_encoded': '00539ecccb4d4cf9be4b5359dd69167f', 'player': {'display_name': 'BAPBAP Kanra', 'unique_display_name': 'Kanra#bap'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/void.webp', 'name': 'Void'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '0', 'hero_asset_id': 'hero:gunner', 'is_ranked': False, 'placement': 1, 'survival_duration': 424.43063, 'character_level': 15, 'stats': {'Kills': 5, 'Deaths': 6, 'Assists': 7, 'HeroEffectiveDamageDone': 23226.965, 'HeroEffectiveDamageTaken': 19747.686, 'HealingGiven': 1982.4856, 'HealingGivenSelf': 10983.282}, 'player_id_encoded': '3131248f6e5a4c64a1a9664135978d95', 'player': {'display_name': 'Emperor', 'unique_display_name': 'Emperor#King'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/hudson.webp', 'name': 'Hudson'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '0', 'hero_asset_id': 'hero:ronin', 'is_ranked': False, 'placement': 1, 'survival_duration': 424.43063, 'character_level': 15, 'stats': {'Kills': 1, 'Deaths': 7, 'Assists': 1, 'HeroEffectiveDamageDone': 6899.452, 'HeroEffectiveDamageTaken': 24349.203, 'HealingGiven': 0, 'HealingGivenSelf': 10310.37}, 'player_id_encoded': '3fa1308e2069455599251b8919a4e4c9', 'player': {'display_name': 'Coyote', 'unique_display_name': 'Coyote#0000'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/brall.webp', 'name': 'Brall'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '1', 'hero_asset_id': 'hero:sniper', 'is_ranked': False, 'placement': 2, 'survival_duration': 513.9022, 'character_level': 15, 'stats': {'Kills': 6, 'Deaths': 7, 'Assists': 4, 'HeroEffectiveDamageDone': 28767.986, 'HeroEffectiveDamageTaken': 25017.52, 'HealingGiven': 2118.476, 'HealingGivenSelf': 10324.535}, 'player_id_encoded': '61ba00a0ee374191b301c13a7276891d', 'player': {'display_name': 'Tsunani', 'unique_display_name': 'Tsunani#nani'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/shrike.webp', 'name': 'Shrike'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '0', 'hero_asset_id': 'hero:firefox', 'is_ranked': False, 'placement': 1, 'survival_duration': 424.43063, 'character_level': 15, 'stats': {'Kills': 4, 'Deaths': 7, 'Assists': 9, 'HeroEffectiveDamageDone': 25273.049, 'HeroEffectiveDamageTaken': 26811.107, 'HealingGiven': 1829.8914, 'HealingGivenSelf': 10020.967}, 'player_id_encoded': '655108d1e50a41eaabdfbd24bafffaf3', 'player': {'display_name': 'Sisko', 'unique_display_name': 'Sisko#4506'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/felix.webp', 'name': 'Felix'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '1', 'hero_asset_id': 'hero:reshealer', 'is_ranked': False, 'placement': 2, 'survival_duration': 513.9022, 'character_level': 15, 'stats': {'Kills': 4, 'Deaths': 7, 'Assists': 5, 'HeroEffectiveDamageDone': 11893.368, 'HeroEffectiveDamageTaken': 22096.225, 'HealingGiven': 15260.755, 'HealingGivenSelf': 9272.58}, 'player_id_encoded': '7d1ee433e1ec4a6588cd785d22260a47', 'player': {'display_name': 'crownella', 'unique_display_name': 'crownella#1420'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/elluna.webp', 'name': 'Elluna'}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '1', 'hero_asset_id': 'hero:farshot', 'is_ranked': False, 'placement': 2, 'survival_duration': 513.9022, 'character_level': 15, 'stats': {'Kills': 3, 'Deaths': 7, 'Assists': 7, 'HeroEffectiveDamageDone': 23493.637, 'HeroEffectiveDamageTaken': 16429.227, 'HealingGiven': 0, 'HealingGivenSelf': 5676.2637}, 'player_id_encoded': 'c392b5c134cd4618b1c0abc25ef3f751', 'player': {'display_name': 'MandM', 'unique_display_name': 'MandM#9920'}, 'hero': {'head_image_url': None, 'name': None}}, {'match_end': '2025-03-20T01:51:28.000000Z', 'team_id': '0', 'hero_asset_id': 'hero:assault', 'is_ranked': False, 'placement': 1, 'survival_duration': 424.43063, 'character_level': 15, 'stats': {'Kills': 9, 'Deaths': 6, 'Assists': 6, 'HeroEffectiveDamageDone': 32215.424, 'HeroEffectiveDamageTaken': 17045.625, 'HealingGiven': 185.34961, 'HealingGivenSelf': 10054.567}, 'player_id_encoded': 'd6e6aeffbfa74613b4821c0dc8da19cc', 'player': {'display_name': 'Despicision', 'unique_display_name': 'Despi#derp'}, 'hero': {'head_image_url': 'https://assets.supervive.app/6f2c2c45-58b3-46cf-9b84-39c746837f56/assets/hunters_squared/ghost.webp', 'name': 'Ghost'}}]
+log_recent_game -- olivethebrave --2025-03-21 00:40:18
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+!balance -- olivethebrave --2025-03-21 01:38:33
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843 Krilo#NUTT -- olivethebrave --2025-03-21 01:40:33
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:40:48
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:42:09
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:43:21
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:45:38
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:46:37
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:47:31
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:52:01
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:56:13
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 01:59:43
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:28:14
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:30:52
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:31:33
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:32:05
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:34:05
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:34:13
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+log_recent_game -- olivethebrave --2025-03-21 02:35:23
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+log_recent_game -- olivethebrave --2025-03-21 02:37:55
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+!balance Emperor#King,Coyote#0000,cattMicrowaved#hot,spadestorms#STRM,Comrade Syrus#OFF,Claire#6892,HIDE type 1#3843,Krilo#NUTT -- olivethebrave --2025-03-21 02:38:23
+['Emperor#King', 'Coyote#0000', 'cattMicrowaved#hot', 'spadestorms#STRM', 'Comrade Syrus#OFF', 'Claire#6892', 'HIDE type 1#3843', 'Krilo#NUTT']
+add_player -- olivethebrave --2025-03-21 02:39:12
+add_player -- olivethebrave --2025-03-21 02:48:58
+!commands -- olivethebrave --2025-03-21 03:13:17
+add_player -- sheepainu --2025-03-21 03:20:12
+add_player -- sheepainu --2025-03-21 03:21:11
+add_player -- sheepainu --2025-03-21 03:21:49
+!commands -- olivethebrave --2025-03-21 03:31:33
+!leaderboard -- spadestorms --2025-03-21 03:34:13
+add_player -- olivethebrave --2025-03-21 03:37:19
+add_player -- olivethebrave --2025-03-21 03:38:43
+add_player -- sheepainu --2025-03-21 03:41:02
+!leaderboard -- pynapel --2025-03-21 03:47:07
+!leaderboard -- singuclarity. --2025-03-21 04:14:35
+get_players_list -- spacevulturev --2025-03-21 12:00:38
+reset_matches -- olivethebrave --2025-03-21 16:56:53
+reset_players -- olivethebrave --2025-03-21 17:56:39
+reset_players -- olivethebrave --2025-03-21 18:15:19
+add_player_admin -- olivethebrave --2025-03-21 18:19:34
+add_player_admin -- olivethebrave --2025-03-21 18:22:50
+add_player_admin -- olivethebrave --2025-03-21 18:23:41
+add_player_admin -- olivethebrave --2025-03-21 18:24:36
+add_player_admin -- olivethebrave --2025-03-21 18:25:11
+add_player_admin -- olivethebrave --2025-03-21 18:25:53
+add_player_admin -- olivethebrave --2025-03-21 18:26:21
+add_player_admin -- olivethebrave --2025-03-21 18:27:30
+add_player_admin -- olivethebrave --2025-03-21 18:28:04
+add_player_admin -- olivethebrave --2025-03-21 18:28:58
+add_player_admin -- olivethebrave --2025-03-21 18:30:17
+add_player_admin -- olivethebrave --2025-03-21 18:32:25
+add_player -- olivethebrave --2025-03-21 18:33:24
+add_player -- olivethebrave --2025-03-21 18:33:37
+get_players_list -- olivethebrave --2025-03-21 18:34:04
+get_players_list -- olivethebrave --2025-03-21 18:35:09
+!leaderboard -- olivethebrave --2025-03-21 18:36:47
+get_player -- olivethebrave --2025-03-21 18:39:49
+log_specific_game -- olivethebrave --2025-03-21 18:44:04
+9d9bc6b632194e639e0b09df9299b044
+SkullKid67#9265
+not in player ids
+add_player -- olivethebrave --2025-03-21 18:45:41
+log_recent_game -- olivethebrave --2025-03-21 18:49:06
+trueskill-automate checking match: e0524639-b196-4a39-83c8-d01dcccce28d
+log_specific_game -- olivethebrave --2025-03-21 18:49:35
+2f4ec979a47f4755b4d68de24fa0e9ea
+HeyMaxF#7872
+not in player ids
+get_players_list -- easy._._ --2025-03-21 18:51:09
+add_player -- olivethebrave --2025-03-21 18:52:45
+add_player -- olivethebrave --2025-03-21 18:53:00
+log_specific_game -- olivethebrave --2025-03-21 18:53:16
+log_specific_game -- olivethebrave --2025-03-21 18:53:37
+log_specific_game -- olivethebrave --2025-03-21 18:53:57
+log_specific_game -- olivethebrave --2025-03-21 18:54:24
+log_recent_game -- tsunani --2025-03-21 18:55:44
+log_recent_game -- tsunani --2025-03-21 18:56:11
+log_recent_game -- tsunani --2025-03-21 18:56:45
+e0524639-b196-4a39-83c8-d01dcccce28d Not a valid game
+log_recent_game -- olivethebrave --2025-03-21 18:57:51
+trueskill-automate checking match: 0ce0739d-8b24-4947-a284-f46c6e9090d1
+!leaderboard -- easy._._ --2025-03-21 19:01:54
+get_player -- tsunani --2025-03-21 19:04:50
+get_player -- tsunani --2025-03-21 19:05:31
+get_players_list -- olivethebrave --2025-03-21 19:07:45
+get_players_list -- easy._._ --2025-03-21 19:08:51
+log_recent_game -- tsunani --2025-03-21 19:10:51
+0ce0739d-8b24-4947-a284-f46c6e9090d1 Not a valid game
+log_recent_game -- olivethebrave --2025-03-21 19:12:17
+trueskill-automate checking match: aaa3b9be-b2af-4376-84f7-00f7879f6a78
+c392b5c134cd4618b1c0abc25ef3f751
+MandM#9920
+not in player ids
+add_player -- olivethebrave --2025-03-21 19:12:50
+add_player -- olivethebrave --2025-03-21 19:13:10
+log_specific_game -- olivethebrave --2025-03-21 19:14:07
+c392b5c134cd4618b1c0abc25ef3f751
+MandM#9920
+not in player ids
+add_player -- olivethebrave --2025-03-21 19:15:13
+log_recent_game -- tsunani --2025-03-21 19:15:32
+trueskill-automate checking match: aaa3b9be-b2af-4376-84f7-00f7879f6a78
+log_recent_game -- tsunani --2025-03-21 19:21:30
+aaa3b9be-b2af-4376-84f7-00f7879f6a78 Not a valid game
+log_recent_game -- tsunani --2025-03-21 19:22:34
+trueskill-automate checking match: 784c884c-4001-4a55-9be6-24fabf6e6721
+log_recent_game -- syrus0600 --2025-03-21 19:23:57
+dee66e20-66c0-41be-9270-c814abe49d7d Not a valid game
+log_recent_game -- olivethebrave --2025-03-21 19:25:07
+trueskill-automate checking match: 02059b91-1c57-48af-8aaf-ad4af0f59ff7
+016250053f8546969b6148c202c7ea4e
+Sneekers#007
+not in player ids
+add_player -- olivethebrave --2025-03-21 19:26:05
+log_recent_game -- olivethebrave --2025-03-21 19:26:21
+trueskill-automate checking match: 02059b91-1c57-48af-8aaf-ad4af0f59ff7
+log_recent_game -- tsunani --2025-03-21 19:33:07
+trueskill-automate checking match: df6c9a80-2a85-41dd-91a4-9875ba57d209
+get_player -- tsunani --2025-03-21 19:33:44
+log_recent_game -- syrus0600 --2025-03-21 19:35:42
+02059b91-1c57-48af-8aaf-ad4af0f59ff7 Not a valid game
+log_recent_game -- syrus0600 --2025-03-21 19:36:20
+02059b91-1c57-48af-8aaf-ad4af0f59ff7 Not a valid game
+!leaderboard -- tsunani --2025-03-21 19:36:23
+log_recent_game -- phenomex --2025-03-21 19:39:56
+log_recent_game -- olivethebrave --2025-03-21 19:40:03
+trueskill-automate checking match: f7a58559-2586-4738-931a-db4fe00c09dc
+log_recent_game -- phenomex --2025-03-21 19:40:20
+log_recent_game -- phenomex --2025-03-21 19:40:35
+aaa3b9be-b2af-4376-84f7-00f7879f6a78 Not a valid game
+!leaderboard -- easy._._ --2025-03-21 19:42:42
+log_recent_game -- olivethebrave --2025-03-21 19:42:57
+aaa3b9be-b2af-4376-84f7-00f7879f6a78 Not a valid game
+log_recent_game -- olivethebrave --2025-03-21 19:43:44
+df6c9a80-2a85-41dd-91a4-9875ba57d209 Not a valid game
+log_recent_game -- syrus0600 --2025-03-21 19:55:42
+f7a58559-2586-4738-931a-db4fe00c09dc Not a valid game
+log_recent_game -- phenomex --2025-03-21 19:55:52
+df6c9a80-2a85-41dd-91a4-9875ba57d209 Not a valid game
