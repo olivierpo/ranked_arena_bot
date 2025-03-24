@@ -30,30 +30,35 @@ class HeadlessChrome:
         wait = WebDriverWait(self.driver, 10)
 
         self.driver.get(rf"https://supervive.op.gg/players/steam-{user_id}")
-        fetch_btn = wait.until(
-            EC.element_to_be_clickable(
-                (
-                    By.XPATH,
-                    '//*[contains(text(), "Fetch New Matches")]',
-                )
-            )
-        )
-        fetch_btn.click()
-
         try:
-            wait.until(
-                EC.presence_of_element_located(
-                    (By.XPATH, '//*[contains(text(), "Refresh")]')
+            fetch_btn = wait.until(
+                EC.element_to_be_clickable(
+                    (
+                        By.XPATH,
+                        '//*[contains(text(), "Fetch New Matches")]',
+                    )
                 )
             )
-            self.driver.close()
-            return 1
+            fetch_btn.click()
+
+            try:
+                wait.until(
+                    EC.presence_of_element_located(
+                        (By.XPATH, '//*[contains(text(), "Refresh")]')
+                    )
+                )
+                self.driver.close()
+                return 1
+            except TimeoutException:
+                self.driver.close()
+                return 0
         except TimeoutException:
             self.driver.close()
             return 0
 
 
 # Usage:
-HC = HeadlessChrome()
+"""HC = HeadlessChrome()
 result = HC.fetch_new_matches(r"roughly%2044%20ducks%2344")
 print(result)
+"""

@@ -158,3 +158,1010 @@ Going through log queue -- [] -- 2025-03-23 01:40:55
 Going through log queue -- [] -- 2025-03-23 01:42:55
 Going through log queue -- [] -- 2025-03-23 01:44:55
 Going through log queue -- [] -- 2025-03-23 01:46:55
+Going through log queue -- [] -- 2025-03-23 01:48:55
+Going through log queue -- [] -- 2025-03-23 01:50:55
+Going through log queue -- [] -- 2025-03-23 01:52:55
+Going through log queue -- [] -- 2025-03-23 01:54:55
+Going through log queue -- [] -- 2025-03-23 01:56:55
+Going through log queue -- [] -- 2025-03-23 01:58:55
+Going through log queue -- [] -- 2025-03-23 02:00:55
+Going through log queue -- [] -- 2025-03-23 02:02:55
+Going through log queue -- [] -- 2025-03-23 02:04:06
+log_next_game -- olivethebrave --2025-03-23 02:05:30
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 0}] -- 2025-03-23 02:06:06
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:06:09
+Attempting log queue entry Emperor#King - 0min --2025-03-23 02:06:09
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+log_next_game -- olivethebrave --2025-03-23 02:07:56
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 2}, {'player_name': 'Tsnunani#nani', 'min_since': 0}] -- 2025-03-23 02:08:06
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:08:08
+Attempting log queue entry Emperor#King - 2min --2025-03-23 02:08:08
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 02:14:37
+log_next_game -- olivethebrave --2025-03-23 02:14:59
+log_next_game -- olivethebrave --2025-03-23 02:15:14
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 0}, {'player_name': 'Tsunani#nani', 'min_since': 0}] -- 2025-03-23 02:16:37
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:16:40
+Attempting log queue entry Emperor#King - 0min --2025-03-23 02:16:40
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:16:49
+Attempting log queue entry Tsunani#nani - 0min --2025-03-23 02:16:49
+613b9f35-be42-4a07-a638-32db125b8d06 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 2}, {'player_name': 'Tsunani#nani', 'min_since': 2}] -- 2025-03-23 02:18:37
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:18:39
+Attempting log queue entry Emperor#King - 2min --2025-03-23 02:18:39
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:18:49
+Attempting log queue entry Tsunani#nani - 2min --2025-03-23 02:18:49
+e282320f-881b-48a6-a246-4fa0f27801d0 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 4}, {'player_name': 'Tsunani#nani', 'min_since': 4}] -- 2025-03-23 02:20:37
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:20:39
+Attempting log queue entry Emperor#King - 4min --2025-03-23 02:20:39
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:20:55
+Attempting log queue entry Tsunani#nani - 4min --2025-03-23 02:20:55
+e282320f-881b-48a6-a246-4fa0f27801d0 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 6}, {'player_name': 'Tsunani#nani', 'min_since': 6}] -- 2025-03-23 02:22:37
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:22:41
+Attempting log queue entry Emperor#King - 6min --2025-03-23 02:22:41
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:22:51
+Attempting log queue entry Tsunani#nani - 6min --2025-03-23 02:22:51
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 02:23:47
+log_next_game -- olivethebrave --2025-03-23 02:24:01
+log_next_game -- olivethebrave --2025-03-23 02:24:07
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 0}, {'player_name': 'Emperor#King', 'min_since': 0}] -- 2025-03-23 02:25:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:25:49
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:25:52
+Attempting log queue entry Tsunani#nani - 0min --2025-03-23 02:25:53
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Attempting log queue entry Emperor#King - 0min --2025-03-23 02:26:01
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+add_player -- olivethebrave --2025-03-23 02:27:10
+log_next_game -- olivethebrave --2025-03-23 02:27:25
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 2}, {'player_name': 'Emperor#King', 'min_since': 2}, {'player_name': 'DbolDENO#444', 'min_since': 0}] -- 2025-03-23 02:27:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:27:49
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:27:52
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:27:56
+Attempting log queue entry Tsunani#nani - 2min --2025-03-23 02:27:57
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Attempting log queue entry Emperor#King - 2min --2025-03-23 02:28:06
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Attempting log queue entry DbolDENO#444 - 0min --2025-03-23 02:28:13
+ece518e8-e84a-477b-a378-018817011ffb Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 4}, {'player_name': 'Emperor#King', 'min_since': 4}, {'player_name': 'DbolDENO#444', 'min_since': 2}] -- 2025-03-23 02:29:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:29:49
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:29:53
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:29:56
+Attempting log queue entry Tsunani#nani - 4min --2025-03-23 02:29:57
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Attempting log queue entry Emperor#King - 4min --2025-03-23 02:30:07
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Attempting log queue entry DbolDENO#444 - 2min --2025-03-23 02:30:14
+ece518e8-e84a-477b-a378-018817011ffb Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 6}, {'player_name': 'Emperor#King', 'min_since': 6}, {'player_name': 'DbolDENO#444', 'min_since': 4}] -- 2025-03-23 02:31:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:31:50
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:31:53
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:31:57
+Attempting log queue entry Tsunani#nani - 6min --2025-03-23 02:31:58
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Attempting log queue entry Emperor#King - 6min --2025-03-23 02:32:08
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Attempting log queue entry DbolDENO#444 - 4min --2025-03-23 02:32:17
+ece518e8-e84a-477b-a378-018817011ffb Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 8}, {'player_name': 'Emperor#King', 'min_since': 8}, {'player_name': 'DbolDENO#444', 'min_since': 6}] -- 2025-03-23 02:33:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:33:49
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:33:53
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:33:57
+Attempting log queue entry Tsunani#nani - 8min --2025-03-23 02:33:58
+b0509d64-4036-4d84-bb24-630648168454 Not a valid game
+log returned 1 size
+Attempting log queue entry Emperor#King - 8min --2025-03-23 02:34:06
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Attempting log queue entry DbolDENO#444 - 6min --2025-03-23 02:34:15
+ece518e8-e84a-477b-a378-018817011ffb Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Tsunani#nani', 'min_since': 10}, {'player_name': 'Emperor#King', 'min_since': 10}, {'player_name': 'DbolDENO#444', 'min_since': 8}] -- 2025-03-23 02:35:47
+Fetched new matches for -- Tsunani#nani -- 2025-03-23 02:35:49
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:35:53
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:35:56
+Attempting log queue entry DbolDENO#444 - 8min --2025-03-23 02:35:58
+facbfcab-bdaa-4a7e-9be1-3ee6621e34c0 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 10}] -- 2025-03-23 02:37:47
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:37:49
+Going through log queue -- [] -- 2025-03-23 02:39:11
+log_next_game -- olivethebrave --2025-03-23 02:39:26
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 0}] -- 2025-03-23 02:41:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:41:14
+Attempting log queue entry DbolDENO#444 - 0min --2025-03-23 02:41:15
+facbfcab-bdaa-4a7e-9be1-3ee6621e34c0 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 2}] -- 2025-03-23 02:43:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:43:14
+Attempting log queue entry DbolDENO#444 - 2min --2025-03-23 02:43:15
+0e9f884c-fe6e-4f97-8439-eefeb605c841 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 4}] -- 2025-03-23 02:45:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:45:14
+Attempting log queue entry DbolDENO#444 - 4min --2025-03-23 02:45:15
+0e9f884c-fe6e-4f97-8439-eefeb605c841 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 6}] -- 2025-03-23 02:47:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:47:14
+Attempting log queue entry DbolDENO#444 - 6min --2025-03-23 02:47:15
+0e9f884c-fe6e-4f97-8439-eefeb605c841 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 8}] -- 2025-03-23 02:49:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:49:14
+Attempting log queue entry DbolDENO#444 - 8min --2025-03-23 02:49:15
+0e9f884c-fe6e-4f97-8439-eefeb605c841 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'DbolDENO#444', 'min_since': 10}] -- 2025-03-23 02:51:11
+Fetched new matches for -- DbolDENO#444 -- 2025-03-23 02:51:14
+log_next_game -- olivethebrave --2025-03-23 02:51:20
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 0}] -- 2025-03-23 02:53:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:53:15
+Attempting log queue entry Emperor#King - 0min --2025-03-23 02:53:16
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 2}] -- 2025-03-23 02:55:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:55:14
+Attempting log queue entry Emperor#King - 2min --2025-03-23 02:55:15
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 4}] -- 2025-03-23 02:57:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:57:14
+Attempting log queue entry Emperor#King - 4min --2025-03-23 02:57:15
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 6}] -- 2025-03-23 02:59:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 02:59:14
+Attempting log queue entry Emperor#King - 6min --2025-03-23 02:59:15
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 8}] -- 2025-03-23 03:01:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:01:14
+Attempting log queue entry Emperor#King - 8min --2025-03-23 03:01:15
+trueskill-automate checking match: c7c71e6a-0e4e-4126-ab13-13b285bcbf7e
+655108d1e50a41eaabdfbd24bafffaf3
+Sisko#4506
+not in player ids
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 10}] -- 2025-03-23 03:03:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:03:15
+log_next_game -- olivethebrave --2025-03-23 03:04:29
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 0}] -- 2025-03-23 03:05:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:05:14
+Attempting log queue entry Emperor#King - 0min --2025-03-23 03:05:15
+ce8ec846-9429-4c20-804a-0817a0bfe151 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 2}] -- 2025-03-23 03:07:11
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:07:14
+Attempting log queue entry Emperor#King - 2min --2025-03-23 03:07:15
+ce8ec846-9429-4c20-804a-0817a0bfe151 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 4}] -- 2025-03-23 03:09:12
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:09:14
+Attempting log queue entry Emperor#King - 4min --2025-03-23 03:09:15
+ce8ec846-9429-4c20-804a-0817a0bfe151 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 6}] -- 2025-03-23 03:11:12
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:11:14
+Attempting log queue entry Emperor#King - 6min --2025-03-23 03:11:15
+ce8ec846-9429-4c20-804a-0817a0bfe151 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 8}] -- 2025-03-23 03:13:12
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:13:14
+Attempting log queue entry Emperor#King - 8min --2025-03-23 03:13:15
+ce8ec846-9429-4c20-804a-0817a0bfe151 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Emperor#King', 'min_since': 10}] -- 2025-03-23 03:15:12
+Fetched new matches for -- Emperor#King -- 2025-03-23 03:15:14
+Going through log queue -- [] -- 2025-03-23 03:17:12
+
+Going through log queue -- [] -- 2025-03-23 04:43:12
+Going through log queue -- [] -- 2025-03-23 04:45:12
+Going through log queue -- [] -- 2025-03-23 04:47:12
+Going through log queue -- [] -- 2025-03-23 04:49:12
+Going through log queue -- [] -- 2025-03-23 04:51:12
+Going through log queue -- [] -- 2025-03-23 04:53:12
+Going through log queue -- [] -- 2025-03-23 04:55:12
+Going through log queue -- [] -- 2025-03-23 04:57:12
+Going through log queue -- [] -- 2025-03-23 04:59:12
+Going through log queue -- [] -- 2025-03-23 05:01:12
+Going through log queue -- [] -- 2025-03-23 05:03:12
+Going through log queue -- [] -- 2025-03-23 05:05:12
+Going through log queue -- [] -- 2025-03-23 05:07:12
+Going through log queue -- [] -- 2025-03-23 05:09:14
+Going through log queue -- [] -- 2025-03-23 05:11:14
+Going through log queue -- [] -- 2025-03-23 05:13:14
+Going through log queue -- [] -- 2025-03-23 05:15:14
+Going through log queue -- [] -- 2025-03-23 05:17:14
+Going through log queue -- [] -- 2025-03-23 05:19:14
+Going through log queue -- [] -- 2025-03-23 05:21:14
+Going through log queue -- [] -- 2025-03-23 05:23:14
+Going through log queue -- [] -- 2025-03-23 05:25:14
+Going through log queue -- [] -- 2025-03-23 05:27:14
+Going through log queue -- [] -- 2025-03-23 05:29:14
+Going through log queue -- [] -- 2025-03-23 05:31:14
+Going through log queue -- [] -- 2025-03-23 05:33:14
+Going through log queue -- [] -- 2025-03-23 05:35:14
+Going through log queue -- [] -- 2025-03-23 05:37:14
+Going through log queue -- [] -- 2025-03-23 05:39:14
+Going through log queue -- [] -- 2025-03-23 05:41:14
+Going through log queue -- [] -- 2025-03-23 05:43:14
+Going through log queue -- [] -- 2025-03-23 05:45:14
+Going through log queue -- [] -- 2025-03-23 05:47:14
+Going through log queue -- [] -- 2025-03-23 05:49:14
+Going through log queue -- [] -- 2025-03-23 05:51:14
+Going through log queue -- [] -- 2025-03-23 05:53:14
+Going through log queue -- [] -- 2025-03-23 05:55:14
+Going through log queue -- [] -- 2025-03-23 05:57:14
+Going through log queue -- [] -- 2025-03-23 05:59:14
+Going through log queue -- [] -- 2025-03-23 06:01:14
+Going through log queue -- [] -- 2025-03-23 06:03:14
+Going through log queue -- [] -- 2025-03-23 06:05:14
+Going through log queue -- [] -- 2025-03-23 06:07:14
+get_players_list -- phenomex --2025-03-23 06:07:26
+Going through log queue -- [] -- 2025-03-23 06:09:14
+Going through log queue -- [] -- 2025-03-23 06:11:14
+Going through log queue -- [] -- 2025-03-23 06:13:14
+Going through log queue -- [] -- 2025-03-23 06:15:14
+Going through log queue -- [] -- 2025-03-23 06:17:14
+Going through log queue -- [] -- 2025-03-23 06:19:14
+Going through log queue -- [] -- 2025-03-23 06:21:14
+Going through log queue -- [] -- 2025-03-23 06:23:14
+Going through log queue -- [] -- 2025-03-23 06:25:14
+Going through log queue -- [] -- 2025-03-23 06:27:14
+Going through log queue -- [] -- 2025-03-23 06:29:14
+Going through log queue -- [] -- 2025-03-23 06:31:14
+Going through log queue -- [] -- 2025-03-23 06:33:14
+Going through log queue -- [] -- 2025-03-23 06:35:14
+Going through log queue -- [] -- 2025-03-23 06:37:14
+Going through log queue -- [] -- 2025-03-23 06:39:14
+Going through log queue -- [] -- 2025-03-23 06:41:14
+Going through log queue -- [] -- 2025-03-23 06:43:14
+Going through log queue -- [] -- 2025-03-23 06:45:14
+Going through log queue -- [] -- 2025-03-23 06:47:14
+Going through log queue -- [] -- 2025-03-23 06:49:14
+Going through log queue -- [] -- 2025-03-23 06:51:14
+Going through log queue -- [] -- 2025-03-23 06:53:14
+Going through log queue -- [] -- 2025-03-23 06:55:14
+Going through log queue -- [] -- 2025-03-23 06:57:14
+Going through log queue -- [] -- 2025-03-23 06:59:14
+Going through log queue -- [] -- 2025-03-23 07:01:14
+Going through log queue -- [] -- 2025-03-23 07:03:14
+Going through log queue -- [] -- 2025-03-23 07:05:14
+Going through log queue -- [] -- 2025-03-23 07:07:14
+Going through log queue -- [] -- 2025-03-23 07:09:14
+Going through log queue -- [] -- 2025-03-23 07:11:14
+Going through log queue -- [] -- 2025-03-23 07:13:14
+Going through log queue -- [] -- 2025-03-23 07:15:14
+Going through log queue -- [] -- 2025-03-23 07:17:14
+Going through log queue -- [] -- 2025-03-23 07:19:14
+Going through log queue -- [] -- 2025-03-23 07:21:14
+Going through log queue -- [] -- 2025-03-23 07:23:14
+Going through log queue -- [] -- 2025-03-23 07:25:14
+Going through log queue -- [] -- 2025-03-23 07:27:14
+Going through log queue -- [] -- 2025-03-23 07:29:14
+Going through log queue -- [] -- 2025-03-23 07:31:14
+Going through log queue -- [] -- 2025-03-23 07:33:14
+Going through log queue -- [] -- 2025-03-23 07:35:14
+Going through log queue -- [] -- 2025-03-23 07:37:14
+Going through log queue -- [] -- 2025-03-23 07:39:14
+Going through log queue -- [] -- 2025-03-23 07:41:14
+Going through log queue -- [] -- 2025-03-23 07:43:14
+Going through log queue -- [] -- 2025-03-23 07:45:14
+Going through log queue -- [] -- 2025-03-23 07:47:14
+Going through log queue -- [] -- 2025-03-23 07:49:14
+Going through log queue -- [] -- 2025-03-23 07:51:14
+Going through log queue -- [] -- 2025-03-23 07:53:14
+Going through log queue -- [] -- 2025-03-23 07:55:14
+Going through log queue -- [] -- 2025-03-23 07:57:14
+Going through log queue -- [] -- 2025-03-23 07:59:14
+Going through log queue -- [] -- 2025-03-23 08:01:14
+Going through log queue -- [] -- 2025-03-23 08:03:14
+Going through log queue -- [] -- 2025-03-23 08:05:14
+Going through log queue -- [] -- 2025-03-23 08:07:14
+Going through log queue -- [] -- 2025-03-23 08:09:14
+Going through log queue -- [] -- 2025-03-23 08:11:14
+Going through log queue -- [] -- 2025-03-23 08:13:14
+Going through log queue -- [] -- 2025-03-23 08:15:14
+Going through log queue -- [] -- 2025-03-23 08:17:14
+Going through log queue -- [] -- 2025-03-23 08:19:14
+Going through log queue -- [] -- 2025-03-23 08:21:14
+Going through log queue -- [] -- 2025-03-23 08:23:14
+Going through log queue -- [] -- 2025-03-23 08:25:14
+Going through log queue -- [] -- 2025-03-23 08:27:14
+Going through log queue -- [] -- 2025-03-23 08:29:14
+Going through log queue -- [] -- 2025-03-23 08:31:14
+Going through log queue -- [] -- 2025-03-23 08:33:14
+Going through log queue -- [] -- 2025-03-23 08:35:14
+Going through log queue -- [] -- 2025-03-23 08:37:14
+Going through log queue -- [] -- 2025-03-23 08:39:14
+Going through log queue -- [] -- 2025-03-23 08:41:14
+Going through log queue -- [] -- 2025-03-23 08:43:15
+Going through log queue -- [] -- 2025-03-23 08:45:15
+Going through log queue -- [] -- 2025-03-23 08:47:15
+Going through log queue -- [] -- 2025-03-23 08:49:15
+Going through log queue -- [] -- 2025-03-23 08:51:15
+Going through log queue -- [] -- 2025-03-23 08:53:15
+Going through log queue -- [] -- 2025-03-23 08:55:15
+Going through log queue -- [] -- 2025-03-23 08:57:15
+Going through log queue -- [] -- 2025-03-23 08:59:15
+Going through log queue -- [] -- 2025-03-23 09:01:15
+Going through log queue -- [] -- 2025-03-23 09:03:15
+Going through log queue -- [] -- 2025-03-23 09:05:15
+Going through log queue -- [] -- 2025-03-23 09:07:15
+Going through log queue -- [] -- 2025-03-23 09:09:15
+Going through log queue -- [] -- 2025-03-23 09:11:15
+Going through log queue -- [] -- 2025-03-23 09:13:15
+Going through log queue -- [] -- 2025-03-23 09:15:15
+Going through log queue -- [] -- 2025-03-23 09:17:15
+Going through log queue -- [] -- 2025-03-23 09:19:15
+Going through log queue -- [] -- 2025-03-23 09:21:15
+Going through log queue -- [] -- 2025-03-23 09:23:15
+Going through log queue -- [] -- 2025-03-23 09:25:15
+Going through log queue -- [] -- 2025-03-23 09:27:15
+Going through log queue -- [] -- 2025-03-23 09:29:15
+Going through log queue -- [] -- 2025-03-23 09:31:15
+Going through log queue -- [] -- 2025-03-23 09:33:15
+Going through log queue -- [] -- 2025-03-23 09:35:15
+Going through log queue -- [] -- 2025-03-23 09:37:15
+Going through log queue -- [] -- 2025-03-23 09:39:15
+Going through log queue -- [] -- 2025-03-23 09:41:15
+Going through log queue -- [] -- 2025-03-23 09:43:15
+Going through log queue -- [] -- 2025-03-23 09:45:15
+Going through log queue -- [] -- 2025-03-23 09:47:15
+Going through log queue -- [] -- 2025-03-23 09:49:15
+Going through log queue -- [] -- 2025-03-23 09:51:15
+Going through log queue -- [] -- 2025-03-23 09:53:15
+Going through log queue -- [] -- 2025-03-23 09:55:15
+Going through log queue -- [] -- 2025-03-23 09:57:15
+Going through log queue -- [] -- 2025-03-23 09:59:15
+Going through log queue -- [] -- 2025-03-23 10:01:15
+Going through log queue -- [] -- 2025-03-23 10:03:15
+Going through log queue -- [] -- 2025-03-23 10:05:15
+Going through log queue -- [] -- 2025-03-23 10:07:15
+Going through log queue -- [] -- 2025-03-23 10:09:15
+Going through log queue -- [] -- 2025-03-23 10:11:15
+Going through log queue -- [] -- 2025-03-23 10:13:15
+Going through log queue -- [] -- 2025-03-23 10:15:15
+Going through log queue -- [] -- 2025-03-23 10:17:15
+Going through log queue -- [] -- 2025-03-23 10:19:15
+Going through log queue -- [] -- 2025-03-23 10:21:15
+Going through log queue -- [] -- 2025-03-23 10:23:15
+Going through log queue -- [] -- 2025-03-23 10:25:15
+Going through log queue -- [] -- 2025-03-23 10:27:15
+Going through log queue -- [] -- 2025-03-23 10:29:15
+Going through log queue -- [] -- 2025-03-23 10:31:15
+Going through log queue -- [] -- 2025-03-23 10:33:15
+Going through log queue -- [] -- 2025-03-23 10:35:15
+Going through log queue -- [] -- 2025-03-23 10:37:15
+Going through log queue -- [] -- 2025-03-23 10:39:15
+Going through log queue -- [] -- 2025-03-23 10:41:15
+Going through log queue -- [] -- 2025-03-23 10:43:15
+Going through log queue -- [] -- 2025-03-23 10:45:15
+Going through log queue -- [] -- 2025-03-23 10:47:15
+Going through log queue -- [] -- 2025-03-23 10:49:15
+Going through log queue -- [] -- 2025-03-23 10:51:15
+Going through log queue -- [] -- 2025-03-23 10:53:15
+Going through log queue -- [] -- 2025-03-23 10:55:15
+Going through log queue -- [] -- 2025-03-23 10:57:15
+Going through log queue -- [] -- 2025-03-23 10:59:15
+Going through log queue -- [] -- 2025-03-23 11:01:15
+Going through log queue -- [] -- 2025-03-23 11:03:15
+Going through log queue -- [] -- 2025-03-23 11:05:15
+Going through log queue -- [] -- 2025-03-23 11:07:15
+Going through log queue -- [] -- 2025-03-23 11:09:15
+Going through log queue -- [] -- 2025-03-23 11:11:15
+Going through log queue -- [] -- 2025-03-23 11:13:15
+Going through log queue -- [] -- 2025-03-23 11:15:15
+Going through log queue -- [] -- 2025-03-23 11:17:15
+Going through log queue -- [] -- 2025-03-23 11:19:15
+Going through log queue -- [] -- 2025-03-23 11:21:15
+Going through log queue -- [] -- 2025-03-23 11:23:15
+Going through log queue -- [] -- 2025-03-23 11:25:15
+Going through log queue -- [] -- 2025-03-23 11:27:15
+Going through log queue -- [] -- 2025-03-23 11:29:15
+Going through log queue -- [] -- 2025-03-23 11:31:15
+Going through log queue -- [] -- 2025-03-23 11:33:15
+Going through log queue -- [] -- 2025-03-23 11:35:15
+Going through log queue -- [] -- 2025-03-23 11:37:15
+Going through log queue -- [] -- 2025-03-23 11:39:15
+Going through log queue -- [] -- 2025-03-23 11:41:15
+Going through log queue -- [] -- 2025-03-23 11:43:15
+Going through log queue -- [] -- 2025-03-23 11:45:15
+Going through log queue -- [] -- 2025-03-23 11:47:15
+Going through log queue -- [] -- 2025-03-23 11:49:15
+Going through log queue -- [] -- 2025-03-23 11:51:15
+Going through log queue -- [] -- 2025-03-23 11:53:15
+Going through log queue -- [] -- 2025-03-23 11:55:15
+Going through log queue -- [] -- 2025-03-23 11:57:15
+Going through log queue -- [] -- 2025-03-23 11:59:15
+Going through log queue -- [] -- 2025-03-23 12:01:15
+Going through log queue -- [] -- 2025-03-23 12:03:15
+Going through log queue -- [] -- 2025-03-23 12:05:15
+Going through log queue -- [] -- 2025-03-23 12:07:15
+Going through log queue -- [] -- 2025-03-23 12:09:15
+Going through log queue -- [] -- 2025-03-23 12:11:15
+Going through log queue -- [] -- 2025-03-23 12:13:15
+Going through log queue -- [] -- 2025-03-23 12:15:15
+Going through log queue -- [] -- 2025-03-23 12:17:15
+Going through log queue -- [] -- 2025-03-23 12:19:15
+Going through log queue -- [] -- 2025-03-23 12:21:15
+Going through log queue -- [] -- 2025-03-23 12:23:15
+Going through log queue -- [] -- 2025-03-23 12:25:15
+Going through log queue -- [] -- 2025-03-23 12:27:15
+Going through log queue -- [] -- 2025-03-23 12:29:15
+Going through log queue -- [] -- 2025-03-23 12:31:15
+Going through log queue -- [] -- 2025-03-23 12:33:15
+Going through log queue -- [] -- 2025-03-23 12:35:15
+Going through log queue -- [] -- 2025-03-23 12:37:15
+Going through log queue -- [] -- 2025-03-23 12:39:15
+Going through log queue -- [] -- 2025-03-23 12:41:15
+Going through log queue -- [] -- 2025-03-23 12:43:15
+Going through log queue -- [] -- 2025-03-23 12:45:16
+Going through log queue -- [] -- 2025-03-23 12:47:16
+Going through log queue -- [] -- 2025-03-23 12:49:16
+Going through log queue -- [] -- 2025-03-23 12:51:16
+Going through log queue -- [] -- 2025-03-23 12:53:16
+Going through log queue -- [] -- 2025-03-23 12:55:16
+Going through log queue -- [] -- 2025-03-23 12:57:16
+Going through log queue -- [] -- 2025-03-23 12:59:16
+Going through log queue -- [] -- 2025-03-23 13:01:16
+Going through log queue -- [] -- 2025-03-23 13:03:16
+Going through log queue -- [] -- 2025-03-23 13:05:16
+Going through log queue -- [] -- 2025-03-23 13:07:16
+Going through log queue -- [] -- 2025-03-23 13:09:16
+Going through log queue -- [] -- 2025-03-23 13:11:16
+Going through log queue -- [] -- 2025-03-23 13:13:16
+Going through log queue -- [] -- 2025-03-23 13:15:16
+Going through log queue -- [] -- 2025-03-23 13:17:16
+Going through log queue -- [] -- 2025-03-23 13:19:16
+Going through log queue -- [] -- 2025-03-23 13:21:16
+Going through log queue -- [] -- 2025-03-23 13:23:16
+Going through log queue -- [] -- 2025-03-23 13:25:16
+Going through log queue -- [] -- 2025-03-23 13:27:16
+Going through log queue -- [] -- 2025-03-23 13:29:16
+Going through log queue -- [] -- 2025-03-23 13:31:16
+Going through log queue -- [] -- 2025-03-23 13:33:16
+Going through log queue -- [] -- 2025-03-23 13:35:16
+Going through log queue -- [] -- 2025-03-23 13:37:16
+Going through log queue -- [] -- 2025-03-23 13:39:16
+Going through log queue -- [] -- 2025-03-23 13:41:16
+Going through log queue -- [] -- 2025-03-23 13:43:16
+Going through log queue -- [] -- 2025-03-23 13:45:16
+Going through log queue -- [] -- 2025-03-23 13:47:16
+Going through log queue -- [] -- 2025-03-23 13:49:16
+Going through log queue -- [] -- 2025-03-23 13:51:16
+Going through log queue -- [] -- 2025-03-23 13:53:16
+Going through log queue -- [] -- 2025-03-23 13:55:16
+Going through log queue -- [] -- 2025-03-23 13:57:16
+Going through log queue -- [] -- 2025-03-23 13:59:16
+Going through log queue -- [] -- 2025-03-23 14:01:16
+Going through log queue -- [] -- 2025-03-23 14:03:16
+Going through log queue -- [] -- 2025-03-23 14:05:16
+Going through log queue -- [] -- 2025-03-23 14:07:16
+Going through log queue -- [] -- 2025-03-23 14:09:16
+Going through log queue -- [] -- 2025-03-23 14:11:16
+Going through log queue -- [] -- 2025-03-23 14:13:16
+Going through log queue -- [] -- 2025-03-23 14:15:16
+Going through log queue -- [] -- 2025-03-23 14:17:16
+Going through log queue -- [] -- 2025-03-23 14:19:16
+Going through log queue -- [] -- 2025-03-23 14:21:16
+Going through log queue -- [] -- 2025-03-23 14:23:16
+Going through log queue -- [] -- 2025-03-23 14:25:16
+Going through log queue -- [] -- 2025-03-23 14:27:16
+Going through log queue -- [] -- 2025-03-23 14:29:16
+Going through log queue -- [] -- 2025-03-23 14:31:16
+Going through log queue -- [] -- 2025-03-23 14:33:16
+Going through log queue -- [] -- 2025-03-23 14:35:16
+Going through log queue -- [] -- 2025-03-23 14:37:16
+Going through log queue -- [] -- 2025-03-23 14:39:16
+Going through log queue -- [] -- 2025-03-23 14:41:16
+Going through log queue -- [] -- 2025-03-23 14:43:16
+Going through log queue -- [] -- 2025-03-23 14:45:16
+Going through log queue -- [] -- 2025-03-23 14:47:16
+Going through log queue -- [] -- 2025-03-23 14:49:16
+Going through log queue -- [] -- 2025-03-23 14:51:16
+Going through log queue -- [] -- 2025-03-23 14:53:16
+Going through log queue -- [] -- 2025-03-23 14:55:16
+Going through log queue -- [] -- 2025-03-23 14:57:16
+Going through log queue -- [] -- 2025-03-23 14:59:16
+Going through log queue -- [] -- 2025-03-23 15:01:16
+Going through log queue -- [] -- 2025-03-23 15:03:16
+Going through log queue -- [] -- 2025-03-23 15:05:16
+Going through log queue -- [] -- 2025-03-23 15:07:16
+Going through log queue -- [] -- 2025-03-23 15:09:16
+Going through log queue -- [] -- 2025-03-23 15:11:16
+Going through log queue -- [] -- 2025-03-23 15:13:16
+Going through log queue -- [] -- 2025-03-23 15:15:16
+Going through log queue -- [] -- 2025-03-23 15:17:16
+Going through log queue -- [] -- 2025-03-23 15:19:16
+Going through log queue -- [] -- 2025-03-23 15:21:16
+Going through log queue -- [] -- 2025-03-23 15:23:16
+Going through log queue -- [] -- 2025-03-23 15:25:16
+Going through log queue -- [] -- 2025-03-23 15:27:16
+Going through log queue -- [] -- 2025-03-23 15:29:16
+Going through log queue -- [] -- 2025-03-23 15:31:16
+Going through log queue -- [] -- 2025-03-23 15:33:16
+Going through log queue -- [] -- 2025-03-23 15:35:16
+Going through log queue -- [] -- 2025-03-23 15:37:16
+Going through log queue -- [] -- 2025-03-23 15:39:16
+Going through log queue -- [] -- 2025-03-23 15:41:16
+Going through log queue -- [] -- 2025-03-23 15:43:16
+Going through log queue -- [] -- 2025-03-23 15:45:16
+Going through log queue -- [] -- 2025-03-23 15:47:16
+Going through log queue -- [] -- 2025-03-23 15:49:16
+Going through log queue -- [] -- 2025-03-23 15:51:16
+Going through log queue -- [] -- 2025-03-23 15:53:16
+Going through log queue -- [] -- 2025-03-23 15:55:16
+Going through log queue -- [] -- 2025-03-23 15:57:16
+Going through log queue -- [] -- 2025-03-23 15:59:16
+Going through log queue -- [] -- 2025-03-23 16:01:16
+Going through log queue -- [] -- 2025-03-23 16:03:16
+Going through log queue -- [] -- 2025-03-23 16:05:16
+Going through log queue -- [] -- 2025-03-23 16:07:16
+Going through log queue -- [] -- 2025-03-23 16:09:16
+Going through log queue -- [] -- 2025-03-23 16:11:16
+Going through log queue -- [] -- 2025-03-23 16:13:16
+Going through log queue -- [] -- 2025-03-23 16:15:16
+Going through log queue -- [] -- 2025-03-23 16:17:16
+Going through log queue -- [] -- 2025-03-23 16:19:16
+Going through log queue -- [] -- 2025-03-23 16:21:16
+Going through log queue -- [] -- 2025-03-23 16:23:16
+Going through log queue -- [] -- 2025-03-23 16:25:16
+Going through log queue -- [] -- 2025-03-23 16:27:16
+Going through log queue -- [] -- 2025-03-23 16:29:16
+Going through log queue -- [] -- 2025-03-23 16:31:16
+Going through log queue -- [] -- 2025-03-23 16:33:16
+Going through log queue -- [] -- 2025-03-23 16:35:16
+Going through log queue -- [] -- 2025-03-23 16:37:16
+Going through log queue -- [] -- 2025-03-23 16:39:16
+Going through log queue -- [] -- 2025-03-23 16:41:16
+Going through log queue -- [] -- 2025-03-23 16:43:16
+Going through log queue -- [] -- 2025-03-23 16:45:16
+Going through log queue -- [] -- 2025-03-23 16:47:16
+Going through log queue -- [] -- 2025-03-23 16:49:16
+Going through log queue -- [] -- 2025-03-23 16:51:16
+Going through log queue -- [] -- 2025-03-23 16:53:17
+get_players_list -- easy._._ --2025-03-23 16:54:02
+Going through log queue -- [] -- 2025-03-23 16:55:17
+Going through log queue -- [] -- 2025-03-23 16:57:17
+Going through log queue -- [] -- 2025-03-23 16:59:17
+Going through log queue -- [] -- 2025-03-23 17:01:17
+Going through log queue -- [] -- 2025-03-23 17:03:17
+Going through log queue -- [] -- 2025-03-23 17:05:17
+Going through log queue -- [] -- 2025-03-23 17:07:17
+Going through log queue -- [] -- 2025-03-23 17:09:17
+Going through log queue -- [] -- 2025-03-23 17:11:17
+Going through log queue -- [] -- 2025-03-23 17:13:17
+Going through log queue -- [] -- 2025-03-23 17:15:17
+Going through log queue -- [] -- 2025-03-23 17:17:17
+Going through log queue -- [] -- 2025-03-23 17:19:17
+Going through log queue -- [] -- 2025-03-23 17:21:17
+Going through log queue -- [] -- 2025-03-23 17:23:17
+Going through log queue -- [] -- 2025-03-23 17:25:17
+Going through log queue -- [] -- 2025-03-23 17:27:17
+Going through log queue -- [] -- 2025-03-23 17:29:17
+Going through log queue -- [] -- 2025-03-23 17:31:17
+Going through log queue -- [] -- 2025-03-23 17:33:17
+Going through log queue -- [] -- 2025-03-23 17:35:17
+Going through log queue -- [] -- 2025-03-23 17:37:17
+Going through log queue -- [] -- 2025-03-23 17:39:17
+Going through log queue -- [] -- 2025-03-23 17:41:17
+Going through log queue -- [] -- 2025-03-23 17:43:17
+Going through log queue -- [] -- 2025-03-23 17:45:17
+Going through log queue -- [] -- 2025-03-23 17:47:17
+Going through log queue -- [] -- 2025-03-23 17:49:17
+Going through log queue -- [] -- 2025-03-23 17:51:17
+Going through log queue -- [] -- 2025-03-23 17:53:17
+Going through log queue -- [] -- 2025-03-23 17:55:17
+Going through log queue -- [] -- 2025-03-23 17:57:17
+Going through log queue -- [] -- 2025-03-23 17:59:17
+Going through log queue -- [] -- 2025-03-23 18:01:17
+Going through log queue -- [] -- 2025-03-23 18:03:17
+Going through log queue -- [] -- 2025-03-23 18:05:17
+Going through log queue -- [] -- 2025-03-23 18:07:17
+Going through log queue -- [] -- 2025-03-23 18:09:17
+Going through log queue -- [] -- 2025-03-23 18:11:17
+Going through log queue -- [] -- 2025-03-23 18:13:17
+Going through log queue -- [] -- 2025-03-23 18:15:17
+Going through log queue -- [] -- 2025-03-23 18:17:17
+Going through log queue -- [] -- 2025-03-23 18:19:17
+Going through log queue -- [] -- 2025-03-23 18:21:17
+Going through log queue -- [] -- 2025-03-23 18:23:17
+Going through log queue -- [] -- 2025-03-23 18:25:17
+Going through log queue -- [] -- 2025-03-23 18:27:17
+Going through log queue -- [] -- 2025-03-23 18:29:17
+Going through log queue -- [] -- 2025-03-23 18:31:17
+Going through log queue -- [] -- 2025-03-23 18:33:17
+Going through log queue -- [] -- 2025-03-23 18:35:17
+Going through log queue -- [] -- 2025-03-23 18:37:17
+Going through log queue -- [] -- 2025-03-23 18:39:17
+Going through log queue -- [] -- 2025-03-23 18:41:17
+Going through log queue -- [] -- 2025-03-23 18:43:17
+Going through log queue -- [] -- 2025-03-23 18:45:17
+get_players_list -- olivethebrave --2025-03-23 18:47:01
+Going through log queue -- [] -- 2025-03-23 18:47:17
+Going through log queue -- [] -- 2025-03-23 18:49:17
+Going through log queue -- [] -- 2025-03-23 18:51:17
+Going through log queue -- [] -- 2025-03-23 18:53:17
+Going through log queue -- [] -- 2025-03-23 18:55:17
+Going through log queue -- [] -- 2025-03-23 18:57:17
+Going through log queue -- [] -- 2025-03-23 18:59:17
+Going through log queue -- [] -- 2025-03-23 19:01:17
+Going through log queue -- [] -- 2025-03-23 19:03:17
+Going through log queue -- [] -- 2025-03-23 19:05:17
+Going through log queue -- [] -- 2025-03-23 19:07:17
+Going through log queue -- [] -- 2025-03-23 19:09:17
+get_players_list -- krilobh --2025-03-23 19:09:30
+get_player -- krilobh --2025-03-23 19:10:03
+get_player -- krilobh --2025-03-23 19:10:19
+get_player -- easy._._ --2025-03-23 19:10:32
+
+Going through log queue -- [] -- 2025-03-23 19:33:17
+log_next_game -- easy._._ --2025-03-23 19:34:22
+log_recent_game -- easy._._ --2025-03-23 19:34:32
+28c6fbbf-7fd7-4538-b174-d145ce7a2e26 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'Coyote#0000', 'min_since': 0}] -- 2025-03-23 19:35:17
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 19:35:20
+Attempting log queue entry Coyote#0000 - 0min --2025-03-23 19:35:21
+trueskill-automate checking match: 06a86701-1bbf-4c0e-b3b1-7e8769e46c76
+c868e7cd5f7b412585a5614957e1ac5b
+CAT WITH BOW#WIN
+not in player ids
+log returned 1 size
+add_player -- olivethebrave --2025-03-23 19:36:40
+add_player -- olivethebrave --2025-03-23 19:36:58
+Going through log queue -- [{'player_name': 'Coyote#0000', 'min_since': 2}] -- 2025-03-23 19:37:17
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 19:37:19
+Attempting log queue entry Coyote#0000 - 2min --2025-03-23 19:37:20
+trueskill-automate checking match: 06a86701-1bbf-4c0e-b3b1-7e8769e46c76
+add_player -- olivethebrave --2025-03-23 19:37:37
+add_player -- olivethebrave --2025-03-23 19:37:48
+add_player -- olivethebrave --2025-03-23 19:38:41
+Going through log queue -- [] -- 2025-03-23 19:39:13
+Going through log queue -- [] -- 2025-03-23 19:41:13
+Going through log queue -- [] -- 2025-03-23 19:43:13
+Going through log queue -- [] -- 2025-03-23 19:43:54
+Going through log queue -- [] -- 2025-03-23 19:45:54
+Going through log queue -- [] -- 2025-03-23 19:47:54
+log_recent_game -- olivethebrave --2025-03-23 19:49:51
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 19:49:54
+trueskill-automate checking match: 5b913a73-a927-4ac4-8e49-68d4efdddf59
+Going through log queue -- [] -- 2025-03-23 19:50:02
+get_players_list -- krilobh --2025-03-23 19:50:38
+!leaderboard -- olivethebrave --2025-03-23 19:51:05
+Going through log queue -- [] -- 2025-03-23 19:52:02
+Going through log queue -- [] -- 2025-03-23 19:54:02
+!balance Coyote#0000,Krilo#NUTT,jetskii#9028,spadestorms#STRM,Aposl#VGBC,Acushla#Miki,CAT WITH BOW#WIN,xLunares#777 -- olivethebrave --2025-03-23 19:54:34
+['Coyote#0000', 'Krilo#NUTT', 'jetskii#9028', 'spadestorms#STRM', 'Aposl#VGBC', 'Acushla#Miki', 'CAT WITH BOW#WIN', 'xLunares#777']
+Going through log queue -- [] -- 2025-03-23 19:56:02
+Going through log queue -- [] -- 2025-03-23 19:58:02
+Going through log queue -- [] -- 2025-03-23 20:00:02
+Going through log queue -- [] -- 2025-03-23 20:02:02
+Going through log queue -- [] -- 2025-03-23 20:04:02
+log_recent_game -- easy._._ --2025-03-23 20:05:22
+FAILED to fetch matches for -- coyote#0000 -- 2025-03-23 20:05:34
+ID not found for coyote#0000
+No match data
+log returned 1 size
+log_recent_game -- easy._._ --2025-03-23 20:05:38
+Going through log queue -- [] -- 2025-03-23 20:06:02
+log_recent_game -- easy._._ --2025-03-23 20:06:26
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 20:06:28
+trueskill-automate checking match: 7c80dba9-1a31-4628-a094-2866ce74b48d
+get_players_list -- krilobh --2025-03-23 20:07:15
+Going through log queue -- [] -- 2025-03-23 20:08:02
+Going through log queue -- [] -- 2025-03-23 20:10:02
+Going through log queue -- [] -- 2025-03-23 20:12:02
+Going through log queue -- [] -- 2025-03-23 20:14:02
+Going through log queue -- [] -- 2025-03-23 20:16:02
+log_recent_game -- easy._._ --2025-03-23 20:16:48
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 20:16:51
+trueskill-automate checking match: 7b3aec3b-ffe0-4df7-acfb-be7ab7798265
+!leaderboard -- easy._._ --2025-03-23 20:17:28
+get_players_list -- olivethebrave --2025-03-23 20:17:30
+Going through log queue -- [] -- 2025-03-23 20:18:02
+get_players_list -- easy._._ --2025-03-23 20:18:23
+get_player -- live_acushla --2025-03-23 20:18:29
+Going through log queue -- [] -- 2025-03-23 20:20:02
+get_player -- olivethebrave --2025-03-23 20:21:20
+Going through log queue -- [] -- 2025-03-23 20:22:02
+Going through log queue -- [] -- 2025-03-23 20:24:02
+get_players_list -- easy._._ --2025-03-23 20:25:05
+get_player -- easy._._ --2025-03-23 20:25:30
+Going through log queue -- [] -- 2025-03-23 20:26:02
+Going through log queue -- [] -- 2025-03-23 20:28:02
+get_players_list -- krilobh --2025-03-23 20:28:41
+get_player -- lunaregi --2025-03-23 20:28:46
+get_player -- lunaregi --2025-03-23 20:28:58
+get_player -- lunaregi --2025-03-23 20:29:13
+Going through log queue -- [] -- 2025-03-23 20:30:02
+Going through log queue -- [] -- 2025-03-23 20:32:02
+Going through log queue -- [] -- 2025-03-23 20:34:02
+Going through log queue -- [] -- 2025-03-23 20:36:02
+Going through log queue -- [] -- 2025-03-23 20:38:02
+Going through log queue -- [] -- 2025-03-23 20:40:02
+Going through log queue -- [] -- 2025-03-23 20:42:02
+Going through log queue -- [] -- 2025-03-23 20:44:02
+get_player -- lunaregi --2025-03-23 20:45:25
+log_recent_game -- pynapel --2025-03-23 20:45:35
+Fetched new matches for -- SHRICHAEL JORDAN#pyn -- 2025-03-23 20:45:39
+trueskill-automate checking match: 8d260e85-dbac-41ca-b959-3bb225e90ae4
+Going through log queue -- [] -- 2025-03-23 20:46:02
+get_player -- lunaregi --2025-03-23 20:46:32
+Going through log queue -- [] -- 2025-03-23 20:48:02
+Going through log queue -- [] -- 2025-03-23 20:50:02
+Going through log queue -- [] -- 2025-03-23 20:52:02
+Going through log queue -- [] -- 2025-03-23 20:54:02
+Going through log queue -- [] -- 2025-03-23 20:56:02
+Going through log queue -- [] -- 2025-03-23 20:58:02
+log_recent_game -- pynapel --2025-03-23 20:59:18
+Fetched new matches for -- SHRICHAEL JORDAN#pyn -- 2025-03-23 20:59:21
+trueskill-automate checking match: 4c3fe83b-bdca-499f-8ded-ca09a6c453ab
+Going through log queue -- [] -- 2025-03-23 21:00:02
+Going through log queue -- [] -- 2025-03-23 21:02:02
+Going through log queue -- [] -- 2025-03-23 21:04:02
+Going through log queue -- [] -- 2025-03-23 21:06:02
+Going through log queue -- [] -- 2025-03-23 21:08:02
+log_recent_game -- pynapel --2025-03-23 21:08:32
+Fetched new matches for -- SHRICHAEL JORDAN#pyn -- 2025-03-23 21:08:35
+trueskill-automate checking match: 5133d87f-2327-42f5-8e90-24fe8b5503da
+Going through log queue -- [] -- 2025-03-23 21:10:02
+!leaderboard -- pynapel --2025-03-23 21:10:03
+Going through log queue -- [] -- 2025-03-23 21:12:02
+Going through log queue -- [] -- 2025-03-23 21:14:02
+get_players_list -- olivethebrave --2025-03-23 21:14:58
+Going through log queue -- [] -- 2025-03-23 21:16:02
+get_player -- olivethebrave --2025-03-23 21:16:17
+Going through log queue -- [] -- 2025-03-23 21:18:02
+log_recent_game -- spadestorms --2025-03-23 21:18:27
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:18:30
+trueskill-automate checking match: 08f67d20-1491-448e-a3f5-4ffd1d1a0f23
+Going through log queue -- [] -- 2025-03-23 21:20:02
+Going through log queue -- [] -- 2025-03-23 21:22:02
+Going through log queue -- [] -- 2025-03-23 21:24:02
+Going through log queue -- [] -- 2025-03-23 21:26:02
+Going through log queue -- [] -- 2025-03-23 21:28:02
+Going through log queue -- [] -- 2025-03-23 21:30:02
+get_players_list -- phenomex --2025-03-23 21:30:19
+log_recent_game -- spadestorms --2025-03-23 21:31:56
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:31:59
+08f67d20-1491-448e-a3f5-4ffd1d1a0f23 Not a valid game
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 21:32:04
+log_next_game -- spadestorms --2025-03-23 21:32:15
+log_recent_game -- spadestorms --2025-03-23 21:34:00
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:34:03
+08f67d20-1491-448e-a3f5-4ffd1d1a0f23 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'spadestorms#STRM', 'min_since': 0}] -- 2025-03-23 21:34:08
+FAILED to fetch matches for -- spadestorms#STRM -- 2025-03-23 21:34:21
+Attempting log queue entry spadestorms#STRM - 0min --2025-03-23 21:34:22
+trueskill-automate checking match: c51f107b-4b96-4138-b585-1399a593d0a2
+!leaderboard -- spadestorms --2025-03-23 21:34:35
+Going through log queue -- [] -- 2025-03-23 21:36:08
+Going through log queue -- [] -- 2025-03-23 21:38:08
+get_player -- krilobh --2025-03-23 21:39:28
+Going through log queue -- [] -- 2025-03-23 21:40:08
+log_recent_game -- phenomex --2025-03-23 21:41:32
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 21:41:35
+trueskill-automate checking match: 3dd083c9-b38a-41d8-a20e-574bfab50688
+Going through log queue -- [] -- 2025-03-23 21:42:08
+log_next_game -- spadestorms --2025-03-23 21:42:35
+Going through log queue -- [{'player_name': 'spadestorms#STRM', 'min_since': 0}] -- 2025-03-23 21:44:08
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:44:11
+Attempting log queue entry spadestorms#STRM - 0min --2025-03-23 21:44:12
+3dd083c9-b38a-41d8-a20e-574bfab50688 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'spadestorms#STRM', 'min_since': 2}] -- 2025-03-23 21:46:08
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:46:11
+Attempting log queue entry spadestorms#STRM - 2min --2025-03-23 21:46:12
+3dd083c9-b38a-41d8-a20e-574bfab50688 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'spadestorms#STRM', 'min_since': 4}] -- 2025-03-23 21:48:08
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:48:11
+Attempting log queue entry spadestorms#STRM - 4min --2025-03-23 21:48:12
+3dd083c9-b38a-41d8-a20e-574bfab50688 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'spadestorms#STRM', 'min_since': 6}] -- 2025-03-23 21:50:08
+Fetched new matches for -- spadestorms#STRM -- 2025-03-23 21:50:11
+Attempting log queue entry spadestorms#STRM - 6min --2025-03-23 21:50:12
+trueskill-automate checking match: beeee1a2-45e7-44dd-ade4-146038a81b75
+log_recent_game -- phenomex --2025-03-23 21:50:21
+!leaderboard -- finamin --2025-03-23 21:50:21
+Going through log queue -- [] -- 2025-03-23 21:52:08
+Going through log queue -- [] -- 2025-03-23 21:54:08
+Going through log queue -- [] -- 2025-03-23 21:56:08
+Going through log queue -- [] -- 2025-03-23 21:58:08
+Going through log queue -- [] -- 2025-03-23 22:47:33
+Going through log queue -- [] -- 2025-03-23 22:49:33
+Going through log queue -- [] -- 2025-03-23 22:51:33
+!leaderboard -- finamin --2025-03-23 22:52:29
+log_recent_game -- phenomex --2025-03-23 22:53:19
+Going through log queue -- [] -- 2025-03-23 22:53:33
+Going through log queue -- [] -- 2025-03-23 22:55:33
+Going through log queue -- [] -- 2025-03-23 22:57:33
+Going through log queue -- [] -- 2025-03-23 22:59:33
+Going through log queue -- [] -- 2025-03-23 23:01:33
+log_recent_game -- phenomex --2025-03-23 23:03:26
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:03:29
+3dd083c9-b38a-41d8-a20e-574bfab50688 Not a valid game
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 23:03:34
+Going through log queue -- [] -- 2025-03-23 23:05:34
+Going through log queue -- [] -- 2025-03-23 23:07:34
+Going through log queue -- [] -- 2025-03-23 23:09:34
+Going through log queue -- [] -- 2025-03-23 23:11:34
+Going through log queue -- [] -- 2025-03-23 23:13:34
+log_recent_game -- olivethebrave --2025-03-23 23:14:25
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:14:28
+trueskill-automate checking match: 33ab9a03-a262-4c42-b6a8-cb0f90f1c8a5
+fbed54a47d1f4ec2a322708625288c07
+FOX MCCLOUD#20XX
+not in player ids
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 23:15:34
+log_recent_game -- easy._._ --2025-03-23 23:16:56
+Fetched new matches for -- Coyote#0000 -- 2025-03-23 23:16:59
+trueskill-automate checking match: 33ab9a03-a262-4c42-b6a8-cb0f90f1c8a5
+fbed54a47d1f4ec2a322708625288c07
+FOX MCCLOUD#20XX
+not in player ids
+log returned 1 size
+Going through log queue -- [] -- 2025-03-23 23:17:34
+Going through log queue -- [] -- 2025-03-23 23:19:34
+Going through log queue -- [] -- 2025-03-23 23:21:34
+Going through log queue -- [] -- 2025-03-23 23:23:34
+Going through log queue -- [] -- 2025-03-23 23:25:34
+add_player -- olivethebrave --2025-03-23 23:25:47
+log_next_game -- olivethebrave --2025-03-23 23:26:02
+log_recent_game -- olivethebrave --2025-03-23 23:26:16
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:26:19
+trueskill-automate checking match: afe7e789-d62d-40e8-b161-1c16d478a816
+!leaderboard -- finamin --2025-03-23 23:26:45
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 0}] -- 2025-03-23 23:27:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:27:37
+Attempting log queue entry PhenomEX#DIFF - 0min --2025-03-23 23:27:38
+afe7e789-d62d-40e8-b161-1c16d478a816 Not a valid game
+log returned 1 size
+add_player -- easy._._ --2025-03-23 23:28:42
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 2}] -- 2025-03-23 23:29:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:29:37
+Attempting log queue entry PhenomEX#DIFF - 2min --2025-03-23 23:29:38
+afe7e789-d62d-40e8-b161-1c16d478a816 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 4}] -- 2025-03-23 23:31:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:31:38
+Attempting log queue entry PhenomEX#DIFF - 4min --2025-03-23 23:31:39
+afe7e789-d62d-40e8-b161-1c16d478a816 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 6}] -- 2025-03-23 23:33:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:33:37
+Attempting log queue entry PhenomEX#DIFF - 6min --2025-03-23 23:33:38
+afe7e789-d62d-40e8-b161-1c16d478a816 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 8}] -- 2025-03-23 23:35:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:35:37
+Attempting log queue entry PhenomEX#DIFF - 8min --2025-03-23 23:35:38
+afe7e789-d62d-40e8-b161-1c16d478a816 Not a valid game
+log returned 1 size
+Going through log queue -- [{'player_name': 'PhenomEX#DIFF', 'min_since': 10}] -- 2025-03-23 23:37:34
+Fetched new matches for -- PhenomEX#DIFF -- 2025-03-23 23:37:37
+Going through log queue -- [] -- 2025-03-23 23:39:34
+Going through log queue -- [] -- 2025-03-23 23:41:34
+Going through log queue -- [] -- 2025-03-23 23:43:34
+Going through log queue -- [] -- 2025-03-23 23:45:34
+get_player -- tsunani --2025-03-23 23:45:57
+Going through log queue -- [] -- 2025-03-23 23:47:34
+Going through log queue -- [] -- 2025-03-23 23:49:34
+Going through log queue -- [] -- 2025-03-23 23:51:34
+Going through log queue -- [] -- 2025-03-23 23:53:34
+Going through log queue -- [] -- 2025-03-23 23:55:34
+Going through log queue -- [] -- 2025-03-23 23:57:34
+Going through log queue -- [] -- 2025-03-23 23:59:34
+Going through log queue -- [] -- 2025-03-24 00:01:34
+Going through log queue -- [] -- 2025-03-24 00:03:34
+Going through log queue -- [] -- 2025-03-24 00:05:34
+Going through log queue -- [] -- 2025-03-24 00:07:34
+Going through log queue -- [] -- 2025-03-24 00:09:34
+Going through log queue -- [] -- 2025-03-24 00:11:34
+Going through log queue -- [] -- 2025-03-24 00:13:34
+Going through log queue -- [] -- 2025-03-24 00:15:34
+Going through log queue -- [] -- 2025-03-24 00:17:34
+Going through log queue -- [] -- 2025-03-24 00:19:34
+Going through log queue -- [] -- 2025-03-24 00:21:34
+Going through log queue -- [] -- 2025-03-24 00:23:34
+Going through log queue -- [] -- 2025-03-24 00:25:34
+log_specific_game -- olivethebrave --2025-03-24 00:25:44
+log_specific_game -- olivethebrave --2025-03-24 00:26:06
+log_specific_game -- olivethebrave --2025-03-24 00:26:21
+log_specific_game -- olivethebrave --2025-03-24 00:26:38
+log_specific_game -- olivethebrave --2025-03-24 00:27:04
+log_specific_game -- olivethebrave --2025-03-24 00:27:22
+beeee1a2-45e7-44dd-ade4-146038a81b75 Not a valid game
+log returned 1 size
+Going through log queue -- [] -- 2025-03-24 00:27:35
+!leaderboard -- olivethebrave --2025-03-24 00:27:37
+Going through log queue -- [] -- 2025-03-24 00:29:35
+Going through log queue -- [] -- 2025-03-24 00:31:35
+Going through log queue -- [] -- 2025-03-24 00:33:35
+Going through log queue -- [] -- 2025-03-24 00:35:35
+Going through log queue -- [] -- 2025-03-24 00:37:35
+Going through log queue -- [] -- 2025-03-24 00:39:35
+Going through log queue -- [] -- 2025-03-24 00:41:35
+Going through log queue -- [] -- 2025-03-24 00:43:35
+Going through log queue -- [] -- 2025-03-24 00:45:35
