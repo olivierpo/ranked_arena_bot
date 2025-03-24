@@ -34,6 +34,9 @@ def load_in_admins():
             global_admin_list.append(int(admins[:-1]))
 
 def get_players():
+    '''
+    assigns all registered player ids to global variable `players_in_memory` 
+    '''
     global players_in_memory
     to_read = ""
     with open("player_ids.json", "r") as infile:
@@ -50,6 +53,13 @@ def p1_is_better(player1, player2):
 
 
 def get_sorted_players():
+    '''
+    ranks players by elo using bubble sort
+
+    creates new global variable `sorted_players`
+
+    `[[250, 100, "Player1Name#ID"], [200, 100, "Player2Name#ID"]]`
+    '''
     global sorted_players
     global players_in_memory
     players_list = list(players_in_memory["player_elos"].values())
@@ -116,6 +126,7 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
 
 def fill_next_recur(team1, team2, players_full):
+    '''returns mean team elo confidence and teams'''
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     if len(team1) == 4:
         if len(team2) == 4:
@@ -126,7 +137,7 @@ def fill_next_recur(team1, team2, players_full):
             return [delta, team1, team2]
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     
-    dict_keys = list(players_full.keys())
+    dict_keys = list(players_full.keys()) # player ids
     #print(str(dict_keys)+ " " + str(len(dict_keys)) + "\n")
     best_result = []
     for i in range(len(dict_keys)):
