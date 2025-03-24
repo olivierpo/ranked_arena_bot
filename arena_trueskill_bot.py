@@ -2,6 +2,7 @@ import discord
 import logging
 import json
 from discord.ext import commands
+from discord.ext import tasks
 from bs4 import BeautifulSoup
 import urllib3
 import re
@@ -12,9 +13,24 @@ import os
 from dotenv import load_dotenv
 
 trueskill_module = importlib.import_module("trueskill_automate")
+chrome_module = importlib.import_module("chrome_automation")
 
 MMR_DEFAULT = 250
 CONFIDENCE_DEFAULT = 83
+
+COMMANDS_STRING = """
+        **PUBLIC:**
+        *<!leaderboard>* Prints leaderboard.
+        *<!balance user_name1,username2,...username8>* Prints balanced teams from usernames. No spaces between names, just commas. 
+        *</get_player user_name>* Prints player MMR and rank.
+        *</add_player user_name>* Adds a player to the ranked system.
+        *</log_next_game user_name>* Puts player in logging queue and adds the next viable game in op.gg to the log.
+        *</log_recent_game user_name>* Rates most recent game from player IF the game is an arena custom game and ALL PLAYERS are in the system.
+        *</log_specific_game match_id>* Rates specific game IF the game is an arena custom game and ALL PLAYERS are in the system.
+        *</get_players_list>* Lets you read through all players sorted by rank.
+
+        ***All usernames are CASE SENSITIVE. Please double check!***
+        """
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -25,6 +41,7 @@ bot = commands.Bot(command_prefix="/", intents=intents,
 players_in_memory = ""
 sorted_players = []
 global_admin_list = []
+logging_queue = []
 
 def load_in_admins():
     global global_admin_list
@@ -210,18 +227,7 @@ async def on_message(message):
         await rep.edit(content=printable_1)
     if message.content.startswith("!commands"):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-        command_printable = """
-        **PUBLIC:**
-        *<!leaderboard>* Prints leaderboard.
-        *<!balance user_name1,username2,...username8>* Prints balanced teams from usernames. No spaces between names, just commas. 
-        *</get_player user_name>* Prints player MMR and rank.
-        *</add_player user_name>* Adds a player to the ranked system.
-        *</log_recent_game user_name>* Rates most recent game from player IF the game is an arena custom game and ALL PLAYERS are in the system.
-        *</log_specific_game match_id>* Rates specific game IF the game is an arena custom game and ALL PLAYERS are in the system.
-        *</get_players_list>* Lets you read through all players sorted by rank.
-
-        ***All usernames are CASE SENSITIVE. Please double check!***
-        """
+        command_printable = COMMANDS_STRING
         await message.reply(command_printable, mention_author=True)
 
 
@@ -294,7 +300,7 @@ async def get_player(ctx, player_name: discord.Option(str)):
         
     await ctx.respond(f"Player {player_name} not found", ephemeral=True)
 
-def get_id_from_name(unique_name):
+def get_urlsafe_name(unique_name):
     username_list = unique_name.split("#")
     #print(username_list)
     remove_whitespace = username_list[0].split()
@@ -309,6 +315,10 @@ def get_id_from_name(unique_name):
         username_final = username_final + "%23" + username_list[1]
     else:
         username_final = username_list[0] + "%23" + username_list[1]
+    return username_final
+
+def get_id_from_name(unique_name):
+    username_final = get_urlsafe_name(unique_name)
     url = f"https://supervive.op.gg/players/steam-{username_final}"
     http = urllib3.PoolManager()
     response = http.request('GET', url, decode_content=True)
@@ -373,8 +383,8 @@ async def add_player(ctx, player_name: discord.Option(str)):
     user_id = get_id_from_name(player_name)
     
     if not user_id:
-            await ctx.respond(f"Something went wrong", ephemeral=True)
-            return
+        await ctx.respond(f"Something went wrong", ephemeral=True)
+        return
     #lp = soup.find("div", {"class": "lp"}).contents[0]
 
     #print(huge_string)
@@ -441,6 +451,13 @@ async def log_recent_game(ctx, player_name: discord.Option(str)):
         await ctx.respond("Inputted name not correct format", ephemeral=True)
         return
     await ctx.respond("Loading...")
+    HC = chrome_module.HeadlessChrome()
+    result = HC.fetch_new_matches(get_urlsafe_name(player_name))
+    if result:
+        trueskill_module.log_stuff(f"\nFetched new matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    else:
+        trueskill_module.log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    time.sleep(3)
     match_details_return = trueskill_module.check_match_w_name(player_name)
     if not match_details_return:
         trueskill_module.log_stuff(f"\n{match_id_return}")
@@ -478,6 +495,80 @@ async def log_specific_game(ctx, match_id: discord.Option(str)):
 
     await ctx.edit(content=printed_content)
 
+@bot.slash_command(name="log_next_game", guild_ids=[168149897512484866, 1313026440660385834]) # Create a slash command
+async def log_next_game(ctx, player_name: discord.Option(str)):
+    global logging_queue
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    pattern = re.compile("\\S+.*#\\S+")
+    if not pattern.match(player_name):
+        await ctx.respond("Inputted name not correct format", ephemeral=True)
+        return
+    logging_queue.append({"player_name":player_name, "min_since":0})
+    await ctx.respond(f"Will log next game for {player_name}")
+
+async def log_recent_game_standalone(player_name):
+
+
+    match_details_return = trueskill_module.check_match_w_name(player_name)
+    if not match_details_return:
+        trueskill_module.log_stuff(f"\n{match_id_return}")
+        return 
+    if len(match_details_return) == 1:
+        trueskill_module.log_stuff(f"\nlog returned 1 size")
+        return 
+    match_id_return = match_details_return[1]
+    
+    printed_content = f"Logged most recent match with id {match_id_return}\n" + get_teams_to_print(match_details_return[0])
+    
+    return printed_content
+
+def fetch_p_matches_in_q():
+    global logging_queue
+    i = 0
+    while i < len(logging_queue):
+        q_dict = logging_queue[i]
+        HC = chrome_module.HeadlessChrome()
+        result = HC.fetch_new_matches(get_urlsafe_name(q_dict["player_name"]))
+        if result:
+            trueskill_module.log_stuff(f"\nFetched new matches for -- {q_dict["player_name"]} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        else:
+            trueskill_module.log_stuff(f"\nFAILED to fetch matches for -- {q_dict["player_name"]} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        i += 1
+        time.sleep(1)
+
+@tasks.loop(minutes=2)
+async def log_queue():
+    global logging_queue
+    trueskill_module.log_stuff(f"\nGoing through log queue -- {logging_queue} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    channel = bot.get_channel(1352484632884416542)
+    fetch_p_matches_in_q()
+    i = 0
+    while i < len(logging_queue):
+        q_dict = logging_queue[i]
+        if q_dict["min_since"] >=10:
+            await channel.send(content=f"All matches already logged for {q_dict["player_name"]} in last 10 minutes.")
+            logging_queue.pop(i)
+            continue
+        trueskill_module.log_stuff(f"\nAttempting log queue entry {q_dict["player_name"]} - {q_dict["min_since"]}min --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        return_str = await log_recent_game_standalone(q_dict["player_name"])
+        if not (return_str == None):
+            await channel.send(content=return_str)
+            logging_queue.pop(i)
+        else:
+            q_dict["min_since"] += 2
+            logging_queue[i] = q_dict
+            i+=1
+        time.sleep(3)
+        
+@bot.slash_command(name="clear_log_queue", guild_ids=[168149897512484866, 1313026440660385834]) # Create a slash command
+async def clear_log_queue(ctx):
+    global logging_queue
+    if ctx.author.id in global_admin_list:
+        logging_queue = []
+        await ctx.respond("Cleared the log.", ephemeral=True)
+    else:
+        await ctx.respond("Unauthorized", ephemeral = True)
+
 @bot.slash_command(name="get_players_list", guild_ids=[168149897512484866, 1313026440660385834]) # Create a slash command
 async def get_players_list(ctx):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
@@ -493,6 +584,15 @@ async def get_players_list(ctx):
         
 
     await ctx.respond(leaderboard_str, view=MyView(), ephemeral=True) # Send a message with our View class that contains the button
+
+@bot.slash_command(name="check_log_queue", guild_ids=[168149897512484866, 1313026440660385834]) # Create a slash command
+async def check_log_queue(ctx):
+    global logging_queue
+    queue_to_print = ""
+    for queued_dict in logging_queue:
+        queue_to_print += queued_dict + "\n"
+    await ctx.respond(f"Current log:\n{queue_to_print}", ephemeral=True)
+
 
 @bot.slash_command(name="backup_id_files", guild_ids=[168149897512484866, 1313026440660385834]) # Create a slash command
 async def backup_id_files(ctx):
@@ -547,6 +647,8 @@ async def reset_matches(ctx):
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
+    if not log_queue.is_running():
+        log_queue.start()
 
 load_in_admins()
 load_dotenv()
