@@ -7,6 +7,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import platform
 
+if platform.system == "Windows":
+    CHROME_URL = r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
+else:
+    CHROME_URL = r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
 
 class HeadlessChrome:
     """creating a class instance initializes webdriver"""
