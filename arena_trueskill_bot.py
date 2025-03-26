@@ -1,3 +1,4 @@
+from collections import defaultdict
 import discord
 import logging
 import json
@@ -179,6 +180,28 @@ def balance_teams(players_to_balance):
     balance_result = fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
     
+def decorate_rank_change(old_sorted_players, sorted_players):
+    nested_dict = lambda: defaultdict(nested_dict) # allow dict[a][b]
+    rank_changes_dict = nested_dict()
+    old_rank_dict = {player: (idx, old_mmr) for idx, (old_mmr, old_conf, player) in enumerate(old_sorted_players[:19], start=1)}
+    for new_idx, (new_mmr, new_conf, player) in enumerate(sorted_players[:19], start=1):
+        old_rank = old_rank_dict.get(player)
+        if old_rank:
+            old_idx, old_mmr = old_rank
+            if old_idx > new_idx:
+              rank_changes_dict[player]['rank_change'] = f'+{old_idx - new_idx}🆙️'
+            # # highlighting rank down is kind of bm
+            # if old_idx < new_idx:
+            #   rank_changes_dict[player] = f'- {new_idx - old_idx} ⬇️'
+            if old_mmr > new_mmr:
+              rank_changes_dict[player]['mmr_change'] = f'(-{round(old_mmr - new_mmr)})'
+            if old_mmr < new_mmr:
+              rank_changes_dict[player]['mmr_change'] = f'(+{round(new_mmr - old_mmr)})'
+        else:
+            # new player
+            rank_changes_dict[player]['rank_change'] = '(Welcome to the top 20!)'
+
+    return rank_changes_dict
 
 
 @bot.event
@@ -191,14 +214,27 @@ async def on_message(message):
         await message.reply('Hello!', mention_author=True)
     if message.content.startswith('!leaderboard'):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+
+        old_sorted_players = copy.deepcopy(sorted_players)
+
         get_players()
         get_sorted_players()
         leaderboard_str = ""
+
+        rank_changes_dict = decorate_rank_change(old_sorted_players, sorted_players)
         #print(sorted_players)
         for i in range(20):
             if i >= len(sorted_players):
                 break
-            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i][2]} --- "+str(int(sorted_players[i][0])) + "\n")
+            player_name = sorted_players[i][2]
+            leaderboard_str = leaderboard_str+(f"{i+1}. {player_name} --- {str(int(sorted_players[i][0]))} ")
+            mmr_change_delta = rank_changes_dict[player_name].get('mmr_change')
+            if mmr_change_delta:
+                leaderboard_str += mmr_change_delta
+            rank_change_delta = rank_changes_dict[player_name].get('rank_change')
+            if rank_change_delta:
+                leaderboard_str += ' ' + rank_change_delta
+            leaderboard_str += "\n"
         await message.reply(leaderboard_str, mention_author=True)
     if message.content.startswith('!balance'):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
