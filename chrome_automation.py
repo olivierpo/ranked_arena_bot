@@ -18,19 +18,14 @@ class HeadlessChrome:
 
         match os:
             case "Windows":
-                self.driver = Chrome(
-                    service=ChromeService(
-                        r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
-                    ),
-                    options=options,
-                )
+              CHROME_DRIVER=r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
             case "Linux":
-                self.driver = Chrome(
-                    service=ChromeService(
-                        r"./webdrivers/linux/chromedriver-linux64/chromedriver"
-                    ),
-                    options=options,
-                )
+              CHROME_DRIVER=r"./webdrivers/linux/chromedriver-linux64/chromedriver"
+
+        self.driver = Chrome(
+            service=ChromeService(CHROME_DRIVER),
+            options=options,
+        )
 
     def fetch_new_matches(self, user_id):
         """
