@@ -1438,3 +1438,72 @@ Going through log queue -- [] -- 2025-03-25 00:16:48
 Going through log queue -- [] -- 2025-03-25 00:18:48
 Going through log queue -- [] -- 2025-03-25 00:20:48
 Going through log queue -- [] -- 2025-03-25 00:22:48
+Going through log queue -- [] -- 2025-03-25 00:24:48
+Going through log queue -- [] -- 2025-03-25 00:26:48
+4137beb4-7a60-41d0-a1e9-02e656483217 Not a valid game
+4137beb4-7a60-41d0-a1e9-02e656483217 Not a valid game
+not arena
+not arena
+01b86bfcd50449fbb3844436fcb571f6
+Aruami#OwO
+not in player ids
+01b86bfcd50449fbb3844436fcb571f6
+Aruami#OwO
+not in player ids
+01b86bfcd50449fbb3844436fcb571f6
+Aruami#OwO
+not in player ids
+Going through log queue -- [] -- 2025-03-26 23:59:01
+!hello -- olivethebrave --2025-03-26 23:59:07
+get_player -- olivethebrave --2025-03-26 23:59:13
+Going through log queue -- [] -- 2025-03-27 00:01:01
+Going through log queue -- [] -- 2025-03-27 00:03:01
+Going through log queue -- [] -- 2025-03-27 00:05:01
+!leaderboard -- olivethebrave --2025-03-27 00:05:10
+Going through log queue -- [] -- 2025-03-27 00:07:01
+Going through log queue -- [] -- 2025-03-27 00:09:01
+Going through log queue -- [] -- 2025-03-27 00:10:38
+!leaderboard -- olivethebrave --2025-03-27 00:10:43
+Going through log queue -- [] -- 2025-03-27 00:12:38
+Going through log queue -- [] -- 2025-03-27 00:13:47
+get_player -- olivethebrave --2025-03-27 00:13:51
+Going through log queue -- [] -- 2025-03-27 00:15:47
+Going through log queue -- [] -- 2025-03-27 00:16:16
+!leaderboard -- olivethebrave --2025-03-27 00:16:18
+get_player -- olivethebrave --2025-03-27 00:16:39
+get_player -- olivethebrave --2025-03-27 00:17:22
+Going through log queue -- [] -- 2025-03-27 00:18:16
+add_player -- olivethebrave --2025-03-27 00:18:29
+get_player -- olivethebrave --2025-03-27 00:18:37
+remove_player -- olivethebrave --2025-03-27 00:18:51
+get_player -- olivethebrave --2025-03-27 00:19:00
+!leaderboard -- olivethebrave --2025-03-27 00:19:08
+Going through log queue -- [] -- 2025-03-27 00:20:16
+Going through log queue -- [] -- 2025-03-27 00:22:16
+Going through log queue -- [] -- 2025-03-27 00:24:16
+Going through log queue -- [] -- 2025-03-27 00:26:16
+Going through log queue -- [] -- 2025-03-27 00:28:16
+get_players_list -- olivethebrave --2025-03-27 00:29:54
+Going through log queue -- [] -- 2025-03-27 00:30:16
+get_player -- olivethebrave --2025-03-27 00:31:00
+Going through log queue -- [] -- 2025-03-27 00:32:16
+get_player -- olivethebrave --2025-03-27 00:32:21
+get_player -- olivethebrave --2025-03-27 00:33:44
+Going through log queue -- [] -- 2025-03-27 00:34:16
+Going through log queue -- [] -- 2025-03-27 00:36:16
+Going through log queue -- [] -- 2025-03-27 00:37:09
+!leaderboard -- olivethebrave --2025-03-27 00:37:09
+Going through log queue -- [] -- 2025-03-27 00:39:09
+Going through log queue -- [] -- 2025-03-27 00:41:09
+Going through log queue -- [] -- 2025-03-27 00:48:06
+get_player -- olivethebrave --2025-03-27 00:48:17
+get_player -- olivethebrave --2025-03-27 00:48:49
+Going through log queue -- [] -- 2025-03-27 00:50:06
+Going through log queue -- [] -- 2025-03-27 00:51:44
+update_player -- olivethebrave --2025-03-27 00:51:57
+get_player -- olivethebrave --2025-03-27 00:52:07
+Going through log queue -- [] -- 2025-03-27 00:53:25
+get_player -- olivethebrave --2025-03-27 00:53:33
+update_player -- olivethebrave --2025-03-27 00:53:41
+get_player -- olivethebrave --2025-03-27 00:53:49
+update_player -- olivethebrave --2025-03-27 00:54:18

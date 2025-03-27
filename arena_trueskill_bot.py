@@ -15,8 +15,8 @@ from dotenv import load_dotenv
 trueskill_module = importlib.import_module("trueskill_automate")
 chrome_module = importlib.import_module("chrome_automation")
 
-MMR_DEFAULT = 250
-CONFIDENCE_DEFAULT = 83
+MMR_DEFAULT = 1000
+CONFIDENCE_DEFAULT = 333
 
 COMMANDS_STRING = """
         **PUBLIC:**
@@ -58,8 +58,8 @@ def get_players():
     players_in_memory = to_read
     return to_read
 
-def p1_is_better(player1, player2):
-    if player1[0] < player2[0]:
+def p1_is_worse(player1, player2):
+    if player1["mmr"] < player2["mmr"]:
         return 1
     else:
         return 0
@@ -69,20 +69,21 @@ def p1_is_better(player1, player2):
 def get_sorted_players():
     global sorted_players
     global players_in_memory
-    players_list = list(players_in_memory["player_elos"].values())
-    for i in range(len(players_in_memory["player_ids"])):
-        for j in range(len(players_in_memory["player_ids"])):
+    players_list = list(players_in_memory.values())
+    for i in range(len(players_in_memory.keys())):
+        for j in range(len(players_in_memory.keys())):
             if i == j:
                 continue
             p1 = players_list[i]
             p2 = players_list[j]
-            if p1_is_better(p1, p2):
+            if p1_is_worse(p1, p2):
                 continue
             else:
                 players_list[i] = p2
                 players_list[j] = p1
     #print(players_list)
     sorted_players = players_list
+    
 
 class MyView(discord.ui.View): # Create a class called MyView that subclasses discord.ui.View
     @discord.ui.button(label="1", style=discord.ButtonStyle.primary, emoji="😎") # Create a button with the label "😎 Click me!" with color Blurple
@@ -102,7 +103,7 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         for i in range(starting_int, starting_int+10):
             if i >= len(sorted_players):
                 break
-            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i][2]} --- "+str(int(sorted_players[i][0])) + "\n")
+            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i]["unique_name"]} --- "+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
         new_button_1.label = str(int(new_button_1.label)-10)
         new_button_0.view.children[0] = new_button_1
         new_button_0.view.children[1] = new_button_2
@@ -125,7 +126,7 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         for i in range(starting_int, starting_int+10):
             if i >= len(sorted_players):
                 break
-            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i][2]} --- "+str(int(sorted_players[i][0])) + "\n")
+            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i]["unique_name"]} --- "+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
         new_button_2.label = str(int(new_button_2.label)+10)
         new_button_0.view.children[0] = new_button_1
         new_button_0.view.children[1] = new_button_2
@@ -184,10 +185,16 @@ async def on_message(message):
         get_sorted_players()
         leaderboard_str = ""
         #print(sorted_players)
-        for i in range(20):
+        i = 0
+        counted = 0
+        while counted < 20:
             if i >= len(sorted_players):
                 break
-            leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i][2]} --- "+str(int(sorted_players[i][0])) + "\n")
+            if (sorted_players[i]["wins"] + sorted_players[i]["losses"]) > 10:
+                leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i]["unique_name"]} --- "+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
+                counted += 1
+            i += 1
+            
         await message.reply(leaderboard_str, mention_author=True)
     if message.content.startswith('!balance'):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
@@ -201,8 +208,8 @@ async def on_message(message):
         rep = await message.reply("Balancing teams....this can take a minute...", mention_author=True)
         dict_to_balance = {}
         for i in range(len(sorted_players)):
-            if sorted_players[i][2] in balance_player_list:
-                dict_to_balance[sorted_players[i][2]] = sorted_players[i][0]
+            if sorted_players[i]["unique_name"] in balance_player_list:
+                dict_to_balance[sorted_players[i]["unique_name"]] = sorted_players[i]["mmr"]
         
         [team1, team2] = balance_teams(dict_to_balance)
         average_1 = (team1[0][1]+team1[1][1]+team1[2][1]+team1[3][1])/4
@@ -283,8 +290,12 @@ async def get_player(ctx, player_name: discord.Option(str)):
     get_players()
     get_sorted_players()
     for i in range(len(sorted_players)):
-        if player_name.lower() == sorted_players[i][2].lower():
-            await ctx.respond(f"Name:  **{player_name}**\nMMR:  **{sorted_players[i][0]}**\nRank:  **{i+1}**", ephemeral=True)
+        if player_name.lower() == sorted_players[i]["unique_name"].lower():
+            printed_stats = f"Name:  **{player_name}**\nTier:  **{trueskill_module.get_pretty_print_from_mmr(sorted_players[i]["mmr"])}**\nRank:  **{i+1}**\n"
+            printed_stats += f"Wins:  **{sorted_players[i]["wins"]}**\nLosses:  **{sorted_players[i]["losses"]}**\nKills:  **{sorted_players[i]["stats"]["kills"]}**\n"
+            printed_stats += f"Deaths:  **{sorted_players[i]["stats"]["deaths"]}**\nAssists:  **{sorted_players[i]["stats"]["assists"]}**\nDamage Done:  **{sorted_players[i]["stats"]["damage_done"]}**\n"
+            printed_stats += f"Damage Taken:  **{sorted_players[i]["stats"]["damage_taken"]}**\nHealing Done:  **{sorted_players[i]["stats"]["healing_done"]}**"
+            await ctx.respond(printed_stats, ephemeral=True)
             return
         
     await ctx.respond(f"Player {player_name} not found", ephemeral=True)
@@ -345,16 +356,7 @@ async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: di
 
         #print(huge_string)
         #print(user_id)
-        to_append = ""
-        with open("player_ids.json", "r") as readfile:
-            to_append = json.load(readfile)
-        if user_id in to_append["player_ids"]:
-            await ctx.respond("Player already in database", ephemeral=True)
-            return
-        with open("player_ids.json", "w") as writefile:
-            to_append["player_ids"].append(user_id)
-            to_append["player_elos"].update({user_id:[player_mmr, mmr_confidence, player_name]})
-            json.dump(to_append, writefile, indent=4)
+        trueskill_module.add_player(user_id, player_name, mmr=player_mmr, sigma=mmr_confidence)
         await ctx.respond(f"Added {player_name} successfully", ephemeral=True)
     else:
         await ctx.respond(f"User not authorized", ephemeral=True)
@@ -378,20 +380,26 @@ async def add_player(ctx, player_name: discord.Option(str)):
 
     #print(huge_string)
     #print(user_id)
-    to_append = ""
-    with open("player_ids.json", "r") as readfile:
-        to_append = json.load(readfile)
-    if user_id in to_append["player_ids"]:
-        await ctx.respond("Player already in database", ephemeral=True)
-        return
-    with open("player_ids.json", "w") as writefile:
-        to_append["player_ids"].append(user_id)
-        to_append["player_elos"].update({user_id:[player_mmr, mmr_confidence, player_name]})
-        json.dump(to_append, writefile, indent=4)
+    trueskill_module.add_player(user_id, player_name)
     await ctx.respond(f"Added {player_name} successfully", ephemeral=True)
 
+@bot.slash_command(name="remove_player", description="attaches json file", guild_ids=[168149897512484866, 1313026440660385834])
+async def remove_player(ctx, player_name: discord.Option(str)):
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    pattern = re.compile("\\S+.*#\\S+")
+    if not pattern.match(player_name):
+        await ctx.respond("Inputted name not correct format", ephemeral=True)
+        return
+
+    error = trueskill_module.remove_player_w_name(player_name)
+    if error:
+        trueskill_module.log_stuff(error)
+        await ctx.respond(error, ephemeral=True)
+        return
+    await ctx.respond(f"Removed {player_name} successfully", ephemeral=True)
+
 @bot.slash_command(name="update_player", description="attaches json file", guild_ids=[168149897512484866, 1313026440660385834])
-async def update_player(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=MMR_DEFAULT), mmr_confidence: discord.Option(float, required = False, default=CONFIDENCE_DEFAULT)):
+async def update_player(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=-1), mmr_confidence: discord.Option(float, required = False, default=-1)):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         pattern = re.compile("\\S+.*#\\S+")
@@ -407,12 +415,9 @@ async def update_player(ctx, player_name: discord.Option(str), player_mmr: disco
 
         #print(huge_string)
         #print(user_id)
-        to_append = ""
-        with open("player_ids.json", "r") as readfile:
-            to_append = json.load(readfile)
-        with open("player_ids.json", "w") as writefile:
-            to_append["player_elos"][user_id]=[player_mmr, mmr_confidence, player_name]
-            json.dump(to_append, writefile, indent=4)
+        error = trueskill_module.update_player(user_id, player_name, mmr=player_mmr, sigma=mmr_confidence)
+        if error:
+            await ctx.respond(error, ephemeral=True)
         await ctx.respond(f"Updated {player_name} successfully", ephemeral=True)
     else:
         await ctx.respond(f"User not authorized", ephemeral=True)
@@ -569,7 +574,7 @@ async def get_players_list(ctx):
     for i in range(10):
         if i >= len(sorted_players):
             break
-        leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i][2]} --- "+str(int(sorted_players[i][0])) + "\n")
+        leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i]["unique_name"]} --- "+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
         
 
     await ctx.respond(leaderboard_str, view=MyView(), ephemeral=True) # Send a message with our View class that contains the button
@@ -579,7 +584,7 @@ async def check_log_queue(ctx):
     global logging_queue
     queue_to_print = ""
     for queued_dict in logging_queue:
-        queue_to_print += queued_dict + "\n"
+        queue_to_print += str(queued_dict) + "\n"
     await ctx.respond(f"Current log:\n{queue_to_print}", ephemeral=True)
 
 

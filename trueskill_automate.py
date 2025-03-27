@@ -10,6 +10,9 @@ import sys
 import os
 import importlib
 
+MMR_DEFAULT = 1000
+CONFIDENCE_DEFAULT = 333
+
 reset_module = importlib.import_module("id_reset_module")
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -43,13 +46,13 @@ def is_players_correct(match_data):
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
         for i in range(len(match_data)):
-            if not (match_data[i]["player_id_encoded"] in to_read["player_ids"]):
+            if not (match_data[i]["player_id_encoded"] in to_read.keys()):
                 log_stuff(f"\n{match_data[i]["player_id_encoded"]}")
                 log_stuff(f"\n{match_data[i]["player"]["unique_display_name"]}")
                 log_stuff("\nnot in player ids")
                 return 0
-            if not (match_data[i]["player"]["unique_display_name"] == to_read["player_elos"][match_data[i]["player_id_encoded"]][2]):
-                to_read["player_elos"][match_data[i]["player_id_encoded"]][2] = match_data[i]["player"]["unique_display_name"]
+            if not (match_data[i]["player"]["unique_display_name"] == to_read[match_data[i]["player_id_encoded"]]["unique_name"]):
+                to_read[match_data[i]["player_id_encoded"]]["unique_name"] = match_data[i]["player"]["unique_display_name"]
                 changed = 1
     if changed:
         with open("player_ids.json", "w") as outfile:
@@ -57,6 +60,56 @@ def is_players_correct(match_data):
             json.dump(to_read, outfile, indent=4)
 
     return 1
+
+def get_squished_mmr(curr_mmr, new_mmr, did_win):
+    mmr_delta = abs(new_mmr - curr_mmr)
+    if mmr_delta == 0:
+        mmr_delta = 1
+        if did_win:
+            new_mmr = curr_mmr + 1
+        else:
+            new_mmr = curr_mmr - 1
+    if mmr_delta < 20:
+        mmr_delta = 20
+    elif mmr_delta > 40:
+        mmr_delta = 40
+    if new_mmr < curr_mmr:
+        mmr_delta *= -1
+     
+    return (curr_mmr + mmr_delta)
+
+def get_pretty_print_from_mmr(mmr):
+    ranked_dict = {"Bronze":(0, 499), "Silver":(500, 999), "Gold":(1000, 1499), "Platinum":(1500, 1999), "Diamond":(2000, 2499), "Masters":(2500, 2999), "Challenger":(3000, 100000)}
+
+    for key, value in ranked_dict.items():
+        if mmr >= value[0] and mmr <= value[1]:
+            if key != "Challenger":
+                mmr -= value[0]
+                mmr += 100
+                division = 6 - int(str(mmr)[:1])
+                div_lp = str(mmr)[1:3]
+                return (f"{key} {division}   {div_lp} LP")
+            else:
+                mmr -= value[0]
+                return (f"{key}   {mmr} LP") 
+    
+    print("failure in pretty printing mmr")
+
+def populate_data_players(match_data):
+    to_read = ""
+    with open("player_ids.json", "r") as infile:
+        to_read = json.load(infile)
+        for i in range(len(match_data)):
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["kills"] += match_data[i]["stats"]["Kills"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["deaths"] += match_data[i]["stats"]["Deaths"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["assists"] += match_data[i]["stats"]["Assists"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_done"] += match_data[i]["stats"]["HeroEffectiveDamageDone"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_taken"] += match_data[i]["stats"]["HeroEffectiveDamageTaken"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGiven"]
+            to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGivenSelf"]
+    with open("player_ids.json", "w") as outfile:
+        json.dump(to_read, outfile, indent=4)
+
 
 def score_match(match_data):
     to_read = ""
@@ -66,8 +119,8 @@ def score_match(match_data):
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
         for i in range(len(match_data)):
-            player_mu = to_read["player_elos"][match_data[i]["player_id_encoded"]][0]
-            player_sigma = to_read["player_elos"][match_data[i]["player_id_encoded"]][1]
+            player_mu = to_read[match_data[i]["player_id_encoded"]]["mmr"]
+            player_sigma = to_read[match_data[i]["player_id_encoded"]]["sigma"]
             if match_data[i]["placement"] == 1:
                 players1.append([match_data[i]["player_id_encoded"], env.create_rating(player_mu, player_sigma), match_data[i]["player"]["unique_display_name"]])
             elif match_data[i]["placement"] == 2:
@@ -88,14 +141,18 @@ def score_match(match_data):
 
 
         for i in range(4):
-            to_read["player_elos"][players1[i][0]][0] = rated_rating_groups[0][players1[i][0]].mu
-            to_read["player_elos"][players1[i][0]][1] = rated_rating_groups[0][players1[i][0]].sigma
-            to_read["player_elos"][players1[i][0]][2] = players1[i][2]
+            elo_to_give = get_squished_mmr(to_read[players1[i][0]]["mmr"], rated_rating_groups[0][players1[i][0]].mu, 1)
+            to_read[players1[i][0]]["mmr"] = elo_to_give
+            to_read[players1[i][0]]["sigma"] = rated_rating_groups[0][players1[i][0]].sigma
+            to_read[players1[i][0]]["unique_name"] = players1[i][2]
+            to_read[players1[i][0]]["wins"] += 1
             
         for i in range(4):
-            to_read["player_elos"][players2[i][0]][0] = rated_rating_groups[1][players2[i][0]].mu
-            to_read["player_elos"][players2[i][0]][1] = rated_rating_groups[1][players2[i][0]].sigma
-            to_read["player_elos"][players2[i][0]][2] = players2[i][2]
+            elo_to_give = get_squished_mmr(to_read[players2[i][0]]["mmr"], rated_rating_groups[1][players2[i][0]].mu, 0)
+            to_read[players2[i][0]]["mmr"] = elo_to_give
+            to_read[players2[i][0]]["sigma"] = rated_rating_groups[1][players2[i][0]].sigma
+            to_read[players2[i][0]]["unique_name"] = players2[i][2]
+            to_read[players2[i][0]]["losses"] += 1
 
     with open("player_ids.json", "w") as outfile:
         json.dump(to_read, outfile, indent=4)
@@ -141,6 +198,16 @@ def retrieve_id(username):
 
     return user_id
 
+def is_valid_match(match_data):
+    total_kills = 0
+    for player_data in match_data:
+        total_kills += player_data["stats"]["Kills"]
+    if total_kills < 5:
+        return 0
+    else:
+        return 1
+    
+
 """
 Check a match with match id
 """
@@ -155,6 +222,9 @@ def check_new_match(match_id):
 
     json_match_details = match_details.json()
 
+    if not is_valid_match(json_match_details):
+        return ["Invalid match (probably too few kills)"]
+
     for i in range(len(json_match_details)):
         retrieved_id = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
         if not retrieved_id:
@@ -166,6 +236,7 @@ def check_new_match(match_id):
         return ["A player was not found in ranked system"]
 
     score_match(json_match_details)
+    populate_data_players(json_match_details)
     
     mark_match_played(match_id)
     
@@ -193,7 +264,7 @@ def check_match_w_name(unique_name):
     
     return check_new_match(json_new_match["data"][0]["match_id"])
 
-def check_matches():
+"""def check_matches():
     to_read = ""
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
@@ -211,8 +282,52 @@ def check_matches():
         if not is_new_game(json_new_match["data"][0]):
             continue
 
-        check_new_match(json_new_match["data"][0]["match_id"])
+        check_new_match(json_new_match["data"][0]["match_id"])"""
 
+def remove_player_w_id(user_id):
+    to_replace = ""
+    with open("player_ids.json", "r") as readfile:
+        to_replace = json.load(readfile)
+    if not user_id in to_replace.keys():
+        log_stuff("Player not in database")
+        return "Player not in database"
+    with open("player_ids.json", "w") as writefile:
+        del to_replace[user_id]
+        json.dump(to_replace, writefile, indent=4)
+
+def remove_player_w_name(user_name):
+    return remove_player_w_id(retrieve_id(user_name))
+
+def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    to_append = ""
+    with open("player_ids.json", "r") as readfile:
+        to_append = json.load(readfile)
+    if user_id in to_append.keys():
+        log_stuff("Player already in database")
+        return "Player already in database"
+    with open("player_ids.json", "w") as writefile:
+        to_append.update({user_id:{"mmr":mmr, "sigma":sigma, "unique_name": user_name, "wins":0, "losses":0, 
+                           "stats":{"kills":0, "deaths":0, "assists":0, "damage_done":0, "damage_taken": 0, "healing_done":0}}})
+        json.dump(to_append, writefile, indent=4)
+
+def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    return add_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
+
+def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    to_append = ""
+    with open("player_ids.json", "r") as readfile:
+        to_append = json.load(readfile)
+    if not user_id in to_append.keys():
+        log_stuff("Player not in database")
+        return "Player not in database"
+    with open("player_ids.json", "w") as writefile:
+        to_append[user_id]["mmr"]= mmr if mmr != -1 else to_append[user_id]["mmr"]
+        to_append[user_id]["sigma"]= sigma if sigma != -1 else to_append[user_id]["sigma"]
+        to_append[user_id]["unique_name"]= user_name
+        json.dump(to_append, writefile, indent=4)
+
+def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    return update_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
 def make_backup():
     with open("match_ids.json", "r") as infile:
