@@ -1,3 +1,4 @@
+from collections import defaultdict
 import discord
 import logging
 import json
@@ -51,6 +52,9 @@ def load_in_admins():
             global_admin_list.append(int(admins[:-1]))
 
 def get_players():
+    '''
+    assigns all registered player ids to global variable `players_in_memory` 
+    '''
     global players_in_memory
     to_read = ""
     with open("player_ids.json", "r") as infile:
@@ -67,6 +71,13 @@ def p1_is_worse(player1, player2):
 
 
 def get_sorted_players():
+    '''
+    ranks players by elo using bubble sort
+
+    creates new global variable `sorted_players`
+
+    `[[250, 100, "Player1Name#ID"], [200, 100, "Player2Name#ID"]]`
+    '''
     global sorted_players
     global players_in_memory
     players_list = list(players_in_memory.values())
@@ -134,6 +145,7 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
 
 def fill_next_recur(team1, team2, players_full):
+    '''returns mean team elo confidence and teams'''
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     if len(team1) == 4:
         if len(team2) == 4:
@@ -144,7 +156,7 @@ def fill_next_recur(team1, team2, players_full):
             return [delta, team1, team2]
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     
-    dict_keys = list(players_full.keys())
+    dict_keys = list(players_full.keys()) # player ids
     #print(str(dict_keys)+ " " + str(len(dict_keys)) + "\n")
     best_result = []
     for i in range(len(dict_keys)):
@@ -169,6 +181,28 @@ def balance_teams(players_to_balance):
     balance_result = fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
     
+def decorate_rank_change(old_sorted_players, sorted_players):
+    nested_dict = lambda: defaultdict(nested_dict) # allow dict[a][b]
+    rank_changes_dict = nested_dict()
+    old_rank_dict = {player: (idx, old_mmr) for idx, (old_mmr, old_conf, player) in enumerate(old_sorted_players[:19], start=1)}
+    for new_idx, (new_mmr, new_conf, player) in enumerate(sorted_players[:19], start=1):
+        old_rank = old_rank_dict.get(player)
+        if old_rank:
+            old_idx, old_mmr = old_rank
+            if old_idx > new_idx:
+              rank_changes_dict[player]['rank_change'] = f'+{old_idx - new_idx}🆙️'
+            # # highlighting rank down is kind of bm
+            # if old_idx < new_idx:
+            #   rank_changes_dict[player] = f'- {new_idx - old_idx} ⬇️'
+            if old_mmr > new_mmr:
+              rank_changes_dict[player]['mmr_change'] = f'(-{round(old_mmr - new_mmr)})'
+            if old_mmr < new_mmr:
+              rank_changes_dict[player]['mmr_change'] = f'(+{round(new_mmr - old_mmr)})'
+        else:
+            # new player
+            rank_changes_dict[player]['rank_change'] = '(Welcome to the top 20!)'
+
+    return rank_changes_dict
 
 
 @bot.event
@@ -181,15 +215,21 @@ async def on_message(message):
         await message.reply('Hello!', mention_author=True)
     if message.content.startswith('!leaderboard'):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+
+        old_sorted_players = copy.deepcopy(sorted_players)
+
         get_players()
         get_sorted_players()
+
         leaderboard_str = "```Name." +(" "*40) + "Rank.\n"
+
         #print(sorted_players)
         i = 0
         counted = 0
         while counted < 20:
             if i >= len(sorted_players):
                 break
+
             if (sorted_players[i]["wins"] + sorted_players[i]["losses"]) > 10:
                 to_add = f"{counted+1}. {sorted_players[i]["unique_name"]}"
                 whitespace_count = 45 - len(to_add)
@@ -198,7 +238,7 @@ async def on_message(message):
                 counted += 1
             i += 1
         leaderboard_str += "```"
-            
+
         await message.reply(leaderboard_str, mention_author=True)
     if message.content.startswith('!balance'):
         trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))

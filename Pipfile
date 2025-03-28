@@ -6,6 +6,13 @@ name = "pypi"
 [packages]
 flask = "*"
 selenium = "*"
+bs4 = "*"
+urllib3 = "*"
+requests = "*"
+mpmath = "*"
+trueskill = "*"
+discord = "*"
+dotenv = "*"
 
 [dev-packages]
 
