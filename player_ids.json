@@ -1,462 +1,1442 @@
 {
-    "player_ids": [
-        "3131248f6e5a4c64a1a9664135978d95",
-        "d6e6aeffbfa74613b4821c0dc8da19cc",
-        "bf132d8d39374681a8b0a88220a70c14",
-        "3fa1308e2069455599251b8919a4e4c9",
-        "80459d0a0fda4db3b5d25a92aa8a8a09",
-        "96b96dd28718476184c53d45b58c526b",
-        "f5fe85bdaf854667badbab0aece6ac45",
-        "493d85e2b03845e9aa99b85066711cee",
-        "177a8c2562674644a957d63acd9b6f73",
-        "10570b1ecb3a467083a6ef9b005213f4",
-        "15a1964d79514ce4b95f643577972295",
-        "e627ecc6c50c46f5a6af32f7ccb6d6d0",
-        "657c7d94e872407ebd6c525b21070624",
-        "44c34e9bc8c44d4db7f08c42ae2f5146",
-        "61ba00a0ee374191b301c13a7276891d",
-        "90caaa7068244ffab0859a6d96052f03",
-        "aad85e0849384ab28a2d4f1b362cb4c3",
-        "c549cde0627e489dacb209a0f7b8c3df",
-        "05a4ad4affda45b8be1a4f9d4d67b7b6",
-        "21a78ce7daf7407cb8d6c56be72a49be",
-        "2aec805425744c39aef2759f2e3a39a9",
-        "8ecc314f8dc54ac5bd14bf9d84dad1de",
-        "00539ecccb4d4cf9be4b5359dd69167f",
-        "43408974db2c44ec8831bedd3ef9c785",
-        "ac35cbd7abf5459f83a4e4bb73474067",
-        "c07f5da7db8d46d7be43b4b0d6a56919",
-        "c66bb424e1e64798b3f7aa0b4868deb4",
-        "6672908f4d904da5935251520539dd23",
-        "e5588a51b37d47a2aee02f8ddac3a3a5",
-        "10f42c4dc9f5420dbb51442bb05ccf80",
-        "34ddf41b43e543819d0d7503b448b13d",
-        "64a86bbd5dc04701a8113ea619bb3126",
-        "6156268a6ba2457a981b64804abffb5d",
-        "bcffba6721c74bf7a1d494e15e2d655c",
-        "fb809586e546405796884675fe1d3f9f",
-        "1935f6c93c1b4079a6850e6a92e3d6b7",
-        "8ebd612a53ef4873a7dd6dd86465c645",
-        "e32614e6a2f04b7a8f11ce38d7be3a53",
-        "d90dd29304314a77b3323cdab1f91174",
-        "6abe8205e7ae47a4a8919a66b10f1e9b",
-        "d26a465adbe24d699af42ac01f7fbce4",
-        "24b7171a957041b680f76212cba2a42e",
-        "4da6ef6973014ceda3dd6b8e03697ed7",
-        "b09612a1045346648e48ea09b24d758b",
-        "e12d1839e0cc450cb6780a528ab87556",
-        "afb620e686864bc28326ad46c75ecbc9",
-        "13d28c8e059742e3a17b502b9ce26033",
-        "d3675408a3e249989203130d2768c172",
-        "ea2721891faf45bb976027f09395f0e0",
-        "562f129480924b0c8501b3f112d135f3",
-        "c0fce3d1d789495c90c171462cbfa0f3",
-        "946c94c0f9bc4b60b556bf1882ad4804",
-        "d4932672bb6d41f295359e29378c51d2",
-        "2c0187d5f3cb4ae2b12cf09949782ef2",
-        "30f6913964ee4f19b8bd96863732e899",
-        "8b3cc8b1efb64ceda2b2f1da5e251502",
-        "7d1ee433e1ec4a6588cd785d22260a47",
-        "9d9bc6b632194e639e0b09df9299b044",
-        "2f4ec979a47f4755b4d68de24fa0e9ea",
-        "c392b5c134cd4618b1c0abc25ef3f751",
-        "016250053f8546969b6148c202c7ea4e",
-        "990a2527d6fe48e490d1e868f04d9d8c",
-        "1d548fd13dac4c598adc54815f72506f",
-        "59475f9ba57a4dc383f05a711509b246",
-        "c868e7cd5f7b412585a5614957e1ac5b",
-        "89e0bfd1c48a49d1a10f66e6c7fabac4",
-        "3f5bcbb8a91a44c08df86a5ec670f908",
-        "fbed54a47d1f4ec2a322708625288c07",
-        "4edd45764b5a46a8a340a8a40e45e121",
-        "eba403ea639c42228b1b49af23da4665",
-        "08c884dbac67410a82942eea18e9a9de",
-        "378c6e2a0a7a4cf3a1e231c5703c0601",
-        "f4f09b6306e8474c98832eda79735d72",
-        "059fe4218a6d40558f222331e2480616",
-        "893e1214b2904ed29206c18fbd016f76",
-        "c42fbe2776684417a0ad71eb3184a645"
-    ],
-    "player_elos": {
-        "3131248f6e5a4c64a1a9664135978d95": [
-            250,
-            100,
-            "Emperor#King"
-        ],
-        "d6e6aeffbfa74613b4821c0dc8da19cc": [
-            354.2261311436946,
-            33.58545202268084,
-            "Despi#derp"
-        ],
-        "bf132d8d39374681a8b0a88220a70c14": [
-            243.74358289930692,
-            48.85204645283677,
-            "Dorris#0000"
-        ],
-        "3fa1308e2069455599251b8919a4e4c9": [
-            260.26088257742344,
-            33.43912500636825,
-            "Coyote#0000"
-        ],
-        "80459d0a0fda4db3b5d25a92aa8a8a09": [
-            345.8193400075831,
-            30.741469757878757,
-            "Krilo#NUTT"
-        ],
-        "96b96dd28718476184c53d45b58c526b": [
-            249.77729848140896,
-            39.9667255877637,
-            "Thank You Chef#86"
-        ],
-        "f5fe85bdaf854667badbab0aece6ac45": [
-            225.58875274949253,
-            76.83847294326458,
-            "Hight#01"
-        ],
-        "493d85e2b03845e9aa99b85066711cee": [
-            281.0732719518937,
-            28.091193348004598,
-            "PhenomEX#DIFF"
-        ],
-        "177a8c2562674644a957d63acd9b6f73": [
-            269.3100458838604,
-            30.225008843035074,
-            "jetskii#9028"
-        ],
-        "10570b1ecb3a467083a6ef9b005213f4": [
-            191.64964646004324,
-            52.784919848277504,
-            "gothcowboy#Jack"
-        ],
-        "15a1964d79514ce4b95f643577972295": [
-            181.82334428995088,
-            64.75778345597158,
-            "Claire#6892"
-        ],
-        "e627ecc6c50c46f5a6af32f7ccb6d6d0": [
-            248.16794075872554,
-            60.298555219214435,
-            "miles#0001"
-        ],
-        "657c7d94e872407ebd6c525b21070624": [
-            197.7360272245401,
-            34.37545953427137,
-            "trifox#5917"
-        ],
-        "44c34e9bc8c44d4db7f08c42ae2f5146": [
-            235.49235573046536,
-            34.1931559280477,
-            "Aposl#VGBC"
-        ],
-        "61ba00a0ee374191b301c13a7276891d": [
-            286.81875567613736,
-            35.340125269171814,
-            "Tsunani#nani"
-        ],
-        "90caaa7068244ffab0859a6d96052f03": [
-            249.03675952187967,
-            55.25219074362903,
-            "amatsuka#4022"
-        ],
-        "aad85e0849384ab28a2d4f1b362cb4c3": [
-            319.928017392835,
-            43.32812392959488,
-            "Geb#1087"
-        ],
-        "c549cde0627e489dacb209a0f7b8c3df": [
-            460.5697008527515,
-            52.92378744346595,
-            "SHRICHAEL JORDAN#pyn"
-        ],
-        "05a4ad4affda45b8be1a4f9d4d67b7b6": [
-            306.7179337785684,
-            39.82651697148702,
-            "xen#xen"
-        ],
-        "21a78ce7daf7407cb8d6c56be72a49be": [
-            168.95546024755782,
-            67.59216385079014,
-            "Pomu#uwu"
-        ],
-        "2aec805425744c39aef2759f2e3a39a9": [
-            149.96820514961482,
-            45.41302121912045,
-            "Lucidious#0000"
-        ],
-        "8ecc314f8dc54ac5bd14bf9d84dad1de": [
-            305.2163158716736,
-            37.60713281621512,
-            "spadestorms#STRM"
-        ],
-        "00539ecccb4d4cf9be4b5359dd69167f": [
-            265.6036696283886,
-            38.224943981508055,
-            "Kanra#bap"
-        ],
-        "43408974db2c44ec8831bedd3ef9c785": [
-            272.486136484428,
-            43.63525939752808,
-            "mvches#mvmv"
-        ],
-        "ac35cbd7abf5459f83a4e4bb73474067": [
-            309.2418067198121,
-            55.05088358510884,
-            "tnn#9224"
-        ],
-        "c07f5da7db8d46d7be43b4b0d6a56919": [
-            220.90800021035122,
-            81.493904177936,
-            "Zixbee#BAP"
-        ],
-        "c66bb424e1e64798b3f7aa0b4868deb4": [
-            180.04325297889613,
-            71.80375996014588,
-            "Phantom#Ripp"
-        ],
-        "6672908f4d904da5935251520539dd23": [
-            278.0283585563253,
-            47.96697516644406,
-            "polts#2002"
-        ],
-        "e5588a51b37d47a2aee02f8ddac3a3a5": [
-            243.27109985076524,
-            35.42455238475277,
-            "Comrade Syrus#OFF"
-        ],
-        "10f42c4dc9f5420dbb51442bb05ccf80": [
-            224.17167184643048,
-            74.2665985475061,
-            "Aureeg#4920"
-        ],
-        "34ddf41b43e543819d0d7503b448b13d": [
-            239.90282342892013,
-            80.34643835085757,
-            "Onchord#HAHA"
-        ],
-        "64a86bbd5dc04701a8113ea619bb3126": [
-            223.87631148455068,
-            75.24512109335991,
-            "Sprayed#SQRT"
-        ],
-        "6156268a6ba2457a981b64804abffb5d": [
-            308.87904894503134,
-            46.66827937918261,
-            "PoneyBoY#BRAL"
-        ],
-        "bcffba6721c74bf7a1d494e15e2d655c": [
-            219.43467554103051,
-            79.6184495976816,
-            "Solura#0001"
-        ],
-        "fb809586e546405796884675fe1d3f9f": [
-            265.5189872378525,
-            82.323146354857,
-            "Madly#1337"
-        ],
-        "1935f6c93c1b4079a6850e6a92e3d6b7": [
-            277.31275284163013,
-            78.90626395371176,
-            "DbolDENO#444"
-        ],
-        "8ebd612a53ef4873a7dd6dd86465c645": [
-            353.95713377259347,
-            31.45501268576542,
-            "cattMicrowaved#hot"
-        ],
-        "e32614e6a2f04b7a8f11ce38d7be3a53": [
-            236.701022269416,
-            76.16146215516042,
-            "omzor#6373"
-        ],
-        "d90dd29304314a77b3323cdab1f91174": [
-            432.12577105570955,
-            56.88579915134098,
-            "lord Vader#1458"
-        ],
-        "6abe8205e7ae47a4a8919a66b10f1e9b": [
-            199.0193526592898,
-            67.45153830779135,
-            "pist#0000"
-        ],
-        "d26a465adbe24d699af42ac01f7fbce4": [
-            208.654187660667,
-            70.30936689648232,
-            "Cataracts#5875"
-        ],
-        "24b7171a957041b680f76212cba2a42e": [
-            149.80151306357516,
-            73.55625046468093,
-            "Mitchp#0000"
-        ],
-        "4da6ef6973014ceda3dd6b8e03697ed7": [
-            232.9796088051253,
-            80.4735898193776,
-            "roughly 44 ducks#44"
-        ],
-        "b09612a1045346648e48ea09b24d758b": [
-            196.24392942944698,
-            76.48848378149873,
-            "REESE#0000"
-        ],
-        "e12d1839e0cc450cb6780a528ab87556": [
-            280.141176213907,
-            69.3843080665566,
-            "A1Moves#8041"
-        ],
-        "afb620e686864bc28326ad46c75ecbc9": [
-            242.45524511434016,
-            80.24146235247869,
-            "CapnHammered#69"
-        ],
-        "13d28c8e059742e3a17b502b9ce26033": [
-            242.95358595447593,
-            81.32207826397227,
-            "Ghost Malone#DLO"
-        ],
-        "d3675408a3e249989203130d2768c172": [
-            272.2686560135131,
-            74.51902021674813,
-            "Dill0nFPS#Main"
-        ],
-        "ea2721891faf45bb976027f09395f0e0": [
-            290.77194734026534,
-            68.54259459912126,
-            "Matty#9999"
-        ],
-        "562f129480924b0c8501b3f112d135f3": [
-            176.6589627784763,
-            78.8693247863112,
-            "i3i3gunna YT#BB"
-        ],
-        "c0fce3d1d789495c90c171462cbfa0f3": [
-            183.9564535858295,
-            75.67203839101946,
-            "ICondoneViolence#2378"
-        ],
-        "946c94c0f9bc4b60b556bf1882ad4804": [
-            282.7815249884359,
-            79.61327184991927,
-            "MajorLeagueBeeball#10Q"
-        ],
-        "d4932672bb6d41f295359e29378c51d2": [
-            186.21084342768808,
-            63.15206052270622,
-            "JasonBourne99#7162"
-        ],
-        "2c0187d5f3cb4ae2b12cf09949782ef2": [
-            207.75868910196496,
-            80.14059529752294,
-            "MadMagical#0001"
-        ],
-        "30f6913964ee4f19b8bd96863732e899": [
-            347.0250268528342,
-            63.806273605103435,
-            "HIDE type 1#3843"
-        ],
-        "8b3cc8b1efb64ceda2b2f1da5e251502": [
-            250,
-            83,
-            "Sheepa#444"
-        ],
-        "7d1ee433e1ec4a6588cd785d22260a47": [
-            250,
-            83,
-            "crownella#1420"
-        ],
-        "9d9bc6b632194e639e0b09df9299b044": [
-            202.16213209616905,
-            53.52813362026989,
-            "SkullKid67#9265"
-        ],
-        "2f4ec979a47f4755b4d68de24fa0e9ea": [
-            166.4932864009819,
-            64.05012686416119,
-            "HeyMaxF#7872"
-        ],
-        "c392b5c134cd4618b1c0abc25ef3f751": [
-            303.7191059481018,
-            55.250169686560845,
-            "MandM#9920"
-        ],
-        "016250053f8546969b6148c202c7ea4e": [
-            224.60646173736887,
-            60.54596870944642,
-            "Sneekers#007"
-        ],
-        "990a2527d6fe48e490d1e868f04d9d8c": [
-            394.04705406585435,
-            61.86817308968822,
-            "Illusion#01"
-        ],
-        "1d548fd13dac4c598adc54815f72506f": [
-            233.6763142548987,
-            59.936933118438816,
-            "Dukkha#01"
-        ],
-        "59475f9ba57a4dc383f05a711509b246": [
-            222.76012640597827,
-            61.845522639111984,
-            "Miles#0001"
-        ],
-        "c868e7cd5f7b412585a5614957e1ac5b": [
-            218.01614620950158,
-            61.87590892109744,
-            "CAT WITH BOW#WIN"
-        ],
-        "89e0bfd1c48a49d1a10f66e6c7fabac4": [
-            267.7233376386158,
-            42.859446533670074,
-            "xLunares#777"
-        ],
-        "3f5bcbb8a91a44c08df86a5ec670f908": [
-            212.21140606546217,
-            67.8123230345781,
-            "Acushla#Miki"
-        ],
-        "fbed54a47d1f4ec2a322708625288c07": [
-            310.6344858057732,
-            72.96395954842667,
-            "FOX MCCLOUD#20XX"
-        ],
-        "4edd45764b5a46a8a340a8a40e45e121": [
-            226.5111271950853,
-            60.116639103042104,
-            "RebelPanda#1134"
-        ],
-        "eba403ea639c42228b1b49af23da4665": [
-            280.24086336607024,
-            50.525502469804714,
-            "Stevenator#546"
-        ],
-        "08c884dbac67410a82942eea18e9a9de": [
-            123.53721285707358,
-            60.771702678614886,
-            "Pendragon#0000"
-        ],
-        "378c6e2a0a7a4cf3a1e231c5703c0601": [
-            310.62096669323046,
-            55.351075259921636,
-            "Toilet#TJ"
-        ],
-        "f4f09b6306e8474c98832eda79735d72": [
-            262.6227713358648,
-            56.112832712712994,
-            "scattatle#2049"
-        ],
-        "059fe4218a6d40558f222331e2480616": [
-            179.07962367332138,
-            64.94231670598292,
-            "pigsforsale#Boyd"
-        ],
-        "893e1214b2904ed29206c18fbd016f76": [
-            252.36860490769325,
-            76.23238169550318,
-            "qSync#TTV"
-        ],
-        "c42fbe2776684417a0ad71eb3184a645": [
-            247.63139509230678,
-            76.23238169550318,
-            "herd#00"
-        ]
+    "3131248f6e5a4c64a1a9664135978d95": {
+        "mmr": 1120,
+        "sigma": 300.196443234483,
+        "unique_name": "Emperor#King",
+        "wins": 6,
+        "losses": 2,
+        "stats": {
+            "kills": 52,
+            "deaths": 55,
+            "assists": 35,
+            "damage_done": 233354.499,
+            "damage_taken": 186680.59300000002,
+            "healing_done": 103673.1477
+        }
+    },
+    "d6e6aeffbfa74613b4821c0dc8da19cc": {
+        "mmr": 1195.3175852197103,
+        "sigma": 155.62674035903234,
+        "unique_name": "Despi#derp",
+        "wins": 16,
+        "losses": 10,
+        "stats": {
+            "kills": 161,
+            "deaths": 177,
+            "assists": 193,
+            "damage_done": 616248.8360000001,
+            "damage_taken": 596077.8629999999,
+            "healing_done": 317040.41747600003
+        }
+    },
+    "bf132d8d39374681a8b0a88220a70c14": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Dorris#0000",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "3fa1308e2069455599251b8919a4e4c9": {
+        "mmr": 1160,
+        "sigma": 267.6712446508364,
+        "unique_name": "Coyote#0000",
+        "wins": 4,
+        "losses": 0,
+        "stats": {
+            "kills": 12,
+            "deaths": 32,
+            "assists": 41,
+            "damage_done": 110955.807,
+            "damage_taken": 90589.599,
+            "healing_done": 54347.8184
+        }
+    },
+    "80459d0a0fda4db3b5d25a92aa8a8a09": {
+        "mmr": 1196.3873580407294,
+        "sigma": 193.63393646035314,
+        "unique_name": "Krilo#NUTT",
+        "wins": 11,
+        "losses": 5,
+        "stats": {
+            "kills": 61,
+            "deaths": 105,
+            "assists": 110,
+            "damage_done": 378420.385,
+            "damage_taken": 307580.943,
+            "healing_done": 154452.47743000006
+        }
+    },
+    "96b96dd28718476184c53d45b58c526b": {
+        "mmr": 960,
+        "sigma": 272.14447272924866,
+        "unique_name": "Thank You Chef#86",
+        "wins": 1,
+        "losses": 2,
+        "stats": {
+            "kills": 7,
+            "deaths": 23,
+            "assists": 16,
+            "damage_done": 45393.261,
+            "damage_taken": 131911.277,
+            "healing_done": 81789.5987
+        }
+    },
+    "f5fe85bdaf854667badbab0aece6ac45": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Hight#01",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "493d85e2b03845e9aa99b85066711cee": {
+        "mmr": 965.9877545748112,
+        "sigma": 168.04951642167217,
+        "unique_name": "PhenomEX#DIFF",
+        "wins": 9,
+        "losses": 10,
+        "stats": {
+            "kills": 86,
+            "deaths": 141,
+            "assists": 130,
+            "damage_done": 496512.04799999995,
+            "damage_taken": 422206.26900000003,
+            "healing_done": 226582.11090000003
+        }
+    },
+    "177a8c2562674644a957d63acd9b6f73": {
+        "mmr": 957.8087707042093,
+        "sigma": 169.54642374474355,
+        "unique_name": "jetskii#9028",
+        "wins": 8,
+        "losses": 10,
+        "stats": {
+            "kills": 61,
+            "deaths": 131,
+            "assists": 118,
+            "damage_done": 322395.082,
+            "damage_taken": 441483.154,
+            "healing_done": 229807.32596000005
+        }
+    },
+    "10570b1ecb3a467083a6ef9b005213f4": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "gothcowboy#Jack",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "15a1964d79514ce4b95f643577972295": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Claire#6892",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "657c7d94e872407ebd6c525b21070624": {
+        "mmr": 807.5603347268471,
+        "sigma": 211.08399454659477,
+        "unique_name": "trifox#5917",
+        "wins": 2,
+        "losses": 7,
+        "stats": {
+            "kills": 34,
+            "deaths": 66,
+            "assists": 53,
+            "damage_done": 201525.19700000001,
+            "damage_taken": 191129.421,
+            "healing_done": 98383.30579999999
+        }
+    },
+    "44c34e9bc8c44d4db7f08c42ae2f5146": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Aposl#VGBC",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "61ba00a0ee374191b301c13a7276891d": {
+        "mmr": 1004.9616043688934,
+        "sigma": 213.5868959128495,
+        "unique_name": "Tsunani#nani",
+        "wins": 5,
+        "losses": 5,
+        "stats": {
+            "kills": 41,
+            "deaths": 68,
+            "assists": 57,
+            "damage_done": 214905.96,
+            "damage_taken": 247227.60799999995,
+            "healing_done": 101356.68830000001
+        }
+    },
+    "90caaa7068244ffab0859a6d96052f03": {
+        "mmr": 1000,
+        "sigma": 281.74513176563767,
+        "unique_name": "amatsuka#4022",
+        "wins": 1,
+        "losses": 1,
+        "stats": {
+            "kills": 2,
+            "deaths": 14,
+            "assists": 4,
+            "damage_done": 32102.802,
+            "damage_taken": 30507.337,
+            "healing_done": 9749.1148
+        }
+    },
+    "aad85e0849384ab28a2d4f1b362cb4c3": {
+        "mmr": 920,
+        "sigma": 264.9233357306131,
+        "unique_name": "Geb#1087",
+        "wins": 1,
+        "losses": 3,
+        "stats": {
+            "kills": 9,
+            "deaths": 32,
+            "assists": 39,
+            "damage_done": 86761.453,
+            "damage_taken": 174278.202,
+            "healing_done": 147426.619
+        }
+    },
+    "c549cde0627e489dacb209a0f7b8c3df": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "SHRICHAEL JORDAN#pyn",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "05a4ad4affda45b8be1a4f9d4d67b7b6": {
+        "mmr": 1227.5440809884562,
+        "sigma": 184.3319267704202,
+        "unique_name": "xen#xen",
+        "wins": 11,
+        "losses": 5,
+        "stats": {
+            "kills": 94,
+            "deaths": 108,
+            "assists": 112,
+            "damage_done": 343493.17699999997,
+            "damage_taken": 332814.85199999996,
+            "healing_done": 197806.46191000004
+        }
+    },
+    "21a78ce7daf7407cb8d6c56be72a49be": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Pomu#uwu",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "2aec805425744c39aef2759f2e3a39a9": {
+        "mmr": 1062.315187071883,
+        "sigma": 220.72833505256932,
+        "unique_name": "Lucidious#0000",
+        "wins": 5,
+        "losses": 3,
+        "stats": {
+            "kills": 39,
+            "deaths": 61,
+            "assists": 46,
+            "damage_done": 203342.49899999998,
+            "damage_taken": 208358.55599999998,
+            "healing_done": 126194.1745
+        }
+    },
+    "8ecc314f8dc54ac5bd14bf9d84dad1de": {
+        "mmr": 1201.2403661825397,
+        "sigma": 184.31572339187318,
+        "unique_name": "spadestorms#STRM",
+        "wins": 10,
+        "losses": 5,
+        "stats": {
+            "kills": 62,
+            "deaths": 100,
+            "assists": 110,
+            "damage_done": 324838.038,
+            "damage_taken": 216626.20760000002,
+            "healing_done": 95333.10184000002
+        }
+    },
+    "00539ecccb4d4cf9be4b5359dd69167f": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Kanra#bap",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "43408974db2c44ec8831bedd3ef9c785": {
+        "mmr": 1000,
+        "sigma": 257.7991159419848,
+        "unique_name": "mvches#mvmv",
+        "wins": 3,
+        "losses": 3,
+        "stats": {
+            "kills": 30,
+            "deaths": 43,
+            "assists": 33,
+            "damage_done": 132228.494,
+            "damage_taken": 108524.47,
+            "healing_done": 60004.208329999994
+        }
+    },
+    "ac35cbd7abf5459f83a4e4bb73474067": {
+        "mmr": 1000,
+        "sigma": 252.9739376130241,
+        "unique_name": "tnn#9224",
+        "wins": 3,
+        "losses": 3,
+        "stats": {
+            "kills": 16,
+            "deaths": 42,
+            "assists": 37,
+            "damage_done": 127649.627,
+            "damage_taken": 106073.051,
+            "healing_done": 38426.866500000004
+        }
+    },
+    "c07f5da7db8d46d7be43b4b0d6a56919": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Zixbee#BAP",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "c66bb424e1e64798b3f7aa0b4868deb4": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Phantom#Ripp",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "6672908f4d904da5935251520539dd23": {
+        "mmr": 931.1434173118836,
+        "sigma": 180.72299155536433,
+        "unique_name": "polts#2002",
+        "wins": 8,
+        "losses": 10,
+        "stats": {
+            "kills": 70,
+            "deaths": 130,
+            "assists": 92,
+            "damage_done": 398882.88800000004,
+            "damage_taken": 363631.6340000001,
+            "healing_done": 151694.87930000003
+        }
+    },
+    "e5588a51b37d47a2aee02f8ddac3a3a5": {
+        "mmr": 691.2756804627966,
+        "sigma": 243.39200695505198,
+        "unique_name": "Comrade Syrus#OFF",
+        "wins": 0,
+        "losses": 8,
+        "stats": {
+            "kills": 24,
+            "deaths": 58,
+            "assists": 40,
+            "damage_done": 83579.71089999999,
+            "damage_taken": 176169.27699999997,
+            "healing_done": 120324.87349999999
+        }
+    },
+    "10f42c4dc9f5420dbb51442bb05ccf80": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Aureeg#4920",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "34ddf41b43e543819d0d7503b448b13d": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Onchord#HAHA",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "64a86bbd5dc04701a8113ea619bb3126": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Sprayed#SQRT",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "6156268a6ba2457a981b64804abffb5d": {
+        "mmr": 1040,
+        "sigma": 282.37027778028033,
+        "unique_name": "PoneyBoY#BRAL",
+        "wins": 2,
+        "losses": 1,
+        "stats": {
+            "kills": 21,
+            "deaths": 20,
+            "assists": 13,
+            "damage_done": 41606.862499999996,
+            "damage_taken": 58278.061,
+            "healing_done": 31619.6368
+        }
+    },
+    "bcffba6721c74bf7a1d494e15e2d655c": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Solura#0001",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "fb809586e546405796884675fe1d3f9f": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Madly#1337",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "1935f6c93c1b4079a6850e6a92e3d6b7": {
+        "mmr": 1040,
+        "sigma": 276.2834034767867,
+        "unique_name": "DbolDENO#444",
+        "wins": 2,
+        "losses": 1,
+        "stats": {
+            "kills": 20,
+            "deaths": 17,
+            "assists": 9,
+            "damage_done": 50475.4105,
+            "damage_taken": 61251.09,
+            "healing_done": 27739.218
+        }
+    },
+    "8ebd612a53ef4873a7dd6dd86465c645": {
+        "mmr": 1241.2218942733718,
+        "sigma": 150.58441255551975,
+        "unique_name": "cattMicrowaved#hot",
+        "wins": 18,
+        "losses": 10,
+        "stats": {
+            "kills": 156,
+            "deaths": 198,
+            "assists": 177,
+            "damage_done": 656635.46,
+            "damage_taken": 539047.598,
+            "healing_done": 326246.47036000004
+        }
+    },
+    "e32614e6a2f04b7a8f11ce38d7be3a53": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "omzor#6373",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "d90dd29304314a77b3323cdab1f91174": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "lord Vader#1458",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "6abe8205e7ae47a4a8919a66b10f1e9b": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "pist#0000",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "d26a465adbe24d699af42ac01f7fbce4": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Cataracts#5875",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "24b7171a957041b680f76212cba2a42e": {
+        "mmr": 960,
+        "sigma": 294.6890017645239,
+        "unique_name": "Mitchp#0000",
+        "wins": 1,
+        "losses": 2,
+        "stats": {
+            "kills": 6,
+            "deaths": 25,
+            "assists": 16,
+            "damage_done": 43852.259,
+            "damage_taken": 57983.918,
+            "healing_done": 52611.89214
+        }
+    },
+    "4da6ef6973014ceda3dd6b8e03697ed7": {
+        "mmr": 1000,
+        "sigma": 256.89808961405964,
+        "unique_name": "roughly 44 ducks#44",
+        "wins": 3,
+        "losses": 3,
+        "stats": {
+            "kills": 18,
+            "deaths": 41,
+            "assists": 19,
+            "damage_done": 97232.669,
+            "damage_taken": 125349.977,
+            "healing_done": 47687.678400000004
+        }
+    },
+    "b09612a1045346648e48ea09b24d758b": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "REESE#0000",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "e12d1839e0cc450cb6780a528ab87556": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "A1Moves#8041",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "afb620e686864bc28326ad46c75ecbc9": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "CapnHammered#69",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "13d28c8e059742e3a17b502b9ce26033": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Ghost Malone#DLO",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "d3675408a3e249989203130d2768c172": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Dill0nFPS#Main",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "ea2721891faf45bb976027f09395f0e0": {
+        "mmr": 960,
+        "sigma": 259.6304022680623,
+        "unique_name": "Matty#9999",
+        "wins": 3,
+        "losses": 4,
+        "stats": {
+            "kills": 24,
+            "deaths": 49,
+            "assists": 57,
+            "damage_done": 155983.155,
+            "damage_taken": 153721.487,
+            "healing_done": 64660.7344
+        }
+    },
+    "562f129480924b0c8501b3f112d135f3": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "i3i3gunna YT#BB",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "c0fce3d1d789495c90c171462cbfa0f3": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "ICondoneViolence#2378",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "946c94c0f9bc4b60b556bf1882ad4804": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "MajorLeagueBeeball#10Q",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "d4932672bb6d41f295359e29378c51d2": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "JasonBourne99#7162",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "2c0187d5f3cb4ae2b12cf09949782ef2": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "MadMagical#0001",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "30f6913964ee4f19b8bd96863732e899": {
+        "mmr": 960,
+        "sigma": 274.5439501194629,
+        "unique_name": "HIDE type 1#3843",
+        "wins": 1,
+        "losses": 2,
+        "stats": {
+            "kills": 10,
+            "deaths": 23,
+            "assists": 16,
+            "damage_done": 65720.836,
+            "damage_taken": 80122.105,
+            "healing_done": 32839.08066
+        }
+    },
+    "8b3cc8b1efb64ceda2b2f1da5e251502": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Sheepa#444",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "7d1ee433e1ec4a6588cd785d22260a47": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "crownella#1420",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "9d9bc6b632194e639e0b09df9299b044": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "SkullKid67#9265",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "2f4ec979a47f4755b4d68de24fa0e9ea": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "HeyMaxF#7872",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "c392b5c134cd4618b1c0abc25ef3f751": {
+        "mmr": 960,
+        "sigma": 310.92430017630676,
+        "unique_name": "MandM#9920",
+        "wins": 0,
+        "losses": 1,
+        "stats": {
+            "kills": 3,
+            "deaths": 10,
+            "assists": 3,
+            "damage_done": 19607.8,
+            "damage_taken": 32927.023,
+            "healing_done": 12258.087
+        }
+    },
+    "016250053f8546969b6148c202c7ea4e": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Sneekers#007",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "990a2527d6fe48e490d1e868f04d9d8c": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Illusion#01",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "1d548fd13dac4c598adc54815f72506f": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Dukkha#01",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "59475f9ba57a4dc383f05a711509b246": {
+        "mmr": 885.4763198460854,
+        "sigma": 265.14221269658543,
+        "unique_name": "Miles#0001",
+        "wins": 1,
+        "losses": 4,
+        "stats": {
+            "kills": 28,
+            "deaths": 36,
+            "assists": 36,
+            "damage_done": 121587.76200000002,
+            "damage_taken": 77583.04499999998,
+            "healing_done": 33392.8958
+        }
+    },
+    "c868e7cd5f7b412585a5614957e1ac5b": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "CAT WITH BOW#WIN",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "89e0bfd1c48a49d1a10f66e6c7fabac4": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "xLunares#777",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "3f5bcbb8a91a44c08df86a5ec670f908": {
+        "mmr": 900,
+        "sigma": 199.4533545220244,
+        "unique_name": "Acushla#Miki",
+        "wins": 5,
+        "losses": 8,
+        "stats": {
+            "kills": 35,
+            "deaths": 95,
+            "assists": 61,
+            "damage_done": 245772.13199999998,
+            "damage_taken": 246940.173,
+            "healing_done": 90771.41299999999
+        }
+    },
+    "fbed54a47d1f4ec2a322708625288c07": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "FOX MCCLOUD#20XX",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "4edd45764b5a46a8a340a8a40e45e121": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "RebelPanda#1134",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "eba403ea639c42228b1b49af23da4665": {
+        "mmr": 880,
+        "sigma": 276.7879349125126,
+        "unique_name": "Stevenator#546",
+        "wins": 1,
+        "losses": 4,
+        "stats": {
+            "kills": 20,
+            "deaths": 38,
+            "assists": 30,
+            "damage_done": 123693.831,
+            "damage_taken": 106705.62600000002,
+            "healing_done": 41982.59934
+        }
+    },
+    "08c884dbac67410a82942eea18e9a9de": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Pendragon#0000",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "378c6e2a0a7a4cf3a1e231c5703c0601": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Toilet#TJ",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "f4f09b6306e8474c98832eda79735d72": {
+        "mmr": 880.3736832769292,
+        "sigma": 190.05658322953923,
+        "unique_name": "scattatle#2049",
+        "wins": 5,
+        "losses": 8,
+        "stats": {
+            "kills": 71,
+            "deaths": 102,
+            "assists": 82,
+            "damage_done": 337894.354,
+            "damage_taken": 333884.346,
+            "healing_done": 136845.7061
+        }
+    },
+    "059fe4218a6d40558f222331e2480616": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "pigsforsale#Boyd",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "893e1214b2904ed29206c18fbd016f76": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "qSync#TTV",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "c42fbe2776684417a0ad71eb3184a645": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "herd#00",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "b4f501f0346440588dadd34f2382c598": {
+        "mmr": 880,
+        "sigma": 217.6679826628459,
+        "unique_name": "Level 20 Thug#Luck",
+        "wins": 4,
+        "losses": 7,
+        "stats": {
+            "kills": 38,
+            "deaths": 78,
+            "assists": 85,
+            "damage_done": 217619.602,
+            "damage_taken": 257924.02000000002,
+            "healing_done": 97048.42314000001
+        }
+    },
+    "fb401765d4fc4218ad19fe7697f92e60": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Chkampawlo#7080",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "8b498175e1b944c88941462ec1e14f16": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Plumm#1010",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "2b28711a7f4044d49d9e5da58873d40c": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Ranch Dubois#huzz",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "5dd362d2e2d64ecabf6c659e7bc9ef8a": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "his plaything#0000",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "1339b2d121a941fe83d40fa70b600d06": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Skrub McLord#NA1",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "5f2133379dfb4c669867c9b84fc03009": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "sna#ps",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "a635dcc75f394f03ad31c9e3321f11ca": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Zed#4444",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "8d1a1aa9ef7b4d6d9d647d05a1d272ff": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "scarb#RIFT",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "bd70882199014121901395c2f72548d9": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "GameOver#TTV",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "01b86bfcd50449fbb3844436fcb571f6": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Aruami#OwO",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "4fd993bbf64641b49c3a5b522f4e3692": {
+        "mmr": 840,
+        "sigma": 285.0564600200044,
+        "unique_name": "Bonsang#NA1",
+        "wins": 0,
+        "losses": 4,
+        "stats": {
+            "kills": 6,
+            "deaths": 30,
+            "assists": 23,
+            "damage_done": 78945.19,
+            "damage_taken": 89790.574,
+            "healing_done": 24382.066
+        }
+    },
+    "319c0aa0053a4018943ec30f74e2a377": {
+        "mmr": 960,
+        "sigma": 293.5869139752185,
+        "unique_name": "Lemur#01",
+        "wins": 1,
+        "losses": 2,
+        "stats": {
+            "kills": 19,
+            "deaths": 20,
+            "assists": 13,
+            "damage_done": 71371.705,
+            "damage_taken": 68397.436,
+            "healing_done": 34871.641260000004
+        }
+    },
+    "9a93b6b7d06f437b93d7d024f83642f9": {
+        "mmr": 920,
+        "sigma": 247.37733816906024,
+        "unique_name": "Aphios#0000",
+        "wins": 2,
+        "losses": 4,
+        "stats": {
+            "kills": 12,
+            "deaths": 41,
+            "assists": 39,
+            "damage_done": 109240.145,
+            "damage_taken": 116300.06400000001,
+            "healing_done": 59348.8771
+        }
+    },
+    "7b8b3dc03bc9457ba7cff1749613d608": {
+        "mmr": 1000,
+        "sigma": 301.50400876246164,
+        "unique_name": "STROKINGIT2BRALL#LMAO",
+        "wins": 1,
+        "losses": 1,
+        "stats": {
+            "kills": 12,
+            "deaths": 15,
+            "assists": 13,
+            "damage_done": 29301.233,
+            "damage_taken": 50564.891,
+            "healing_done": 29554.8661
+        }
+    },
+    "e9a4eef8ddf8426f9d05119b1ff7ce30": {
+        "mmr": 1120,
+        "sigma": 227.11573772681726,
+        "unique_name": "Ski#0001",
+        "wins": 6,
+        "losses": 3,
+        "stats": {
+            "kills": 34,
+            "deaths": 65,
+            "assists": 52,
+            "damage_done": 194505.06100000002,
+            "damage_taken": 154215.768,
+            "healing_done": 74007.23677000002
+        }
+    },
+    "76f4a2fc32d842b78e055c166c3c4783": {
+        "mmr": 1040,
+        "sigma": 292.20204141220694,
+        "unique_name": "Darksyde#GGEZ",
+        "wins": 2,
+        "losses": 1,
+        "stats": {
+            "kills": 4,
+            "deaths": 25,
+            "assists": 11,
+            "damage_done": 33826.857,
+            "damage_taken": 60287.307,
+            "healing_done": 14257.1703
+        }
+    },
+    "1d8500498f5241f3be06440b40570403": {
+        "mmr": 1000,
+        "sigma": 220.93985115829736,
+        "unique_name": "shmovement#0000",
+        "wins": 5,
+        "losses": 5,
+        "stats": {
+            "kills": 37,
+            "deaths": 70,
+            "assists": 51,
+            "damage_done": 183926.659,
+            "damage_taken": 193599.324,
+            "healing_done": 96328.51986
+        }
+    },
+    "70d42a564d224029873f1547efb817f4": {
+        "mmr": 1000,
+        "sigma": 261.7676366973108,
+        "unique_name": "Tiger#Pupy",
+        "wins": 2,
+        "losses": 2,
+        "stats": {
+            "kills": 6,
+            "deaths": 24,
+            "assists": 19,
+            "damage_done": 29466.7794,
+            "damage_taken": 39001.947,
+            "healing_done": 71982.29599999999
+        }
+    },
+    "8ec92e96bdd843a38c509a32e3cde62b": {
+        "mmr": 1040,
+        "sigma": 276.4920894102524,
+        "unique_name": "Lemon Crime#4444",
+        "wins": 2,
+        "losses": 1,
+        "stats": {
+            "kills": 12,
+            "deaths": 18,
+            "assists": 25,
+            "damage_done": 55015.692,
+            "damage_taken": 80887.26800000001,
+            "healing_done": 22422.0567
+        }
+    },
+    "e5e38231ca2e435ab844d00adf6dd3a5": {
+        "mmr": 1000,
+        "sigma": 296.15479861221405,
+        "unique_name": "Parya#RIFT",
+        "wins": 1,
+        "losses": 1,
+        "stats": {
+            "kills": 15,
+            "deaths": 19,
+            "assists": 12,
+            "damage_done": 52799.231,
+            "damage_taken": 52037.049,
+            "healing_done": 24547.6837
+        }
     }
 }
