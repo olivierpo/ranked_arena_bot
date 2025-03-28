@@ -191,7 +191,7 @@ async def on_message(message):
             if i >= len(sorted_players):
                 break
             if (sorted_players[i]["wins"] + sorted_players[i]["losses"]) > 10:
-                to_add = f"{i+1}. {sorted_players[i]["unique_name"]}"
+                to_add = f"{counted+1}. {sorted_players[i]["unique_name"]}"
                 whitespace_count = 45 - len(to_add)
                 to_add += (" "*whitespace_count)
                 leaderboard_str += (to_add+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")

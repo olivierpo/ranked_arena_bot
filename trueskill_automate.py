@@ -9,6 +9,7 @@ import codecs
 import sys
 import os
 import importlib
+import copy
 
 MMR_DEFAULT = 1000
 CONFIDENCE_DEFAULT = 333
@@ -353,6 +354,79 @@ def replace_pfile_from_file(temp_file_name):
 
     #TODO maybe eventually remove temp files?
     #os.remove("./temp_saves/"+temp_file_name)
+
+def get_id_from_name_local(ig_name):
+    with open("player_ids.json", "r") as infile:
+        to_read = json.load(infile)
+        for key, value in to_read.items():
+            if value["unique_name"] == ig_name:
+                return key
+        
+def fill_next_recur(team1, team2, players_full):
+    #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+    if len(team1) == 4:
+        if len(team2) == 4:
+            average_team_1 = (team1[0][1] + team1[1][1] + team1[2][1] + team1[3][1])/4.0
+            average_team_2 = (team2[0][1] + team2[1][1] + team2[2][1] + team2[3][1])/4.0
+            delta = abs(average_team_2 - average_team_1)
+            #print("got here\n")
+            return [delta, team1, team2]
+    #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+    
+    dict_keys = list(players_full.keys())
+    #print(str(dict_keys)+ " " + str(len(dict_keys)) + "\n")
+    best_result = []
+    for i in range(len(dict_keys)):
+        #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+        temp_team1 = copy.deepcopy(team1)
+        temp_team2 = copy.deepcopy(team2)
+        if len(team1) == 4:
+            temp_team2.append([dict_keys[i], players_full[dict_keys[i]]["mmr"]])
+        else:
+            temp_team1.append([dict_keys[i], players_full[dict_keys[i]]["mmr"]])
+        temp_players_full = copy.deepcopy(players_full)
+        temp_players_full.pop(dict_keys[i])
+        curr_result = fill_next_recur(temp_team1, temp_team2, temp_players_full)
+        if not best_result:
+            best_result = curr_result
+        else:
+            if curr_result[0] < best_result[0]:
+                best_result = curr_result
+    return best_result
+
+def get_player_from_discord(discord_id):
+    to_read_discord = ""
+    to_read = ""
+    with open("discord_ids_registered.json", "r") as infile:
+        to_read_discord = json.load(infile)
+    with open("player_ids.json", "r") as infile:
+        to_read = json.load(infile)
+    
+    return {to_read_discord[discord_id]["unique_name"]:to_read[to_read_discord[discord_id]["ingame_id"]]}
+    
+    
+
+def balance_teams(discord_ids_to_balance):
+    players_to_balance = {}
+    for discord_id in discord_ids_to_balance:
+        players_to_balance.update(get_player_from_discord(discord_id))
+    balance_result = fill_next_recur([], [], players_to_balance)
+    return [balance_result[1], balance_result[2]]
+
+def register(discord_id, ig_name):
+    to_read = ""
+    with open("discord_ids_registered.json", "r") as infile:
+        to_read = json.load(infile)
+    if discord_id in to_read.keys():
+        log_stuff(f"You've already registered. {discord_id}  {ig_name}")
+        return "You've already registered."  
+    ingame_id = get_id_from_name_local(ig_name)
+    if not ingame_id:
+        log_stuff(f"Name not found in local database.  {discord_id}  {ig_name}")
+        return "Name not found in local database."  
+    to_read.update({discord_id: {"ingame_id":ingame_id, "unique_name":ig_name}})
+    with open("discord_ids_registered.json", "w") as outfile:
+        json.dump(to_read, outfile, indent=4)
 
 def reset_match_file():
     make_backup()
