@@ -10,11 +10,13 @@ import sys
 import os
 import importlib
 import copy
+import asyncio
 
 MMR_DEFAULT = 1000
 CONFIDENCE_DEFAULT = 333
 
 reset_module = importlib.import_module("id_reset_module")
+chrome_module = importlib.import_module("chrome_automation")
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -22,19 +24,19 @@ def log_stuff(message):
     with open("match_getter_log.txt", "a") as appendfile:
         appendfile.write(message)
 
-def is_new_game_from_match_id(match_id):
+async def is_new_game_from_match_id(match_id):
     with open("match_ids.json", "r") as infile:
         to_read = json.load(infile)
         for i in range(len(to_read["match_ids"])):
-            time.sleep(0.02)
+            await asyncio.sleep(0.02)
             if match_id == to_read["match_ids"][i]:
                 return 0
     return 1
 
-def is_new_game(match_data):
+async def is_new_game(match_data):
     if match_data["queue_id"] != "customgame":
         return 0
-    return is_new_game_from_match_id(match_data["match_id"])
+    return await is_new_game_from_match_id(match_data["match_id"])
 
 
 
@@ -207,21 +209,65 @@ def is_valid_match(match_data):
         return 0
     else:
         return 1
+
+def match_all_players(match_det, player_lis):
+    for player_info in match_det:
+        if player_info["player"]["unique_display_name"] not in player_lis:
+            return False
+    return True
+
+def get_urlsafe_name(unique_name):
+    username_list = unique_name.split("#")
+    #print(username_list)
+    remove_whitespace = username_list[0].split()
+    num_tokens = len(remove_whitespace)
+    if num_tokens > 1:
+        token_count = 0
+        username_final = remove_whitespace[token_count]
+        while num_tokens > 1:
+            token_count = token_count + 1
+            username_final = username_final + "%20" + remove_whitespace[token_count]
+            num_tokens = num_tokens - 1
+        username_final = username_final + "%23" + username_list[1]
+    else:
+        username_final = username_list[0] + "%23" + username_list[1]
+    return username_final
+
+from concurrent.futures.thread import ThreadPoolExecutor
+executor = ThreadPoolExecutor(10)
+async def fetch_opgg_match(player_name):
+    loop = asyncio.get_event_loop()
+    HC = chrome_module.HeadlessChrome()
+    result = await loop.run_in_executor(executor, HC.fetch_new_matches, get_urlsafe_name(player_name))
+    if result:
+        log_stuff(f"\nFetched new matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        await asyncio.sleep(3)
+        return 1
+    else:
+        log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        await asyncio.sleep(3)
+        return 0
     
 
 """
 Check a match with match id
 """
-def check_new_match(match_id):
+async def check_new_match(match_id, players_list=[]):
 
-    if not is_new_game_from_match_id(match_id):  
+    if not await is_new_game_from_match_id(match_id):  
         log_stuff(f"\n{match_id} Not a valid game")
         return [f"{match_id} has already been logged. Perhaps try again later?"]
 
     match_details = requests.get(f"https://supervive.op.gg/api/matches/steam-{match_id}")
-    time.sleep(0.5)
+    await asyncio.sleep(0.5)
 
     json_match_details = match_details.json()
+
+    if players_list:
+        res = match_all_players(json_match_details, players_list)
+        if not res:
+            log_stuff(f"\n{match_id} Didn't have all players in {players_list}.")
+            return [f"\n{match_id} Didn't have all players in {players_list}."]
 
     if not is_valid_match(json_match_details):
         return ["Invalid match (probably too few kills)"]
@@ -241,13 +287,19 @@ def check_new_match(match_id):
     
     mark_match_played(match_id)
     
-    print("ended match process")
+    #print("ended match process")
     return [json_match_details, match_id]
+
+
 
 """
 Check a match with player unique name (player's most recent match)
 """
-def check_match_w_name(unique_name):
+async def check_match_w_name(unique_name, players_list=[]):
+    error = await fetch_opgg_match(unique_name)
+    if not error:
+        log_stuff(f"\nFailed to fetch new matches for {unique_name}")
+        return [f"\nFailed to fetch new matches for {unique_name}"]
     user_id = retrieve_id(unique_name)
 
     new_match = requests.get(f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
@@ -256,14 +308,15 @@ def check_match_w_name(unique_name):
     if(len(json_new_match["data"]) == 0):
         log_stuff("\nNo match data")
         return [f"No match data for {unique_name}"]
-    if not is_new_game(json_new_match["data"][0]):
+    if not await is_new_game(json_new_match["data"][0]):
         
         log_stuff(f"\n{json_new_match["data"][0]["match_id"]} Not a valid game")
         return [f"\n{json_new_match["data"][0]["match_id"]} already exists or is not a custom game. Try again later maybe?"]
    
     log_stuff(f"\ntrueskill-automate checking match: {json_new_match["data"][0]["match_id"]}")
     
-    return check_new_match(json_new_match["data"][0]["match_id"])
+    return await check_new_match(json_new_match["data"][0]["match_id"], players_list)
+
 
 """def check_matches():
     to_read = ""
@@ -362,7 +415,7 @@ def get_id_from_name_local(ig_name):
             if value["unique_name"] == ig_name:
                 return key
         
-def fill_next_recur(team1, team2, players_full):
+async def fill_next_recur(team1, team2, players_full):
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     if len(team1) == 4:
         if len(team2) == 4:
@@ -386,7 +439,7 @@ def fill_next_recur(team1, team2, players_full):
             temp_team1.append([dict_keys[i], players_full[dict_keys[i]]["mmr"]])
         temp_players_full = copy.deepcopy(players_full)
         temp_players_full.pop(dict_keys[i])
-        curr_result = fill_next_recur(temp_team1, temp_team2, temp_players_full)
+        curr_result = await fill_next_recur(temp_team1, temp_team2, temp_players_full)
         if not best_result:
             best_result = curr_result
         else:
@@ -394,7 +447,7 @@ def fill_next_recur(team1, team2, players_full):
                 best_result = curr_result
     return best_result
 
-def get_player_from_discord(discord_id):
+def get_player_from_discord_balance(discord_id):
     to_read_discord = ""
     to_read = ""
     with open("discord_ids_registered.json", "r") as infile:
@@ -402,15 +455,44 @@ def get_player_from_discord(discord_id):
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
     
-    return {to_read_discord[discord_id]["unique_name"]:to_read[to_read_discord[discord_id]["ingame_id"]]}
+    try:
+        return {to_read_discord[discord_id]["unique_name"]:to_read[to_read_discord[discord_id]["ingame_id"]]}
+    except:
+        log_stuff(f"{discord_id} not in registered users")
+        return f"{discord_id} not in registered users"
+
+"""def get_player_from_discord(discord_id):
+    to_read_discord = ""
+    to_read = ""
+    with open("discord_ids_registered.json", "r") as infile:
+        to_read_discord = json.load(infile)
+    with open("player_ids.json", "r") as infile:
+        to_read = json.load(infile)
     
+    try:
+        return {to_read_discord[discord_id]["unique_name"]:to_read_discord[discord_id]["unique_name"]}
+    except:
+        log_stuff(f"{discord_id} not in registered users")
+        return f"{discord_id} not in registered users"""
+    
+def get_player_pair_from_discord(discord_id):
+    to_read_discord = ""
+
+    with open("discord_ids_registered.json", "r") as infile:
+        to_read_discord = json.load(infile)
+    
+    try:
+        return {"ingame_id":to_read_discord[discord_id]["ingame_id"],"unique_name":to_read_discord[discord_id]["unique_name"]}
+    except:
+        log_stuff(f"{discord_id} not in registered users")
+        return f"{discord_id} not in registered users"
     
 
-def balance_teams(discord_ids_to_balance):
+async def balance_teams(discord_ids_to_balance):
     players_to_balance = {}
     for discord_id in discord_ids_to_balance:
-        players_to_balance.update(get_player_from_discord(discord_id))
-    balance_result = fill_next_recur([], [], players_to_balance)
+        players_to_balance.update(get_player_from_discord_balance(discord_id))
+    balance_result = await fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
 
 def register(discord_id, ig_name):
