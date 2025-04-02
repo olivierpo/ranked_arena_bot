@@ -46,5 +46,13 @@
     "phenomex": {
         "ingame_id": "493d85e2b03845e9aa99b85066711cee",
         "unique_name": "PhenomEX#DIFF"
+    },
+    ".xeny.": {
+        "ingame_id": "05a4ad4affda45b8be1a4f9d4d67b7b6",
+        "unique_name": "xen#xen"
+    },
+    "lucidous": {
+        "ingame_id": "2aec805425744c39aef2759f2e3a39a9",
+        "unique_name": "Lucidious#0000"
     }
 }

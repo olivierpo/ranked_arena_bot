@@ -27,18 +27,21 @@ if TESTING:
     MAIN_CHANNEL_ID=1352030483076218920
     QUEUE_CHANNEL_ID=1352030483076218920
     CUSTOMS_ROLE_ID=1356809301301395537
+    QUEUE_CAT_ID = 1357106979679768748
+    
 else:
     BOT_KEY = "OLIV_BOT_KEY"
     GUILD_IDS=[168149897512484866, 1313026440660385834]
     MAIN_CHANNEL_ID=1352484632884416542
     QUEUE_CHANNEL_ID=1356775280399880272
+    QUEUE_CAT_ID = 1357104967944769666
     CUSTOMS_ROLE_ID = 1313633911154409564
 trueskill_module = importlib.import_module("trueskill_automate")
 
 QUEUE_MSG_ID = 0
 MMR_DEFAULT = 1000
 CONFIDENCE_DEFAULT = 333
-PING_QNE_COOLDOWN = datetime.timedelta(hours=2).total_seconds()
+PING_QNE_COOLDOWN = datetime.timedelta(hours=3).total_seconds()
 
 COMMANDS_STRING = """
         **PUBLIC:**
@@ -70,6 +73,7 @@ players_in_queue = []
 players_in_game = []
 games_in_progress = []
 games_in_progress_chk = 0
+prev_len = 0
 
 last_ping_queue_nonempty = datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(hours=3)
 
@@ -773,6 +777,14 @@ async def check_queue():
     if len(players_in_queue) >= 8:
         await initiate_queue_pop([players_in_queue[i] for i in range(8)])
 
+async def change_q_channel():
+    guild = bot.get_guild(GUILD_IDS[0 if TESTING else 1])
+    category = bot.get_channel(QUEUE_CAT_ID)
+    for vc in guild.voice_channels:
+        if vc.name.startswith("🟢"):
+            await vc.delete()
+    await category.create_voice_channel(name=f"🟢-{len(players_in_queue)}-PLAYERS-IN-QUEUE")
+
 @bot.slash_command(name="queue", guild_ids=GUILD_IDS) # Create a slash command
 async def queue(ctx):
     global players_in_queue
@@ -936,7 +948,11 @@ async def games_queue_logging():
 
 @tasks.loop(seconds=20)
 async def queue_printer():
+    global prev_len
     global players_in_queue
+    if prev_len != len(players_in_queue):
+        await change_q_channel()
+        prev_len = len(players_in_queue)
     msg = bot.get_message(QUEUE_MSG_ID)
     await msg.edit(content=await get_queue_print())
 
@@ -996,12 +1012,19 @@ async def reset_matches(ctx):
 
 async def send_init_q_msg():
     global QUEUE_MSG_ID
+    global players_in_queue
     channel = bot.get_channel(QUEUE_CHANNEL_ID)
     async for msg in channel.history(limit=2, oldest_first=False):
         if msg.content.startswith("**Current players") or msg.content.startswith("**GET IN HERE"):
             await msg.delete()
-        
-
+    
+    guild = bot.get_guild(GUILD_IDS[0 if TESTING else 1])
+    category = bot.get_channel(QUEUE_CAT_ID)
+    for vc in guild.voice_channels:
+        if vc.name.startswith("🟢"):
+            await vc.delete()
+    await category.create_voice_channel(name=f"🟢-{len(players_in_queue)}-PLAYERS-IN-QUEUE")
+    
     
     msg = await channel.send(content="**Current players in queue:** \n")
     QUEUE_MSG_ID = msg.id
