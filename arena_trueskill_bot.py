@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 TESTING = 1
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        TESTING = sys.argv[1]
+        TESTING = int(sys.argv[1])
 print(TESTING)
     
 
