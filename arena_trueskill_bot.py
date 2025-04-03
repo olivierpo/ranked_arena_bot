@@ -498,7 +498,7 @@ async def add_player(ctx, player_name: discord.Option(str)):
 @bot.slash_command(name="remove_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_player(ctx, player_name: discord.Option(str)):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    ctx.defer(ephemeral=True)
+    await ctx.defer(ephemeral=True)
     pattern = re.compile("\\S+.*#\\S+")
     if not pattern.match(player_name):
         await ctx.send_followup("Inputted name not correct format", ephemeral=True)
@@ -514,7 +514,7 @@ async def remove_player(ctx, player_name: discord.Option(str)):
 @bot.slash_command(name="update_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def update_player(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=-1), mmr_confidence: discord.Option(float, required = False, default=-1)):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    ctx.defer(ephemeral=True)
+    await ctx.defer(ephemeral=True)
     if ctx.author.id in global_admin_list:
         pattern = re.compile("\\S+.*#\\S+")
         if not pattern.match(player_name):
@@ -705,7 +705,7 @@ async def replace_players(ctx, player_id_json: discord.Attachment):
 
 @bot.slash_command(name="register", guild_ids=GUILD_IDS) # Create a slash command
 async def register(ctx, player_name: discord.Option(str)):
-    ctx.defer(ephemeral=True)
+    await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     
     error = trueskill_module.register(ctx.author.name, player_name)
@@ -799,7 +799,7 @@ async def change_q_channel():
 
 @bot.slash_command(name="queue", guild_ids=GUILD_IDS) # Create a slash command
 async def queue(ctx):
-    ctx.defer(ephemeral=True)
+    await ctx.defer(ephemeral=True)
     global players_in_queue
     global last_ping_queue_nonempty
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))

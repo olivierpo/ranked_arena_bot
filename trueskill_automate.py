@@ -254,12 +254,15 @@ async def fetch_opgg_match(player_name):
 Check a match with match id
 """
 async def check_new_match(match_id, players_list=[]):
-
+    loop = asyncio.get_event_loop()
     if not await is_new_game_from_match_id(match_id):  
         log_stuff(f"\n{match_id} Not a valid game")
         return [f"{match_id} has already been logged. Perhaps try again later?"]
-
-    match_details = requests.get(f"https://supervive.op.gg/api/matches/steam-{match_id}")
+    try:
+        match_details = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/matches/steam-{match_id}")
+    except Exception as error:
+        log_stuff(f"Error in request https://supervive.op.gg/api/matches/steam-{match_id}\n" + str(error))
+        return ["Error in http request."]
     await asyncio.sleep(0.5)
 
     json_match_details = match_details.json()
@@ -283,9 +286,10 @@ async def check_new_match(match_id, players_list=[]):
     if not is_players_correct(json_match_details):
         return ["A player was not found in ranked system"]
 
+    mark_match_played(match_id)
     score_match(json_match_details)
     populate_data_players(json_match_details)
-    mark_match_played(match_id)
+    
     
     #print("ended match process")
     return [json_match_details, match_id]
@@ -296,13 +300,18 @@ async def check_new_match(match_id, players_list=[]):
 Check a match with player unique name (player's most recent match)
 """
 async def check_match_w_name(unique_name, players_list=[]):
+    loop = asyncio.get_event_loop()
     error = await fetch_opgg_match(unique_name)
     if not error:
         log_stuff(f"\nFailed to fetch new matches for {unique_name}")
         return [f"\nFailed to fetch new matches for {unique_name}"]
     user_id = retrieve_id(unique_name)
 
-    new_match = requests.get(f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
+    try:
+        new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
+    except Exception as error:
+        log_stuff(f"\nError in request https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1"+str(error))
+        return ["Error in http request."]
 
     json_new_match = new_match.json()
     if(len(json_new_match["data"]) == 0):
