@@ -14,10 +14,17 @@ import os
 import asyncio
 import random
 import datetime
+import sys
 from dotenv import load_dotenv
 
 ##############################  TESTING VARIABLE ################################
-TESTING = 0
+TESTING = 1
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        TESTING = sys.argv[1]
+print(TESTING)
+    
+
 #################################################################################
 
 
@@ -78,7 +85,7 @@ prev_len = 0
 last_ping_queue_nonempty = datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(hours=3)
 
 if TESTING:
-   """ players_in_queue = [{"discord_name":"tsunani",
+    players_in_queue = [{"discord_name":"tsunani",
                          "discord_id":"tsunani",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
         "unique_name": "Tsunani#nani",
@@ -109,13 +116,13 @@ if TESTING:
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
         "unique_name": "Aposl#VGBC",
         "min_since":0
-    }]"""
-""",{"discord_name":"olivethebrave1",
+    }
+,{"discord_name":"olivethebrave1",
                          "discord_id":"amatsuka",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
         "unique_name": "amatsuka#4022",
         "min_since":0
-    }"""
+    }]
 
 def load_in_admins():
     global global_admin_list
