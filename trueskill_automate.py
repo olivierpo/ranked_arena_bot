@@ -212,6 +212,7 @@ def is_valid_match(match_data):
 
 def match_all_players(match_det, player_lis):
     for player_info in match_det:
+        
         if player_info["player"]["unique_display_name"] not in player_lis:
             return False
     return True
@@ -284,7 +285,6 @@ async def check_new_match(match_id, players_list=[]):
 
     score_match(json_match_details)
     populate_data_players(json_match_details)
-    
     mark_match_played(match_id)
     
     #print("ended match process")
