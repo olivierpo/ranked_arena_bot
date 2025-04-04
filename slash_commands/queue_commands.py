@@ -12,7 +12,7 @@ import copy
 trueskill_module = importlib.import_module('trueskill_automate')
 
 class QueueCog(commands.Cog):
-  def __init__(self, bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
     self.players_in_queue = []
     self.players_in_game = []

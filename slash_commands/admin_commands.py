@@ -10,7 +10,7 @@ import time
 from utils.load_in_admins import load_in_admins
 
 class AdminCog(commands.Cog):
-  def __init__(self, bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   """@bot.slash_command(name="get_all_players", description="attaches json file", guild_ids=GUILD_IDS)

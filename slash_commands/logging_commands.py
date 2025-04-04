@@ -10,7 +10,7 @@ import re
 from utils.load_in_admins import load_in_admins
 
 class LoggingCog(commands.Cog):
-  def __init__(self, bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   def get_teams_to_print(self,match_data):

@@ -12,7 +12,7 @@ import copy
 from collections import defaultdict
 
 class BangCommandsCog(commands.Cog):
-  def __init__(self, bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   def decorate_rank_change(old_sorted_players, sorted_players):

@@ -61,7 +61,7 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
 
 class PlayerCog(commands.Cog):
-  def __init__(self, bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   @commands.command(name="get_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
