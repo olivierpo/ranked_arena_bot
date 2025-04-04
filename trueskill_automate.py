@@ -212,6 +212,7 @@ def is_valid_match(match_data):
 
 def match_all_players(match_det, player_lis):
     for player_info in match_det:
+        
         if player_info["player"]["unique_display_name"] not in player_lis:
             return False
     return True
@@ -235,57 +236,69 @@ def get_urlsafe_name(unique_name):
 
 from concurrent.futures.thread import ThreadPoolExecutor
 executor = ThreadPoolExecutor(10)
+fetch_lock = asyncio.Lock()
+HC = chrome_module.HeadlessChrome()
 async def fetch_opgg_match(player_name):
-    loop = asyncio.get_event_loop()
-    HC = chrome_module.HeadlessChrome()
-    result = await loop.run_in_executor(executor, HC.fetch_new_matches, get_urlsafe_name(player_name))
-    if result:
-        log_stuff(f"\nFetched new matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-        await asyncio.sleep(3)
-        return 1
-    else:
-        log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-        await asyncio.sleep(3)
-        return 0
+    global HC
+    async with fetch_lock:
+        try:
+            HC.driver.current_url
+        except:
+            HC = chrome_module.HeadlessChrome()
+        loop = asyncio.get_event_loop()
+        result = await loop.run_in_executor(executor, HC.fetch_new_matches, get_urlsafe_name(player_name))
+        if result:
+            log_stuff(f"\nFetched new matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            await asyncio.sleep(3)
+            return 1
+        else:
+            log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            await asyncio.sleep(3)
+            return 0
     
 
+match_getter_lock = asyncio.Lock()
 """
 Check a match with match id
 """
 async def check_new_match(match_id, players_list=[]):
+    loop = asyncio.get_event_loop()
+    async with match_getter_lock:
+        if not await is_new_game_from_match_id(match_id):  
+            log_stuff(f"\n{match_id} Not a valid game")
+            return [f"{match_id} has already been logged. Perhaps try again later?"]
+        try:
+            match_details = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/matches/steam-{match_id}")
+        except Exception as error:
+            log_stuff(f"Error in request https://supervive.op.gg/api/matches/steam-{match_id}\n" + str(error))
+            return ["Error in http request."]
+        await asyncio.sleep(0.5)
 
-    if not await is_new_game_from_match_id(match_id):  
-        log_stuff(f"\n{match_id} Not a valid game")
-        return [f"{match_id} has already been logged. Perhaps try again later?"]
+        json_match_details = match_details.json()
 
-    match_details = requests.get(f"https://supervive.op.gg/api/matches/steam-{match_id}")
-    await asyncio.sleep(0.5)
+        if players_list:
+            res = match_all_players(json_match_details, players_list)
+            if not res:
+                log_stuff(f"\n{match_id} Didn't have all players in {players_list}.")
+                return [f"\n{match_id} Didn't have all players in {players_list}."]
 
-    json_match_details = match_details.json()
+        if not is_valid_match(json_match_details):
+            return ["Invalid match (probably too few kills)"]
 
-    if players_list:
-        res = match_all_players(json_match_details, players_list)
-        if not res:
-            log_stuff(f"\n{match_id} Didn't have all players in {players_list}.")
-            return [f"\n{match_id} Didn't have all players in {players_list}."]
+        for i in range(len(json_match_details)):
+            retrieved_id = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
+            if not retrieved_id:
+                return ["A player was not found in op.gg database"]
+            json_match_details[i]["player_id_encoded"] = retrieved_id
+        
 
-    if not is_valid_match(json_match_details):
-        return ["Invalid match (probably too few kills)"]
+        if not is_players_correct(json_match_details):
+            return ["A player was not found in ranked system"]
 
-    for i in range(len(json_match_details)):
-        retrieved_id = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
-        if not retrieved_id:
-            return ["A player was not found in op.gg database"]
-        json_match_details[i]["player_id_encoded"] = retrieved_id
-    
-
-    if not is_players_correct(json_match_details):
-        return ["A player was not found in ranked system"]
-
+        mark_match_played(match_id)
     score_match(json_match_details)
     populate_data_players(json_match_details)
     
-    mark_match_played(match_id)
     
     #print("ended match process")
     return [json_match_details, match_id]
@@ -296,13 +309,18 @@ async def check_new_match(match_id, players_list=[]):
 Check a match with player unique name (player's most recent match)
 """
 async def check_match_w_name(unique_name, players_list=[]):
+    loop = asyncio.get_event_loop()
     error = await fetch_opgg_match(unique_name)
     if not error:
         log_stuff(f"\nFailed to fetch new matches for {unique_name}")
         return [f"\nFailed to fetch new matches for {unique_name}"]
     user_id = retrieve_id(unique_name)
 
-    new_match = requests.get(f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
+    try:
+        new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
+    except Exception as error:
+        log_stuff(f"\nError in request https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1"+str(error))
+        return ["Error in http request."]
 
     json_new_match = new_match.json()
     if(len(json_new_match["data"]) == 0):

@@ -33,8 +33,10 @@ class HeadlessChrome:
         returns 0 if too many requests (timeout is about one minute)
         """
         wait = WebDriverWait(self.driver, 10)
-
-        self.driver.get(rf"https://supervive.op.gg/players/steam-{user_id}")
+        try:
+            self.driver.get(rf"https://supervive.op.gg/players/steam-{user_id}")
+        except:
+            return 0
         try:
             fetch_btn = wait.until(
                 EC.element_to_be_clickable(
@@ -52,13 +54,10 @@ class HeadlessChrome:
                         (By.XPATH, '//*[contains(text(), "Refresh")]')
                     )
                 )
-                self.driver.close()
                 return 1
             except TimeoutException:
-                self.driver.close()
                 return 0
         except TimeoutException:
-            self.driver.close()
             return 0
 
 
