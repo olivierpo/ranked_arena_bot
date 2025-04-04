@@ -54,5 +54,25 @@
     "lucidous": {
         "ingame_id": "2aec805425744c39aef2759f2e3a39a9",
         "unique_name": "Lucidious#0000"
+    },
+    "finamin": {
+        "ingame_id": "8ebd612a53ef4873a7dd6dd86465c645",
+        "unique_name": "cattMicrowaved#hot"
+    },
+    "tsunani": {
+        "ingame_id": "61ba00a0ee374191b301c13a7276891d",
+        "unique_name": "Tsunani#nani"
+    },
+    "mandm9920": {
+        "ingame_id": "c392b5c134cd4618b1c0abc25ef3f751",
+        "unique_name": "MandM#9920"
+    },
+    "auriiiii": {
+        "ingame_id": "90caaa7068244ffab0859a6d96052f03",
+        "unique_name": "amatsuka#4022"
+    },
+    "_jetskii": {
+        "ingame_id": "177a8c2562674644a957d63acd9b6f73",
+        "unique_name": "jetskii#9028"
     }
 }

@@ -54,13 +54,10 @@ class HeadlessChrome:
                         (By.XPATH, '//*[contains(text(), "Refresh")]')
                     )
                 )
-                self.driver.close()
                 return 1
             except TimeoutException:
-                self.driver.close()
                 return 0
         except TimeoutException:
-            self.driver.close()
             return 0
 
 
