@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 from slash_commands.admin_commands import AdminCog
 from slash_commands.bang_commands import BangCommandsCog
+from slash_commands.logging_commands import LoggingCog
 from slash_commands.player_commands import PlayerCog
 from slash_commands.queue_commands import QueueCog
 from slash_commands.testing_commands import TestsCog
@@ -25,6 +26,7 @@ async def on_ready():
     await bot.add_cog(QueueCog(bot))
     await bot.add_cog(PlayerCog(bot))
     await bot.add_cog(AdminCog(bot))
+    await bot.add_cog(LoggingCog(bot))
     await bot.add_cog(BangCommandsCog(bot))
     
 load_dotenv()

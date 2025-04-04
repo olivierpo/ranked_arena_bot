@@ -5,7 +5,7 @@ def _get_players():
     assigns all registered player ids to global variable `players_in_memory` 
     '''
     to_read = ""
-    with open("../player_ids.json", "r") as infile:
+    with open("./player_ids.json", "r") as infile:
         to_read = json.load(infile)
     # players_in_memory = to_read
     return to_read
