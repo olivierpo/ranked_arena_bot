@@ -4,7 +4,7 @@ from utils.load_in_admins import load_in_admins
 import importlib
 import time
 
-trueskill_module = importlib.import_module('../trueskill_automate.py')
+trueskill_module = importlib.import_module('trueskill_automate')
 
 class TestsCog(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -80,10 +80,10 @@ class TestsCog(commands.Cog):
             trueskill_module.register("blah5", "Stevenator#546")
             trueskill_module.register("blah6", "Matty#9999")
             print(self.players_in_queue)
-            await ctx.respond("Done", ephemeral=True)
+            await ctx.reply("Done", ephemeral=True)
             await ctx.edit(content="done edited")
         else:
-            await ctx.respond("Not for you", ephemeral=True)
+            await ctx.reply("Not for you", ephemeral=True)
 
     @commands.command(name="reset_players", guild_ids=constants.GUILD_IDS) # Create a slash command
     async def reset_players(self, ctx):
@@ -91,9 +91,9 @@ class TestsCog(commands.Cog):
         trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
         if ctx.author.id in admins:
             trueskill_module.reset_player_file()
-            await ctx.respond("Done", ephemeral=True)
+            await ctx.reply("Done", ephemeral=True)
         else:
-            await ctx.respond("Not for you", ephemeral=True)
+            await ctx.reply("Not for you", ephemeral=True)
 
     @commands.command(name="reset_matches", guild_ids=constants.GUILD_IDS) # Create a slash command
     async def reset_matches(self, ctx):
@@ -101,9 +101,9 @@ class TestsCog(commands.Cog):
         trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
         if ctx.author.id in admins:
             trueskill_module.reset_match_file()
-            await ctx.respond("Done", ephemeral=True)
+            await ctx.reply("Done", ephemeral=True)
         else:
-            await ctx.respond("Not for you", ephemeral=True)
+            await ctx.reply("Not for you", ephemeral=True)
 
 
 def setup(bot):

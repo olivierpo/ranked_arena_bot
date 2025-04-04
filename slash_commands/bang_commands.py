@@ -5,7 +5,7 @@ import constants
 import importlib
 
 from utils.sort_players import get_sorted_players
-trueskill_module = importlib.import_module('../trueskill_automate.py')
+trueskill_module = importlib.import_module('trueskill_automate')
 
 import time
 import copy

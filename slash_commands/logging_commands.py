@@ -3,7 +3,7 @@ from discord.ext import tasks
 import discord
 import constants
 import importlib
-trueskill_module = importlib.import_module('../trueskill_automate.py')
+trueskill_module = importlib.import_module('trueskill_automate')
 
 import time
 import re
@@ -28,13 +28,13 @@ class LoggingCog(commands.Cog):
       return printable_team1 + printable_team2
 
   @commands.command(name="log_recent_game", guild_ids=constants.GUILD_IDS) # Create a slash command
-  async def log_recent_game(self, ctx, player_name: discord.Option(str)):
+  async def log_recent_game(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       pattern = re.compile("\\S+.*#\\S+")
       if not pattern.match(player_name):
-          await ctx.respond("Inputted name not correct format", ephemeral=True)
+          await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
-      await ctx.respond("Loading...")
+      await ctx.reply("Loading...")
       match_details_return = await trueskill_module.check_match_w_name(player_name)
       if not match_details_return:
           trueskill_module.log_stuff(f"\n{match_id_return}")
@@ -53,9 +53,9 @@ class LoggingCog(commands.Cog):
       await ctx.edit(content=printed_content)
 
   @commands.command(name="log_specific_game", guild_ids=constants.GUILD_IDS) # Create a slash command
-  async def log_specific_game(self, ctx, match_id: discord.Option(str)):
+  async def log_specific_game(self, ctx, match_id: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-      await ctx.respond("Loading...")
+      await ctx.reply("Loading...")
       match_details_return = await trueskill_module.check_new_match(match_id)
       if not match_details_return:
           trueskill_module.log_stuff(f"\n{match_id_return}")
@@ -73,15 +73,15 @@ class LoggingCog(commands.Cog):
       await ctx.edit(content=printed_content)
 
   """@bot.slash_command(name="log_next_game", guild_ids=GUILD_IDS) # Create a slash command
-  async def log_next_game(ctx, player_name: discord.Option(str)):
+  async def log_next_game(ctx, player_name: str):
       global logging_queue
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       pattern = re.compile("\\S+.*#\\S+")
       if not pattern.match(player_name):
-          await ctx.respond("Inputted name not correct format", ephemeral=True)
+          await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
       logging_queue.append({"player_name":player_name, "min_since":0})
-      await ctx.respond(f"Will log next game for {player_name}")"""
+      await ctx.reply(f"Will log next game for {player_name}")"""
 
   async def log_recent_game_standalone(self, player_name, player_lis=[]):
 
@@ -128,16 +128,16 @@ class LoggingCog(commands.Cog):
       admins = load_in_admins()
       if ctx.author.id in admins:
           self.logging_queue = []
-          await ctx.respond("Cleared the log.", ephemeral=True)
+          await ctx.reply("Cleared the log.", ephemeral=True)
       else:
-          await ctx.respond("Unauthorized", ephemeral = True)
+          await ctx.reply("Unauthorized", ephemeral = True)
 
   @commands.command(name="check_log_queue", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def check_log_queue(self, ctx):
       queue_to_print = ""
       for queued_dict in self.logging_queue:
           queue_to_print += str(queued_dict) + "\n"
-      await ctx.respond(f"Current log:\n{queue_to_print}", ephemeral=True)
+      await ctx.reply(f"Current log:\n{queue_to_print}", ephemeral=True)
 
 def setup(bot):
    bot.add_cog(LoggingCog(bot))

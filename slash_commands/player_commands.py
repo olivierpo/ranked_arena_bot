@@ -9,7 +9,7 @@ import constants
 import importlib
 from utils.load_in_admins import load_in_admins
 
-trueskill_module = importlib.import_module('../trueskill_automate.py')
+trueskill_module = importlib.import_module('trueskill_automate')
 from utils.sort_players import get_sorted_players
 
 class MyView(discord.ui.View): # Create a class called MyView that subclasses discord.ui.View
@@ -65,7 +65,7 @@ class PlayerCog(commands.Cog):
     self.bot = bot
 
   @commands.command(name="get_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
-  async def get_player(self, ctx, player_name: discord.Option(str)):
+  async def get_player(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       sorted_players = get_sorted_players()
       for i in range(len(sorted_players)):
@@ -74,10 +74,10 @@ class PlayerCog(commands.Cog):
               printed_stats += f"Wins:  **{sorted_players[i]["wins"]}**\nLosses:  **{sorted_players[i]["losses"]}**\nKills:  **{sorted_players[i]["stats"]["kills"]}**\n"
               printed_stats += f"Deaths:  **{sorted_players[i]["stats"]["deaths"]}**\nAssists:  **{sorted_players[i]["stats"]["assists"]}**\nDamage Done:  **{sorted_players[i]["stats"]["damage_done"]}**\n"
               printed_stats += f"Damage Taken:  **{sorted_players[i]["stats"]["damage_taken"]}**\nHealing Done:  **{sorted_players[i]["stats"]["healing_done"]}**"
-              await ctx.respond(printed_stats, ephemeral=True)
+              await ctx.reply(printed_stats, ephemeral=True)
               return
           
-      await ctx.respond(f"Player {player_name} not found", ephemeral=True)
+      await ctx.reply(f"Player {player_name} not found", ephemeral=True)
 
 
 
@@ -103,41 +103,41 @@ class PlayerCog(commands.Cog):
       return user_id
 
   @commands.command(name="add_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
-  async def add_player(self, ctx, player_name: discord.Option(str)):
+  async def add_player(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       player_mmr = constants.MMR_DEFAULT
       mmr_confidence = constants.CONFIDENCE_DEFAULT
       pattern = re.compile("\\S+.*#\\S+")
       if not pattern.match(player_name):
-          await ctx.respond("Inputted name not correct format", ephemeral=True)
+          await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
       #print(player_unique_name)
       user_id = self.get_id_from_name(player_name)
       
       if not user_id:
-          await ctx.respond(f"Something went wrong", ephemeral=True)
+          await ctx.reply(f"Something went wrong", ephemeral=True)
           return
       #lp = soup.find("div", {"class": "lp"}).contents[0]
 
       #print(huge_string)
       #print(user_id)
       trueskill_module.add_player(user_id, player_name)
-      await ctx.respond(f"Added {player_name} successfully", ephemeral=True)
+      await ctx.reply(f"Added {player_name} successfully", ephemeral=True)
 
   @commands.command(name="remove_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
-  async def remove_player(self, ctx, player_name: discord.Option(str)):
+  async def remove_player(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       pattern = re.compile("\\S+.*#\\S+")
       if not pattern.match(player_name):
-          await ctx.respond("Inputted name not correct format", ephemeral=True)
+          await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
 
       error = trueskill_module.remove_player_w_name(player_name)
       if error:
           trueskill_module.log_stuff(error)
-          await ctx.respond(error, ephemeral=True)
+          await ctx.reply(error, ephemeral=True)
           return
-      await ctx.respond(f"Removed {player_name} successfully", ephemeral=True)
+      await ctx.reply(f"Removed {player_name} successfully", ephemeral=True)
 
   @commands.command(name="get_players_list", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def get_players_list(self, ctx):
@@ -151,17 +151,17 @@ class PlayerCog(commands.Cog):
           leaderboard_str = leaderboard_str+(f"{i+1}. {sorted_players[i]["unique_name"]} --- "+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
           
 
-      await ctx.respond(leaderboard_str, view=MyView(), ephemeral=True) # Send a message with our View class that contains the button
+      await ctx.reply(leaderboard_str, view=MyView(), ephemeral=True) # Send a message with our View class that contains the button
 
   @commands.command(name="register", guild_ids=constants.GUILD_IDS) # Create a slash command
-  async def register(self, ctx, player_name: discord.Option(str)):
+  async def register(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       
       error = trueskill_module.register(ctx.author.name, player_name)
       if error:
-          await ctx.respond(error, ephemeral=True)
+          await ctx.reply(error, ephemeral=True)
           return
-      await ctx.respond(f"Registered {ctx.author.name} to {player_name}.", ephemeral=True)
+      await ctx.reply(f"Registered {ctx.author.name} to {player_name}.", ephemeral=True)
 
 def setup(bot):
    bot.add_cog(PlayerCog(bot))

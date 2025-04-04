@@ -9,7 +9,7 @@ import time
 import asyncio
 import copy
 
-trueskill_module = importlib.import_module('../trueskill_automate.py')
+trueskill_module = importlib.import_module('trueskill_automate')
 
 class QueueCog(commands.Cog):
   def __init__(self, bot):
@@ -19,13 +19,18 @@ class QueueCog(commands.Cog):
     self.games_in_progress = []
     self.games_in_progress_chk = 0
     self.last_ping_queue_nonempty = datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(hours=3)
-    if not self.games_queue_logging.is_running():
-        self.games_queue_logging.start()
-    if not self.queue_printer.is_running():
-        self.queue_printer.start()
-    if not self.queue_limit_kicker.is_running():
-        self.queue_limit_kicker.start()
-    self.send_init_q_msg()
+    self.QUEUE_MSG_ID = 0
+
+  @commands.Cog.listener()
+  async def on_ready(self):
+      print(f"{self.__class__.__name__} loaded!")
+      await self.send_init_q_msg()
+      if not self.games_queue_logging.is_running():
+          self.games_queue_logging.start()
+      if not self.queue_printer.is_running():
+          self.queue_printer.start()
+      if not self.queue_limit_kicker.is_running():
+          self.queue_limit_kicker.start()
 
   async def send_init_q_msg(self,):
       channel = self.bot.get_channel(constants.QUEUE_CHANNEL_ID)
@@ -33,7 +38,7 @@ class QueueCog(commands.Cog):
           if msg.content.startswith("**Current players") or msg.content.startswith("**GET IN HERE"):
               await msg.delete()
       msg = await channel.send(content="**Current players in queue:** \n")
-      constants.QUEUE_MSG_ID = msg.id
+      self.QUEUE_MSG_ID = msg.id
 
   async def initiate_queue_pop(self, players_list):
       channel = self.bot.get_channel(constants.MAIN_CHANNEL_ID)
@@ -79,11 +84,11 @@ class QueueCog(commands.Cog):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       
       if self.check_if_qg(ctx.author.name):
-          await ctx.respond(f"You're already in queue or in game.", ephemeral=True)
+          await ctx.reply(f"You're already in queue or in game.", ephemeral=True)
           return
       player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
       if type(player_dict) is str:
-          await ctx.respond(player_dict, ephemeral=True)
+          await ctx.reply(player_dict, ephemeral=True)
           return
       
       channel = self.bot.get_channel(constants.QUEUE_CHANNEL_ID)
@@ -103,7 +108,7 @@ class QueueCog(commands.Cog):
       self.players_in_queue.append(player_dict)
       await self.check_queue()
       
-      await ctx.respond(f"Queued up {ctx.author.name}.", ephemeral=True)
+      await ctx.reply(f"Queued up {ctx.author.name}.", ephemeral=True)
 
   @commands.command(name="leave_queue", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def leave_queue(self, ctx):
@@ -112,17 +117,17 @@ class QueueCog(commands.Cog):
       for player_info in self.players_in_queue:
           if player_info["discord_id"] == ctx.author.id:
               self.players_in_queue.remove(player_info)
-              await ctx.respond(f"Removed {ctx.author.name} from queue.", ephemeral=True)
+              await ctx.reply(f"Removed {ctx.author.name} from queue.", ephemeral=True)
               return
       for player_info in self.players_in_game:
           if player_info["discord_id"] == ctx.author.id:
               self.players_in_game.remove(player_info)
-              await ctx.respond(f"Removed {ctx.author.name} from queue.", ephemeral=True)
+              await ctx.reply(f"Removed {ctx.author.name} from queue.", ephemeral=True)
               return
-      await ctx.respond(f"{ctx.author.name} not in queue.", ephemeral=True)
+      await ctx.reply(f"{ctx.author.name} not in queue.", ephemeral=True)
 
   @commands.command(name="clear_game", guild_ids=constants.GUILD_IDS) # Create a slash command
-  async def clear_game(self, ctx, discord_name: discord.Option(str, required = False, default="")):
+  async def clear_game(self, ctx, discord_name: str=""):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
       name_chk = ctx.author.name if discord_name == "" else discord_name
@@ -131,9 +136,9 @@ class QueueCog(commands.Cog):
           for player in game:
               if player["discord_name"] == name_chk:
                   self.games_in_progress.remove(game)
-                  await ctx.respond(f"Removed game including {name_chk}. Please queue up again.")
+                  await ctx.reply(f"Removed game including {name_chk}. Please queue up again.")
                   return
-      await ctx.respond(f"{name_chk} is not in a game.")
+      await ctx.reply(f"{name_chk} is not in a game.")
 
   @commands.command(name="get_games_in_progress", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def get_games_in_progress(self, ctx):
@@ -143,7 +148,7 @@ class QueueCog(commands.Cog):
           for p_info in g_info:
               to_print += f"{str(p_info["unique_name"])} - "
           to_print += "**---------------**\n\n"
-      await ctx.respond(to_print)
+      await ctx.reply(to_print)
 
   async def get_queue_print(self, ):
       to_print = "**Current players in queue:** \n"
@@ -155,7 +160,7 @@ class QueueCog(commands.Cog):
   async def get_queue(self, ctx):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       to_print = await self.get_queue_print()
-      await ctx.respond(to_print)
+      await ctx.reply(to_print)
 
   async def game_end(self, game_index):
       for player_info in self.games_in_progress[game_index]:
@@ -219,7 +224,7 @@ class QueueCog(commands.Cog):
 
   @tasks.loop(seconds=20)
   async def queue_printer(self, ):
-      msg = self.bot.get_message(constants.QUEUE_MSG_ID)
+      msg = self.bot.get_message(self.QUEUE_MSG_ID)
       await msg.edit(content=await self.get_queue_print())
 
   @commands.command(name="randomize_teams", guild_ids=constants.GUILD_IDS) # Create a slash command
@@ -247,7 +252,7 @@ class QueueCog(commands.Cog):
               pop_msg_1 += f"<@{player_lis["discord_id"]}> "
           count += 1
       pop_msg+=pop_msg_1+pop_msg_end
-      await ctx.respond(pop_msg)
+      await ctx.reply(pop_msg)
 
 
 def setup(bot):
