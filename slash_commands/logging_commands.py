@@ -12,6 +12,7 @@ from utils.load_in_admins import load_in_admins
 class LoggingCog(commands.Cog):
   def __init__(self, bot: commands.Bot):
     self.bot = bot
+    self.logging_queue = []
 
   def get_teams_to_print(self,match_data):
       printable_team1 = "**Winners:**\n**---------------**\n"
@@ -35,15 +36,15 @@ class LoggingCog(commands.Cog):
       if not pattern.match(player_name):
           await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
-      await ctx.reply("Loading...")
+      reply = await ctx.reply("Loading...")
       match_details_return = await trueskill_module.check_match_w_name(player_name)
       if not match_details_return:
           trueskill_module.log_stuff(f"\n{match_id_return}")
-          await ctx.edit(content=f"Could not log match for [error] reason")
+          await reply.edit(content=f"Could not log match for [error] reason")
           return
       if len(match_details_return) == 1:
           trueskill_module.log_stuff(f"\nlog returned 1 size")
-          await ctx.edit(content=match_details_return[0])
+          await reply.edit(content=match_details_return[0])
           return
       match_id_return = match_details_return[1]
       
@@ -51,28 +52,28 @@ class LoggingCog(commands.Cog):
       #trueskill_module.log_stuff(f"\n{match_id_return}")
       #trueskill_module.log_stuff(f"\n{match_details_return[0]}")
       printed_content = f"Logged most recent match with id {match_id_return}\n" + self.get_teams_to_print(match_details_return[0])
-      await ctx.edit(content=printed_content)
+      await reply.edit(content=printed_content)
 
   @commands.command(name="log_specific_game", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def log_specific_game(self, ctx, match_id: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       await ctx.defer()
-      await ctx.reply("Loading...")
+      reply = await ctx.reply("Loading...")
       match_details_return = await trueskill_module.check_new_match(match_id)
       if not match_details_return:
           trueskill_module.log_stuff(f"\n{match_id_return}")
-          await ctx.edit(content=f"Could not log match")
+          await reply.edit(content=f"Could not log match")
           return
       if len(match_details_return) == 1:
           trueskill_module.log_stuff(f"\nlog returned 1 size")
-          await ctx.edit(content=match_details_return[0])
+          await reply.edit(content=match_details_return[0])
           return
       match_id_return = match_details_return[1]
       #43b8e0ae-119c-4631-b18e-346c4b367440
       #print(match_details_return[0])
       printed_content = f"Logged specific match with id {match_id}\n" + self.get_teams_to_print(match_details_return[0])
 
-      await ctx.edit(content=printed_content)
+      await reply.edit(content=printed_content)
 
   """@bot.slash_command(name="log_next_game", guild_ids=GUILD_IDS) # Create a slash command
   async def log_next_game(ctx, player_name: str):
@@ -141,5 +142,5 @@ class LoggingCog(commands.Cog):
           queue_to_print += str(queued_dict) + "\n"
       await ctx.reply(f"Current log:\n{queue_to_print}", ephemeral=True)
 
-def setup(bot):
-   bot.add_cog(LoggingCog(bot))
+async def setup(bot):
+   await bot.add_cog(LoggingCog(bot))

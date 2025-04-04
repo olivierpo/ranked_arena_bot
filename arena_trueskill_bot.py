@@ -1,3 +1,4 @@
+import asyncio
 import discord
 import logging
 from discord.ext import commands
@@ -19,15 +20,20 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents,
                    case_insensitive=False,)
 
-@bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
     await bot.add_cog(TestsCog(bot))
     await bot.add_cog(QueueCog(bot))
     await bot.add_cog(PlayerCog(bot))
     await bot.add_cog(AdminCog(bot))
     await bot.add_cog(LoggingCog(bot))
     await bot.add_cog(BangCommandsCog(bot))
-    
-load_dotenv()
-bot.run(os.getenv('BOT_KEY'))
+    print(bot.cogs.keys())
+
+async def main():
+    load_dotenv()
+    async with bot:
+      await on_ready()
+      await bot.start(os.getenv("BOT_KEY"))
+      print(f'Logged in as {bot.user}')
+
+asyncio.run(main())

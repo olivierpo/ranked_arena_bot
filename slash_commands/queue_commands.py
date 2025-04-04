@@ -1,6 +1,5 @@
 from discord.ext import commands
 from discord.ext import tasks
-import discord
 import constants
 import importlib
 import random
@@ -32,7 +31,7 @@ class QueueCog(commands.Cog):
 
   @commands.Cog.listener()
   async def on_ready(self):
-      print(f"{self.__class__.__name__} loaded!")
+      # print(f"{self.__class__.__name__} loaded!")
       await self.send_init_q_msg()
       if not self.games_queue_logging.is_running():
           self.games_queue_logging.start()
@@ -43,12 +42,13 @@ class QueueCog(commands.Cog):
 
   async def send_init_q_msg(self,):
       channel = self.bot.get_channel(constants.QUEUE_CHANNEL_ID)
+      category = self.bot.get_channel(constants.QUEUE_CAT_ID)
+      guild = self.bot.get_guild(constants.GUILD_IDS[0 if constants.TESTING else 1])
+
       async for msg in channel.history(limit=2, oldest_first=False):
           if msg.content.startswith("**Current players") or msg.content.startswith("**GET IN HERE"):
               await msg.delete()
 
-      guild = self.bot.get_guild(constants.GUILD_IDS[0 if constants.TESTING else 1])
-      category = self.bot.get_channel(constants.QUEUE_CAT_ID)
       for vc in guild.voice_channels:
           if vc.name.startswith("🟢"):
               await vc.delete()
@@ -224,7 +224,7 @@ class QueueCog(commands.Cog):
           for p_info in p_lis:
               p_lis_for_chcker.append(p_info["unique_name"])
           
-          p_info = p_lis[games_in_progress_chk]
+          p_info = p_lis[self.games_in_progress_chk]
               
           trueskill_module.log_stuff(f"\nAttempting log queue entry {p_info["unique_name"]} (in-game)  --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
           return_str = await self.log_recent_game_standalone(p_info["unique_name"], p_lis_for_chcker)
@@ -236,16 +236,17 @@ class QueueCog(commands.Cog):
               break   
           await asyncio.sleep(1)
           i+=1
-      games_in_progress_chk += 1
-      if games_in_progress_chk == 8:
-          games_in_progress_chk = 0
+      self.games_in_progress_chk += 1
+      if self.games_in_progress_chk == 8:
+          self.games_in_progress_chk = 0
 
   @tasks.loop(seconds=20)
   async def queue_printer(self, ):
-      if prev_len != len(self.players_in_queue):
+      if self.prev_len != len(self.players_in_queue):
           await self.change_q_channel()
-          prev_len = len(self.players_in_queue)
-      msg = self.bot.get_message(self.QUEUE_MSG_ID)
+          self.prev_len = len(self.players_in_queue)
+      channel = self.bot.get_channel(constants.QUEUE_CHANNEL_ID)
+      msg = await channel.fetch_message(self.QUEUE_MSG_ID)
       await msg.edit(content=await self.get_queue_print())
 
   @commands.command(name="randomize_teams", guild_ids=constants.GUILD_IDS) # Create a slash command
@@ -277,5 +278,5 @@ class QueueCog(commands.Cog):
       await ctx.reply(pop_msg)
 
 
-def setup(bot):
-   bot.add_cog(QueueCog(bot))
+async def setup(bot):
+   await bot.add_cog(QueueCog(bot))

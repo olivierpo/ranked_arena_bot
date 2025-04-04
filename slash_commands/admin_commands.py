@@ -35,7 +35,7 @@ class AdminCog(commands.Cog):
   async def appoint_admin(self, ctx, admin_to_appoint):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       if ctx.author.id == 118201449392898052:
-          with open("../admin_list.txt", "a") as readfile:
+          with open("admin_list.txt", "a") as readfile:
               readfile.write(admin_to_appoint+"\n")
           await ctx.reply("Admin appointed", ephemeral=True)
       else:
@@ -46,11 +46,11 @@ class AdminCog(commands.Cog):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       if ctx.author.id == 118201449392898052:
           admin_list = ""
-          with open("../admin_list.txt", "r") as readfile:
+          with open("admin_list.txt", "r") as readfile:
               admin_list = readfile.read()
           find_index = admin_list.find(admin_to_remove)
           admin_list = admin_list[0:find_index]+admin_list[(find_index+len(admin_to_remove)+1):]
-          with open("../admin_list.txt", "w") as readfile:
+          with open("admin_list.txt", "w") as readfile:
               readfile.write(admin_list)
           await ctx.reply("Admin deleted", ephemeral=True)
       else:
@@ -135,5 +135,5 @@ class AdminCog(commands.Cog):
       else:
           await ctx.reply(f"User not authorized", ephemeral=True)
 
-def setup(bot):
-   bot.add_cog(AdminCog(bot))
+async def setup(bot):
+   await bot.add_cog(AdminCog(bot))

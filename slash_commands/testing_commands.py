@@ -80,8 +80,8 @@ class TestsCog(commands.Cog):
             trueskill_module.register("blah5", "Stevenator#546")
             trueskill_module.register("blah6", "Matty#9999")
             print(self.players_in_queue)
-            await ctx.reply("Done", ephemeral=True)
-            await ctx.edit(content="done edited")
+            reply = await ctx.reply("Done", ephemeral=True)
+            await reply.edit(content="done edited")
         else:
             await ctx.reply("Not for you", ephemeral=True)
 
@@ -106,5 +106,5 @@ class TestsCog(commands.Cog):
             await ctx.reply("Not for you", ephemeral=True)
 
 
-def setup(bot):
-    bot.add_cog(TestsCog(bot))
+async def setup(bot):
+    await bot.add_cog(TestsCog(bot))

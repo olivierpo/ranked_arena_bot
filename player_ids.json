@@ -614,21 +614,6 @@
             "healing_done": 52611.89214
         }
     },
-    "4da6ef6973014ceda3dd6b8e03697ed7": {
-        "mmr": 1000,
-        "sigma": 256.89808961405964,
-        "unique_name": "roughly 44 ducks#44",
-        "wins": 3,
-        "losses": 3,
-        "stats": {
-            "kills": 18,
-            "deaths": 41,
-            "assists": 19,
-            "damage_done": 97232.669,
-            "damage_taken": 125349.977,
-            "healing_done": 47687.678400000004
-        }
-    },
     "b09612a1045346648e48ea09b24d758b": {
         "mmr": 1000,
         "sigma": 333,
@@ -1572,6 +1557,21 @@
             "damage_done": 126342.762,
             "damage_taken": 187385.44499999998,
             "healing_done": 53094.897229999995
+        }
+    },
+    "4da6ef6973014ceda3dd6b8e03697ed7": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "roughly 44 ducks#44",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
         }
     }
 }

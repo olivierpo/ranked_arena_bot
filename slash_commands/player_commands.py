@@ -164,5 +164,5 @@ class PlayerCog(commands.Cog):
           return
       await ctx.reply(f"Registered {ctx.author.name} to {player_name}.", ephemeral=True)
 
-def setup(bot):
-   bot.add_cog(PlayerCog(bot))
+async def setup(bot):
+   await bot.add_cog(PlayerCog(bot))

@@ -7739,3 +7739,59 @@ FAILED to fetch matches for -- Emperor#King -- 2025-04-04 12:24:06
 Failed to fetch new matches for Emperor#King
 log returned 1 size
 >>>>>>> dev
+
+!leaderboard -- nonotnoah --2025-04-04 22:03:08
+!hello -- nonotnoah --2025-04-04 22:04:02
+!leaderboard -- nonotnoah --2025-04-04 22:04:04
+!balance -- nonotnoah --2025-04-04 22:05:03
+['']
+!balance Emperor#King,Despi#derp,Dorris#0000,Coyote#0000,Krilo#NUTT,Thank You Chef#86,Hight#01,PhenomEX#DIFF -- nonotnoah --2025-04-04 22:08:08
+['Emperor#King', 'Despi#derp', 'Dorris#0000', 'Coyote#0000', 'Krilo#NUTT', 'Thank You Chef#86', 'Hight#01', 'PhenomEX#DIFF']
+!commands -- nonotnoah --2025-04-04 22:08:23
+log_recent_game -- nonotnoah --2025-04-04 22:14:04
+Fetched new matches for -- roughly 44 ducks#44 -- 2025-04-04 22:14:08
+c1a6da90-7f5a-4ea0-8baf-8a7761023ee9 Not a valid game
+log returned 1 size
+log_recent_game -- nonotnoah --2025-04-04 22:21:03
+Fetched new matches for -- roughly 44 ducks#44 -- 2025-04-04 22:21:06
+c1a6da90-7f5a-4ea0-8baf-8a7761023ee9 Not a valid game
+log returned 1 size
+log_specific_game -- nonotnoah --2025-04-04 22:24:50
+248ecf837b694e58a249f979f494f4a5
+Collemout#5136
+not in player ids
+log returned 1 size
+appoint_admin -- nonotnoah --2025-04-04 22:26:21
+appoint_admin -- nonotnoah --2025-04-04 22:26:55
+appoint_admin -- nonotnoah --2025-04-04 22:27:31
+!hello -- nonotnoah --2025-04-04 22:32:28
+get_admins -- nonotnoah --2025-04-04 22:36:33
+register -- nonotnoah -- roughly 44 ducks#442025-04-04 22:58:19
+get_players_list -- nonotnoah --2025-04-04 22:58:38
+remove_player -- nonotnoah --2025-04-04 22:58:59
+ID not found for roughly_44_ducks#44Player not in databasePlayer not in database
+add_player -- nonotnoah --2025-04-04 22:59:26
+add_player -- nonotnoah --2025-04-04 23:00:55Player already in database
+remove_player -- nonotnoah --2025-04-04 23:01:09
+add_player -- nonotnoah --2025-04-04 23:01:27
+get_player -- nonotnoah --2025-04-04 23:01:34
+!hello -- nonotnoah --2025-04-04 23:06:24
+queue -- nonotnoah --2025-04-04 23:43:06
+leave_queue -- nonotnoah --2025-04-04 23:43:48
+leave_queue -- nonotnoah --2025-04-04 23:44:06
+queue -- nonotnoah --2025-04-04 23:44:10
+get_queue -- nonotnoah --2025-04-04 23:44:13
+leave_queue -- nonotnoah --2025-04-04 23:45:12
+queue -- nonotnoah --2025-04-04 23:46:56
+leave_queue -- nonotnoah --2025-04-04 23:47:05
+queue -- nonotnoah --2025-04-04 23:47:09
+leave_queue -- nonotnoah --2025-04-04 23:47:25
+queue -- nonotnoah --2025-04-04 23:54:41
+get_queue -- nonotnoah --2025-04-04 23:55:19
+get_queue -- nonotnoah --2025-04-05 00:02:41
+queue -- nonotnoah --2025-04-05 00:02:45
+queue -- nonotnoah --2025-04-05 00:05:53
+queue -- nonotnoah --2025-04-05 00:06:35
+queue -- nonotnoah --2025-04-05 00:09:16
+queue -- nonotnoah --2025-04-05 00:12:40
+queue -- nonotnoah --2025-04-05 00:13:18

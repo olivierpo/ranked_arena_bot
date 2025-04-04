@@ -132,5 +132,5 @@ class BangCommandsCog(commands.Cog):
           command_printable = constants.COMMANDS_STRING
           await message.reply(command_printable, mention_author=True)
 
-def setup(bot):
-   bot.add_cog(BangCommandsCog(bot))
+async def setup(bot):
+   await bot.add_cog(BangCommandsCog(bot))
