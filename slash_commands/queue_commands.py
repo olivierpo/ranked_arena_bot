@@ -18,8 +18,17 @@ class QueueCog(commands.Cog):
     self.players_in_game = []
     self.games_in_progress = []
     self.games_in_progress_chk = 0
+    self.prev_len = 0
     self.last_ping_queue_nonempty = datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(hours=3)
     self.QUEUE_MSG_ID = 0
+
+  async def change_q_channel(self):
+      guild = self.bot.get_guild(constants.GUILD_IDS[0 if constants.TESTING else 1])
+      category = self.bot.get_channel(constants.QUEUE_CAT_ID)
+      for vc in guild.voice_channels:
+          if vc.name.startswith("🟢"):
+              await vc.delete()
+      await category.create_voice_channel(name=f"🟢-{len(self.players_in_queue)}-PLAYERS-IN-QUEUE")
 
   @commands.Cog.listener()
   async def on_ready(self):
@@ -37,6 +46,14 @@ class QueueCog(commands.Cog):
       async for msg in channel.history(limit=2, oldest_first=False):
           if msg.content.startswith("**Current players") or msg.content.startswith("**GET IN HERE"):
               await msg.delete()
+
+      guild = self.bot.get_guild(constants.GUILD_IDS[0 if constants.TESTING else 1])
+      category = self.bot.get_channel(constants.QUEUE_CAT_ID)
+      for vc in guild.voice_channels:
+          if vc.name.startswith("🟢"):
+              await vc.delete()
+      await category.create_voice_channel(name=f"🟢-{len(self.players_in_queue)}-PLAYERS-IN-QUEUE")
+
       msg = await channel.send(content="**Current players in queue:** \n")
       self.QUEUE_MSG_ID = msg.id
 
@@ -81,6 +98,7 @@ class QueueCog(commands.Cog):
 
   @commands.command(name="queue", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def queue(self, ctx):
+      await ctx.defer(ephemeral=True)
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       
       if self.check_if_qg(ctx.author.name):
@@ -224,6 +242,9 @@ class QueueCog(commands.Cog):
 
   @tasks.loop(seconds=20)
   async def queue_printer(self, ):
+      if prev_len != len(self.players_in_queue):
+          await self.change_q_channel()
+          prev_len = len(self.players_in_queue)
       msg = self.bot.get_message(self.QUEUE_MSG_ID)
       await msg.edit(content=await self.get_queue_print())
 
@@ -235,6 +256,7 @@ class QueueCog(commands.Cog):
                   return True
           return False 
 
+      await ctx.defer()
       team_list = []
       for g_info in self.games_in_progress:
           if await contains(g_info, lambda x: x["discord_name"] == ctx.author.name):

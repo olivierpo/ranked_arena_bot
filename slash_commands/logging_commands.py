@@ -31,6 +31,7 @@ class LoggingCog(commands.Cog):
   async def log_recent_game(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
       pattern = re.compile("\\S+.*#\\S+")
+      await ctx.defer()
       if not pattern.match(player_name):
           await ctx.reply("Inputted name not correct format", ephemeral=True)
           return
@@ -55,6 +56,7 @@ class LoggingCog(commands.Cog):
   @commands.command(name="log_specific_game", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def log_specific_game(self, ctx, match_id: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+      await ctx.defer()
       await ctx.reply("Loading...")
       match_details_return = await trueskill_module.check_new_match(match_id)
       if not match_details_return:

@@ -112,6 +112,7 @@ class AdminCog(commands.Cog):
   @commands.command(name="update_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
   async def update_player(self, ctx, player_name: str, player_mmr=-1, mmr_confidence=-1):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+      await ctx.defer(ephemeral=True)
       admins = load_in_admins()
       if ctx.author.id in admins:
           pattern = re.compile("\\S+.*#\\S+")

@@ -127,6 +127,7 @@ class PlayerCog(commands.Cog):
   @commands.command(name="remove_player", description="attaches json file", guild_ids=constants.GUILD_IDS)
   async def remove_player(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+      await ctx.defer(ephemeral=True)
       pattern = re.compile("\\S+.*#\\S+")
       if not pattern.match(player_name):
           await ctx.reply("Inputted name not correct format", ephemeral=True)
@@ -156,7 +157,7 @@ class PlayerCog(commands.Cog):
   @commands.command(name="register", guild_ids=constants.GUILD_IDS) # Create a slash command
   async def register(self, ctx, player_name: str):
       trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-      
+      await ctx.defer()
       error = trueskill_module.register(ctx.author.name, player_name)
       if error:
           await ctx.reply(error, ephemeral=True)
