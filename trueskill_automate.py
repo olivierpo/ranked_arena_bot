@@ -1,36 +1,38 @@
 import json
 import requests
 import trueskill
-import mpmath
 import time
 from bs4 import BeautifulSoup
 import urllib3
-import codecs
 import sys
-import os
 import importlib
 import copy
 import asyncio
+from db.db_controller import DatabaseController as db
 
-MMR_DEFAULT = 1000
-CONFIDENCE_DEFAULT = 333
+from concurrent.futures.thread import ThreadPoolExecutor
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 reset_module = importlib.import_module("id_reset_module")
 chrome_module = importlib.import_module("chrome_automation")
-
-sys.stdout.reconfigure(encoding='utf-8')
+MMR_DEFAULT = 1000
+CONFIDENCE_DEFAULT = 333
+executor = ThreadPoolExecutor(10)
+fetch_lock = asyncio.Lock()
+HC = chrome_module.HeadlessChrome()
+match_getter_lock = asyncio.Lock()
 
 def log_stuff(message):
     with open("match_getter_log.txt", "a") as appendfile:
         appendfile.write(message)
 
 async def is_new_game_from_match_id(match_id):
-    with open("match_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        for i in range(len(to_read["match_ids"])):
-            await asyncio.sleep(0.02)
-            if match_id == to_read["match_ids"][i]:
-                return 0
+    to_read = await db.read_match_ids()
+    for i in range(len(to_read["match_ids"])):
+        await asyncio.sleep(0.02)
+        if match_id == to_read["match_ids"][i]:
+            return 0
     return 1
 
 async def is_new_game(match_data):
@@ -38,29 +40,24 @@ async def is_new_game(match_data):
         return 0
     return await is_new_game_from_match_id(match_data["match_id"])
 
-
-
-def is_players_correct(match_data):
+async def is_players_correct(match_data):
     changed = 0
     if len(match_data) > 9:
         log_stuff("\nnot arena")
         return 0
-    to_read = ""
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        for i in range(len(match_data)):
-            if not (match_data[i]["player_id_encoded"] in to_read.keys()):
-                log_stuff(f"\n{match_data[i]["player_id_encoded"]}")
-                log_stuff(f"\n{match_data[i]["player"]["unique_display_name"]}")
-                log_stuff("\nnot in player ids")
-                return 0
-            if not (match_data[i]["player"]["unique_display_name"] == to_read[match_data[i]["player_id_encoded"]]["unique_name"]):
-                to_read[match_data[i]["player_id_encoded"]]["unique_name"] = match_data[i]["player"]["unique_display_name"]
-                changed = 1
+    to_read = await db.read_player_ids()
+    for i in range(len(match_data)):
+        if not (match_data[i]["player_id_encoded"] in to_read.keys()):
+            log_stuff(f"\n{match_data[i]["player_id_encoded"]}")
+            log_stuff(f"\n{match_data[i]["player"]["unique_display_name"]}")
+            log_stuff("\nnot in player ids")
+            return 0
+        if not (match_data[i]["player"]["unique_display_name"] == to_read[match_data[i]["player_id_encoded"]]["unique_name"]):
+            to_read[match_data[i]["player_id_encoded"]]["unique_name"] = match_data[i]["player"]["unique_display_name"]
+            changed = 1
     if changed:
-        with open("player_ids.json", "w") as outfile:
-            log_stuff("\nplayer username was changed with same id")
-            json.dump(to_read, outfile, indent=4)
+        log_stuff("\nplayer username was changed with same id")
+        await db.write_player_ids(to_read)
 
     return 1
 
@@ -78,7 +75,7 @@ def get_squished_mmr(curr_mmr, new_mmr, did_win):
         mmr_delta = 40
     if new_mmr < curr_mmr:
         mmr_delta *= -1
-     
+    
     return (curr_mmr + mmr_delta)
 
 def get_pretty_print_from_mmr(mmr):
@@ -98,77 +95,68 @@ def get_pretty_print_from_mmr(mmr):
     
     print("failure in pretty printing mmr")
 
-def populate_data_players(match_data):
-    to_read = ""
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        for i in range(len(match_data)):
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["kills"] += match_data[i]["stats"]["Kills"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["deaths"] += match_data[i]["stats"]["Deaths"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["assists"] += match_data[i]["stats"]["Assists"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_done"] += match_data[i]["stats"]["HeroEffectiveDamageDone"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_taken"] += match_data[i]["stats"]["HeroEffectiveDamageTaken"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGiven"]
-            to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGivenSelf"]
-    with open("player_ids.json", "w") as outfile:
-        json.dump(to_read, outfile, indent=4)
+async def populate_data_players(match_data):
+    to_read = await db.read_player_ids()
+    for i in range(len(match_data)):
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["kills"] += match_data[i]["stats"]["Kills"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["deaths"] += match_data[i]["stats"]["Deaths"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["assists"] += match_data[i]["stats"]["Assists"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_done"] += match_data[i]["stats"]["HeroEffectiveDamageDone"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["damage_taken"] += match_data[i]["stats"]["HeroEffectiveDamageTaken"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGiven"]
+        to_read[match_data[i]["player_id_encoded"]]["stats"]["healing_done"] += match_data[i]["stats"]["HealingGivenSelf"]
+    await db.write_player_ids(to_read)
 
-
-def score_match(match_data):
+async def score_match(match_data):
     to_read = ""
     players1=[]
     players2=[]
     env = trueskill.TrueSkill(backend="mpmath")
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        for i in range(len(match_data)):
-            player_mu = to_read[match_data[i]["player_id_encoded"]]["mmr"]
-            player_sigma = to_read[match_data[i]["player_id_encoded"]]["sigma"]
-            if match_data[i]["placement"] == 1:
-                players1.append([match_data[i]["player_id_encoded"], env.create_rating(player_mu, player_sigma), match_data[i]["player"]["unique_display_name"]])
-            elif match_data[i]["placement"] == 2:
-                players2.append([match_data[i]["player_id_encoded"], env.create_rating(player_mu, player_sigma), match_data[i]["player"]["unique_display_name"]])
-            else:
-                log_stuff(f"\n{match_data[i]["placement"]}")
-                log_stuff("\nMATCH ABORTED. TOO MANY TEAMS")
-                return
-
-
-        if (len(players1) + len(players2)) > 8:
-            log_stuff("\nMATCH ABORTED. MORE THAN 8 PLAYERS")
+    to_read = await db.read_player_ids()
+    for i in range(len(match_data)):
+        player_mu = to_read[match_data[i]["player_id_encoded"]]["mmr"]
+        player_sigma = to_read[match_data[i]["player_id_encoded"]]["sigma"]
+        if match_data[i]["placement"] == 1:
+            players1.append([match_data[i]["player_id_encoded"], env.create_rating(player_mu, player_sigma), match_data[i]["player"]["unique_display_name"]])
+        elif match_data[i]["placement"] == 2:
+            players2.append([match_data[i]["player_id_encoded"], env.create_rating(player_mu, player_sigma), match_data[i]["player"]["unique_display_name"]])
+        else:
+            log_stuff(f"\n{match_data[i]["placement"]}")
+            log_stuff("\nMATCH ABORTED. TOO MANY TEAMS")
             return
-        rating_groups = [{players1[0][0]: players1[0][1], players1[1][0]: players1[1][1], players1[2][0]: players1[2][1], players1[3][0]: players1[3][1]}, 
-                         {players2[0][0]: players2[0][1], players2[1][0]: players2[1][1], players2[2][0]: players2[2][1], players2[3][0]: players2[3][1]}]
-        ranks = [0, 1]
-        rated_rating_groups = env.rate(rating_groups, ranks)
 
 
-        for i in range(4):
-            elo_to_give = get_squished_mmr(to_read[players1[i][0]]["mmr"], rated_rating_groups[0][players1[i][0]].mu, 1)
-            to_read[players1[i][0]]["mmr"] = elo_to_give
-            to_read[players1[i][0]]["sigma"] = rated_rating_groups[0][players1[i][0]].sigma
-            to_read[players1[i][0]]["unique_name"] = players1[i][2]
-            to_read[players1[i][0]]["wins"] += 1
-            
-        for i in range(4):
-            elo_to_give = get_squished_mmr(to_read[players2[i][0]]["mmr"], rated_rating_groups[1][players2[i][0]].mu, 0)
-            to_read[players2[i][0]]["mmr"] = elo_to_give
-            to_read[players2[i][0]]["sigma"] = rated_rating_groups[1][players2[i][0]].sigma
-            to_read[players2[i][0]]["unique_name"] = players2[i][2]
-            to_read[players2[i][0]]["losses"] += 1
+    if (len(players1) + len(players2)) > 8:
+        log_stuff("\nMATCH ABORTED. MORE THAN 8 PLAYERS")
+        return
+    rating_groups = [{players1[0][0]: players1[0][1], players1[1][0]: players1[1][1], players1[2][0]: players1[2][1], players1[3][0]: players1[3][1]}, 
+                    {players2[0][0]: players2[0][1], players2[1][0]: players2[1][1], players2[2][0]: players2[2][1], players2[3][0]: players2[3][1]}]
+    ranks = [0, 1]
+    rated_rating_groups = env.rate(rating_groups, ranks)
 
-    with open("player_ids.json", "w") as outfile:
-        json.dump(to_read, outfile, indent=4)
+
+    for i in range(4):
+        elo_to_give = get_squished_mmr(to_read[players1[i][0]]["mmr"], rated_rating_groups[0][players1[i][0]].mu, 1)
+        to_read[players1[i][0]]["mmr"] = elo_to_give
+        to_read[players1[i][0]]["sigma"] = rated_rating_groups[0][players1[i][0]].sigma
+        to_read[players1[i][0]]["unique_name"] = players1[i][2]
+        to_read[players1[i][0]]["wins"] += 1
+        
+    for i in range(4):
+        elo_to_give = get_squished_mmr(to_read[players2[i][0]]["mmr"], rated_rating_groups[1][players2[i][0]].mu, 0)
+        to_read[players2[i][0]]["mmr"] = elo_to_give
+        to_read[players2[i][0]]["sigma"] = rated_rating_groups[1][players2[i][0]].sigma
+        to_read[players2[i][0]]["unique_name"] = players2[i][2]
+        to_read[players2[i][0]]["losses"] += 1
+
+    await db.write_player_ids(to_read)
     
-def mark_match_played(match_id):
-    to_read = ""
-    with open("match_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        to_read["match_ids"].append(match_id)
-    with open("match_ids.json", "w") as outfile:
-        json.dump(to_read, outfile, indent=4)
+async def mark_match_played(match_id):
+    to_read = await db.read_match_ids()
+    to_read["match_ids"].append(match_id)
+    await db.write_match_ids(to_read)
 
-def retrieve_id(username):
+def retrieve_id(username: str):
     username_list = username.split("#")
 
     remove_whitespace = username_list[0].split()
@@ -217,7 +205,7 @@ def match_all_players(match_det, player_lis):
             return False
     return True
 
-def get_urlsafe_name(unique_name):
+def get_urlsafe_name(unique_name: str):
     username_list = unique_name.split("#")
     #print(username_list)
     remove_whitespace = username_list[0].split()
@@ -234,12 +222,7 @@ def get_urlsafe_name(unique_name):
         username_final = username_list[0] + "%23" + username_list[1]
     return username_final
 
-from concurrent.futures.thread import ThreadPoolExecutor
-executor = ThreadPoolExecutor(10)
-fetch_lock = asyncio.Lock()
-HC = chrome_module.HeadlessChrome()
 async def fetch_opgg_match(player_name):
-    global HC
     async with fetch_lock:
         try:
             HC.driver.current_url
@@ -256,12 +239,10 @@ async def fetch_opgg_match(player_name):
             await asyncio.sleep(3)
             return 0
     
-
-match_getter_lock = asyncio.Lock()
-"""
-Check a match with match id
-"""
 async def check_new_match(match_id, players_list=[]):
+    """
+    Check a match with match id
+    """
     loop = asyncio.get_event_loop()
     async with match_getter_lock:
         if not await is_new_game_from_match_id(match_id):  
@@ -295,20 +276,18 @@ async def check_new_match(match_id, players_list=[]):
         if not is_players_correct(json_match_details):
             return ["A player was not found in ranked system"]
 
-        mark_match_played(match_id)
-    score_match(json_match_details)
-    populate_data_players(json_match_details)
+        await mark_match_played(match_id)
+    await score_match(json_match_details)
+    await populate_data_players(json_match_details)
     
     
     #print("ended match process")
     return [json_match_details, match_id]
 
-
-
-"""
-Check a match with player unique name (player's most recent match)
-"""
 async def check_match_w_name(unique_name, players_list=[]):
+    """
+    Check a match with player unique name (player's most recent match)
+    """
     loop = asyncio.get_event_loop()
     error = await fetch_opgg_match(unique_name)
     if not error:
@@ -330,7 +309,7 @@ async def check_match_w_name(unique_name, players_list=[]):
         
         log_stuff(f"\n{json_new_match["data"][0]["match_id"]} Not a valid game")
         return [f"\n{json_new_match["data"][0]["match_id"]} already exists or is not a custom game. Try again later maybe?"]
-   
+  
     log_stuff(f"\ntrueskill-automate checking match: {json_new_match["data"][0]["match_id"]}")
     
     return await check_new_match(json_new_match["data"][0]["match_id"], players_list)
@@ -356,82 +335,69 @@ async def check_match_w_name(unique_name, players_list=[]):
 
         check_new_match(json_new_match["data"][0]["match_id"])"""
 
-def remove_player_w_id(user_id):
-    to_replace = ""
-    with open("player_ids.json", "r") as readfile:
-        to_replace = json.load(readfile)
+async def remove_player_w_id(user_id):
+    to_replace = await db.read_player_ids()
     if not user_id in to_replace.keys():
         log_stuff("Player not in database")
         return "Player not in database"
-    with open("player_ids.json", "w") as writefile:
-        del to_replace[user_id]
-        json.dump(to_replace, writefile, indent=4)
+    del to_replace[user_id]
+    await db.write_player_ids(to_replace)
 
-def remove_player_w_name(user_name):
-    return remove_player_w_id(retrieve_id(user_name))
+async def remove_player_w_name(user_name):
+    return await remove_player_w_id(retrieve_id(user_name))
 
-def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
-    to_append = ""
-    with open("player_ids.json", "r") as readfile:
-        to_append = json.load(readfile)
+async def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    to_append = await db.read_player_ids()
     if user_id in to_append.keys():
         log_stuff("Player already in database")
         return "Player already in database"
-    with open("player_ids.json", "w") as writefile:
-        to_append.update({user_id:{"mmr":mmr, "sigma":sigma, "unique_name": user_name, "wins":0, "losses":0, 
-                           "stats":{"kills":0, "deaths":0, "assists":0, "damage_done":0, "damage_taken": 0, "healing_done":0}}})
-        json.dump(to_append, writefile, indent=4)
+    to_append.update({user_id:{"mmr":mmr, "sigma":sigma, "unique_name": user_name, "wins":0, "losses":0, 
+                      "stats":{"kills":0, "deaths":0, "assists":0, "damage_done":0, "damage_taken": 0, "healing_done":0}}})
+    await db.write_player_ids(to_append)
 
-def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
-    return add_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
+async def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    return await add_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
-def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
-    to_append = ""
-    with open("player_ids.json", "r") as readfile:
-        to_append = json.load(readfile)
+async def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    to_append = await db.read_player_ids()
     if not user_id in to_append.keys():
         log_stuff("Player not in database")
         return "Player not in database"
-    with open("player_ids.json", "w") as writefile:
-        to_append[user_id]["mmr"]= mmr if mmr != -1 else to_append[user_id]["mmr"]
-        to_append[user_id]["sigma"]= sigma if sigma != -1 else to_append[user_id]["sigma"]
-        to_append[user_id]["unique_name"]= user_name
-        json.dump(to_append, writefile, indent=4)
+    to_append[user_id]["mmr"]= mmr if mmr != -1 else to_append[user_id]["mmr"]
+    to_append[user_id]["sigma"]= sigma if sigma != -1 else to_append[user_id]["sigma"]
+    to_append[user_id]["unique_name"]= user_name
+    await db.write_player_ids(to_append)
 
-def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+async def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     return update_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
-def make_backup():
-    with open("match_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        with open("./json_backups/match_ids_backup.json", "a") as appendfile:
-            json.dump(to_read, appendfile, indent=4)
+async def make_backup():
+    to_read = await db.read_match_ids()
+    with open("./json_backups/match_ids_backup.json", "a") as appendfile:
+        json.dump(to_read, appendfile, indent=4)
     with open("./json_backups/match_ids_backup.json", "a") as appendfile:
             appendfile.write("\n\n"+time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        with open("./json_backups/player_ids_backup.json", "a") as appendfile:
-            json.dump(to_read, appendfile, indent=4)
+    to_read = await db.read_player_ids()
+    with open("./json_backups/player_ids_backup.json", "a") as appendfile:
+        json.dump(to_read, appendfile, indent=4)
     with open("./json_backups/player_ids_backup.json", "a") as appendfile:
             appendfile.write("\n\n"+time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
-def replace_pfile_from_file(temp_file_name):
-    make_backup()
+async def replace_pfile_from_file(temp_file_name):
+    await make_backup()
     with open("./temp_saves/"+temp_file_name, "r") as infile:
         temp_data = json.load(infile)
-        with open("player_ids.json", "w") as outfile:
-            json.dump(temp_data, outfile, indent=4)
+        await db.write_player_ids(temp_data)
 
     #TODO maybe eventually remove temp files?
     #os.remove("./temp_saves/"+temp_file_name)
 
-def get_id_from_name_local(ig_name):
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-        for key, value in to_read.items():
-            if value["unique_name"] == ig_name:
-                return key
+async def get_id_from_name_local(ig_name):
+    to_read = await db.read_player_ids()
+    for key, value in to_read.items():
+        if value["unique_name"] == ig_name:
+            return key
         
 async def fill_next_recur(team1, team2, players_full):
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
@@ -465,13 +431,10 @@ async def fill_next_recur(team1, team2, players_full):
                 best_result = curr_result
     return best_result
 
-def get_player_from_discord_balance(discord_id):
-    to_read_discord = ""
-    to_read = ""
-    with open("discord_ids_registered.json", "r") as infile:
-        to_read_discord = json.load(infile)
-    with open("player_ids.json", "r") as infile:
-        to_read = json.load(infile)
+async def get_player_from_discord_balance(discord_id):
+    # TODO merge discord_ids and player_ids
+    to_read_discord = await db.read_discord_ids()
+    to_read = await db.read_player_ids()
     
     try:
         return {to_read_discord[discord_id]["unique_name"]:to_read[to_read_discord[discord_id]["ingame_id"]]}
@@ -480,73 +443,65 @@ def get_player_from_discord_balance(discord_id):
         return f"{discord_id} not in registered users"
 
 """def get_player_from_discord(discord_id):
-    to_read_discord = ""
+    to_db.read_discord = ""
     to_read = ""
     with open("discord_ids_registered.json", "r") as infile:
-        to_read_discord = json.load(infile)
+        to_db.read_discord = json.load(infile)
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
     
     try:
-        return {to_read_discord[discord_id]["unique_name"]:to_read_discord[discord_id]["unique_name"]}
+        return {to_db.read_discord[discord_id]["unique_name"]:to_db.read_discord[discord_id]["unique_name"]}
     except:
         log_stuff(f"{discord_id} not in registered users")
         return f"{discord_id} not in registered users"""
     
-def get_player_pair_from_discord(discord_id):
-    to_read_discord = ""
-
-    with open("discord_ids_registered.json", "r") as infile:
-        to_read_discord = json.load(infile)
-    
+async def get_player_pair_from_discord(discord_id):
+    to_read_discord = await db.read_discord_ids()
     try:
         return {"ingame_id":to_read_discord[discord_id]["ingame_id"],"unique_name":to_read_discord[discord_id]["unique_name"]}
     except:
         log_stuff(f"{discord_id} not in registered users")
         return f"{discord_id} not in registered users"
     
-
 async def balance_teams(discord_ids_to_balance):
     players_to_balance = {}
     for discord_id in discord_ids_to_balance:
-        players_to_balance.update(get_player_from_discord_balance(discord_id))
+        players_to_balance.update(await get_player_from_discord_balance(discord_id))
     balance_result = await fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
 
-def register(discord_id, ig_name):
-    to_read = ""
-    with open("discord_ids_registered.json", "r") as infile:
-        to_read = json.load(infile)
+async def register(discord_id, ig_name):
+    to_read = await db.read_discord_ids()
     if discord_id in to_read.keys():
         log_stuff(f"You've already registered. {discord_id}  {ig_name}")
         return "You've already registered."  
-    ingame_id = get_id_from_name_local(ig_name)
+    ingame_id = await get_id_from_name_local(ig_name)
     if not ingame_id:
         log_stuff(f"Name not found in local database.  {discord_id}  {ig_name}")
         return "Name not found in local database."  
     to_read.update({discord_id: {"ingame_id":ingame_id, "unique_name":ig_name}})
-    with open("discord_ids_registered.json", "w") as outfile:
-        json.dump(to_read, outfile, indent=4)
+    await db.write_discord_ids(to_read)
 
-def reset_match_file():
-    make_backup()
+async def reset_match_file():
+    await make_backup()
     reset_module.reset_match_ids()
 
-def reset_player_file():
-    make_backup()
+async def reset_player_file():
+    await make_backup()
     reset_module.reset_player_ids()
 
-def start():
+async def start():
     #check_new_match("20260306-18a2-4086-a87e-34bbe889d66b")
     #while(1):
     counter = 0
     log_stuff(f"\nRunning checkmatches at time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     #check_matches()
     #time.sleep(300)
-    check_match_w_name("Emperor#King")
+    await check_match_w_name("Emperor#King")
     counter = counter + 1
     if counter == 12:
-        make_backup()
+        await make_backup()
         counter = 0
 
 #check_match_w_name("Emperor#King")
