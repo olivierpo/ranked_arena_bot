@@ -1,13 +1,10 @@
-import json
+from db.db_controller import DatabaseController as db
 
-def _get_players():
+async def _get_players():
     '''
-    assigns all registered player ids to global variable `players_in_memory` 
+    returns all players
     '''
-    to_read = ""
-    with open("./player_ids.json", "r") as infile:
-        to_read = json.load(infile)
-    # players_in_memory = to_read
+    to_read = await db.read_player_ids()
     return to_read
     
 def _p1_is_worse(player1, player2):
@@ -16,7 +13,7 @@ def _p1_is_worse(player1, player2):
     else:
         return 0
 
-def get_sorted_players():
+async def get_sorted_players():
     '''
     ranks players by elo using bubble sort
 
@@ -24,7 +21,7 @@ def get_sorted_players():
 
     `[[250, 100, "Player1Name#ID"], [200, 100, "Player2Name#ID"]]`
     '''
-    players_in_memory = _get_players()
+    players_in_memory = await _get_players()
     players_list = list(players_in_memory.values())
     for i in range(len(players_in_memory.keys())):
         for j in range(len(players_in_memory.keys())):
