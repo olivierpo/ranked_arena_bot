@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 import platform
+from pathlib import Path
 
 class HeadlessChrome:
     """creating a class instance initializes webdriver"""
@@ -66,3 +67,9 @@ class HeadlessChrome:
 result = HC.fetch_new_matches(r"roughly%2044%20ducks%2344")
 print(result)
 """
+
+# testing
+if __name__ == '__main__':
+    HC = HeadlessChrome()
+    result = HC.fetch_new_matches(r"roughly%2044%20ducks%2344")
+    print(result)
