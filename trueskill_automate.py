@@ -113,6 +113,18 @@ def populate_data_players(match_data):
     with open("player_ids.json", "w") as outfile:
         json.dump(to_read, outfile, indent=4)
 
+def update_new_name_d_ids(player_id, unique_name):
+    to_read = ""
+    with open("discord_ids_registered.json", "r") as infile:
+        to_read = json.load(infile)
+        for key, value in to_read.items():
+            if value["ingame_id"] == player_id and value["unique_name"] != unique_name:
+                log_stuff(f"{value['unique_name']} NAME CHANGED to {unique_name}")
+                value["unique_name"] = unique_name
+                to_read[key] = value
+                break
+    with open("discord_ids_registered.json", "w") as outfile:
+        json.dump(to_read, outfile, indent=4) 
 
 def score_match(match_data):
     to_read = ""
@@ -149,6 +161,7 @@ def score_match(match_data):
             to_read[players1[i][0]]["sigma"] = rated_rating_groups[0][players1[i][0]].sigma
             to_read[players1[i][0]]["unique_name"] = players1[i][2]
             to_read[players1[i][0]]["wins"] += 1
+            update_new_name_d_ids(players1[i][0], players1[i][2])
             
         for i in range(4):
             elo_to_give = get_squished_mmr(to_read[players2[i][0]]["mmr"], rated_rating_groups[1][players2[i][0]].mu, 0)
@@ -156,6 +169,7 @@ def score_match(match_data):
             to_read[players2[i][0]]["sigma"] = rated_rating_groups[1][players2[i][0]].sigma
             to_read[players2[i][0]]["unique_name"] = players2[i][2]
             to_read[players2[i][0]]["losses"] += 1
+            update_new_name_d_ids(players2[i][0], players2[i][2])
 
     with open("player_ids.json", "w") as outfile:
         json.dump(to_read, outfile, indent=4)
@@ -535,6 +549,10 @@ def reset_match_file():
 def reset_player_file():
     make_backup()
     reset_module.reset_player_ids()
+
+def reset_player_stats():
+    make_backup()
+    reset_module.reset_player_stats()
 
 def start():
     #check_new_match("20260306-18a2-4086-a87e-34bbe889d66b")

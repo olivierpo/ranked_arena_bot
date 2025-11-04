@@ -723,6 +723,7 @@ async def contains(p_lis, filter):
 @bot.slash_command(name="randomize_teams", guild_ids=GUILD_IDS) # Create a slash command
 async def randomize_teams(ctx):
     await ctx.defer()
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global games_in_progress
     team_list = []
     for g_info in games_in_progress:
@@ -1015,6 +1016,15 @@ async def reset_players(ctx):
     else:
         await ctx.respond("Not for you", ephemeral=True)
 
+@bot.slash_command(name="reset_player_stats", guild_ids=GUILD_IDS) # Create a slash command
+async def reset_player_stats(ctx):
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    if ctx.author.id in global_admin_list:
+        trueskill_module.reset_player_stats()
+        await ctx.respond("Done", ephemeral=True)
+    else:
+        await ctx.respond("Not for you", ephemeral=True)
+
 @bot.slash_command(name="reset_matches", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_matches(ctx):
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
@@ -1045,7 +1055,7 @@ async def send_init_q_msg():
 
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
+    print(f'Logged in as {bot.user}', flush=True)
     await send_init_q_msg()
     if not games_queue_logging.is_running():
         games_queue_logging.start()
