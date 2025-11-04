@@ -723,7 +723,7 @@ async def contains(p_lis, filter):
 @bot.slash_command(name="randomize_teams", guild_ids=GUILD_IDS) # Create a slash command
 async def randomize_teams(ctx):
     await ctx.defer()
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global games_in_progress
     team_list = []
     for g_info in games_in_progress:
