@@ -361,6 +361,9 @@ async def check_match_w_name(unique_name, players_list=[]):
     
     return await check_new_match(json_new_match["data"][0]["match_id"], players_list)
 
+def fix_name_manual(new_name, user_ID):
+    update_new_name_d_ids(user_ID, new_name)
+    update_new_name_p_ids(user_ID, new_name)
 
 """
 Get unique name from ID and fix databases (player_ids and discord_ids_registered) TODO
@@ -371,7 +374,7 @@ async def fix_name_from_ID(user_ID):
         new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_ID}/matches?page=1")
     except Exception as error:
         log_stuff(f"\nError in request https://supervive.op.gg/api/players/steam-{user_ID}/matches?page=1"+str(error))
-        return ["Error in http request."]
+        return ["Error in http request to get matches.", 0]
     json_new_match = new_match.json()
     player_id_encoded = json_new_match["data"][0]["player_id_encoded"]
     match_id = json_new_match["data"][0]["match_id"]
@@ -379,13 +382,17 @@ async def fix_name_from_ID(user_ID):
         new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/matches/steam-{match_id}")
     except Exception as error:
         log_stuff(f"\nError in request https://supervive.op.gg/api/matches/steam-{match_id}"+str(error))
-        return ["Error in http request."]
+        return ["Error in http request to get last match data.", 0]
     
     json_new_match = new_match.json()
     player_display_name = ""
     for player in json_new_match:
         if player["player_id_encoded"] == player_id_encoded:
             player_display_name = player["player"]["unique_display_name"]
+
+    if not retrieve_id(player_display_name):
+        log_stuff(f"Last match name, {player_display_name}, too old.")
+        return [f"Last match name, {player_display_name}, too old.", 1]
 
     update_new_name_d_ids(user_ID, player_display_name)
     update_new_name_p_ids(user_ID, player_display_name)

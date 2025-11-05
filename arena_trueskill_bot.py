@@ -475,6 +475,7 @@ async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: di
 
 @bot.slash_command(name="add_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def add_player(ctx, player_name: discord.Option(str)):
+    await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     player_mmr = MMR_DEFAULT
     mmr_confidence = CONFIDENCE_DEFAULT
@@ -493,7 +494,7 @@ async def add_player(ctx, player_name: discord.Option(str)):
     #print(huge_string)
     #print(user_id)
     trueskill_module.add_player(user_id, player_name)
-    await ctx.respond(f"Added {player_name} successfully", ephemeral=True)
+    await ctx.send_followup(f"Added {player_name} successfully", ephemeral=True)
 
 @bot.slash_command(name="remove_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_player(ctx, player_name: discord.Option(str)):
@@ -826,15 +827,18 @@ async def shutdown(ctx):
 
 
 @bot.slash_command(name="update_name", guild_ids=GUILD_IDS) # Create a slash command
-async def update_name(ctx):
+async def update_name(ctx, player_name: discord.Option(str)):
     await ctx.defer(ephemeral=True)
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
     if type(player_dict) is str:
         await ctx.send_followup(player_dict, ephemeral=True)
         return
-    
-    error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
+    pattern = re.compile("\\S+.*#\\S+")
+    if not pattern.match(player_name):
+        await ctx.respond("Inputted name not correct format", ephemeral=True)
+        return
+    error = trueskill_module.fix_name_manual(player_name, player_dict["ingame_id"])
     if error:
         await ctx.send_followup(error, ephemeral=True)
         return
@@ -856,8 +860,9 @@ async def queue(ctx):
     
     error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
     if error:
-        await ctx.send_followup(error, ephemeral=True)
-        return
+        await ctx.send_followup(error[0], ephemeral=True)
+        if not error[1]:
+            return
     
     channel = bot.get_channel(QUEUE_CHANNEL_ID)
     curr_time = datetime.datetime.now(datetime.timezone.utc)
