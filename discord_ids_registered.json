@@ -356,7 +356,7 @@
         "unique_name": "fancypants#x2"
     },
     "sauwse": {
-        "ingame_id": "ot;:&quot;cacae7ee4df842239f33b7dfc38508ec&quot;,&qu",
+        "ingame_id": "cacae7ee4df842239f33b7dfc38508ec",
         "unique_name": "Sauwse#6969"
     },
     "sprayed.": {
@@ -364,27 +364,31 @@
         "unique_name": "Sprayed#SQRT"
     },
     "thetornadoboy": {
-        "ingame_id": "ot;:&quot;e43f96925cd645e2a7b3037840693520&quot;,&qu",
+        "ingame_id": "e43f96925cd645e2a7b3037840693520",
         "unique_name": "TheTornadoboy#GAP"
     },
     "parkinja": {
-        "ingame_id": "ot;:&quot;79f6122c54d14cbfbcf9e53e954427e8&quot;,&qu",
+        "ingame_id": "79f6122c54d14cbfbcf9e53e954427e8",
         "unique_name": "Parkinja#Park"
     },
     "omghide": {
-        "ingame_id": "ot;:&quot;30f6913964ee4f19b8bd96863732e899&quot;,&qu",
+        "ingame_id": "30f6913964ee4f19b8bd96863732e899",
         "unique_name": "TYPE 1 DIABETIC HIDE#T1D"
     },
     "notaburger": {
-        "ingame_id": "ot;:&quot;4056acf3dc3548809af37bf6dc91e576&quot;,&qu",
+        "ingame_id": "4056acf3dc3548809af37bf6dc91e576",
         "unique_name": "NotABurger#SnT"
     },
     "sugah2": {
-        "ingame_id": "ot;:&quot;c34934752efa4c4bb17bde4d7a05abfc&quot;,&qu",
+        "ingame_id": "c34934752efa4c4bb17bde4d7a05abfc",
         "unique_name": "GoodBoy#sug"
     },
     "iamond": {
-        "ingame_id": "ot;:&quot;43404bfc6d92478abdb66436a803200e&quot;,&qu",
+        "ingame_id": "43404bfc6d92478abdb66436a803200e",
         "unique_name": "Diamond#0416"
+    },
+    "pynapel": {
+        "ingame_id": "c549cde0627e489dacb209a0f7b8c3df",
+        "unique_name": "SHRICHAEL JORDAN#pyn"
     }
 }

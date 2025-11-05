@@ -447,7 +447,7 @@ def get_id_from_name(unique_name):
     if id_index == -1:
         print("ID not found for inputted name")
         return
-    user_id = str(huge_string)[id_index+10:display_index-3]
+    user_id = str(huge_string)[id_index+20:display_index-13]
     return user_id
 
 @bot.slash_command(name="add_player_admin", description="attaches json file", guild_ids=GUILD_IDS)
@@ -707,6 +707,21 @@ async def replace_players(ctx, player_id_json: discord.Attachment):
 async def register(ctx, player_name: discord.Option(str)):
     await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    pattern = re.compile("\\S+.*#\\S+")
+    if not pattern.match(player_name):
+        await ctx.respond("Inputted name not correct format", ephemeral=True)
+        return
+
+    user_id = get_id_from_name(player_name)
+    
+    if not user_id:
+        await ctx.respond(f"Something went wrong", ephemeral=True)
+        return
+
+    error = trueskill_module.add_player(user_id, player_name)
+    if error:
+        await ctx.send_followup(error, ephemeral=True)
+        return
     
     error = trueskill_module.register(ctx.author.name, player_name)
     if error:
@@ -798,19 +813,50 @@ async def change_q_channel():
             await vc.delete()
     await category.create_voice_channel(name=f"🟢-{len(players_in_queue)}-PLAYERS-IN-QUEUE")
 
+# bot.close() not supported with bot.run(). Keyboard interrupt is intended shutdown
+"""@bot.slash_command(name="shutdown", guild_ids=GUILD_IDS) # Create a slash command
+async def shutdown(ctx):
+    if ctx.author.id in global_admin_list:
+        await ctx.respond("Shutting down...")
+        await bot.close()
+        if bot.http and hasattr(bot.http, "_HTTPClient__session"):
+            await bot.http._HTTPClient__session.close()
+    else:
+        await ctx.respond("You do not have permission to shut down the bot. Contact an administrator.")"""
+
+
+@bot.slash_command(name="update_name", guild_ids=GUILD_IDS) # Create a slash command
+async def update_name(ctx):
+    await ctx.defer(ephemeral=True)
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
+    if type(player_dict) is str:
+        await ctx.send_followup(player_dict, ephemeral=True)
+        return
+    
+    error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
+    if error:
+        await ctx.send_followup(error, ephemeral=True)
+        return
+    await ctx.send_followup(f"Updated name for {ctx.author.name}.", ephemeral=True)
+
 @bot.slash_command(name="queue", guild_ids=GUILD_IDS) # Create a slash command
 async def queue(ctx):
     await ctx.defer(ephemeral=True)
     global players_in_queue
     global last_ping_queue_nonempty
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    
     if check_if_qg(ctx.author.name):
         await ctx.send_followup(f"You're already in queue or in game.", ephemeral=True)
         return
     player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
     if type(player_dict) is str:
         await ctx.send_followup(player_dict, ephemeral=True)
+        return
+    
+    error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
+    if error:
+        await ctx.send_followup(error, ephemeral=True)
         return
     
     channel = bot.get_channel(QUEUE_CHANNEL_ID)

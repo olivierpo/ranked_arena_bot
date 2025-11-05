@@ -126,6 +126,18 @@ def update_new_name_d_ids(player_id, unique_name):
     with open("discord_ids_registered.json", "w") as outfile:
         json.dump(to_read, outfile, indent=4) 
 
+def update_new_name_p_ids(player_id, unique_name):
+    to_read = ""
+    with open("player_ids.json", "r") as infile:
+        to_read = json.load(infile)
+
+        if to_read[player_id]["unique_name"] != unique_name:
+            log_stuff(f"{to_read[player_id]['unique_name']} NAME CHANGED to {unique_name}")
+            to_read[player_id]["unique_name"] = unique_name
+                
+    with open("player_ids.json", "w") as outfile:
+        json.dump(to_read, outfile, indent=4) 
+
 def score_match(match_data):
     to_read = ""
     players1=[]
@@ -348,6 +360,66 @@ async def check_match_w_name(unique_name, players_list=[]):
     log_stuff(f"\ntrueskill-automate checking match: {json_new_match["data"][0]["match_id"]}")
     
     return await check_new_match(json_new_match["data"][0]["match_id"], players_list)
+
+
+"""
+Get unique name from ID and fix databases (player_ids and discord_ids_registered) TODO
+"""
+async def fix_name_from_ID(user_ID):
+    loop = asyncio.get_event_loop()
+    try:
+        new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_ID}/matches?page=1")
+    except Exception as error:
+        log_stuff(f"\nError in request https://supervive.op.gg/api/players/steam-{user_ID}/matches?page=1"+str(error))
+        return ["Error in http request."]
+    json_new_match = new_match.json()
+    player_id_encoded = json_new_match["data"][0]["player_id_encoded"]
+    match_id = json_new_match["data"][0]["match_id"]
+    try:
+        new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/matches/steam-{match_id}")
+    except Exception as error:
+        log_stuff(f"\nError in request https://supervive.op.gg/api/matches/steam-{match_id}"+str(error))
+        return ["Error in http request."]
+    
+    json_new_match = new_match.json()
+    player_display_name = ""
+    for player in json_new_match:
+        if player["player_id_encoded"] == player_id_encoded:
+            player_display_name = player["player"]["unique_display_name"]
+
+    update_new_name_d_ids(user_ID, player_display_name)
+    update_new_name_p_ids(user_ID, player_display_name)
+    return None
+
+"""
+Check a match with player unique ID (player's most recent match)
+
+async def check_match_w_ID(unique_name, players_list=[]):
+    loop = asyncio.get_event_loop()
+    error = await fetch_opgg_match(unique_name)
+    if not error:
+        log_stuff(f"\nFailed to fetch new matches for {unique_name}")
+        return [f"\nFailed to fetch new matches for {unique_name}"]
+    user_id = retrieve_id(unique_name)
+
+    try:
+        new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
+    except Exception as error:
+        log_stuff(f"\nError in request https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1"+str(error))
+        return ["Error in http request."]
+
+    json_new_match = new_match.json()
+    if(len(json_new_match["data"]) == 0):
+        log_stuff("\nNo match data")
+        return [f"No match data for {unique_name}"]
+    if not await is_new_game(json_new_match["data"][0]):
+        
+        log_stuff(f"\n{json_new_match["data"][0]["match_id"]} Not a valid game")
+        return [f"\n{json_new_match["data"][0]["match_id"]} already exists or is not a custom game. Try again later maybe?"]
+   
+    log_stuff(f"\ntrueskill-automate checking match: {json_new_match["data"][0]["match_id"]}")
+    
+    return await check_new_match(json_new_match["data"][0]["match_id"], players_list)"""
 
 
 """def check_matches():
