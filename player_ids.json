@@ -105,18 +105,18 @@
         }
     },
     "493d85e2b03845e9aa99b85066711cee": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
         "unique_name": "PhenomEX#DIFF",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 4,
+            "deaths": 6,
+            "assists": 10,
+            "damage_done": 20199.49,
+            "damage_taken": 31006.492,
+            "healing_done": 20438.570799999998
         }
     },
     "177a8c2562674644a957d63acd9b6f73": {
@@ -197,7 +197,7 @@
     "61ba00a0ee374191b301c13a7276891d": {
         "mmr": 1000,
         "sigma": 333,
-        "unique_name": "Tsunani#nani",
+        "unique_name": "\u5927\u68a6\u8c01\u5148\u89c9 \u5e73\u751f\u6211\u81ea\u77e5#tsu",
         "wins": 0,
         "losses": 0,
         "stats": {
@@ -435,18 +435,18 @@
         }
     },
     "34ddf41b43e543819d0d7503b448b13d": {
-        "mmr": 1000,
-        "sigma": 333,
-        "unique_name": "Onchord#HAHA",
-        "wins": 0,
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
+        "unique_name": "\u6211\u5011\u4e00\u8d77\u5b78\u8c93\u53eb\u4e00\u8d77\u55b5\u55b5\u55b5\u55b5\u55b5#meow",
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 6,
+            "deaths": 5,
+            "assists": 9,
+            "damage_done": 41355.227,
+            "damage_taken": 14307.174,
+            "healing_done": 3508.8623
         }
     },
     "64a86bbd5dc04701a8113ea619bb3126": {
@@ -524,19 +524,19 @@
             "healing_done": 0
         }
     },
-    "8ebd612a53ef4873a7dd6dd86465c645": {
-        "mmr": 1000,
-        "sigma": 333,
-        "unique_name": "cattMicrowaved#hot",
+    "55bfde63c86846b5b07dcc50fd018c77": {
+        "mmr": 960,
+        "sigma": 319.4704573107349,
+        "unique_name": "lodds#catt",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
             "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "deaths": 6,
+            "assists": 1,
+            "damage_done": 25016.252,
+            "damage_taken": 22558.438,
+            "healing_done": 2586.666
         }
     },
     "e32614e6a2f04b7a8f11ce38d7be3a53": {
@@ -1067,7 +1067,7 @@
     "f4f09b6306e8474c98832eda79735d72": {
         "mmr": 1000,
         "sigma": 333,
-        "unique_name": "scattatle#2049",
+        "unique_name": "\u5927\u6c5f\u5927\u6d77\u6c5f\u5927\u6d77 \u4fa7\u6123\u8eab\u5b50\u4e48\u8f6c\u7740\u8fd8#2049",
         "wins": 0,
         "losses": 0,
         "stats": {
@@ -1905,18 +1905,18 @@
         }
     },
     "afcbb5fdc3dc415e8b792f19bca5d9fa": {
-        "mmr": 1000,
-        "sigma": 333,
-        "unique_name": "RKT#BLDE",
+        "mmr": 960,
+        "sigma": 319.4704573107349,
+        "unique_name": "ralph#tk",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 2,
+            "deaths": 6,
+            "assists": 3,
+            "damage_done": 18323.28,
+            "damage_taken": 25325.04,
+            "healing_done": 5488.701
         }
     },
     "ac26744cc5184f909fd8a2a86706b46e": {
@@ -2100,18 +2100,18 @@
         }
     },
     "f0b579a0fc09478dbc1ebe065124c234": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 319.4704573107349,
         "unique_name": "Protofo#2481",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 3,
+            "deaths": 6,
+            "assists": 5,
+            "damage_done": 25369.705,
+            "damage_taken": 30950.088,
+            "healing_done": 9312.68
         }
     },
     "0449270955264ff69f28a5f19bcde35f": {
@@ -2160,18 +2160,18 @@
         }
     },
     "cacae7ee4df842239f33b7dfc38508ec": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 319.4704573107349,
         "unique_name": "Sauwse#6969",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 1,
+            "deaths": 6,
+            "assists": 3,
+            "damage_done": 13294.37,
+            "damage_taken": 20593.35,
+            "healing_done": 18466.264000000003
         }
     },
     "e43f96925cd645e2a7b3037840693520": {
@@ -2220,18 +2220,18 @@
         }
     },
     "c34934752efa4c4bb17bde4d7a05abfc": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
         "unique_name": "GoodBoy#sug",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 10,
+            "deaths": 5,
+            "assists": 8,
+            "damage_done": 25016.607,
+            "damage_taken": 19884.947,
+            "healing_done": 8269.118
         }
     },
     "43404bfc6d92478abdb66436a803200e": {
@@ -2277,6 +2277,51 @@
             "damage_done": 0,
             "damage_taken": 0,
             "healing_done": 0
+        }
+    },
+    "76072e4655d845cc87664771e86b4558": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Ciddy#7752",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "012c980695b04e3789039ddce48f6e63": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Blyyth#8702",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "730760442adb4e28b1276f5b83280157": {
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
+        "unique_name": "Flow#999",
+        "wins": 1,
+        "losses": 0,
+        "stats": {
+            "kills": 1,
+            "deaths": 5,
+            "assists": 8,
+            "damage_done": 12855.573,
+            "damage_taken": 16805.117,
+            "healing_done": 22649.809999999998
         }
     }
 }

@@ -33,10 +33,19 @@ if not getattr(builtins.open, "_is_utf8_patched", False):
     builtins.open = open_utf8_default
 
 def log_stuff(message):
+    """
+    Append a message to the local match log file.
+    @param message - Text to append.
+    """
     with open("match_getter_log.txt", "a") as appendfile:
         appendfile.write(message)
 
 async def is_new_game_from_match_id(match_id):
+    """
+    Check if a match id is new (not processed yet).
+    @param match_id - OPGG match identifier.
+    @return 1 if new, else 0.
+    """
     with open("match_ids.json", "r") as infile:
         to_read = json.load(infile)
         for i in range(len(to_read["match_ids"])):
@@ -46,6 +55,11 @@ async def is_new_game_from_match_id(match_id):
     return 1
 
 async def is_new_game(match_data):
+    """
+    Validate match is a custom game and not already logged.
+    @param match_data - Match object from OPGG API.
+    @return 1 if valid new custom, else 0.
+    """
     if match_data["queue_id"] != "customgame":
         return 0
     return await is_new_game_from_match_id(match_data["match_id"])
@@ -53,6 +67,11 @@ async def is_new_game(match_data):
 
 
 def is_players_correct(match_data):
+    """
+    Ensure all players exist in local DB; update names if needed.
+    @param match_data - Flat player list for a match.
+    @return 1 if all valid, else 0.
+    """
     changed = 0
     if len(match_data) > 9:
         log_stuff("\nnot arena")
@@ -77,6 +96,13 @@ def is_players_correct(match_data):
     return 1
 
 def get_squished_mmr(curr_mmr, new_mmr, did_win):
+    """
+    Bound TrueSkill mu delta to a capped Elo-like change.
+    @param curr_mmr - Current displayed MMR value.
+    @param new_mmr - Post-match TrueSkill mu.
+    @param did_win - 1 if win, 0 if loss.
+    @return Adjusted displayed MMR.
+    """
     mmr_delta = abs(new_mmr - curr_mmr)
     if mmr_delta == 0:
         mmr_delta = 1
@@ -94,6 +120,11 @@ def get_squished_mmr(curr_mmr, new_mmr, did_win):
     return (curr_mmr + mmr_delta)
 
 def get_pretty_print_from_mmr(mmr):
+    """
+    Convert numeric MMR into rank division text.
+    @param mmr - Displayed MMR value.
+    @return Rank string like "Gold 3   45 LP".
+    """
     ranked_dict = {"Bronze":(0, 499), "Silver":(500, 999), "Gold":(1000, 1499), "Platinum":(1500, 1999), "Diamond":(2000, 2499), "Masters":(2500, 2999), "Challenger":(3000, 100000)}
 
     for key, value in ranked_dict.items():
@@ -111,6 +142,10 @@ def get_pretty_print_from_mmr(mmr):
     print("failure in pretty printing mmr")
 
 def populate_data_players(match_data):
+    """
+    Aggregate per-player stats from a match into local totals.
+    @param match_data - Match player entries including stats.
+    """
     to_read = ""
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
@@ -126,6 +161,11 @@ def populate_data_players(match_data):
         json.dump(to_read, outfile, indent=4)
 
 def update_new_name_d_ids(player_id, unique_name):
+    """
+    Update a user's unique name in discord_ids_registered.json.
+    @param player_id - In-game encoded id.
+    @param unique_name - New unique display name.
+    """
     to_read = ""
     with open("discord_ids_registered.json", "r") as infile:
         to_read = json.load(infile)
@@ -139,6 +179,11 @@ def update_new_name_d_ids(player_id, unique_name):
         json.dump(to_read, outfile, indent=4) 
 
 def update_new_name_p_ids(player_id, unique_name):
+    """
+    Update a user's unique name in player_ids.json.
+    @param player_id - In-game encoded id.
+    @param unique_name - New unique display name.
+    """
     to_read = ""
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
@@ -151,6 +196,10 @@ def update_new_name_p_ids(player_id, unique_name):
         json.dump(to_read, outfile, indent=4) 
 
 def score_match(match_data):
+    """
+    Compute post-match ratings using TrueSkill and persist results.
+    @param match_data - List of players with placements and names.
+    """
     to_read = ""
     players1=[]
     players2=[]
@@ -199,6 +248,10 @@ def score_match(match_data):
         json.dump(to_read, outfile, indent=4)
     
 def mark_match_played(match_id):
+    """
+    Persist a match id as processed to avoid re-scoring.
+    @param match_id - OPGG match identifier.
+    """
     to_read = ""
     with open("match_ids.json", "r") as infile:
         to_read = json.load(infile)
@@ -207,6 +260,11 @@ def mark_match_played(match_id):
         json.dump(to_read, outfile, indent=4)
 
 def retrieve_id(username):
+    """
+    Resolve a unique display name to an encoded OPGG user id.
+    @param username - "Name#Tag" string.
+    @return Encoded user id or None.
+    """
     username_list = username.split("#")
 
     remove_whitespace = username_list[0].split()
@@ -235,11 +293,16 @@ def retrieve_id(username):
     if id_index == -1:
         log_stuff(f"\nID not found for {username}")
         return
-    user_id = str(huge_string)[id_index+10:display_index-3]
+    user_id = str(huge_string)[id_index+20:display_index-13]
 
     return user_id
 
 def is_valid_match(match_data):
+    """
+    Basic sanity check that a match is worth scoring.
+    @param match_data - Match entries with stats.
+    @return 1 if valid (enough kills), else 0.
+    """
     total_kills = 0
     for player_data in match_data:
         total_kills += player_data["stats"]["Kills"]
@@ -249,6 +312,12 @@ def is_valid_match(match_data):
         return 1
 
 def match_all_players(match_det, player_lis):
+    """
+    Confirm a match contains exactly the expected player list.
+    @param match_det - Player entries from match detail.
+    @param player_lis - List of names to require.
+    @return True if all present, else False.
+    """
     for player_info in match_det:
         
         if player_info["player"]["unique_display_name"] not in player_lis:
@@ -256,6 +325,11 @@ def match_all_players(match_det, player_lis):
     return True
 
 def get_urlsafe_name(unique_name):
+    """
+    Convert "Name#Tag" into an URL-encoded variant for OPGG.
+    @param unique_name - Raw unique display name.
+    @return URL-escaped name with %20 and %23.
+    """
     username_list = unique_name.split("#")
     #print(username_list)
     remove_whitespace = username_list[0].split()
@@ -277,6 +351,11 @@ executor = ThreadPoolExecutor(10)
 fetch_lock = asyncio.Lock()
 HC = chrome_module.HeadlessChrome()
 async def fetch_opgg_match(player_name):
+    """
+    Trigger a headless browser fetch of recent matches for a player.
+    @param player_name - "Name#Tag" string.
+    @return 1 on success, 0 on failure.
+    """
     global HC
     async with fetch_lock:
         try:
@@ -300,6 +379,12 @@ match_getter_lock = asyncio.Lock()
 Check a match with match id
 """
 async def check_new_match(match_id, players_list=[]):
+    """
+    Fetch, validate, and score a specific match id.
+    @param match_id - OPGG match identifier.
+    @param players_list - Optional whitelist of required players.
+    @return [details, match_id] on success or [error_str].
+    """
     loop = asyncio.get_event_loop()
     async with match_getter_lock:
         if not await is_new_game_from_match_id(match_id):  
@@ -347,6 +432,12 @@ async def check_new_match(match_id, players_list=[]):
 Check a match with player unique name (player's most recent match)
 """
 async def check_match_w_name(unique_name, players_list=[]):
+    """
+    Find and score the most recent match for a player.
+    @param unique_name - Player "Name#Tag".
+    @param players_list - Optional whitelist to enforce.
+    @return Result from check_new_match or error message.
+    """
     loop = asyncio.get_event_loop()
     error = await fetch_opgg_match(unique_name)
     if not error:
@@ -374,6 +465,11 @@ async def check_match_w_name(unique_name, players_list=[]):
     return await check_new_match(json_new_match["data"][0]["match_id"], players_list)
 
 def fix_name_manual(new_name, user_ID):
+    """
+    Manually update a player's unique name everywhere.
+    @param new_name - New unique display name.
+    @param user_ID - Encoded user id.
+    """
     update_new_name_d_ids(user_ID, new_name)
     update_new_name_p_ids(user_ID, new_name)
 
@@ -381,6 +477,11 @@ def fix_name_manual(new_name, user_ID):
 Get unique name from ID and fix databases (player_ids and discord_ids_registered) 
 """
 async def fix_name_from_ID(user_ID):
+    """
+    Infer latest unique name from last match and update DBs.
+    @param user_ID - Encoded user id.
+    @return None on success, [msg, code] on issues.
+    """
     loop = asyncio.get_event_loop()
     try:
         new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_ID}/matches?page=1")
@@ -462,6 +563,11 @@ async def check_match_w_ID(unique_name, players_list=[]):
         check_new_match(json_new_match["data"][0]["match_id"])"""
 
 def remove_player_w_id(user_id):
+    """
+    Remove a player record by encoded id.
+    @param user_id - Encoded user id.
+    @return Status string on failure else None.
+    """
     to_replace = ""
     with open("player_ids.json", "r") as readfile:
         to_replace = json.load(readfile)
@@ -473,9 +579,21 @@ def remove_player_w_id(user_id):
         json.dump(to_replace, writefile, indent=4)
 
 def remove_player_w_name(user_name):
+    """
+    Remove a player record given "Name#Tag".
+    @param user_name - Unique display name.
+    """
     return remove_player_w_id(retrieve_id(user_name))
 
 def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    """
+    Add a new player with initial ratings and stats.
+    @param user_id - Encoded user id.
+    @param user_name - Unique display name.
+    @param mmr - Initial displayed MMR.
+    @param sigma - Initial uncertainty.
+    @return Status string if already exists.
+    """
     to_append = ""
     with open("player_ids.json", "r") as readfile:
         to_append = json.load(readfile)
@@ -488,9 +606,21 @@ def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
         json.dump(to_append, writefile, indent=4)
 
 def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    """
+    Convenience wrapper to add a player by unique name.
+    @param user_name - "Name#Tag".
+    """
     return add_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
 def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    """
+    Update an existing player's ratings and name.
+    @param user_id - Encoded user id.
+    @param user_name - Unique display name.
+    @param mmr - New MMR or -1 to keep.
+    @param sigma - New sigma or -1 to keep.
+    @return Status string if not found.
+    """
     to_append = ""
     with open("player_ids.json", "r") as readfile:
         to_append = json.load(readfile)
@@ -504,9 +634,16 @@ def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT)
         json.dump(to_append, writefile, indent=4)
 
 def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+    """
+    Update a player by unique name wrapper.
+    @param user_name - "Name#Tag".
+    """
     return update_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
 def make_backup():
+    """
+    Append snapshots of match_ids and player_ids to backups.
+    """
     with open("match_ids.json", "r") as infile:
         to_read = json.load(infile)
         with open("./json_backups/match_ids_backup.json", "a") as appendfile:
@@ -522,6 +659,10 @@ def make_backup():
             appendfile.write("\n\n"+time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
 def replace_pfile_from_file(temp_file_name):
+    """
+    Replace player_ids.json with contents of a temp save file.
+    @param temp_file_name - File name inside ./temp_saves/.
+    """
     make_backup()
     with open("./temp_saves/"+temp_file_name, "r") as infile:
         temp_data = json.load(infile)
@@ -532,6 +673,11 @@ def replace_pfile_from_file(temp_file_name):
     #os.remove("./temp_saves/"+temp_file_name)
 
 def get_id_from_name_local(ig_name):
+    """
+    Look up a player's encoded id by unique name from local DB.
+    @param ig_name - "Name#Tag".
+    @return Encoded id or None.
+    """
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
         for key, value in to_read.items():
@@ -539,6 +685,13 @@ def get_id_from_name_local(ig_name):
                 return key
         
 async def fill_next_recur(team1, team2, players_full):
+    """
+    Recursively search balanced 4v4 partition minimizing average MMR delta.
+    @param team1 - Partial team list [name, mmr].
+    @param team2 - Partial team list [name, mmr].
+    @param players_full - Remaining players dict name->{mmr}.
+    @return [delta, team1, team2] best split.
+    """
     #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
     if len(team1) == 4:
         if len(team2) == 4:
@@ -571,6 +724,11 @@ async def fill_next_recur(team1, team2, players_full):
     return best_result
 
 def get_player_from_discord_balance(discord_id):
+    """
+    Resolve a Discord id to local player record for balancing.
+    @param discord_id - Discord user id as string.
+    @return {unique_name: player_record} or an error string.
+    """
     to_read_discord = ""
     to_read = ""
     with open("discord_ids_registered.json", "r") as infile:
@@ -599,6 +757,11 @@ def get_player_from_discord_balance(discord_id):
         return f"{discord_id} not in registered users"""
     
 def get_player_pair_from_discord(discord_id):
+    """
+    Return both encoded id and unique name for a Discord id.
+    @param discord_id - Discord user id as string.
+    @return {"ingame_id":..., "unique_name":...} or error string.
+    """
     to_read_discord = ""
 
     with open("discord_ids_registered.json", "r") as infile:
@@ -612,6 +775,11 @@ def get_player_pair_from_discord(discord_id):
     
 
 async def balance_teams(discord_ids_to_balance):
+    """
+    Compute balanced teams from a list of Discord ids.
+    @param discord_ids_to_balance - Iterable of Discord ids.
+    @return [team1, team2] best split.
+    """
     players_to_balance = {}
     for discord_id in discord_ids_to_balance:
         players_to_balance.update(get_player_from_discord_balance(discord_id))
@@ -619,6 +787,12 @@ async def balance_teams(discord_ids_to_balance):
     return [balance_result[1], balance_result[2]]
 
 def register(discord_id, ig_name):
+    """
+    Register a Discord user to an in-game id and name mapping.
+    @param discord_id - Discord user id as string.
+    @param ig_name - Unique name "Name#Tag".
+    @return Status string on error or None.
+    """
     to_read = ""
     with open("discord_ids_registered.json", "r") as infile:
         to_read = json.load(infile)
@@ -634,18 +808,30 @@ def register(discord_id, ig_name):
         json.dump(to_read, outfile, indent=4)
 
 def reset_match_file():
+    """
+    Backup and reset the match_ids.json file.
+    """
     make_backup()
     reset_module.reset_match_ids()
 
 def reset_player_file():
+    """
+    Backup and reset the player_ids.json file.
+    """
     make_backup()
     reset_module.reset_player_ids()
 
 def reset_player_stats():
+    """
+    Backup and clear player cumulative stat totals.
+    """
     make_backup()
     reset_module.reset_player_stats()
 
 def start():
+    """
+    Simple manual runner to test fetching and backups.
+    """
     #check_new_match("20260306-18a2-4086-a87e-34bbe889d66b")
     #while(1):
     counter = 0

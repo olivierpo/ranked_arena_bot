@@ -54,12 +54,21 @@ COMMANDS_STRING = """
         **PUBLIC:**
         *<!leaderboard>* Prints leaderboard.
         *<!balance user_name1,username2,...username8>* Prints balanced teams from usernames. No spaces between names, just commas. 
-        *</get_player user_name>* Prints player MMR and rank.
-        *</add_player user_name>* Adds a player to the ranked system.
-        *</log_next_game user_name>* Puts player in logging queue and adds the next viable game in op.gg to the log.
-        *</log_recent_game user_name>* Rates most recent game from player IF the game is an arena custom game and ALL PLAYERS are in the system.
-        *</log_specific_game match_id>* Rates specific game IF the game is an arena custom game and ALL PLAYERS are in the system.
+        *</get_player user_name>* Prints player MMR, rank and stats.
+        *</update_name user_name>* Updates player display name in all databases. Use if you just changed your name.
+        *</register user_name>* Adds you to the ranked system.
+        *</queue>* Put yourself in queue for a ranked game. Must be registered.
+        *</leave_queue>* Leave queue. Will also work if you're in game so you don't auto-requeue.
+        *</clear_game>* Clear the current popped game. Game's players must requeue.
         *</get_players_list>* Lets you read through all players sorted by rank.
+        *</randomize_teams>* Performs a built-in randomize function on teams. Do it as many times as you want.
+
+        *</get_games_in_progress>* Get list of all games currently in progress.
+        *</get_queue>* Get list of all players currently in queue.
+
+        If the game fails to log due to a name issue, get an admin to get the match_id.
+        *</log_specific_game match_id>* Rates specific game IF the game is an arena custom game and ALL PLAYERS are in the system.
+        
 
         ***All usernames are CASE SENSITIVE. Please double check!***
         """
@@ -125,6 +134,9 @@ if TESTING:
     }]
 
 def load_in_admins():
+    """
+    Load in the list of administrators from a file.
+    """
     global global_admin_list
     global_admin_list = [118201449392898052, 242753760890191884]
     with open("admin_list.txt", "r") as readfile:
@@ -172,15 +184,26 @@ def get_sorted_players():
             else:
                 players_list[i] = p2
                 players_list[j] = p1
-    #print(players_list)
+
     sorted_players = players_list
     
 
-class MyView(discord.ui.View): # Create a class called MyView that subclasses discord.ui.View
-    @discord.ui.button(label="1", style=discord.ButtonStyle.primary, emoji="😎") # Create a button with the label "😎 Click me!" with color Blurple
+class MyView(discord.ui.View): 
+    """
+    Create a custom view class for a Discord bot interface.
+    This class will inherit from discord.ui.View.
+    """
+    @discord.ui.button(label="1", style=discord.ButtonStyle.primary, emoji="😎") 
     async def button_callback(self, button, interaction):
+        """
+        Define a button with label "1", primary style, and emoji "😎" for a Discord UI.
+        @param label - The text displayed on the button.
+        @param style - The visual style of the button.
+        @param emoji - The emoji displayed on the button.
+        @return An asynchronous callback function for the button interaction.
+        """
         new_button_0 = button
-        #print(new_button_0.view.children)
+
         new_button_1 = button.view.children[0]
         if new_button_1.label == "1":
             await interaction.response.edit_message(content=button.view.message.content, view=button.view)
@@ -198,16 +221,22 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         new_button_1.label = str(int(new_button_1.label)-10)
         new_button_0.view.children[0] = new_button_1
         new_button_0.view.children[1] = new_button_2
-        #print(new_button_0.view.children)
-        await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
-        #self.refresh()
-        #await interaction.response.send_message(, ephemeral=True) # Send a message when the button is clicked
 
-    @discord.ui.button(label="11", style=discord.ButtonStyle.primary, emoji="😎") # Create a button with the label "😎 Click me!" with color Blurple
+        await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
+
+
+    @discord.ui.button(label="11", style=discord.ButtonStyle.primary, emoji="😎") 
     async def second_button_callback(self, button, interaction):
+        """
+        Define an asynchronous callback function for the second button in the user interface.
+        @param self - the class instance
+        @param button - the second button in the UI
+        @param interaction - the user interaction event
+        @return None
+        """
         global sorted_players
         new_button_0 = button
-        #print(new_button_0.view.children)
+
         new_button_1 = button.view.children[0]
         new_button_2 = button.view.children[1]
         new_button_1.label = new_button_2.label
@@ -221,26 +250,32 @@ class MyView(discord.ui.View): # Create a class called MyView that subclasses di
         new_button_2.label = str(int(new_button_2.label)+10)
         new_button_0.view.children[0] = new_button_1
         new_button_0.view.children[1] = new_button_2
-        #print(new_button_0.view.children)
+
         await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
 
 def fill_next_recur(team1, team2, players_full):
-    '''returns mean team elo confidence and teams'''
-    #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+    """
+    This function recursively fills two teams with players from a dictionary to minimize the difference in average team elo confidence.
+    @param team1 - the first team being filled
+    @param team2 - the second team being filled
+    @param players_full - a dictionary of players and their elo confidence
+    @return A list containing the difference in average team elo confidence and the two teams with players assigned to them.
+    """
+
     if len(team1) == 4:
         if len(team2) == 4:
             average_team_1 = (team1[0][1] + team1[1][1] + team1[2][1] + team1[3][1])/4.0
             average_team_2 = (team2[0][1] + team2[1][1] + team2[2][1] + team2[3][1])/4.0
             delta = abs(average_team_2 - average_team_1)
-            #print("got here\n")
+
             return [delta, team1, team2]
-    #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+
     
     dict_keys = list(players_full.keys()) # player ids
-    #print(str(dict_keys)+ " " + str(len(dict_keys)) + "\n")
+
     best_result = []
     for i in range(len(dict_keys)):
-        #print(f"\nteams: {team1} --- {team2} --- {players_full}\n")
+
         temp_team1 = copy.deepcopy(team1)
         temp_team2 = copy.deepcopy(team2)
         if len(team1) == 4:
@@ -258,10 +293,21 @@ def fill_next_recur(team1, team2, players_full):
     return best_result
 
 def balance_teams(players_to_balance):
+    """
+    Balance the teams by recursively filling the next team until all players are assigned.
+    @param players_to_balance - list of players to be balanced into teams
+    @return A list containing the balanced teams.
+    """
     balance_result = fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
     
 def decorate_rank_change(old_sorted_players, sorted_players):
+    """
+    I don't remember why I made this.
+    @param old_sorted_players - The list of players with their old ranks and MMRs.
+    @param sorted_players - The list of players with their new ranks and MMRs.
+    @return A nested dictionary containing the rank and MMR changes for each player.
+    """
     nested_dict = lambda: defaultdict(nested_dict) # allow dict[a][b]
     rank_changes_dict = nested_dict()
     old_rank_dict = {player: (idx, old_mmr) for idx, (old_mmr, old_conf, player) in enumerate(old_sorted_players[:19], start=1)}
@@ -271,15 +317,13 @@ def decorate_rank_change(old_sorted_players, sorted_players):
             old_idx, old_mmr = old_rank
             if old_idx > new_idx:
               rank_changes_dict[player]['rank_change'] = f'+{old_idx - new_idx}🆙️'
-            # # highlighting rank down is kind of bm
-            # if old_idx < new_idx:
-            #   rank_changes_dict[player] = f'- {new_idx - old_idx} ⬇️'
+
             if old_mmr > new_mmr:
               rank_changes_dict[player]['mmr_change'] = f'(-{round(old_mmr - new_mmr)})'
             if old_mmr < new_mmr:
               rank_changes_dict[player]['mmr_change'] = f'(+{round(new_mmr - old_mmr)})'
         else:
-            # new player
+
             rank_changes_dict[player]['rank_change'] = '(Welcome to the top 20!)'
 
     return rank_changes_dict
@@ -287,6 +331,11 @@ def decorate_rank_change(old_sorted_players, sorted_players):
 
 @bot.event
 async def on_message(message):
+    """
+    Handle different message commands in an asynchronous manner.
+    @param message - the message received
+    @return None
+    """
     global sorted_players
     if message.author == bot.user:
         return
@@ -303,7 +352,7 @@ async def on_message(message):
 
         leaderboard_str = "```Name." +(" "*40) + "Rank.\n"
 
-        #print(sorted_players)
+
         i = 0
         counted = 0
         while counted < 20:
@@ -351,29 +400,9 @@ async def on_message(message):
         await message.reply(command_printable, mention_author=True)
     
 
-
-
-
-"""@bot.slash_command(name="get_all_players", description="attaches json file", guild_ids=GUILD_IDS)
-async def get_all_players(ctx):
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    if ctx.author.id in global_admin_list:
-        player_file = discord.File("./player_ids.json")
-        await ctx.send(file=player_file, content="JSON file containing all players.")
-    else:
-        await ctx.respond("Unauthorized", ephemeral=True)"""
-
-"""@bot.slash_command(name="get_all_matches", description="attaches json file", guild_ids=GUILD_IDS)
-async def get_all_matches(ctx):
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    if ctx.author.id in global_admin_list:
-        player_file = discord.File("./match_ids.json")
-        await ctx.send(file=player_file, content="JSON file containing all matches.")
-    else:
-        await ctx.respond("Unauthorized", ephemeral=True)"""
-
 @bot.slash_command(name="appoint_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def appoint_admin(ctx, admin_to_appoint: discord.Option(str)):
+    """Appoint a new admin (owner only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id == 118201449392898052:
         with open("admin_list.txt", "a") as readfile:
@@ -385,6 +414,7 @@ async def appoint_admin(ctx, admin_to_appoint: discord.Option(str)):
 
 @bot.slash_command(name="remove_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_admin(ctx, admin_to_remove: discord.Option(str)):
+    """Remove an admin (owner only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id == 118201449392898052:
         admin_list = ""
@@ -401,6 +431,7 @@ async def remove_admin(ctx, admin_to_remove: discord.Option(str)):
 
 @bot.slash_command(name="get_admins", description="attaches json file", guild_ids=GUILD_IDS)
 async def get_admins(ctx):
+    """Show current admin IDs (admin only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global global_admin_list
     if ctx.author.id in global_admin_list:
@@ -412,6 +443,7 @@ async def get_admins(ctx):
 
 @bot.slash_command(name="get_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def get_player(ctx, player_name: discord.Option(str)):
+    """Show a player's MMR, rank, and stats."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global sorted_players
     get_players()
@@ -430,6 +462,11 @@ async def get_player(ctx, player_name: discord.Option(str)):
 
 
 def get_id_from_name(unique_name):
+    """
+    Retrieve the user ID from a unique name by accessing an op.gg URL and parsing the HTML content using soup.
+    @param unique_name - the unique name of the user
+    @return The user ID
+    """
     username_final = trueskill_module.get_urlsafe_name(unique_name)
     url = f"https://supervive.op.gg/players/steam-{username_final}"
     http = urllib3.PoolManager()
@@ -442,7 +479,7 @@ def get_id_from_name(unique_name):
     soup = BeautifulSoup(reply, 'html.parser')
     huge_string = soup.find(id="app")
     id_index = str(huge_string).find("user_id")
-    #print(id_index)
+
     display_index = str(huge_string).find("display_name")
     if id_index == -1:
         print("ID not found for inputted name")
@@ -452,22 +489,20 @@ def get_id_from_name(unique_name):
 
 @bot.slash_command(name="add_player_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=MMR_DEFAULT), mmr_confidence: discord.Option(float, required = False, default=CONFIDENCE_DEFAULT)):
+    """Admin: add player with MMR and sigma."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         pattern = re.compile("\\S+.*#\\S+")
         if not pattern.match(player_name):
             await ctx.respond("Inputted name not correct format", ephemeral=True)
             return
-        #print(player_unique_name)
+
         user_id = get_id_from_name(player_name)
         
         if not user_id:
              await ctx.respond(f"Something went wrong", ephemeral=True)
              return
-        #lp = soup.find("div", {"class": "lp"}).contents[0]
 
-        #print(huge_string)
-        #print(user_id)
         trueskill_module.add_player(user_id, player_name, mmr=player_mmr, sigma=mmr_confidence)
         await ctx.respond(f"Added {player_name} successfully", ephemeral=True)
     else:
@@ -475,6 +510,7 @@ async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: di
 
 @bot.slash_command(name="add_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def add_player(ctx, player_name: discord.Option(str)):
+    """Add a player with default MMR and sigma."""
     await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     player_mmr = MMR_DEFAULT
@@ -483,21 +519,19 @@ async def add_player(ctx, player_name: discord.Option(str)):
     if not pattern.match(player_name):
         await ctx.respond("Inputted name not correct format", ephemeral=True)
         return
-    #print(player_unique_name)
+
     user_id = get_id_from_name(player_name)
     
     if not user_id:
         await ctx.respond(f"Something went wrong", ephemeral=True)
         return
-    #lp = soup.find("div", {"class": "lp"}).contents[0]
 
-    #print(huge_string)
-    #print(user_id)
     trueskill_module.add_player(user_id, player_name)
     await ctx.send_followup(f"Added {player_name} successfully", ephemeral=True)
 
 @bot.slash_command(name="remove_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_player(ctx, player_name: discord.Option(str)):
+    """Remove a player by unique name."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     await ctx.defer(ephemeral=True)
     pattern = re.compile("\\S+.*#\\S+")
@@ -514,6 +548,7 @@ async def remove_player(ctx, player_name: discord.Option(str)):
 
 @bot.slash_command(name="update_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def update_player(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=-1), mmr_confidence: discord.Option(float, required = False, default=-1)):
+    """Admin: update a player's MMR and sigma."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     await ctx.defer(ephemeral=True)
     if ctx.author.id in global_admin_list:
@@ -521,15 +556,12 @@ async def update_player(ctx, player_name: discord.Option(str), player_mmr: disco
         if not pattern.match(player_name):
             await ctx.send_followup("Inputted name not correct format", ephemeral=True)
             return
-        #print(player_unique_name)
+
         user_id = get_id_from_name(player_name)
         if not user_id:
              await ctx.send_followup(f"Something went wrong", ephemeral=True)
              return
-        #lp = soup.find("div", {"class": "lp"}).contents[0]
 
-        #print(huge_string)
-        #print(user_id)
         error = trueskill_module.update_player(user_id, player_name, mmr=player_mmr, sigma=mmr_confidence)
         if error:
             await ctx.send_followup(error, ephemeral=True)
@@ -538,6 +570,11 @@ async def update_player(ctx, player_name: discord.Option(str), player_mmr: disco
         await ctx.send_followup(f"User not authorized", ephemeral=True)
 
 def get_teams_to_print(match_data):
+    """
+    Generate a formatted list of winning and losing teams from the match data.
+    @param match_data - the data containing match results
+    @return A formatted string listing the winning and losing teams
+    """
     printable_team1 = "**Winners:**\n**---------------**\n"
     printable_team2 = "**Losers:**\n**---------------**\n"
     team1count = 1
@@ -554,6 +591,7 @@ def get_teams_to_print(match_data):
 
 @bot.slash_command(name="log_recent_game", guild_ids=GUILD_IDS) # Create a slash command
 async def log_recent_game(ctx, player_name: discord.Option(str)):
+    """Log the most recent custom game for a player."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     pattern = re.compile("\\S+.*#\\S+")
     await ctx.defer()
@@ -580,6 +618,7 @@ async def log_recent_game(ctx, player_name: discord.Option(str)):
 
 @bot.slash_command(name="log_specific_game", guild_ids=GUILD_IDS) # Create a slash command
 async def log_specific_game(ctx, match_id: discord.Option(str)):
+    """Log a specific custom game by match ID."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     await ctx.defer()
     match_details_return = await trueskill_module.check_new_match(match_id)
@@ -592,24 +631,18 @@ async def log_specific_game(ctx, match_id: discord.Option(str)):
         await ctx.send_followup(content=match_details_return[0])
         return
     match_id_return = match_details_return[1]
-    #43b8e0ae-119c-4631-b18e-346c4b367440
-    #print(match_details_return[0])
     printed_content = f"Logged specific match with id {match_id}\n" + get_teams_to_print(match_details_return[0])
 
     await ctx.send_followup(content=printed_content)
 
-"""@bot.slash_command(name="log_next_game", guild_ids=GUILD_IDS) # Create a slash command
-async def log_next_game(ctx, player_name: discord.Option(str)):
-    global logging_queue
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    pattern = re.compile("\\S+.*#\\S+")
-    if not pattern.match(player_name):
-        await ctx.respond("Inputted name not correct format", ephemeral=True)
-        return
-    logging_queue.append({"player_name":player_name, "min_since":0})
-    await ctx.respond(f"Will log next game for {player_name}")"""
 
 async def log_recent_game_standalone(player_name, player_lis=[]):
+    """
+    Asynchronously log the most recent game played by a player and return the match details.
+    @param player_name - the name of the player
+    @param player_lis - list of players in the match
+    @return The printed content of the most recent match with its ID and team details.
+    """
 
     match_details_return = await trueskill_module.check_match_w_name(player_name, player_lis)
     if not match_details_return:
@@ -625,35 +658,10 @@ async def log_recent_game_standalone(player_name, player_lis=[]):
     return printed_content
 
 
-
-
-"""@tasks.loop(minutes=2)
-async def log_queue():
-    global logging_queue
-    
-    trueskill_module.log_stuff(f"\nGoing through log queue -- {logging_queue} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-    channel = bot.get_channel(MAIN_CHANNEL_ID)
-    fetch_p_matches_in_q()
-    i = 0
-    while i < len(logging_queue):
-        q_dict = logging_queue[i]
-        if q_dict["min_since"] >=10:
-            await channel.send(content=f"All matches already logged for {q_dict["player_name"]} in last 10 minutes.")
-            logging_queue.pop(i)
-            continue
-        trueskill_module.log_stuff(f"\nAttempting log queue entry {q_dict["player_name"]} - {q_dict["min_since"]}min --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
-        return_str = await log_recent_game_standalone(q_dict["player_name"])
-        if not (return_str == None):
-            await channel.send(content=return_str)
-            logging_queue.pop(i)
-        else:
-            q_dict["min_since"] += 2
-            logging_queue[i] = q_dict
-            i+=1
-        time.sleep(3)"""
         
 @bot.slash_command(name="clear_log_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def clear_log_queue(ctx):
+    """Clear the logging queue (admin only)."""
     global logging_queue
     if ctx.author.id in global_admin_list:
         logging_queue = []
@@ -663,6 +671,7 @@ async def clear_log_queue(ctx):
 
 @bot.slash_command(name="get_players_list", guild_ids=GUILD_IDS) # Create a slash command
 async def get_players_list(ctx):
+    """Show top 10 players and ranks."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global sorted_players
     get_players()
@@ -679,6 +688,7 @@ async def get_players_list(ctx):
 
 @bot.slash_command(name="check_log_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def check_log_queue(ctx):
+    """Show the current logging queue."""
     global logging_queue
     queue_to_print = ""
     for queued_dict in logging_queue:
@@ -688,6 +698,7 @@ async def check_log_queue(ctx):
 
 @bot.slash_command(name="backup_id_files", guild_ids=GUILD_IDS) # Create a slash command
 async def backup_id_files(ctx):
+    """Back up player and match ID files (admin only)."""
     if ctx.author.id in global_admin_list:
         trueskill_module.make_backup()
         await ctx.respond("Backed up id files.", ephemeral = True)
@@ -696,6 +707,7 @@ async def backup_id_files(ctx):
 
 @bot.slash_command(name="replace_players", guild_ids=GUILD_IDS) # Create a slash command
 async def replace_players(ctx, player_id_json: discord.Attachment):
+    """Replace player_ids.json from an attached file (admin only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         await player_id_json.save(fp="./temp_saves/"+player_id_json.filename)
@@ -706,6 +718,7 @@ async def replace_players(ctx, player_id_json: discord.Attachment):
 
 @bot.slash_command(name="register", guild_ids=GUILD_IDS) # Create a slash command
 async def register(ctx, player_name: discord.Option(str)):
+    """Register your Discord user to a unique name."""
     await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     pattern = re.compile("\\S+.*#\\S+")
@@ -731,6 +744,12 @@ async def register(ctx, player_name: discord.Option(str)):
     await ctx.send_followup(f"Registered {ctx.author.name} to {player_name}.", ephemeral=True)
 
 async def contains(p_lis, filter):
+    """
+    Check if any element in the list satisfies the given filter condition asynchronously.
+    @param p_lis - The list to be checked.
+    @param filter - The filter condition to be applied.
+    @return True if any element satisfies the filter condition, False otherwise.
+    """
     for x in p_lis:
         if filter(x):
             return True
@@ -738,6 +757,7 @@ async def contains(p_lis, filter):
 
 @bot.slash_command(name="randomize_teams", guild_ids=GUILD_IDS) # Create a slash command
 async def randomize_teams(ctx):
+    """Randomly split your current game into teams."""
     await ctx.defer()
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global games_in_progress
@@ -762,6 +782,11 @@ async def randomize_teams(ctx):
 
 
 async def initiate_queue_pop(players_list):
+    """
+    Initiate the process of popping players from the queue to start a game.
+    @param players_list - List of players in the queue
+    @return None
+    """
     global players_in_queue
     global games_in_progress
     global players_in_game
@@ -789,6 +814,11 @@ async def initiate_queue_pop(players_list):
     await channel.send(content=pop_msg)
 
 def check_if_qg(discord_name):
+    """
+    Check if a player with the given Discord name is in the queue or in a game in progress.
+    @param discord_name - The Discord name of the player to check
+    @return True if the player is in the queue or in a game in progress, False otherwise
+    """
     global players_in_queue
     global games_in_progress
     exists = False
@@ -802,11 +832,19 @@ def check_if_qg(discord_name):
     return exists
 
 async def check_queue():
+    """
+    Asynchronously check the queue for the number of players in the queue. If there are 8 or more players in the queue, initiate the queue pop process with the first 8 players.
+    @return None
+    """
     global players_in_queue
     if len(players_in_queue) >= 8:
         await initiate_queue_pop([players_in_queue[i] for i in range(8)])
 
 async def change_q_channel():
+    """
+    Asynchronously update the voice channel in a Discord server to reflect the number of players in the queue.
+    @returns None
+    """
     guild = bot.get_guild(GUILD_IDS[0 if TESTING else 1])
     category = bot.get_channel(QUEUE_CAT_ID)
     for vc in guild.voice_channels:
@@ -828,6 +866,7 @@ async def shutdown(ctx):
 
 @bot.slash_command(name="update_name", guild_ids=GUILD_IDS) # Create a slash command
 async def update_name(ctx, player_name: discord.Option(str)):
+    """Update your stored unique name."""
     await ctx.defer(ephemeral=True)
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
@@ -846,6 +885,7 @@ async def update_name(ctx, player_name: discord.Option(str)):
 
 @bot.slash_command(name="queue", guild_ids=GUILD_IDS) # Create a slash command
 async def queue(ctx):
+    """Enter the ranked queue."""
     await ctx.defer(ephemeral=True)
     global players_in_queue
     global last_ping_queue_nonempty
@@ -886,6 +926,7 @@ async def queue(ctx):
 
 @bot.slash_command(name="leave_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def leave_queue(ctx):
+    """Leave the queue (or remove from game)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global players_in_game
     global players_in_queue
@@ -898,12 +939,13 @@ async def leave_queue(ctx):
     for player_info in players_in_game:
         if player_info["discord_id"] == ctx.author.id:
             players_in_game.remove(player_info)
-            await ctx.respond(f"Removed {ctx.author.name} from queue.", ephemeral=True)
+            await ctx.respond(f"Removed {ctx.author.name} from queue. (They were still in game)", ephemeral=True)
             return
     await ctx.respond(f"{ctx.author.name} not in queue.", ephemeral=True)
 
 @bot.slash_command(name="clear_game", guild_ids=GUILD_IDS) # Create a slash command
 async def clear_game(ctx, discord_name: discord.Option(str, required = False, default="")):
+    """Clear your current game (or one by name)."""
     global games_in_progress
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
 
@@ -919,6 +961,7 @@ async def clear_game(ctx, discord_name: discord.Option(str, required = False, de
 
 @bot.slash_command(name="get_games_in_progress", guild_ids=GUILD_IDS) # Create a slash command
 async def get_games_in_progress(ctx):
+    """Show games currently in progress."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     global games_in_progress
     to_print = "**Current matches in progress:** \n"
@@ -929,6 +972,10 @@ async def get_games_in_progress(ctx):
     await ctx.respond(to_print)
 
 async def get_queue_print():
+    """
+    Retrieve and format the list of players currently in the queue for printing.
+    @return A formatted string listing the current players in the queue.
+    """
     global players_in_queue
     to_print = "**Current players in queue:** \n"
     for p_info in players_in_queue:
@@ -937,11 +984,16 @@ async def get_queue_print():
 
 @bot.slash_command(name="get_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def get_queue(ctx):
+    """Show current players in queue."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     to_print = await get_queue_print()
     await ctx.respond(to_print)
 
 async def game_end(game_index):
+    """
+    End a game session by removing players from the game in progress and adding them back to the queue.
+    @param game_index - the index of the game session to end
+    """
     global games_in_progress
     global players_in_game
     global players_in_queue
@@ -953,6 +1005,11 @@ async def game_end(game_index):
 
 @tasks.loop(minutes=1)
 async def queue_limit_kicker():
+    """
+    Every minute, check the queue for players who have been waiting for more than an hour and remove them from the queue. 
+    If the queue becomes empty, delete the last message in the queue channel.
+    @return None
+    """
     global games_in_progress
     global games_in_progress_chk
     global players_in_queue
@@ -978,6 +1035,11 @@ async def queue_limit_kicker():
 
 @tasks.loop(seconds=20)
 async def games_queue_logging():
+    """
+    Asynchronously log the games queue and process games in progress.
+    @param None
+    @return None
+    """
     global games_in_progress
     global games_in_progress_chk
     global players_in_queue
@@ -1014,6 +1076,11 @@ async def games_queue_logging():
 
 @tasks.loop(seconds=20)
 async def queue_printer():
+    """
+    Asynchronously check and update the queue status by comparing the current queue length with the previous length. 
+    If there is a change in the queue length, update the queue channel and retrieve the latest queue message to display the updated queue status.
+    @return None
+    """
     global prev_len
     global players_in_queue
     if prev_len != len(players_in_queue):
@@ -1025,6 +1092,10 @@ async def queue_printer():
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 def testing_helper(author_name):
+    """
+    A helper function to add a player to the queue for testing purposes.
+    @param author_name - the name of the player to be added to the queue.
+    """
     global players_in_queue
     player_dict = trueskill_module.get_player_pair_from_discord(author_name)
     
@@ -1036,6 +1107,7 @@ def testing_helper(author_name):
 
 @bot.slash_command(name="test_stuff", guild_ids=GUILD_IDS) # Create a slash command
 async def test_stuff(ctx):
+    """Admin test command for local checks."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id == 118201449392898052: 
         trueskill_module.register("blah", "Tsunani#nani")
@@ -1060,6 +1132,7 @@ async def test_stuff(ctx):
 
 @bot.slash_command(name="reset_players", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_players(ctx):
+    """Reset player file (admin only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_player_file()
@@ -1069,6 +1142,7 @@ async def reset_players(ctx):
 
 @bot.slash_command(name="reset_player_stats", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_player_stats(ctx):
+    """Reset player stats (admin only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_player_stats()
@@ -1078,6 +1152,7 @@ async def reset_player_stats(ctx):
 
 @bot.slash_command(name="reset_matches", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_matches(ctx):
+    """Reset match file (admin only)."""
     trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_match_file()
@@ -1086,6 +1161,11 @@ async def reset_matches(ctx):
         await ctx.respond("Not for you", ephemeral=True)
 
 async def send_init_q_msg():
+    """
+    Refresh the queue by deleting old messages and channels, then create new ones to reflect current players.
+    @param None
+    @return None
+    """
     global QUEUE_MSG_ID
     global players_in_queue
     channel = bot.get_channel(QUEUE_CHANNEL_ID)
@@ -1106,6 +1186,11 @@ async def send_init_q_msg():
 
 @bot.event
 async def on_ready():
+    """
+    Handle bot startup initialization.
+    @param None
+    @return None
+    """
     print(f'Logged in as {bot.user}', flush=True)
     await send_init_q_msg()
     if not games_queue_logging.is_running():

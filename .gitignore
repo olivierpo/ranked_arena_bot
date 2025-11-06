@@ -11,7 +11,10 @@ match_getter_log.txt
 TODO
 test_files
 data_files
+test_json.py
 temp_saves
 webdrivers
 scratch.py
+discord.log
+parse_coyote_file.py
 __pycache__
