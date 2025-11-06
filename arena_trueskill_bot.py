@@ -152,7 +152,7 @@ def p1_is_worse(player1, player2):
 
 def get_sorted_players():
     '''
-    ranks players by elo using bubble sort
+    ranks players by elo (highest to lowest) using bubble sort
 
     creates new global variable `sorted_players`
 

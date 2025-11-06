@@ -131,7 +131,7 @@ def update_new_name_d_ids(player_id, unique_name):
         to_read = json.load(infile)
         for key, value in to_read.items():
             if value["ingame_id"] == player_id and value["unique_name"] != unique_name:
-                log_stuff(f"{value['unique_name']} NAME CHANGED to {unique_name}")
+                log_stuff(f"\n{value['unique_name']} NAME CHANGED to {unique_name}")
                 value["unique_name"] = unique_name
                 to_read[key] = value
                 break
@@ -144,7 +144,7 @@ def update_new_name_p_ids(player_id, unique_name):
         to_read = json.load(infile)
 
         if to_read[player_id]["unique_name"] != unique_name:
-            log_stuff(f"{to_read[player_id]['unique_name']} NAME CHANGED to {unique_name}")
+            log_stuff(f"\n{to_read[player_id]['unique_name']} NAME CHANGED to {unique_name}")
             to_read[player_id]["unique_name"] = unique_name
                 
     with open("player_ids.json", "w") as outfile:
@@ -308,7 +308,7 @@ async def check_new_match(match_id, players_list=[]):
         try:
             match_details = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/matches/steam-{match_id}")
         except Exception as error:
-            log_stuff(f"Error in request https://supervive.op.gg/api/matches/steam-{match_id}\n" + str(error))
+            log_stuff(f"\nError in request https://supervive.op.gg/api/matches/steam-{match_id}\n" + str(error))
             return ["Error in http request."]
         await asyncio.sleep(0.5)
 
@@ -403,7 +403,7 @@ async def fix_name_from_ID(user_ID):
             player_display_name = player["player"]["unique_display_name"]
 
     if not retrieve_id(player_display_name):
-        log_stuff(f"Last match name, {player_display_name}, too old.")
+        log_stuff(f"\nLast match name, {player_display_name}, too old.")
         return [f"Last match name, {player_display_name}, too old.", 1]
 
     update_new_name_d_ids(user_ID, player_display_name)
@@ -466,7 +466,7 @@ def remove_player_w_id(user_id):
     with open("player_ids.json", "r") as readfile:
         to_replace = json.load(readfile)
     if not user_id in to_replace.keys():
-        log_stuff("Player not in database")
+        log_stuff("\nPlayer not in database")
         return "Player not in database"
     with open("player_ids.json", "w") as writefile:
         del to_replace[user_id]
@@ -480,7 +480,7 @@ def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     with open("player_ids.json", "r") as readfile:
         to_append = json.load(readfile)
     if user_id in to_append.keys():
-        log_stuff("Player already in database")
+        log_stuff("\nPlayer already in database")
         return "Player already in database"
     with open("player_ids.json", "w") as writefile:
         to_append.update({user_id:{"mmr":mmr, "sigma":sigma, "unique_name": user_name, "wins":0, "losses":0, 
@@ -495,7 +495,7 @@ def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT)
     with open("player_ids.json", "r") as readfile:
         to_append = json.load(readfile)
     if not user_id in to_append.keys():
-        log_stuff("Player not in database")
+        log_stuff("\nPlayer not in database")
         return "Player not in database"
     with open("player_ids.json", "w") as writefile:
         to_append[user_id]["mmr"]= mmr if mmr != -1 else to_append[user_id]["mmr"]
@@ -581,7 +581,7 @@ def get_player_from_discord_balance(discord_id):
     try:
         return {to_read_discord[discord_id]["unique_name"]:to_read[to_read_discord[discord_id]["ingame_id"]]}
     except:
-        log_stuff(f"{discord_id} not in registered users")
+        log_stuff(f"\n{discord_id} not in registered users")
         return f"{discord_id} not in registered users"
 
 """def get_player_from_discord(discord_id):
@@ -607,7 +607,7 @@ def get_player_pair_from_discord(discord_id):
     try:
         return {"ingame_id":to_read_discord[discord_id]["ingame_id"],"unique_name":to_read_discord[discord_id]["unique_name"]}
     except:
-        log_stuff(f"{discord_id} not in registered users")
+        log_stuff(f"\n{discord_id} not in registered users")
         return f"{discord_id} not in registered users"
     
 
@@ -623,11 +623,11 @@ def register(discord_id, ig_name):
     with open("discord_ids_registered.json", "r") as infile:
         to_read = json.load(infile)
     if discord_id in to_read.keys():
-        log_stuff(f"You've already registered. {discord_id}  {ig_name}")
+        log_stuff(f"\nYou've already registered. {discord_id}  {ig_name}")
         return "You've already registered."  
     ingame_id = get_id_from_name_local(ig_name)
     if not ingame_id:
-        log_stuff(f"Name not found in local database.  {discord_id}  {ig_name}")
+        log_stuff(f"\nName not found in local database.  {discord_id}  {ig_name}")
         return "Name not found in local database."  
     to_read.update({discord_id: {"ingame_id":ingame_id, "unique_name":ig_name}})
     with open("discord_ids_registered.json", "w") as outfile:
