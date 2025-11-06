@@ -5,15 +5,11 @@ supervive_id_getter.py
 scraping.code-workspace
 arena_trueskill_api.py
 Discord_bot_code.txt
-player_ids.json
-discord_ids_registered.json
-match_getter_log.txt
 TODO
 test_files
 data_files
 test_json.py
 temp_saves
-webdrivers
 scratch.py
 discord.log
 parse_coyote_file.py
