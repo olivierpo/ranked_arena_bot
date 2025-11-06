@@ -11,6 +11,7 @@ import os
 import importlib
 import copy
 import asyncio
+import builtins
 
 MMR_DEFAULT = 1000
 CONFIDENCE_DEFAULT = 333
@@ -19,6 +20,17 @@ reset_module = importlib.import_module("id_reset_module")
 chrome_module = importlib.import_module("chrome_automation")
 
 sys.stdout.reconfigure(encoding='utf-8')
+
+# Patch open() default
+if not getattr(builtins.open, "_is_utf8_patched", False):
+    _builtin_open = builtins.open
+
+    def open_utf8_default(*args, **kwargs):
+        kwargs.setdefault("encoding", "utf-8")
+        return _builtin_open(*args, **kwargs)
+
+    open_utf8_default._is_utf8_patched = True
+    builtins.open = open_utf8_default
 
 def log_stuff(message):
     with open("match_getter_log.txt", "a") as appendfile:
@@ -366,7 +378,7 @@ def fix_name_manual(new_name, user_ID):
     update_new_name_p_ids(user_ID, new_name)
 
 """
-Get unique name from ID and fix databases (player_ids and discord_ids_registered) TODO
+Get unique name from ID and fix databases (player_ids and discord_ids_registered) 
 """
 async def fix_name_from_ID(user_ID):
     loop = asyncio.get_event_loop()
