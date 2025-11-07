@@ -10,6 +10,16 @@ import platform
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+def get_windows_version_type():
+    if sys.platform == "win32":
+        build_number = sys.getwindowsversion().build
+        if build_number >= 22000:
+            return "Windows 11"
+        else:
+            return "Windows 10"
+    else:
+        return "Not a Windows operating system"
+
 """
 Headless Chrome utilities to drive supervive.op.gg interactions.
 Creates a minimal wrapper used to press "Fetch New Matches" for a player.
@@ -42,9 +52,14 @@ class HeadlessChrome:
         }
         os = platform.system()
 
+
+
         match os:
             case "Windows":
-              CHROME_DRIVER=r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
+                if get_windows_version_type() == "Windows 10":
+                    CHROME_DRIVER=r"./webdrivers/windows/chromedriver-win64/chromedriver-new.exe"
+                else:
+                    CHROME_DRIVER=r"./webdrivers/windows/chromedriver-win64/chromedriver.exe"
             case "Linux":
               CHROME_DRIVER=r"./webdrivers/linux/chromedriver-linux64/chromedriver"
 
