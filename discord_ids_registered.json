@@ -57,7 +57,7 @@
     },
     "tsunani": {
         "ingame_id": "61ba00a0ee374191b301c13a7276891d",
-        "unique_name": "\u5927\u68a6\u8c01\u5148\u89c9 \u5e73\u751f\u6211\u81ea\u77e5#tsu"
+        "unique_name": "Tsunani#nani"
     },
     "mandm9920": {
         "ingame_id": "c392b5c134cd4618b1c0abc25ef3f751",
@@ -414,5 +414,41 @@
     "zedkokiria": {
         "ingame_id": "a635dcc75f394f03ad31c9e3321f11ca",
         "unique_name": "Zed#4444"
+    },
+    "ukiestars": {
+        "ingame_id": "87661f35b9cf46d1b943a14fdaf2cf3d",
+        "unique_name": "Ukie#13"
+    },
+    "supremetentacle": {
+        "ingame_id": "51139136690b4f888e4cd68eec415eb4",
+        "unique_name": "Squid#01"
+    },
+    "dorrisxd": {
+        "ingame_id": "bf132d8d39374681a8b0a88220a70c14",
+        "unique_name": "Dorris#0000"
+    },
+    "swog18": {
+        "ingame_id": "99c0554147614088b0a2400831ce5b7e",
+        "unique_name": "Swog18#Swog"
+    },
+    "misfit714": {
+        "ingame_id": "55933f61ffc94c90bb98e4dc1700b5c0",
+        "unique_name": "Misfit#01"
+    },
+    "ryanlemur": {
+        "ingame_id": "319c0aa0053a4018943ec30f74e2a377",
+        "unique_name": "Lemur#01"
+    },
+    "pensato": {
+        "ingame_id": "10a9cf0348f74d10b11ef620ce452b13",
+        "unique_name": "Pensato#0001"
+    },
+    "adaptiveelk": {
+        "ingame_id": "af47c3bd2c914e4f905f2e82168b55d7",
+        "unique_name": "AdaptiveElk#8375"
+    },
+    "clidecash": {
+        "ingame_id": "b10307addfc94fa29fead8aecd9f1221",
+        "unique_name": "Clyde Cash#6942"
     }
 }
