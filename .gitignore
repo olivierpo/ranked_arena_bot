@@ -13,4 +13,6 @@ temp_saves
 scratch.py
 discord.log
 parse_coyote_file.py
+chrome_stealth.py
+TODO.txt
 __pycache__

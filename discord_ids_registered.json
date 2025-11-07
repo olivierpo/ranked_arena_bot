@@ -97,7 +97,7 @@
     },
     "syrus0600": {
         "ingame_id": "e5588a51b37d47a2aee02f8ddac3a3a5",
-        "unique_name": "Comrade Syrus#OFF"
+        "unique_name": "Sulfuras Of The East#WEST"
     },
     "whakc": {
         "ingame_id": "18d3dac327824636bcb54dca804bbdfa",
@@ -402,5 +402,17 @@
     "flow7511": {
         "ingame_id": "730760442adb4e28b1276f5b83280157",
         "unique_name": "Flow#999"
+    },
+    "ezi0def1renze": {
+        "ingame_id": "f5dc6b5e8d244852b12552291b803c07",
+        "unique_name": "Ezi0DeF1renze#1234"
+    },
+    "brabb6969": {
+        "ingame_id": "d1909328bd234c9fa9e824255dd8206f",
+        "unique_name": "Chinese Spy#9022"
+    },
+    "zedkokiria": {
+        "ingame_id": "a635dcc75f394f03ad31c9e3321f11ca",
+        "unique_name": "Zed#4444"
     }
 }

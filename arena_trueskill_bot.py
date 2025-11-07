@@ -1063,8 +1063,8 @@ async def games_queue_logging():
         return_str = await log_recent_game_standalone(p_info["unique_name"], p_lis_for_chcker)
         if not (return_str == None):
             await channel.send(content=return_str)
-            i=0
             await game_end(i)
+            i=0
             await check_queue()
             break   
         await asyncio.sleep(1)

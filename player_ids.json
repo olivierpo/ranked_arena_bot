@@ -1,32 +1,32 @@
 {
     "3131248f6e5a4c64a1a9664135978d95": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
         "unique_name": "Emperor#King",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 10,
+            "deaths": 5,
+            "assists": 2,
+            "damage_done": 25641.701,
+            "damage_taken": 25822.21,
+            "healing_done": 15824.626
         }
     },
     "d6e6aeffbfa74613b4821c0dc8da19cc": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 920,
+        "sigma": 277.0413229004672,
         "unique_name": "Despi#derp",
-        "wins": 0,
-        "losses": 0,
+        "wins": 1,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 17,
+            "deaths": 28,
+            "assists": 30,
+            "damage_done": 120702.639,
+            "damage_taken": 131609.746,
+            "healing_done": 53029.01393999999
         }
     },
     "bf132d8d39374681a8b0a88220a70c14": {
@@ -45,18 +45,18 @@
         }
     },
     "3fa1308e2069455599251b8919a4e4c9": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1233.1853350521417,
+        "sigma": 221.63700894134925,
         "unique_name": "Coyote#0000",
-        "wins": 0,
-        "losses": 0,
+        "wins": 9,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 41,
+            "deaths": 74,
+            "assists": 92,
+            "damage_done": 344101.78199999995,
+            "damage_taken": 356974.159,
+            "healing_done": 253333.8872
         }
     },
     "80459d0a0fda4db3b5d25a92aa8a8a09": {
@@ -90,33 +90,33 @@
         }
     },
     "f5fe85bdaf854667badbab0aece6ac45": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1151.6110672972093,
+        "sigma": 213.89341578837826,
         "unique_name": "Hight#01",
-        "wins": 0,
-        "losses": 0,
+        "wins": 8,
+        "losses": 4,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 62,
+            "deaths": 72,
+            "assists": 90,
+            "damage_done": 384685.85699999996,
+            "damage_taken": 357447.72400000005,
+            "healing_done": 160404.34647999998
         }
     },
     "493d85e2b03845e9aa99b85066711cee": {
         "mmr": 1040,
-        "sigma": 319.4704573107349,
+        "sigma": 226.59810918678443,
         "unique_name": "PhenomEX#DIFF",
-        "wins": 1,
-        "losses": 0,
+        "wins": 6,
+        "losses": 5,
         "stats": {
-            "kills": 4,
-            "deaths": 6,
-            "assists": 10,
-            "damage_done": 20199.49,
-            "damage_taken": 31006.492,
-            "healing_done": 20438.570799999998
+            "kills": 42,
+            "deaths": 71,
+            "assists": 74,
+            "damage_done": 304802.277,
+            "damage_taken": 337098.723,
+            "healing_done": 207793.57069999995
         }
     },
     "177a8c2562674644a957d63acd9b6f73": {
@@ -195,18 +195,18 @@
         }
     },
     "61ba00a0ee374191b301c13a7276891d": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 287.18074263371574,
         "unique_name": "\u5927\u68a6\u8c01\u5148\u89c9 \u5e73\u751f\u6211\u81ea\u77e5#tsu",
-        "wins": 0,
-        "losses": 0,
+        "wins": 1,
+        "losses": 2,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 17,
+            "deaths": 23,
+            "assists": 18,
+            "damage_done": 106240.676,
+            "damage_taken": 99797.791,
+            "healing_done": 66916.1116
         }
     },
     "90caaa7068244ffab0859a6d96052f03": {
@@ -225,33 +225,33 @@
         }
     },
     "aad85e0849384ab28a2d4f1b362cb4c3": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 319.4704573107349,
         "unique_name": "Geb#1087",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 4,
+            "deaths": 5,
+            "assists": 9,
+            "damage_done": 22708.15,
+            "damage_taken": 28248.867,
+            "healing_done": 26486.5775
         }
     },
     "c549cde0627e489dacb209a0f7b8c3df": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 265.6454298760643,
         "unique_name": "SHRICHAEL JORDAN#pyn",
-        "wins": 0,
-        "losses": 0,
+        "wins": 2,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 17,
+            "deaths": 39,
+            "assists": 38,
+            "damage_done": 200664.751,
+            "damage_taken": 124602.951,
+            "healing_done": 28801.580099999996
         }
     },
     "05a4ad4affda45b8be1a4f9d4d67b7b6": {
@@ -390,33 +390,33 @@
         }
     },
     "6672908f4d904da5935251520539dd23": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 311.9313213772879,
         "unique_name": "polts#2002",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 10,
+            "deaths": 8,
+            "assists": 6,
+            "damage_done": 40263.79,
+            "damage_taken": 35117.676,
+            "healing_done": 17445.223
         }
     },
     "e5588a51b37d47a2aee02f8ddac3a3a5": {
-        "mmr": 1000,
-        "sigma": 333,
-        "unique_name": "Comrade Syrus#OFF",
+        "mmr": 960,
+        "sigma": 319.4704573107349,
+        "unique_name": "Sulfuras Of The East#WEST",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
             "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "deaths": 7,
+            "assists": 3,
+            "damage_done": 14344.014,
+            "damage_taken": 25961.744,
+            "healing_done": 6421.3989
         }
     },
     "10f42c4dc9f5420dbb51442bb05ccf80": {
@@ -435,18 +435,18 @@
         }
     },
     "34ddf41b43e543819d0d7503b448b13d": {
-        "mmr": 1040,
-        "sigma": 319.4704573107349,
+        "mmr": 1160,
+        "sigma": 240.41530350734172,
         "unique_name": "\u6211\u5011\u4e00\u8d77\u5b78\u8c93\u53eb\u4e00\u8d77\u55b5\u55b5\u55b5\u55b5\u55b5#meow",
-        "wins": 1,
-        "losses": 0,
+        "wins": 6,
+        "losses": 2,
         "stats": {
-            "kills": 6,
-            "deaths": 5,
-            "assists": 9,
-            "damage_done": 41355.227,
-            "damage_taken": 14307.174,
-            "healing_done": 3508.8623
+            "kills": 49,
+            "deaths": 49,
+            "assists": 72,
+            "damage_done": 315472.878,
+            "damage_taken": 179411.26700000002,
+            "healing_done": 69045.18740000001
         }
     },
     "64a86bbd5dc04701a8113ea619bb3126": {
@@ -525,18 +525,18 @@
         }
     },
     "55bfde63c86846b5b07dcc50fd018c77": {
-        "mmr": 960,
-        "sigma": 319.4704573107349,
+        "mmr": 1295.4562876543764,
+        "sigma": 208.2655482907772,
         "unique_name": "lodds#catt",
-        "wins": 0,
-        "losses": 1,
+        "wins": 11,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 6,
-            "assists": 1,
-            "damage_done": 25016.252,
-            "damage_taken": 22558.438,
-            "healing_done": 2586.666
+            "kills": 65,
+            "deaths": 92,
+            "assists": 113,
+            "damage_done": 480580.62,
+            "damage_taken": 360706.505,
+            "healing_done": 207763.37290000005
         }
     },
     "e32614e6a2f04b7a8f11ce38d7be3a53": {
@@ -555,18 +555,18 @@
         }
     },
     "d90dd29304314a77b3323cdab1f91174": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1146.639844115265,
+        "sigma": 223.822539394308,
         "unique_name": "lord Vader#1458",
-        "wins": 0,
-        "losses": 0,
+        "wins": 7,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 82,
+            "deaths": 58,
+            "assists": 62,
+            "damage_done": 364263.274,
+            "damage_taken": 225792.50900000002,
+            "healing_done": 99377.9424
         }
     },
     "6abe8205e7ae47a4a8919a66b10f1e9b": {
@@ -615,18 +615,18 @@
         }
     },
     "4da6ef6973014ceda3dd6b8e03697ed7": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 955.5301501640741,
+        "sigma": 222.01526391690652,
         "unique_name": "roughly 44 ducks#44",
-        "wins": 0,
-        "losses": 0,
+        "wins": 5,
+        "losses": 6,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 19,
+            "deaths": 66,
+            "assists": 69,
+            "damage_done": 191841.482,
+            "damage_taken": 216371.88800000004,
+            "healing_done": 241567.12699999998
         }
     },
     "b09612a1045346648e48ea09b24d758b": {
@@ -870,18 +870,18 @@
         }
     },
     "c392b5c134cd4618b1c0abc25ef3f751": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 319.4704573107349,
         "unique_name": "MandM#9920",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 2,
+            "deaths": 7,
+            "assists": 1,
+            "damage_done": 19733.572,
+            "damage_taken": 23961.037,
+            "healing_done": 8553.00698
         }
     },
     "016250053f8546969b6148c202c7ea4e": {
@@ -1065,18 +1065,18 @@
         }
     },
     "f4f09b6306e8474c98832eda79735d72": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 929.8358318507187,
+        "sigma": 218.39756992507284,
         "unique_name": "\u5927\u6c5f\u5927\u6d77\u6c5f\u5927\u6d77 \u4fa7\u6123\u8eab\u5b50\u4e48\u8f6c\u7740\u8fd8#2049",
-        "wins": 0,
-        "losses": 0,
+        "wins": 5,
+        "losses": 7,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 43,
+            "deaths": 73,
+            "assists": 77,
+            "damage_done": 297638.467,
+            "damage_taken": 449167.47599999997,
+            "healing_done": 248417.799
         }
     },
     "059fe4218a6d40558f222331e2480616": {
@@ -1230,18 +1230,18 @@
         }
     },
     "a635dcc75f394f03ad31c9e3321f11ca": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 317.87791021778384,
         "unique_name": "Zed#4444",
-        "wins": 0,
+        "wins": 1,
         "losses": 0,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 6,
+            "deaths": 5,
+            "assists": 10,
+            "damage_done": 23168.482,
+            "damage_taken": 13179.426,
+            "healing_done": 10627.8533
         }
     },
     "8d1a1aa9ef7b4d6d9d647d05a1d272ff": {
@@ -1590,18 +1590,18 @@
         }
     },
     "18d3dac327824636bcb54dca804bbdfa": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 960,
+        "sigma": 319.4704573107349,
         "unique_name": "whakc#GUN",
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "stats": {
             "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "deaths": 7,
+            "assists": 1,
+            "damage_done": 10920.375,
+            "damage_taken": 13061.479,
+            "healing_done": 4610.595
         }
     },
     "248ecf837b694e58a249f979f494f4a5": {
@@ -1620,18 +1620,18 @@
         }
     },
     "0bfc435d0430434fab4dbf1c2549079d": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1040,
+        "sigma": 243.69060637952765,
         "unique_name": "Jimmy#1111",
-        "wins": 0,
-        "losses": 0,
+        "wins": 4,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 16,
+            "deaths": 50,
+            "assists": 59,
+            "damage_done": 162329.04200000002,
+            "damage_taken": 201142.83400000003,
+            "healing_done": 136599.77800000002
         }
     },
     "44ee6562edd24b3ea6264b5f6f909be0": {
@@ -1695,33 +1695,33 @@
         }
     },
     "25b2222728e64104ac9396aa0036e317": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 920,
+        "sigma": 273.83337763792247,
         "unique_name": "destravous#0001",
-        "wins": 0,
-        "losses": 0,
+        "wins": 1,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 16,
+            "deaths": 27,
+            "assists": 20,
+            "damage_done": 96343.363,
+            "damage_taken": 89910.407,
+            "healing_done": 33345.6707
         }
     },
     "c851fcd60ad74024b32e2efb4be4dbe6": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 920,
+        "sigma": 297.37968989460126,
         "unique_name": "WubbyBay#wubz",
         "wins": 0,
-        "losses": 0,
+        "losses": 2,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 2,
+            "deaths": 11,
+            "assists": 3,
+            "damage_done": 18153.5046,
+            "damage_taken": 39406.231,
+            "healing_done": 9063.5524
         }
     },
     "400e0fd1605f43988183e60b43f5d362": {
@@ -1740,18 +1740,18 @@
         }
     },
     "5a9ac18dced845d3ad65051283b1c923": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 880,
+        "sigma": 287.4573370034734,
         "unique_name": "stealthninja#9900",
         "wins": 0,
-        "losses": 0,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 5,
+            "deaths": 21,
+            "assists": 17,
+            "damage_done": 47056.673,
+            "damage_taken": 119420.62000000001,
+            "healing_done": 58608.74319999999
         }
     },
     "aaa3cf7e23684b1a9ab39b496b3af421": {
@@ -1875,18 +1875,18 @@
         }
     },
     "fa91678d61774d45a8edfc761da2288c": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 1082.9105391224773,
+        "sigma": 256.8915208463538,
         "unique_name": "ThankQ#10Q",
-        "wins": 0,
-        "losses": 0,
+        "wins": 4,
+        "losses": 2,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 20,
+            "deaths": 39,
+            "assists": 52,
+            "damage_done": 166912.478,
+            "damage_taken": 153807.51299999998,
+            "healing_done": 62467.304359999995
         }
     },
     "cc022d4823e446f199b1e07aab440ff3": {
@@ -1905,18 +1905,18 @@
         }
     },
     "afcbb5fdc3dc415e8b792f19bca5d9fa": {
-        "mmr": 960,
-        "sigma": 319.4704573107349,
+        "mmr": 731.8481248964637,
+        "sigma": 225.4019880199524,
         "unique_name": "ralph#tk",
-        "wins": 0,
-        "losses": 1,
+        "wins": 2,
+        "losses": 9,
         "stats": {
-            "kills": 2,
-            "deaths": 6,
-            "assists": 3,
-            "damage_done": 18323.28,
-            "damage_taken": 25325.04,
-            "healing_done": 5488.701
+            "kills": 23,
+            "deaths": 65,
+            "assists": 33,
+            "damage_done": 265812.054,
+            "damage_taken": 269719.748,
+            "healing_done": 78195.3992
         }
     },
     "ac26744cc5184f909fd8a2a86706b46e": {
@@ -2100,18 +2100,18 @@
         }
     },
     "f0b579a0fc09478dbc1ebe065124c234": {
-        "mmr": 960,
-        "sigma": 319.4704573107349,
+        "mmr": 1080,
+        "sigma": 245.1140036627493,
         "unique_name": "Protofo#2481",
-        "wins": 0,
-        "losses": 1,
+        "wins": 5,
+        "losses": 3,
         "stats": {
-            "kills": 3,
-            "deaths": 6,
-            "assists": 5,
-            "damage_done": 25369.705,
-            "damage_taken": 30950.088,
-            "healing_done": 9312.68
+            "kills": 27,
+            "deaths": 49,
+            "assists": 59,
+            "damage_done": 200890.72100000002,
+            "damage_taken": 221761.142,
+            "healing_done": 89436.39971
         }
     },
     "0449270955264ff69f28a5f19bcde35f": {
@@ -2160,18 +2160,18 @@
         }
     },
     "cacae7ee4df842239f33b7dfc38508ec": {
-        "mmr": 960,
-        "sigma": 319.4704573107349,
+        "mmr": 880,
+        "sigma": 291.15842762737043,
         "unique_name": "Sauwse#6969",
         "wins": 0,
-        "losses": 1,
+        "losses": 3,
         "stats": {
-            "kills": 1,
-            "deaths": 6,
-            "assists": 3,
-            "damage_done": 13294.37,
-            "damage_taken": 20593.35,
-            "healing_done": 18466.264000000003
+            "kills": 4,
+            "deaths": 17,
+            "assists": 5,
+            "damage_done": 38569.032999999996,
+            "damage_taken": 53579.68,
+            "healing_done": 20633.6533
         }
     },
     "e43f96925cd645e2a7b3037840693520": {
@@ -2205,48 +2205,48 @@
         }
     },
     "4056acf3dc3548809af37bf6dc91e576": {
-        "mmr": 1000,
-        "sigma": 333,
+        "mmr": 880,
+        "sigma": 281.1282918123978,
         "unique_name": "NotABurger#SnT",
         "wins": 0,
-        "losses": 0,
+        "losses": 3,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 2,
+            "deaths": 18,
+            "assists": 4,
+            "damage_done": 55887.983,
+            "damage_taken": 79071.596,
+            "healing_done": 10456.619999999999
         }
     },
     "c34934752efa4c4bb17bde4d7a05abfc": {
-        "mmr": 1040,
-        "sigma": 319.4704573107349,
+        "mmr": 893.8875696062879,
+        "sigma": 211.13267749903807,
         "unique_name": "GoodBoy#sug",
-        "wins": 1,
-        "losses": 0,
+        "wins": 5,
+        "losses": 8,
         "stats": {
-            "kills": 10,
-            "deaths": 5,
-            "assists": 8,
-            "damage_done": 25016.607,
-            "damage_taken": 19884.947,
-            "healing_done": 8269.118
+            "kills": 51,
+            "deaths": 83,
+            "assists": 65,
+            "damage_done": 322562.05000000005,
+            "damage_taken": 318928.65099999995,
+            "healing_done": 240591.24399999998
         }
     },
     "43404bfc6d92478abdb66436a803200e": {
         "mmr": 1000,
-        "sigma": 333,
+        "sigma": 302.55490056548956,
         "unique_name": "Diamond#0416",
-        "wins": 0,
-        "losses": 0,
+        "wins": 1,
+        "losses": 1,
         "stats": {
-            "kills": 0,
-            "deaths": 0,
-            "assists": 0,
-            "damage_done": 0,
-            "damage_taken": 0,
-            "healing_done": 0
+            "kills": 3,
+            "deaths": 11,
+            "assists": 14,
+            "damage_done": 38665.694,
+            "damage_taken": 49489.785,
+            "healing_done": 46703.5845
         }
     },
     "fd64958684a54bd4ad8094e404f313c4": {
@@ -2310,18 +2310,48 @@
         }
     },
     "730760442adb4e28b1276f5b83280157": {
-        "mmr": 1040,
-        "sigma": 319.4704573107349,
+        "mmr": 880,
+        "sigma": 267.29784252301283,
         "unique_name": "Flow#999",
         "wins": 1,
+        "losses": 4,
+        "stats": {
+            "kills": 4,
+            "deaths": 34,
+            "assists": 26,
+            "damage_done": 75683.4073,
+            "damage_taken": 156068.899,
+            "healing_done": 125582.1283
+        }
+    },
+    "f5dc6b5e8d244852b12552291b803c07": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Ezi0DeF1renze#1234",
+        "wins": 0,
         "losses": 0,
         "stats": {
-            "kills": 1,
-            "deaths": 5,
-            "assists": 8,
-            "damage_done": 12855.573,
-            "damage_taken": 16805.117,
-            "healing_done": 22649.809999999998
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
+        }
+    },
+    "d1909328bd234c9fa9e824255dd8206f": {
+        "mmr": 1000,
+        "sigma": 333,
+        "unique_name": "Chinese Spy#9022",
+        "wins": 0,
+        "losses": 0,
+        "stats": {
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "damage_done": 0,
+            "damage_taken": 0,
+            "healing_done": 0
         }
     }
 }
