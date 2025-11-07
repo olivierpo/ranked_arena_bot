@@ -15,6 +15,7 @@ import asyncio
 import random
 import datetime
 import sys
+from wcwidth import wcswidth
 from dotenv import load_dotenv
 
 ##############################  TESTING VARIABLE ################################
@@ -361,7 +362,7 @@ async def on_message(message):
 
             if (sorted_players[i]["wins"] + sorted_players[i]["losses"]) > 10:
                 to_add = f"{counted+1}. {sorted_players[i]["unique_name"]}"
-                whitespace_count = 45 - len(to_add)
+                whitespace_count = 45 - wcswidth(to_add)
                 to_add += (" "*whitespace_count)
                 leaderboard_str += (to_add+trueskill_module.get_pretty_print_from_mmr(int(sorted_players[i]["mmr"])) + "\n")
                 counted += 1
@@ -898,12 +899,17 @@ async def queue(ctx):
         await ctx.send_followup(player_dict, ephemeral=True)
         return
     
-    error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
+    #error = await trueskill_module.fix_name_from_ID(player_dict["ingame_id"])
+    #if error:
+    #    await ctx.send_followup(error[0], ephemeral=True)
+    #    if not error[1]:
+    #        return
+
+    error = await trueskill_module.check_valid_name(player_dict["unique_name"])
     if error:
         await ctx.send_followup(error[0], ephemeral=True)
-        if not error[1]:
-            return
-    
+        return
+
     channel = bot.get_channel(QUEUE_CHANNEL_ID)
     curr_time = datetime.datetime.now(datetime.timezone.utc)
     diff_time = (curr_time - last_ping_queue_nonempty).total_seconds()
@@ -989,9 +995,15 @@ async def get_queue(ctx):
     to_print = await get_queue_print()
     await ctx.respond(to_print)
 
+async def delayed_requeue(players):
+    """
+    Delay requeue by 30 seconds after a game ends, leaving players time to leave the queue
+    """
+    await asyncio.sleep(30)
+
 async def game_end(game_index):
     """
-    End a game session by removing players from the game in progress and adding them back to the queue.
+    End a game session by removing players from the game in progress and adding them back to the queue. TODO removed auto queue
     @param game_index - the index of the game session to end
     """
     global games_in_progress
@@ -999,7 +1011,7 @@ async def game_end(game_index):
     global players_in_queue
     for player_info in games_in_progress[game_index]:
         if player_info in players_in_game:
-            players_in_queue.append(player_info)
+            #players_in_queue.append(player_info)
             players_in_game.remove(player_info)
     games_in_progress.pop(game_index)
 

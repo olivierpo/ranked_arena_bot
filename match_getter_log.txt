@@ -8027,3 +8027,16 @@ get_queue -- ukiestars --2025-11-07 16:20:54
 queue -- ukiestars --2025-11-07 16:21:00
 queue -- krilobh --2025-11-07 16:26:13
 >>>>>>> Stashed changes
+
+!leaderboard -- olivethebrave --2025-11-07 19:13:24
+queue -- olivethebrave --2025-11-07 19:20:07
+queue -- olivethebrave --2025-11-07 19:23:20
+queue -- olivethebrave --2025-11-07 19:25:20
+queue -- olivethebrave --2025-11-07 19:27:08
+leave_queue -- olivethebrave --2025-11-07 19:27:22
+Going through games IN PROGRESS queue -- [[{'discord_name': 'tsunani', 'discord_id': 'tsunani', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'Lucidious#0000', 'min_since': 1}, {'discord_name': 'olivethebrave1', 'discord_id': 'Aposl', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'crownella#1420', 'min_since': 1}, {'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'Emperor#King', 'discord_name': 'olivethebrave', 'discord_id': 118201449392898052, 'min_since': 0}, {'discord_name': 'olivethebrave1', 'discord_id': 'trifox', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'trifox#5917', 'min_since': 1}, {'discord_name': 'olivethebrave1', 'discord_id': 'jetskii', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'BoredLoser#6969', 'min_since': 1}, {'discord_name': 'olivethebrave1', 'discord_id': 'Claire', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'polts#2002', 'min_since': 1}, {'discord_name': 'olivethebrave1', 'discord_id': 'gothcowboy', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'shmovement#0000', 'min_since': 1}, {'discord_name': 'olivethebrave1', 'discord_id': 'amatsuka', 'ingame_id': '3131248f6e5a4c64a1a9664135978d95', 'unique_name': 'Geb#1087', 'min_since': 1}]] -- 2025-11-07 19:27:24
+Attempting log queue entry Lucidious#0000 (in-game)  --2025-11-07 19:27:24
+Fetched new matches for -- Lucidious#0000 -- 2025-11-07 19:27:27
+1ace074c-5623-40d5-8fcc-019b4f9c5d7f Not a valid game
+
+1ace074c-5623-40d5-8fcc-019b4f9c5d7f already exists or is not a custom game. Try again later maybe? IN-GAME CHECKING

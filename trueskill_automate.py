@@ -473,9 +473,21 @@ def fix_name_manual(new_name, user_ID):
     update_new_name_d_ids(user_ID, new_name)
     update_new_name_p_ids(user_ID, new_name)
 
-"""
-Get unique name from ID and fix databases (player_ids and discord_ids_registered) 
-"""
+
+async def check_valid_name(player_display_name):
+    """
+    Check if user's display name is valid.
+    @param player_display_name - Public in-game display name.
+    @return None on success, [msg, code] on issues.
+    """
+    if not retrieve_id(player_display_name):
+        log_stuff(f"\n{player_display_name}, not correct.")
+        #print([f"\n{player_display_name}, not correct.", 1][0], flush=True)
+        #return None
+        return [f"\n{player_display_name}, not correct.", 1]
+    
+    return None
+
 async def fix_name_from_ID(user_ID):
     """
     Infer latest unique name from last match and update DBs.
