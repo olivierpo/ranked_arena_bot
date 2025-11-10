@@ -9,7 +9,7 @@
     },
     "spadestorms": {
         "ingame_id": "8ecc314f8dc54ac5bd14bf9d84dad1de",
-        "unique_name": "spadestorms#STRM"
+        "unique_name": "spades#strm"
     },
     "bored420": {
         "ingame_id": "25e186e1caa2450a9c66df4411436282",
@@ -117,7 +117,7 @@
     },
     "tn5926": {
         "ingame_id": "ac35cbd7abf5459f83a4e4bb73474067",
-        "unique_name": "tnn#9224"
+        "unique_name": "total noob#9224"
     },
     "jbananaman7_44535": {
         "ingame_id": "0bfc435d0430434fab4dbf1c2549079d",
@@ -125,7 +125,7 @@
     },
     "pomulol": {
         "ingame_id": "21a78ce7daf7407cb8d6c56be72a49be",
-        "unique_name": "Pomu#uwu"
+        "unique_name": "Halcyon#Pomu"
     },
     "hightlol": {
         "ingame_id": "f5fe85bdaf854667badbab0aece6ac45",
@@ -133,7 +133,7 @@
     },
     "herd": {
         "ingame_id": "c42fbe2776684417a0ad71eb3184a645",
-        "unique_name": "herd#00"
+        "unique_name": "\u70ed\u7231105\u5ea6\u7684\u4f60 \u6ef4\u6ef4\u6e05\u7eaf\u7684\u84b8\u998f\u6c34#00"
     },
     "mitchp": {
         "ingame_id": "24b7171a957041b680f76212cba2a42e",
@@ -181,7 +181,7 @@
     },
     "gxy8230": {
         "ingame_id": "d90dd29304314a77b3323cdab1f91174",
-        "unique_name": "lord Vader#1458"
+        "unique_name": "SuperVader#noob"
     },
     "frosyndrome": {
         "ingame_id": "400e0fd1605f43988183e60b43f5d362",
@@ -249,7 +249,7 @@
     },
     "rtkblade": {
         "ingame_id": "afcbb5fdc3dc415e8b792f19bca5d9fa",
-        "unique_name": "ralph#tk"
+        "unique_name": "ChickennMicrowaved#chkn"
     },
     "blazbazerker": {
         "ingame_id": "cc022d4823e446f199b1e07aab440ff3",
@@ -353,7 +353,7 @@
     },
     "fancypants__": {
         "ingame_id": "6931605adb034916a545c9602ea3cede",
-        "unique_name": "fancypants#x2"
+        "unique_name": "fancypants#WBAP"
     },
     "sauwse": {
         "ingame_id": "cacae7ee4df842239f33b7dfc38508ec",
@@ -450,5 +450,37 @@
     "clidecash": {
         "ingame_id": "b10307addfc94fa29fead8aecd9f1221",
         "unique_name": "Clyde Cash#6942"
+    },
+    "fluxfluxfluxflux": {
+        "ingame_id": "ecd8afed8910402599372ac0cdd46476",
+        "unique_name": "Flux#Flux"
+    },
+    "dinoakin991": {
+        "ingame_id": "2ce19be917454841aa7b8ccf53bca82e",
+        "unique_name": "Dinoakin991#9981"
+    },
+    "chaosjeff": {
+        "ingame_id": "b5fc6d27feba4e96a503d2ad8f17787c",
+        "unique_name": "Sans The Dog#7187"
+    },
+    "haigren": {
+        "ingame_id": "62008a191aa949cf9f5a2dbef82be6c1",
+        "unique_name": "Hai#NA1"
+    },
+    "squishy74": {
+        "ingame_id": "17e350ea4e9f4dd8b49e91373c856d85",
+        "unique_name": "Squishy74#2580"
+    },
+    "im_eternal": {
+        "ingame_id": "771982195b484dfbb39c7a5a4ace69f5",
+        "unique_name": "eternal#0000"
+    },
+    "bigmanchadley": {
+        "ingame_id": "56ce9e581f1f47719c37125f12dc10a5",
+        "unique_name": "BigManChadley#1337"
+    },
+    "digs3": {
+        "ingame_id": "c77c754fd4c744d5b518e6691ddbe95d",
+        "unique_name": "Digs#03"
     }
 }

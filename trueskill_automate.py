@@ -12,6 +12,8 @@ import importlib
 import copy
 import asyncio
 import builtins
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 MMR_DEFAULT = 1000
 CONFIDENCE_DEFAULT = 333
@@ -39,6 +41,14 @@ def log_stuff(message):
     """
     with open("match_getter_log.txt", "a") as appendfile:
         appendfile.write(message)
+
+
+def est_now_str():
+    """
+    Get EST time in log format
+    @return datetime string for EST/EDT
+    """
+    return datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d %H:%M:%S")
 
 async def is_new_game_from_match_id(match_id):
     """
@@ -259,7 +269,9 @@ def mark_match_played(match_id):
     with open("match_ids.json", "w") as outfile:
         json.dump(to_read, outfile, indent=4)
 
-def retrieve_id(username):
+ID_getter_lock = asyncio.Lock()
+
+async def retrieve_id(username):
     """
     Resolve a unique display name to an encoded OPGG user id.
     @param username - "Name#Tag" string.
@@ -280,10 +292,18 @@ def retrieve_id(username):
     else:
         username_final = username_list[0] + "%23" + username_list[1]
     url = f"https://supervive.op.gg/players/steam-{username_final}"
-    http = urllib3.PoolManager()
-    response = http.request('GET', url, decode_content=True)
+    #http = urllib3.PoolManager()
+    loop = asyncio.get_event_loop()
+    async with ID_getter_lock:
+        try:
+            response = await loop.run_in_executor(executor, requests.get, url)
+        except Exception as error:
+            log_stuff(f"\nError in request {url}\n" + str(error))
+            return ["Error in http to get ID."]
+        await asyncio.sleep(0.5)
+    #response = http.request('GET', url, decode_content=True)
     
-    reply = response.data
+    reply = response.text
 
     soup = BeautifulSoup(reply, 'html.parser')
     huge_string = soup.find(id="app")
@@ -365,11 +385,11 @@ async def fetch_opgg_match(player_name):
         loop = asyncio.get_event_loop()
         result = await loop.run_in_executor(executor, HC.fetch_new_matches, get_urlsafe_name(player_name))
         if result:
-            log_stuff(f"\nFetched new matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            log_stuff(f"\nFetched new matches for -- {player_name} -- " + est_now_str())
             await asyncio.sleep(3)
             return 1
         else:
-            log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            log_stuff(f"\nFAILED to fetch matches for -- {player_name} -- " + est_now_str())
             await asyncio.sleep(3)
             return 0
     
@@ -409,7 +429,7 @@ async def check_new_match(match_id, players_list=[]):
             return ["Invalid match (probably too few kills)"]
 
         for i in range(len(json_match_details)):
-            retrieved_id = retrieve_id(json_match_details[i]["player"]["unique_display_name"])
+            retrieved_id = await retrieve_id(json_match_details[i]["player"]["unique_display_name"])
             if not retrieved_id:
                 return ["A player was not found in op.gg database"]
             json_match_details[i]["player_id_encoded"] = retrieved_id
@@ -443,7 +463,7 @@ async def check_match_w_name(unique_name, players_list=[]):
     if not error:
         log_stuff(f"\nFailed to fetch new matches for {unique_name}")
         return [f"\nFailed to fetch new matches for {unique_name}"]
-    user_id = retrieve_id(unique_name)
+    user_id = await retrieve_id(unique_name)
 
     try:
         new_match = await loop.run_in_executor(executor, requests.get, f"https://supervive.op.gg/api/players/steam-{user_id}/matches?page=1")
@@ -480,7 +500,7 @@ async def check_valid_name(player_display_name):
     @param player_display_name - Public in-game display name.
     @return None on success, [msg, code] on issues.
     """
-    if not retrieve_id(player_display_name):
+    if not await retrieve_id(player_display_name):
         log_stuff(f"\n{player_display_name}, not correct.")
         #print([f"\n{player_display_name}, not correct.", 1][0], flush=True)
         #return None
@@ -515,7 +535,7 @@ async def fix_name_from_ID(user_ID):
         if player["player_id_encoded"] == player_id_encoded:
             player_display_name = player["player"]["unique_display_name"]
 
-    if not retrieve_id(player_display_name):
+    if not await retrieve_id(player_display_name):
         log_stuff(f"\nLast match name, {player_display_name}, too old.")
         return [f"Last match name, {player_display_name}, too old.", 1]
 
@@ -590,12 +610,12 @@ def remove_player_w_id(user_id):
         del to_replace[user_id]
         json.dump(to_replace, writefile, indent=4)
 
-def remove_player_w_name(user_name):
+async def remove_player_w_name(user_name):
     """
     Remove a player record given "Name#Tag".
     @param user_name - Unique display name.
     """
-    return remove_player_w_id(retrieve_id(user_name))
+    return remove_player_w_id(await retrieve_id(user_name))
 
 def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     """
@@ -617,12 +637,12 @@ def add_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
                            "stats":{"kills":0, "deaths":0, "assists":0, "damage_done":0, "damage_taken": 0, "healing_done":0}}})
         json.dump(to_append, writefile, indent=4)
 
-def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+async def add_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     """
     Convenience wrapper to add a player by unique name.
     @param user_name - "Name#Tag".
     """
-    return add_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
+    return add_player(await retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
 def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     """
@@ -645,12 +665,12 @@ def update_player(user_id, user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT)
         to_append[user_id]["unique_name"]= user_name
         json.dump(to_append, writefile, indent=4)
 
-def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
+async def update_player_w_name(user_name, mmr=MMR_DEFAULT, sigma=CONFIDENCE_DEFAULT):
     """
     Update a player by unique name wrapper.
     @param user_name - "Name#Tag".
     """
-    return update_player(retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
+    return update_player(await retrieve_id(user_name), user_name, mmr=mmr, sigma=sigma)
 
 def make_backup():
     """
@@ -661,14 +681,14 @@ def make_backup():
         with open("./json_backups/match_ids_backup.json", "a") as appendfile:
             json.dump(to_read, appendfile, indent=4)
     with open("./json_backups/match_ids_backup.json", "a") as appendfile:
-            appendfile.write("\n\n"+time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            appendfile.write("\n\n"+est_now_str())
 
     with open("player_ids.json", "r") as infile:
         to_read = json.load(infile)
         with open("./json_backups/player_ids_backup.json", "a") as appendfile:
             json.dump(to_read, appendfile, indent=4)
     with open("./json_backups/player_ids_backup.json", "a") as appendfile:
-            appendfile.write("\n\n"+time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            appendfile.write("\n\n"+est_now_str())
 
 def replace_pfile_from_file(temp_file_name):
     """
@@ -847,7 +867,7 @@ def start():
     #check_new_match("20260306-18a2-4086-a87e-34bbe889d66b")
     #while(1):
     counter = 0
-    log_stuff(f"\nRunning checkmatches at time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    log_stuff(f"\nRunning checkmatches at time: " + est_now_str())
     #check_matches()
     #time.sleep(300)
     check_match_w_name("Emperor#King")

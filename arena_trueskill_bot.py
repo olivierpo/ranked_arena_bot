@@ -341,10 +341,10 @@ async def on_message(message):
     if message.author == bot.user:
         return
     if message.content.startswith('!hello'):
-        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + trueskill_module.est_now_str())
         await message.reply('Hello!', mention_author=True)
     if message.content.startswith('!leaderboard'):
-        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + trueskill_module.est_now_str())
 
         old_sorted_players = copy.deepcopy(sorted_players)
 
@@ -371,7 +371,7 @@ async def on_message(message):
 
         await message.reply(leaderboard_str, mention_author=True)
     if message.content.startswith('!balance'):
-        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + trueskill_module.est_now_str())
         get_players()
         get_sorted_players()
         balance_player_list = message.content[9:].split(",")
@@ -396,7 +396,7 @@ async def on_message(message):
         printable_1+=printable_2
         await rep.edit(content=printable_1)
     if message.content.startswith("!commands"):
-        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        trueskill_module.log_stuff(f"\n{message.content} -- {message.author.name} --" + trueskill_module.est_now_str())
         command_printable = COMMANDS_STRING
         await message.reply(command_printable, mention_author=True)
     
@@ -404,7 +404,7 @@ async def on_message(message):
 @bot.slash_command(name="appoint_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def appoint_admin(ctx, admin_to_appoint: discord.Option(str)):
     """Appoint a new admin (owner only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id == 118201449392898052:
         with open("admin_list.txt", "a") as readfile:
             readfile.write(admin_to_appoint+"\n")
@@ -416,7 +416,7 @@ async def appoint_admin(ctx, admin_to_appoint: discord.Option(str)):
 @bot.slash_command(name="remove_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_admin(ctx, admin_to_remove: discord.Option(str)):
     """Remove an admin (owner only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id == 118201449392898052:
         admin_list = ""
         with open("admin_list.txt", "r") as readfile:
@@ -433,7 +433,7 @@ async def remove_admin(ctx, admin_to_remove: discord.Option(str)):
 @bot.slash_command(name="get_admins", description="attaches json file", guild_ids=GUILD_IDS)
 async def get_admins(ctx):
     """Show current admin IDs (admin only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     global global_admin_list
     if ctx.author.id in global_admin_list:
         await ctx.respond(global_admin_list, ephemeral=True)
@@ -445,7 +445,7 @@ async def get_admins(ctx):
 @bot.slash_command(name="get_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def get_player(ctx, player_name: discord.Option(str)):
     """Show a player's MMR, rank, and stats."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     global sorted_players
     get_players()
     get_sorted_players()
@@ -462,12 +462,12 @@ async def get_player(ctx, player_name: discord.Option(str)):
 
 
 
-def get_id_from_name(unique_name):
-    """
+"""async def get_id_from_name(unique_name):
+    
     Retrieve the user ID from a unique name by accessing an op.gg URL and parsing the HTML content using soup.
     @param unique_name - the unique name of the user
     @return The user ID
-    """
+    
     username_final = trueskill_module.get_urlsafe_name(unique_name)
     url = f"https://supervive.op.gg/players/steam-{username_final}"
     http = urllib3.PoolManager()
@@ -487,18 +487,19 @@ def get_id_from_name(unique_name):
         return
     user_id = str(huge_string)[id_index+20:display_index-13]
     return user_id
+    """
 
 @bot.slash_command(name="add_player_admin", description="attaches json file", guild_ids=GUILD_IDS)
 async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=MMR_DEFAULT), mmr_confidence: discord.Option(float, required = False, default=CONFIDENCE_DEFAULT)):
     """Admin: add player with MMR and sigma."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id in global_admin_list:
         pattern = re.compile("\\S+.*#\\S+")
         if not pattern.match(player_name):
             await ctx.respond("Inputted name not correct format", ephemeral=True)
             return
 
-        user_id = get_id_from_name(player_name)
+        user_id = await trueskill_module.retrieve_id(player_name)
         
         if not user_id:
              await ctx.respond(f"Something went wrong", ephemeral=True)
@@ -513,7 +514,7 @@ async def add_player_admin(ctx, player_name: discord.Option(str), player_mmr: di
 async def add_player(ctx, player_name: discord.Option(str)):
     """Add a player with default MMR and sigma."""
     await ctx.defer(ephemeral=True)
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     player_mmr = MMR_DEFAULT
     mmr_confidence = CONFIDENCE_DEFAULT
     pattern = re.compile("\\S+.*#\\S+")
@@ -521,7 +522,7 @@ async def add_player(ctx, player_name: discord.Option(str)):
         await ctx.respond("Inputted name not correct format", ephemeral=True)
         return
 
-    user_id = get_id_from_name(player_name)
+    user_id = await trueskill_module.retrieve_id(player_name)
     
     if not user_id:
         await ctx.respond(f"Something went wrong", ephemeral=True)
@@ -533,14 +534,14 @@ async def add_player(ctx, player_name: discord.Option(str)):
 @bot.slash_command(name="remove_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def remove_player(ctx, player_name: discord.Option(str)):
     """Remove a player by unique name."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     await ctx.defer(ephemeral=True)
     pattern = re.compile("\\S+.*#\\S+")
     if not pattern.match(player_name):
         await ctx.send_followup("Inputted name not correct format", ephemeral=True)
         return
 
-    error = trueskill_module.remove_player_w_name(player_name)
+    error = await trueskill_module.remove_player_w_name(player_name)
     if error:
         trueskill_module.log_stuff(error)
         await ctx.send_followup(error, ephemeral=True)
@@ -550,7 +551,7 @@ async def remove_player(ctx, player_name: discord.Option(str)):
 @bot.slash_command(name="update_player", description="attaches json file", guild_ids=GUILD_IDS)
 async def update_player(ctx, player_name: discord.Option(str), player_mmr: discord.Option(float, required = False, default=-1), mmr_confidence: discord.Option(float, required = False, default=-1)):
     """Admin: update a player's MMR and sigma."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     await ctx.defer(ephemeral=True)
     if ctx.author.id in global_admin_list:
         pattern = re.compile("\\S+.*#\\S+")
@@ -558,7 +559,7 @@ async def update_player(ctx, player_name: discord.Option(str), player_mmr: disco
             await ctx.send_followup("Inputted name not correct format", ephemeral=True)
             return
 
-        user_id = get_id_from_name(player_name)
+        user_id = await trueskill_module.retrieve_id(player_name)
         if not user_id:
              await ctx.send_followup(f"Something went wrong", ephemeral=True)
              return
@@ -593,7 +594,7 @@ def get_teams_to_print(match_data):
 @bot.slash_command(name="log_recent_game", guild_ids=GUILD_IDS) # Create a slash command
 async def log_recent_game(ctx, player_name: discord.Option(str)):
     """Log the most recent custom game for a player."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     pattern = re.compile("\\S+.*#\\S+")
     await ctx.defer()
     if not pattern.match(player_name):
@@ -620,7 +621,7 @@ async def log_recent_game(ctx, player_name: discord.Option(str)):
 @bot.slash_command(name="log_specific_game", guild_ids=GUILD_IDS) # Create a slash command
 async def log_specific_game(ctx, match_id: discord.Option(str)):
     """Log a specific custom game by match ID."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     await ctx.defer()
     match_details_return = await trueskill_module.check_new_match(match_id)
     if not match_details_return:
@@ -673,7 +674,7 @@ async def clear_log_queue(ctx):
 @bot.slash_command(name="get_players_list", guild_ids=GUILD_IDS) # Create a slash command
 async def get_players_list(ctx):
     """Show top 10 players and ranks."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     global sorted_players
     get_players()
     get_sorted_players()
@@ -709,7 +710,7 @@ async def backup_id_files(ctx):
 @bot.slash_command(name="replace_players", guild_ids=GUILD_IDS) # Create a slash command
 async def replace_players(ctx, player_id_json: discord.Attachment):
     """Replace player_ids.json from an attached file (admin only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id in global_admin_list:
         await player_id_json.save(fp="./temp_saves/"+player_id_json.filename)
         trueskill_module.replace_pfile_from_file(player_id_json.filename)
@@ -721,13 +722,13 @@ async def replace_players(ctx, player_id_json: discord.Attachment):
 async def register(ctx, player_name: discord.Option(str)):
     """Register your Discord user to a unique name."""
     await ctx.defer(ephemeral=True)
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + trueskill_module.est_now_str())
     pattern = re.compile("\\S+.*#\\S+")
     if not pattern.match(player_name):
         await ctx.respond("Inputted name not correct format", ephemeral=True)
         return
 
-    user_id = get_id_from_name(player_name)
+    user_id = await trueskill_module.retrieve_id(player_name)
     
     if not user_id:
         await ctx.respond(f"Something went wrong", ephemeral=True)
@@ -760,7 +761,7 @@ async def contains(p_lis, filter):
 async def randomize_teams(ctx):
     """Randomly split your current game into teams."""
     await ctx.defer()
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name}" + trueskill_module.est_now_str())
     global games_in_progress
     team_list = []
     for g_info in games_in_progress:
@@ -869,7 +870,7 @@ async def shutdown(ctx):
 async def update_name(ctx, player_name: discord.Option(str)):
     """Update your stored unique name."""
     await ctx.defer(ephemeral=True)
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} -- {player_name}" + trueskill_module.est_now_str())
     player_dict = trueskill_module.get_player_pair_from_discord(ctx.author.name)
     if type(player_dict) is str:
         await ctx.send_followup(player_dict, ephemeral=True)
@@ -890,7 +891,7 @@ async def queue(ctx):
     await ctx.defer(ephemeral=True)
     global players_in_queue
     global last_ping_queue_nonempty
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if check_if_qg(ctx.author.name):
         await ctx.send_followup(f"You're already in queue or in game.", ephemeral=True)
         return
@@ -933,7 +934,7 @@ async def queue(ctx):
 @bot.slash_command(name="leave_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def leave_queue(ctx):
     """Leave the queue (or remove from game)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     global players_in_game
     global players_in_queue
 
@@ -953,7 +954,7 @@ async def leave_queue(ctx):
 async def clear_game(ctx, discord_name: discord.Option(str, required = False, default="")):
     """Clear your current game (or one by name)."""
     global games_in_progress
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
 
     name_chk = ctx.author.name if discord_name == "" else discord_name
 
@@ -968,7 +969,7 @@ async def clear_game(ctx, discord_name: discord.Option(str, required = False, de
 @bot.slash_command(name="get_games_in_progress", guild_ids=GUILD_IDS) # Create a slash command
 async def get_games_in_progress(ctx):
     """Show games currently in progress."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     global games_in_progress
     to_print = "**Current matches in progress:** \n"
     for g_info in games_in_progress:
@@ -985,13 +986,13 @@ async def get_queue_print():
     global players_in_queue
     to_print = "**Current players in queue:** \n"
     for p_info in players_in_queue:
-        to_print += f"{str(p_info["unique_name"])} - "
+        to_print += f"{str(p_info['unique_name'])} - "
     return to_print
 
 @bot.slash_command(name="get_queue", guild_ids=GUILD_IDS) # Create a slash command
 async def get_queue(ctx):
     """Show current players in queue."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     to_print = await get_queue_print()
     await ctx.respond(to_print)
 
@@ -1025,13 +1026,13 @@ async def queue_limit_kicker():
     global games_in_progress
     global games_in_progress_chk
     global players_in_queue
-    #trueskill_module.log_stuff(f"\nPlayers curr in queue: -- {players_in_queue} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    #trueskill_module.log_stuff(f"\nPlayers curr in queue: -- {players_in_queue} -- " + trueskill_module.est_now_str())
     channel = bot.get_channel(MAIN_CHANNEL_ID)
 
     queuers_to_remove = []
     for i, p_info in enumerate(players_in_queue):
         if p_info["min_since"] >=60:
-            trueskill_module.log_stuff(f"\nRemoving {p_info["unique_name"]} from queue for hitting 1 hour  --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+            trueskill_module.log_stuff(f"\nRemoving {p_info["unique_name"]} from queue for hitting 1 hour  --" + trueskill_module.est_now_str())
             await channel.send(content=f"<@{p_info["discord_id"]}> removed from queue (hour time limit).")
             queuers_to_remove.append(p_info)
             continue
@@ -1055,12 +1056,12 @@ async def games_queue_logging():
     global games_in_progress
     global games_in_progress_chk
     global players_in_queue
-    #trueskill_module.log_stuff(f"\nPlayers curr in queue: -- {players_in_queue} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    #trueskill_module.log_stuff(f"\nPlayers curr in queue: -- {players_in_queue} -- " + trueskill_module.est_now_str())
     channel = bot.get_channel(MAIN_CHANNEL_ID)
 
     if games_in_progress == []:
         return
-    trueskill_module.log_stuff(f"\nGoing through games IN PROGRESS queue -- {games_in_progress} -- " + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\nGoing through games IN PROGRESS queue -- {games_in_progress} -- " + trueskill_module.est_now_str())
     
     i = 0
     while i < len(games_in_progress):
@@ -1071,7 +1072,7 @@ async def games_queue_logging():
         
         p_info = p_lis[games_in_progress_chk]
             
-        trueskill_module.log_stuff(f"\nAttempting log queue entry {p_info["unique_name"]} (in-game)  --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        trueskill_module.log_stuff(f"\nAttempting log queue entry {p_info["unique_name"]} (in-game)  --" + trueskill_module.est_now_str())
         return_str = await log_recent_game_standalone(p_info["unique_name"], p_lis_for_chcker)
         if not (return_str == None):
             await channel.send(content=return_str)
@@ -1086,7 +1087,7 @@ async def games_queue_logging():
         games_in_progress_chk = 0
 
 
-@tasks.loop(seconds=20)
+@tasks.loop(seconds=20, reconnect=True)
 async def queue_printer():
     """
     Asynchronously check and update the queue status by comparing the current queue length with the previous length. 
@@ -1099,7 +1100,10 @@ async def queue_printer():
         await change_q_channel()
         prev_len = len(players_in_queue)
     msg = bot.get_message(QUEUE_MSG_ID)
-    await msg.edit(content=await get_queue_print())
+    try:
+        await msg.edit(content=await get_queue_print())
+    except Exception as e:
+        trueskill_module.log_stuff(f"\nqueue printer -- {e} --" + trueskill_module.est_now_str())
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
@@ -1120,7 +1124,7 @@ def testing_helper(author_name):
 @bot.slash_command(name="test_stuff", guild_ids=GUILD_IDS) # Create a slash command
 async def test_stuff(ctx):
     """Admin test command for local checks."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id == 118201449392898052: 
         trueskill_module.register("blah", "Tsunani#nani")
         testing_helper("blah")
@@ -1145,7 +1149,7 @@ async def test_stuff(ctx):
 @bot.slash_command(name="reset_players", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_players(ctx):
     """Reset player file (admin only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_player_file()
         await ctx.respond("Done", ephemeral=True)
@@ -1155,7 +1159,7 @@ async def reset_players(ctx):
 @bot.slash_command(name="reset_player_stats", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_player_stats(ctx):
     """Reset player stats (admin only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_player_stats()
         await ctx.respond("Done", ephemeral=True)
@@ -1165,7 +1169,7 @@ async def reset_player_stats(ctx):
 @bot.slash_command(name="reset_matches", guild_ids=GUILD_IDS) # Create a slash command
 async def reset_matches(ctx):
     """Reset match file (admin only)."""
-    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+    trueskill_module.log_stuff(f"\n{ctx.command.qualified_name} -- {ctx.author.name} --" + trueskill_module.est_now_str())
     if ctx.author.id in global_admin_list:
         trueskill_module.reset_match_file()
         await ctx.respond("Done", ephemeral=True)
