@@ -716,7 +716,7 @@ def get_id_from_name_local(ig_name):
             if value["unique_name"] == ig_name:
                 return key
         
-async def fill_next_recur(team1, team2, players_full):
+def fill_next_recur(team1, team2, players_full):
     """
     Recursively search balanced 4v4 partition minimizing average MMR delta.
     @param team1 - Partial team list [name, mmr].
@@ -747,7 +747,7 @@ async def fill_next_recur(team1, team2, players_full):
             temp_team1.append([dict_keys[i], players_full[dict_keys[i]]["mmr"]])
         temp_players_full = copy.deepcopy(players_full)
         temp_players_full.pop(dict_keys[i])
-        curr_result = await fill_next_recur(temp_team1, temp_team2, temp_players_full)
+        curr_result = fill_next_recur(temp_team1, temp_team2, temp_players_full)
         if not best_result:
             best_result = curr_result
         else:
@@ -806,7 +806,7 @@ def get_player_pair_from_discord(discord_id):
         return f"{discord_id} not in registered users"
     
 
-async def balance_teams(discord_ids_to_balance):
+def balance_teams(discord_ids_to_balance):
     """
     Compute balanced teams from a list of Discord ids.
     @param discord_ids_to_balance - Iterable of Discord ids.
@@ -815,7 +815,7 @@ async def balance_teams(discord_ids_to_balance):
     players_to_balance = {}
     for discord_id in discord_ids_to_balance:
         players_to_balance.update(get_player_from_discord_balance(discord_id))
-    balance_result = await fill_next_recur([], [], players_to_balance)
+    balance_result = fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
 
 def register(discord_id, ig_name):

@@ -179,7 +179,7 @@
         "ingame_id": "1339b2d121a941fe83d40fa70b600d06",
         "unique_name": "Skrub McLord#NA1"
     },
-    "gxy8230": {
+    "vals.trax": {
         "ingame_id": "d90dd29304314a77b3323cdab1f91174",
         "unique_name": "SuperVader#noob"
     },
@@ -482,5 +482,9 @@
     "digs3": {
         "ingame_id": "c77c754fd4c744d5b518e6691ddbe95d",
         "unique_name": "Digs#03"
+    },
+    "washquasar85": {
+        "ingame_id": "994e27b0c58d42e3b1f6b85cd3fffe94",
+        "unique_name": "WashQuasar85#1898"
     }
 }

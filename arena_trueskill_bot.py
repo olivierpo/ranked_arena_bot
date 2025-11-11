@@ -95,42 +95,42 @@ prev_len = 0
 last_ping_queue_nonempty = datetime.datetime.now(datetime.timezone.utc)-datetime.timedelta(hours=3)
 
 if TESTING:
-    players_in_queue = [{"discord_name":"tsunani",
+    players_in_queue = [{"discord_name":"spadestorms",
                          "discord_id":"tsunani",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "Lucidious#0000",
+        "unique_name": "spades#strm",
         "min_since":0
     },
-    {"discord_name":"olivethebrave1",
+    {"discord_name":"bassdrop",
                          "discord_id":"jetskii",
-        "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "BoredLoser#6969",
-        "min_since":0
-    },{"discord_name":"olivethebrave1",
-                         "discord_id":"gothcowboy",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
         "unique_name": "shmovement#0000",
         "min_since":0
-    },{"discord_name":"olivethebrave1",
+    },{"discord_name":"bored420",
+                         "discord_id":"gothcowboy",
+        "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
+        "unique_name": "BoredLoser#6969",
+        "min_since":0
+    },{"discord_name":"geb1087",
                          "discord_id":"Claire",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "polts#2002",
+        "unique_name": "Geb#1087",
         "min_since":0
-    },{"discord_name":"olivethebrave1",
+    },{"discord_name":"easy._._",
                          "discord_id":"trifox",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "trifox#5917",
+        "unique_name": "Coyote#0000",
         "min_since":0
-    },{"discord_name":"olivethebrave1",
+    },{"discord_name":"saucyhack",
                          "discord_id":"Aposl",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "crownella#1420",
+        "unique_name": "Saucyhack#7054",
         "min_since":0
     }
-,{"discord_name":"olivethebrave1",
+,{"discord_name":"phenomex",
                          "discord_id":"amatsuka",
         "ingame_id": "3131248f6e5a4c64a1a9664135978d95",
-        "unique_name": "Geb#1087",
+        "unique_name": "PhenomEX#DIFF",
         "min_since":0
     }]
 
@@ -254,14 +254,15 @@ class MyView(discord.ui.View):
 
         await interaction.response.edit_message(content=leaderboard_str, view=new_button_0.view)
 
+"""
 def fill_next_recur(team1, team2, players_full):
-    """
+    
     This function recursively fills two teams with players from a dictionary to minimize the difference in average team elo confidence.
     @param team1 - the first team being filled
     @param team2 - the second team being filled
     @param players_full - a dictionary of players and their elo confidence
     @return A list containing the difference in average team elo confidence and the two teams with players assigned to them.
-    """
+    
 
     if len(team1) == 4:
         if len(team2) == 4:
@@ -294,13 +295,14 @@ def fill_next_recur(team1, team2, players_full):
     return best_result
 
 def balance_teams(players_to_balance):
-    """
+    
     Balance the teams by recursively filling the next team until all players are assigned.
     @param players_to_balance - list of players to be balanced into teams
     @return A list containing the balanced teams.
-    """
+    
     balance_result = fill_next_recur([], [], players_to_balance)
     return [balance_result[1], balance_result[2]]
+"""
     
 def decorate_rank_change(old_sorted_players, sorted_players):
     """
@@ -385,7 +387,7 @@ async def on_message(message):
             if sorted_players[i]["unique_name"] in balance_player_list:
                 dict_to_balance[sorted_players[i]["unique_name"]] = sorted_players[i]["mmr"]
         
-        [team1, team2] = balance_teams(dict_to_balance)
+        [team1, team2] = trueskill_module.balance_teams(dict_to_balance)
         average_1 = (team1[0][1]+team1[1][1]+team1[2][1]+team1[3][1])/4
         printable_1 = f"Team1 (MMR:{average_1:.2f}): "
         printable_1 += f"{team1[0][0]}, {team1[1][0]}, {team1[2][0]}, {team1[3][0]}\n"
@@ -782,6 +784,21 @@ async def randomize_teams(ctx):
     pop_msg+=pop_msg_1+pop_msg_end
     await ctx.send_followup(pop_msg)
 
+def sort_players_list_balanced(team1, team2, players_list):
+    players_list_sorted = []
+    for player in team1:
+        for player_main in players_list:
+            if player_main['unique_name'] == player[0]:
+                players_list_sorted.append(player_main)
+                break
+    for player in team2:
+        for player_main in players_list:
+            if player_main['unique_name'] == player[0]:
+                players_list_sorted.append(player_main)
+                break
+    #print(players_list_sorted, flush=True)
+    return players_list_sorted
+    
 
 async def initiate_queue_pop(players_list):
     """
@@ -793,10 +810,21 @@ async def initiate_queue_pop(players_list):
     global games_in_progress
     global players_in_game
     channel = bot.get_channel(MAIN_CHANNEL_ID)
-    pop_msg = "Queue has popped for the following players: \n**Team1:**\n**---------------**\n"
-    pop_msg_1 = "\n**Team2:**\n**---------------**\n"
+    pop_msg = "Queue has popped for the following players: \n"
     pop_msg_end = "\n If a player isn't here, use /clear_game."
-    random.shuffle(players_list)
+    #random.shuffle(players_list)
+    
+    
+    [team1, team2] = trueskill_module.balance_teams([player['discord_name'] for player in players_list])
+
+    players_list = sort_players_list_balanced(team1, team2, players_list)
+
+    average_1 = (team1[0][1]+team1[1][1]+team1[2][1]+team1[3][1])/4
+    printable_1 = f"**Team1 (MMR:{average_1:.2f}):**\n**---------------**\n"
+    pop_msg+=printable_1
+    average_2 = (team2[0][1]+team2[1][1]+team2[2][1]+team2[3][1])/4
+    pop_msg_1 = f"\n**Team2 (MMR:{average_2:.2f}):**\n**---------------**\n"
+    
     count = 0
     for player_lis in players_list:
         if count < 4:
@@ -885,7 +913,18 @@ async def update_name(ctx, player_name: discord.Option(str)):
         return
     await ctx.send_followup(f"Updated name for {ctx.author.name}.", ephemeral=True)
 
+@bot.event
+async def on_application_command_error(ctx, error):
+    """Handle errors. Mostly for cooldowns."""
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.respond(f"This command is on cooldown. Please try again in {error.retry_after:.2f} seconds.", ephemeral=True)
+        return
+    else:
+        # Handle other types of errors
+        raise error
+
 @bot.slash_command(name="queue", guild_ids=GUILD_IDS) # Create a slash command
+@commands.cooldown(rate=1, per=10, type=commands.BucketType.user)
 async def queue(ctx):
     """Enter the ranked queue."""
     await ctx.defer(ephemeral=True)
@@ -1099,11 +1138,14 @@ async def queue_printer():
     if prev_len != len(players_in_queue):
         await change_q_channel()
         prev_len = len(players_in_queue)
-    msg = bot.get_message(QUEUE_MSG_ID)
+    channel = bot.get_channel(QUEUE_CHANNEL_ID)
     try:
+        msg = await channel.fetch_message(QUEUE_MSG_ID)
         await msg.edit(content=await get_queue_print())
     except Exception as e:
-        trueskill_module.log_stuff(f"\nqueue printer -- {e} --" + trueskill_module.est_now_str())
+        trueskill_module.log_stuff(
+            f"\nqueue printer -- {e} -- {trueskill_module.est_now_str()}"
+        )
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
