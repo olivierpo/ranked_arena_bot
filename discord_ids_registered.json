@@ -93,7 +93,7 @@
     },
     "scattatle": {
         "ingame_id": "f4f09b6306e8474c98832eda79735d72",
-        "unique_name": "\u5927\u6c5f\u5927\u6d77\u6c5f\u5927\u6d77 \u4fa7\u6123\u8eab\u5b50\u4e48\u8f6c\u7740\u8fd8#2049"
+        "unique_name": "Scattatle#2049"
     },
     "syrus0600": {
         "ingame_id": "e5588a51b37d47a2aee02f8ddac3a3a5",
@@ -133,7 +133,7 @@
     },
     "herd": {
         "ingame_id": "c42fbe2776684417a0ad71eb3184a645",
-        "unique_name": "\u70ed\u7231105\u5ea6\u7684\u4f60 \u6ef4\u6ef4\u6e05\u7eaf\u7684\u84b8\u998f\u6c34#00"
+        "unique_name": "card thief#00"
     },
     "mitchp": {
         "ingame_id": "24b7171a957041b680f76212cba2a42e",
@@ -221,7 +221,7 @@
     },
     "_poneyboy": {
         "ingame_id": "6156268a6ba2457a981b64804abffb5d",
-        "unique_name": "PoneyBoY#BRAL"
+        "unique_name": "PoneyBoY#PONY"
     },
     "akumuh.": {
         "ingame_id": "6d10a65e756341278aff5498bf7c45cc",
@@ -486,5 +486,97 @@
     "washquasar85": {
         "ingame_id": "994e27b0c58d42e3b1f6b85cd3fffe94",
         "unique_name": "WashQuasar85#1898"
+    },
+    "goroy": {
+        "ingame_id": "43dc65def31740ab9638d02ea5e1b185",
+        "unique_name": "Goroy#2667"
+    },
+    "shacomancer": {
+        "ingame_id": "ab37ff04d99a47258a8a973bf33ccfd3",
+        "unique_name": "Shacomancer#2222"
+    },
+    "vincentwoe": {
+        "ingame_id": "8e8602f8031a4a378eeaa1702e6c361b",
+        "unique_name": "MainJam#01"
+    },
+    "chkampawlo": {
+        "ingame_id": "fb401765d4fc4218ad19fe7697f92e60",
+        "unique_name": "K-Not#7080"
+    },
+    "gorebloom": {
+        "ingame_id": "dd408a16d77945edb70f684c01e2023d",
+        "unique_name": "Bloomgore#dead"
+    },
+    "zephix": {
+        "ingame_id": "a0334cafd2864fbbaa9a0f4dddc11202",
+        "unique_name": "Zephix#6675"
+    },
+    "zero_six": {
+        "ingame_id": "c87c7ef64a5941a2923dc843b874f24d",
+        "unique_name": "Zero#8574"
+    },
+    "stillroach": {
+        "ingame_id": "de841e5d09924ecab9e1bf863200ff39",
+        "unique_name": "StillRoach#2009"
+    },
+    "tehbigdaddy": {
+        "ingame_id": "82963661a26149a5946a54d047dc2575",
+        "unique_name": "TheBigDaddy#dad"
+    },
+    "pipoo8522": {
+        "ingame_id": "70c6c1552c084975ab3739b17429a6e3",
+        "unique_name": "gekko#6044"
+    },
+    "gpa444": {
+        "ingame_id": "aa5b800573674041bb58114d9fcde375",
+        "unique_name": "GPA#KCS"
+    },
+    "mx_theo": {
+        "ingame_id": "b585275a3f324df186c29c40cddad7fd",
+        "unique_name": "Theo#1111"
+    },
+    "reaperhashira": {
+        "ingame_id": "4c7134bd4e33429c9b719fdee8e0ab1d",
+        "unique_name": "ReaperHashira#420"
+    },
+    "dumbcus": {
+        "ingame_id": "7702539fa84d42fcacf0229d612b6429",
+        "unique_name": "Dumbcus#GUMP"
+    },
+    "spacevulturev": {
+        "ingame_id": "0f8dd821fab44c38a32e14a1b64acdb8",
+        "unique_name": "Lonely Hudson#OUT"
+    },
+    "maxgoldenguy": {
+        "ingame_id": "a8d7c60255674c26b9f61e276cb94e0c",
+        "unique_name": "MaxGoldenGuy#01"
+    },
+    "_papi_chullo": {
+        "ingame_id": "710e8420b4c54509982d415a945384d5",
+        "unique_name": "IZZY#FF15"
+    },
+    "juicy9453": {
+        "ingame_id": "3c4a57af647e4dd5aa18a2a089a499b0",
+        "unique_name": "Juicy#meow"
+    },
+    "kruumie": {
+        "ingame_id": "e68fdd98e1414ec0ba5b42e38466cb1e",
+        "unique_name": "shroom#1111"
+    },
+    "hazackon": {
+        "ingame_id": "25c782f33b4b4b26b3b175378f591927",
+        "unique_name": "Hazackon#2351"
+    },
+    "bonkagem": {
+        "ingame_id": "ca13d2de443b4787a837bbcb396aca9c",
+        "unique_name": "Bonk#agem"
+    },
+    "meiyoushili": {
+        "ingame_id": "5b1501e33eb44e39b20e1ad618f9e04b",
+        "unique_name": "meiyoushili#2202"
+    },
+    "edkim05": {
+        "ingame_id": "b097c9e79455401a987229a188c42a33",
+        "unique_name": "REDRUM#187"
     }
 }

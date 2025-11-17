@@ -105,28 +105,35 @@ def is_players_correct(match_data):
 
     return 1
 
+def scale_mmr_delta(mmr_delta, delta_max, delta_min, new_delta_max, new_delta_min):
+    return ((mmr_delta-delta_min)/(delta_max-delta_min))*(new_delta_max-new_delta_min)+new_delta_min
+
+
 def get_squished_mmr(curr_mmr, new_mmr, did_win):
     """
     Bound TrueSkill mu delta to a capped Elo-like change.
     @param curr_mmr - Current displayed MMR value.
-    @param new_mmr - Post-match TrueSkill mu.
+    @param new_mmr - Post-match MMR value.
     @param did_win - 1 if win, 0 if loss.
     @return Adjusted displayed MMR.
     """
+
+    DELTA_MAX = 40
+    DELTA_MIN = 1
+    NEW_DELTA_MIN = 20
+    NEW_DELTA_MAX = 50
     mmr_delta = abs(new_mmr - curr_mmr)
     if mmr_delta == 0:
-        mmr_delta = 1
-        if did_win:
-            new_mmr = curr_mmr + 1
-        else:
-            new_mmr = curr_mmr - 1
-    if mmr_delta < 20:
-        mmr_delta = 20
-    elif mmr_delta > 40:
-        mmr_delta = 40
-    if new_mmr < curr_mmr:
+        mmr_delta = DELTA_MIN
+    if mmr_delta > DELTA_MAX:
+        mmr_delta = DELTA_MAX
+    
+    mmr_delta = scale_mmr_delta(mmr_delta, DELTA_MAX, DELTA_MIN, NEW_DELTA_MAX, NEW_DELTA_MIN)
+    if not did_win:
         mmr_delta *= -1
-     
+
+    log_stuff(f"\nMMR delta: {mmr_delta}") 
+    
     return (curr_mmr + mmr_delta)
 
 def get_pretty_print_from_mmr(mmr):
